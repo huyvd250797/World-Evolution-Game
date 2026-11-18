@@ -1,3 +1,5 @@
+> V0.5.0 mở rộng bằng schema 4/we-sim-2 và migration 004. Xem POPULATION-AND-PATHFINDING.md cho ID/di chuyển/housing/payload 1MiB; mô tả version cũ bên dưới là nền kế thừa.
+
 # Construction & City Planning V0.4.0
 
 ## Chức năng và thao tác

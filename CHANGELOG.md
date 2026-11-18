@@ -1,3 +1,13 @@
+# V0.5.0 — Population Housing & Pathfinding — 19/11/2026
+
+- Schema 4/we-sim-2 giữ 20 IDs từ initial_state; legacy 2/3 nâng đọc có vị trí deterministic, không đổi clock/RNG/quy hoạch.
+- Worker reverse BFS cache 8 đích, batch 1–20 IDs, 4 cạnh, tránh water/mountain/slope/footprint, no-path rõ, max512 cạnh.
+- CFG059 12 ô/ngày, progress 0–149; move/rest/resume, đổi đích giữa cạnh, replan khi vùng chặn đổi; không đặt nền lên người/cạnh đang đi.
+- Sprite/stamp chung, sort isometric/culling, nội suy cosmetic; RAF overlay khi cần, không redraw terrain mỗi frame nhân vật. Chọn sprite/list, focus, thông tin/đích/xác nhận/group command.
+- 8 home capacities + CFG053 từ Frozen; actual/projected/homeless/cap, kiểm đường tới lối vào; completed-only allocation model. Không tặng nhà/giường từ planned, không áp chết đói/bệnh khi hệ chưa có.
+- Full citizen snapshots/partial progress/recovery; SQL 004 kiểm IDs/path/occupancy/fencing, cap1MiB. Giữ 001–003/Frozen/assets/map byte-for-byte.
+- Unit/SQL/Worker/session/HTTP/native Canvas tests, source/README/deploy/migration/rollback docs.
+
 # V0.4.0 — Construction & City Planning — 18/11/2026
 
 - 166 công trình từ Frozen: ID/tên/era/công dụng/tech/BOM; tìm/lọc/hiện khóa. Footprint và placement policy tách planning-v1.

@@ -1,16 +1,15 @@
-# Deploy World Evolution V0.4.0 — Construction & City Planning
+# Deploy World Evolution V0.5.0 — Population Housing & Pathfinding
 
-Không cần localhost, không cài Node/npm trên máy Boss. Vercel tự cài/build.
+Boss không cần localhost/npm trên máy. Vercel tự cài/build.
 
-1. **Supabase SQL Editor:** với project đang chạy V0.4.0, mở file TXT `World-Evolution-V0.4.0-Migrations.txt` hoặc `infra/supabase/migrations/202611180003_city_planning.sql`, copy toàn bộ SQL và chạy **một lần trước deploy**. Không chạy lại migration 001/002 và không reset bảng. Project mới hoàn toàn cần 001 trước, sau đó 002 rồi 003.
-2. Giải nén ZIP, upload **toàn bộ** nội dung vào gốc repository/branch GitHub đang liên kết Vercel, ghi đè file trùng. Không cần xóa repo hoặc deployment cũ.
-3. Kiểm tra `package.json` version `0.4.0`, có `src/game/simulation`, `src/components/simulation`, `src/app/api/simulation/route.ts`, `verify-release.mjs`, `data/generated` và `public/assets` đầy đủ.
-4. Giữ hai entry proxy dùng alias `@/lib/supabase/proxy`; không giữ import cũ `./lib/config`. Không sửa build thành gọi importer Excel/TS khi deploy.
-5. Vercel: đúng repo/branch/commit mới; Root Directory chứa `package.json` (thường `.`), Framework Next.js, Node 24.x, Install `npm ci`, Build `npm run build`, Output mặc định. Giữ nguyên URL/key Supabase và asset base URL. Không dùng static export.
-6. Deploy commit mới. Nếu gặp cache cũ, redeploy bỏ Use existing Build Cache.
-7. Mở world cũ → seed/bản đồ/20 dân còn nguyên → panel engine tải xong ở trạng thái tạm dừng. Bấm Chạy, x4, thử Xây dựng/đặt nền/xoay/đường, Tạm dừng/Lưu ngay, chờ Đã lưu rồi reload để kiểm.
-8. Mở tab/thiết bị khác → chỉ xem khi lease đang giữ → Tiếp quản có xác nhận. Mất mạng phải pause/giữ bản tạm, khác cloud revision không tự ghi đè. Trên điện thoại thử xoay ngang/dọc và khóa màn hình rồi quay lại.
+1. Project V0.4.0 đã chạy 001/002/003: trong Supabase SQL Editor chạy **202611190004_population_navigation.sql một lần trước deploy**. TXT V0.5 gửi riêng có đúng SQL này. Không chạy lại 001/002/003, không xóa worlds. Project mới chạy 001 → 002 → 003 → 004.
+2. Giải nén ZIP, upload toàn bộ source vào repo/branch đang liên kết Vercel, ghi đè file trùng. Kiểm package.json version 0.5.0, src/game/population, src/components/population, data/generated/population.json và infra/migrations đủ.
+3. Vercel: Next.js, Root Directory chứa package.json, Node 24.x, Install npm ci, Build npm run build, Output mặc định. Giữ Supabase env và asset URL. Không static export hoặc đổi build thành importer Excel.
+4. Deploy commit mới; nếu cần xử lý cache cũ, redeploy không dùng Build Cache. Giữ proxy.ts/src/proxy.ts import alias @/lib/supabase/proxy cùng logic session, không khôi phục import cũ ./lib/config.
+5. Mở world cũ: tick/seed/map/quy hoạch giữ nguyên; đúng 20 ID xuất hiện trên đất hợp lệ, game tạm dừng. Dân cư → chọn ID → Chọn điểm đến → chọn ô → Xác nhận → Chạy. Đợi đi được một phần cạnh → Pause/Lưu ngay → Đã lưu → reload kiểm không teleport/nhân đôi.
+6. Chỗ ở: giường thực 0 khi mới có nền planned; bốn lều dự kiến 20, không tự cấp nhà. Thử Đi tới lối vào của người đang chọn và xem blocked nếu không tìm được tuyến.
+7. PC/mobile: pan/pinch/zoom, chọn trực tiếp sprite hoặc danh sách, Nghỉ/Tiếp tục, x1/x2/x4, xoay dọc/ngang, khóa màn hình rồi quay lại. Chỉ một thiết bị có lease ghi tiến trình; takeover giữ cơ chế xác nhận.
 
-Nếu panel báo thiếu migration: kiểm đúng Supabase project và đã chạy 003; chờ PostgREST schema cache cập nhật rồi thử lại. Không xóa database để xử lý. Nếu lease đang ở tab đã đóng, chờ tối đa 75 giây hoặc dùng Tiếp quản.
+Nếu báo thiếu migration, kiểm đúng project và 004 đã chạy sau 003, chờ schema cache cập nhật rồi thử lại. Không reset DB để xử lý. Dùng verify_setup.sql, verify_simulation.sql, verify_planning.sql và verify_population.sql (read-only).
 
-Hướng dẫn Auth/email/callback/GitHub/CDN: `docs/CONFIGURATION.md`. Thiết kế lưu/khôi phục: `docs/SIMULATION-AND-SAVE.md`. Kiểm tra thực tế và phần cần nghiệm thu thiết bị: `RELEASE-CHECKS.md`, `docs/VERIFICATION.md`.
+Sau khi có schema 4, app V0.4 không đọc được save mới. Không drop schema để rollback; giữ backup và dùng V0.5/hotfix tương thích. Hướng dẫn Auth/CDN/GitHub trong docs/CONFIGURATION.md; phạm vi và kiểm live trong docs/POPULATION-AND-PATHFINDING.md, docs/VERIFICATION.md.

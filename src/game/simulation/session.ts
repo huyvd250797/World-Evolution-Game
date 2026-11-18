@@ -1,16 +1,17 @@
 import {initialSimulation,decodeHead,delta,calendar,validateState,sha256,type Identity,type SimState,type SaveHead} from './engine';
+import type {CitizenCommand} from '../population/model';
 import type {PlanCommand} from '../planning/model';
 import {SimulationWorker} from './worker-client';
 import {simulationApi,SaveError,type SessionResponse,type HistoryItem} from './api';
 import {makeBackup,writeBackup,readBackups,backupKey,type LocalBackup,type PendingSave} from './backup';
 export type SaveStatus='saved'|'saving'|'dirty'|'error';
-export interface SimulationView{state:SimState;loading:boolean;busy:boolean;owned:boolean;revision:number;status:SaveStatus;error:string;notice:string;savedAt:string|null;history:HistoryItem[];candidates:LocalBackup[];storageWarning:string;saveCount:number;writeBytes:number;storedBytes:number;transferBytes:number}
+export interface SimulationView{state:SimState;ready:boolean;loading:boolean;busy:boolean;owned:boolean;revision:number;status:SaveStatus;error:string;notice:string;savedAt:string|null;history:HistoryItem[];candidates:LocalBackup[];storageWarning:string;saveCount:number;writeBytes:number;storedBytes:number;transferBytes:number}
 const signature=(state:SimState)=>JSON.stringify({...state,paused:true});
 export class SimulationSession{
  readonly token=crypto.randomUUID();private worker:SimulationWorker;private disposed=false;private netBusy=false;private savePromise:Promise<void>|null=null;private baseline:SimState;private epoch=0;private pending:PendingSave|null=null;private deadline=0;private backupVersion=0;private cachedBackup:LocalBackup|null=null;private timers:ReturnType<typeof setInterval>[]=[];
  view:SimulationView;
  constructor(private identity:Identity,private ownerId:string,private publish:(view:SimulationView)=>void){
-  this.baseline=initialSimulation(identity);this.view={state:this.baseline,loading:true,busy:false,owned:false,revision:0,status:'saved',error:'',notice:'',savedAt:null,history:[],candidates:[],storageWarning:'',saveCount:0,writeBytes:0,storedBytes:0,transferBytes:0};
+  this.baseline=initialSimulation(identity);this.view={state:this.baseline,ready:false,loading:true,busy:false,owned:false,revision:0,status:'saved',error:'',notice:'',savedAt:null,history:[],candidates:[],storageWarning:'',saveCount:0,writeBytes:0,storedBytes:0,transferBytes:0};
   this.worker=new SimulationWorker(s=>{if(this.disposed)return;this.view.state=s;if(this.view.status!=='saving'&&this.view.status!=='error')this.view.status=this.dirty?'dirty':'saved';this.emit();},message=>{if(this.disposed)return;this.view.owned=false;this.view.state={...this.view.state,paused:true};this.view.error=message;this.view.status='error';void this.backup();this.emit();});
  }
  get dirty(){return signature(this.view.state)!==signature(this.baseline);}
@@ -33,7 +34,7 @@ export class SimulationSession{
   }catch(e){this.view.error=this.message(e);this.view.status='error';if(this.view.owned)await this.worker.call('lease',{remainingMs:Math.max(0,this.deadline-performance.now())}).catch(()=>{});}
   finally{this.netBusy=false;this.view.busy=false;this.view.loading=false;this.emit();}
  }
- private setHead(head:SaveHead,state:SimState,response?:SessionResponse){this.baseline=state;this.view.revision=head.revision;this.view.savedAt=head.savedAt;this.view.status='saved';this.view.error='';if(response){this.view.saveCount=response.saveCount;this.view.writeBytes=response.writeBytes;this.view.storedBytes=response.storedBytes;}}
+ private setHead(head:SaveHead,state:SimState,response?:SessionResponse){this.baseline=state;this.view.ready=true;this.view.revision=head.revision;this.view.savedAt=head.savedAt;this.view.status='saved';this.view.error='';if(response){this.view.saveCount=response.saveCount;this.view.writeBytes=response.writeBytes;this.view.storedBytes=response.storedBytes;}}
  private async renew(){
   if(this.disposed||this.netBusy||this.view.loading||document.hidden)return;this.netBusy=true;
   try{const r:SessionResponse=await this.api({action:'renew'});if(this.disposed)return;
@@ -43,13 +44,14 @@ export class SimulationSession{
    this.deadline=performance.now()+Math.max(0,r.remainingMs-3000);await this.worker.call('lease',{remainingMs:Math.max(0,this.deadline-performance.now())});
   }catch(e){await this.pauseForError(e);}finally{this.netBusy=false;this.emit();}
  }
+ async citizen(command:CitizenCommand){if(!this.view.owned||this.view.loading||this.view.busy||this.view.status==='error'||this.view.candidates.length||performance.now()>=this.deadline)throw new Error('Cần quyền điều khiển để giao điểm đến.');this.view.state=await this.worker.call('citizen',{command});await this.backup();this.emit();}
  async plan(command:PlanCommand){if(!this.view.owned||this.view.loading||this.view.busy||this.view.status==='error'||this.view.candidates.length||performance.now()>=this.deadline)throw new Error('Cần quyền điều khiển và kết nối hợp lệ để quy hoạch.');this.view.state=await this.worker.call('plan',{command});await this.backup();this.emit();}
  async command(command:{paused?:boolean;speed?:1|2|4}){if(!this.view.owned||this.view.loading||this.disposed)return;try{if(command.paused===false&&(document.hidden||performance.now()>=this.deadline||this.view.candidates.length||this.view.status==='error'))throw new Error('Đối chiếu bản lưu/kết nối lại trước khi chạy.');this.view.state=await this.worker.call('control',{command});if(command.paused===true){await this.backup();void this.save();}}catch(e){this.view.error=this.message(e);}this.emit();}
  save(manual=false,keepalive=false):Promise<void>{if(this.savePromise)return this.savePromise;const p=this.doSave(manual,keepalive);this.savePromise=p;p.finally(()=>{if(this.savePromise===p)this.savePromise=null;}).catch(()=>{});return p;}
  private async doSave(manual:boolean,keepalive:boolean){
   if(this.disposed||this.netBusy||!this.view.owned||this.view.candidates.length||this.view.loading)return;this.netBusy=true;this.view.status='saving';this.emit();
   try{
-   if(!this.pending){const state=await this.worker.call('snapshot');this.view.state=state;if(!manual&&!this.dirty){this.view.status='saved';return;}const kind=manual||JSON.stringify(state.planning)!==JSON.stringify(this.baseline.planning)||state.schemaVersion!==this.baseline.schemaVersion?'full':'delta',payload=JSON.stringify(kind==='full'?state:delta(this.baseline,state));this.pending={requestId:crypto.randomUUID(),epoch:this.epoch,revision:this.view.revision,kind,payload,checksum:await sha256(payload),state};}
+   if(!this.pending){const state=await this.worker.call('snapshot');this.view.state=state;if(!manual&&!this.dirty){this.view.status='saved';return;}const kind=manual||JSON.stringify(state.planning)!==JSON.stringify(this.baseline.planning)||JSON.stringify(state.citizens)!==JSON.stringify(this.baseline.citizens)||state.schemaVersion!==this.baseline.schemaVersion?'full':'delta',payload=JSON.stringify(kind==='full'?state:delta(this.baseline,state));this.pending={requestId:crypto.randomUUID(),epoch:this.epoch,revision:this.view.revision,kind,payload,checksum:await sha256(payload),state};}
    await this.backup();const p=this.pending!;
    const r:SessionResponse=await this.api({action:'save',epoch:p.epoch,revision:p.revision,requestId:p.requestId,kind:p.kind,payload:p.payload,checksum:p.checksum},keepalive);
    if(this.disposed){void this.api({action:'release',epoch:this.epoch},true).catch(()=>{});return;}const ack=r.ack;if(!ack)throw new Error('Thiếu xác nhận lưu.');const saved=await decodeHead(ack,this.identity);this.backupVersion++;this.setHead(ack,saved,r);this.pending=null;

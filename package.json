@@ -1,7 +1,7 @@
 {
   "name": "world-evolution",
-  "version": "0.4.0",
-  "description": "World Evolution V0.4.0 Construction & City Planning",
+  "version": "0.5.0",
+  "description": "World Evolution V0.5.0 Population Housing & Pathfinding",
   "scripts": {
     "dev": "next dev",
     "build": "node verify-release.mjs && next build",
@@ -10,7 +10,7 @@
     "typecheck": "next typegen && tsc --noEmit && tsc --noEmit -p tsconfig.tools.json",
     "data:import": "node --import tsx scripts/catalog.ts",
     "data:sql": "node --import tsx scripts/sql.ts",
-    "data:check": "node --import tsx scripts/catalog.ts --check && node --import tsx scripts/sql.ts --check && node --import tsx scripts/assets.ts --check && node --import tsx scripts/planning.ts --check",
+    "data:check": "node --import tsx scripts/catalog.ts --check && node --import tsx scripts/sql.ts --check && node --import tsx scripts/assets.ts --check && node --import tsx scripts/planning.ts --check && node --import tsx scripts/population.ts --check",
     "test": "node --import tsx --test tests/*.test.ts",
     "test:ui": "playwright test",
     "check": "npm run data:check && npm run typecheck && npm run lint && npm test && npm run build",
@@ -19,7 +19,8 @@
     "verify:release": "node verify-release.mjs",
     "assets:world": "node --import tsx scripts/world-art.ts && npm run assets:manifest",
     "map:qa": "node --import tsx scripts/render-map-qa.ts",
-    "planning:qa": "node --import tsx scripts/render-planning-qa.ts"
+    "planning:qa": "node --import tsx scripts/render-planning-qa.ts",
+    "population:qa": "node --import tsx scripts/render-population-qa.ts"
   },
   "keywords": [],
   "author": "",
@@ -58,6 +59,7 @@
   "worldEvolution": {
     "catalogSha256": "b375ca03e5123d07ddd9a317a3e75b607f91c680bd69e72198b97e980013a5ea",
     "sourceSha256": "9583ccb1398a0e45dc1c4e415b9749f5a22c3f7b24dd403df92ecd675c42836c",
-    "planningSha256": "3cc4e071e4d76f94bae70cd87c501f95ac4cbf884931584a0334aa4e2f9a01fa"
+    "planningSha256": "3cc4e071e4d76f94bae70cd87c501f95ac4cbf884931584a0334aa4e2f9a01fa",
+    "populationSha256": "69471430ae5ccdb77334de969247a184fa3340482f51f8f8cc284975917fc562"
   }
 }

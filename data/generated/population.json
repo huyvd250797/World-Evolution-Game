@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "walkingTilesPerDay": 12,
+  "homelessGraceDays": 10,
+  "initialPopulation": 20,
+  "homes": [
+    {
+      "id": "HOME001",
+      "buildingId": "B006",
+      "name": "Lều ở",
+      "era": "E0",
+      "capacity": 5,
+      "conditions": "Cần xây ít nhất 4 lều cho 20 dân ban đầu",
+      "rule": "Tính cả trẻ em; chỗ ở là đơn vị vật lý"
+    },
+    {
+      "id": "HOME002",
+      "buildingId": "B130",
+      "name": "Lều giữ ấm",
+      "era": "E0",
+      "capacity": 5,
+      "conditions": "Có nhiên liệu mới hưởng sưởi",
+      "rule": "Không cộng thêm giường nếu đây là nâng cấp lều cũ"
+    },
+    {
+      "id": "HOME003",
+      "buildingId": "B141",
+      "name": "Nhà sàn sơ khai",
+      "era": "E0",
+      "capacity": 6,
+      "conditions": "Chống ngập nông, gió mạnh vẫn ảnh hưởng",
+      "rule": "Cần ô cao và tuyến tiếp cận"
+    },
+    {
+      "id": "HOME004",
+      "buildingId": "B150",
+      "name": "Nhà gỗ",
+      "era": "E1",
+      "capacity": 8,
+      "conditions": "Dễ bảo trì hơn lều",
+      "rule": "Cần nước và vệ sinh gần nhà"
+    },
+    {
+      "id": "HOME005",
+      "buildingId": "B059",
+      "name": "Nhà ở đá",
+      "era": "E4",
+      "capacity": 12,
+      "conditions": "Ổn định, bền và tăng mật độ",
+      "rule": "Không xây trên ô nguy cơ lũ cao"
+    },
+    {
+      "id": "HOME006",
+      "buildingId": "B157",
+      "name": "Nhà ở kiên cố",
+      "era": "E4",
+      "capacity": 14,
+      "conditions": "Chống chịu tốt hơn",
+      "rule": "Cần đầu tư vệ sinh và thông gió"
+    },
+    {
+      "id": "HOME007",
+      "buildingId": "B163",
+      "name": "Nhà ở tập thể",
+      "era": "E6",
+      "capacity": 35,
+      "conditions": "Mật độ cao, dễ bùng bệnh khi thiếu hạ tầng",
+      "rule": "Nhà ở không tự cấp nước hay xử lý nước thải"
+    },
+    {
+      "id": "HOME008",
+      "buildingId": "B166",
+      "name": "Nhà ở hiệu suất cao",
+      "era": "E8",
+      "capacity": 45,
+      "conditions": "Cần điện và nước ổn định",
+      "rule": "Tiết kiệm năng lượng có điều kiện bảo trì"
+    }
+  ]
+}

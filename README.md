@@ -1,43 +1,47 @@
-# World Evolution V0.4.0 — Construction & City Planning
+# World Evolution V0.5.0 — Population Housing & Pathfinding
 
-Quy hoạch khu định cư trên bản đồ isometric: danh mục 166 công trình theo Frozen, ghost/vùng chiếm đất, xoay, kiểm vị trí, đặt nền, tuyến đường dự kiến, chọn/hủy và lưu tiến trình. Kế thừa tài khoản, world/seed/cấu hình/20 dân, camera và Simulation & Save Engine V0.3.0.
+20 cư dân xuất hiện trên bản đồ, giữ ID đã lưu, có trạng thái/vị trí, đi theo lệnh qua đường tìm được trong Worker. Kế thừa tài khoản, thế giới/seed/cấu hình, quy hoạch V0.4 và cloud save/lease/history/local recovery.
 
-## Cập nhật thẳng Vercel từ V0.3.0
+## Nâng cấp thẳng Vercel từ V0.4.0
 
-Boss không cần localhost hoặc cài npm trên máy. Không xóa repo/project/database.
+Boss không cần localhost hoặc cài npm trên máy, không xóa repo/project/database.
 
-1. **Supabase → SQL Editor:** chạy một lần `infra/supabase/migrations/202611180003_city_planning.sql`. File TXT gửi riêng chứa đúng SQL 003 để mở/copy nhanh. **Không chạy lại 001/002.**
-2. Giải nén ZIP mới, upload **toàn bộ nội dung** vào đúng repo/branch Vercel hiện tại, ghi đè file trùng. Source ở gốc ZIP, cùng cấp `package.json`, `src`, `data`, `public`, `infra`, `verify-release.mjs`.
+1. Trong **Supabase → SQL Editor**, chạy một lần `infra/supabase/migrations/202611190004_population_navigation.sql`. File TXT gửi riêng có đúng SQL 004 để mở/copy. **Không chạy lại 001/002/003.**
+2. Giải nén ZIP, upload **toàn bộ nội dung** vào đúng repo/branch Vercel đang dùng, ghi đè file trùng. Source nằm ở gốc ZIP, cùng cấp package.json, src, data, public, infra và verify-release.mjs.
 3. Giữ URL/key Supabase và asset base URL. Vercel: Next.js, Root Directory chứa package.json, Node **24.x**, Install `npm ci`, Build `npm run build`, Output mặc định. Vercel tự chạy các lệnh.
-4. Deploy commit mới; khi xử lý cache cũ có thể redeploy không dùng Build Cache.
-5. Mở world cũ: clock/RNG/seed/map/20 dân giữ nguyên, quy hoạch ban đầu rỗng. Xây dựng → Bãi quan sát/Lều ở → chọn ô hợp lệ → Xoay → Xác nhận → Lưu ngay/Đã lưu → reload kiểm nền còn đúng vị trí.
+4. Deploy commit mới; nếu cần xử lý cache cũ, redeploy không dùng Build Cache.
+5. Mở world cũ, chờ engine/map tải: giữ tick/RNG/seed/map/quy hoạch, hiện đúng 20 IDs. Game tạm dừng. Chọn tab **Dân cư & chỗ ở**, mở Dân cư/chọn một người, Chọn điểm đến → chạm ô → Xác nhận → Chạy. Pause/Lưu ngay, chờ Đã lưu rồi reload kiểm vị trí và đường đi giữ nguyên.
 
-Project mới hoàn toàn chạy **001 → 002 → 003** theo tên đầy đủ trong infra/supabase/migrations. Migration 003 giữ head/history cũ nguyên byte, không reset thế giới; schema 2 được đọc nâng thành schema 3 khi dùng code mới. Lưu quy hoạch mới có full snapshot, giữ lease/revision/checksum/history/local recovery.
+Project mới hoàn toàn chạy **001 → 002 → 003 → 004** theo tên đầy đủ trong infra/supabase/migrations. 004 không rewrite head/history cũ. Legacy schema 2/3 được nâng đọc thành schema 4/we-sim-2, chỉ tính vị trí spawn nếu save chưa có; schema 4 mở lại giữ nguyên vị trí/progress/path đã lưu.
 
-## Chức năng và phạm vi
+## Đã xây dựng
 
-- Danh mục tìm/lọc E0–E8, tên/công dụng/công nghệ/vật liệu ID + số lượng từ Frozen, hiện lý do chưa mở. Chỉ T001 đã mở như game hiện có.
-- Ghost xanh/đỏ và footprint, kiểm nước/núi/độ dốc/bờ sông/vùng chiếm đất. PC R xoay, Enter đặt, Escape hủy; mobile chạm ô rồi dùng Xoay/Hủy/Xác nhận. Kéo/pinch không đặt nhầm.
-- Nền có UUID/loại/tọa độ/hướng/createdTick/trạng thái planned. Chọn để xem và hủy có xác nhận.
-- Tuyến dự kiến theo ô, hai điểm đầu/cuối, đổi hướng gấp khúc, không xuyên công trình/nước/núi. Tuyến giao nhau được. Đây là hành lang quy hoạch, chưa tạo Đường mòn vận hành hoặc vượt khóa công nghệ B139.
-- Full/delta save, history/recovery, mất mạng giữ bản tạm, một writer bằng lease/epoch kế thừa. Quy hoạch cần quyền điều khiển và không có bản tạm đang chờ đối chiếu.
-- Stamp nền/đường dùng chung, phân lớp isometric, chunk index/culling và cleanup, không lưu texture trong Supabase. Bản đồ/atlas/generator giữ nguyên, camera không reset khi clock cập nhật.
+- Lấy đúng 20 IDs từ world.initial_state.people, không phát sinh ID mới, không nhân đôi khi mở/lưu/đổi thiết bị.
+- Sprite nhân vật dùng stamp chung, phân lớp isometric, nội suy bước đi và culling vùng nhìn; ground không redraw mỗi bước chân.
+- Chọn từ danh sách/click nhân vật, đưa camera tới gần; xem ID, tọa độ, trạng thái, homeId, destination và số ô còn lại.
+- Tìm đường 4 cạnh trong Worker bằng reverse BFS, cache dùng lại cho nhóm/cùng đích. Tránh nước, núi, dốc và footprint; không có tuyến hoặc >512 ô thì báo blocked, không teleport.
+- CFG059 = 12 ô/ngày, 150 tick/cạnh: x1 mất 15 giây/cạnh, x2 7,5 giây, x4 3,75 giây. Pause toàn world hoặc Nghỉ riêng cư dân không tiến vị trí.
+- Chọn đích có xác nhận, giao một người hoặc cả nhóm 20; giữ tiến độ giữa cạnh khi đổi đích/nghỉ/lưu. Quy hoạch đổi sẽ kiểm route; không cho đặt nền lên người hoặc cạnh người đang đi.
+- Nhà ở theo 8 dòng Canonical: tách giường thực tế/dự kiến, dân chưa có nhà và population limit. Kiểm tra đường tới ô lối vào bằng lệnh di chuyển thật.
+- Lưu/restore vị trí, route/progress/status, giữ lease fencing/revision/SHA-256/history/bản tạm. Không gửi vị trí mỗi frame/tick lên Supabase.
 
-**Đây là đặt nền/quy hoạch:** chưa thi công, chưa trừ vật liệu, chưa cấp nhà ở/kho/công suất hoặc cho dân đi lại. Kích thước footprint và quy tắc vị trí nền tảng là cấu hình kỹ thuật `planning-v1` riêng vì Frozen chưa định nghĩa đầy đủ; không sửa workbook. Chi tiết và giới hạn ở [docs/CITY-PLANNING.md](docs/CITY-PLANNING.md).
+**Giới hạn nhà ở:** V0.4 chỉ tạo nền planned, chưa có nhà hoàn thành. Vì vậy giường thực tế vẫn **0**, homeId vẫn **null**; 4 nền Lều ở có **20 chỗ dự kiến**, chưa phải chỗ ngủ đã sử dụng được. Mô hình phân chỗ đã kiểm capacity/reachability cho nhà hoàn thành, nhưng nút phân chỗ trong game hiện khóa rõ lý do; thi công đầy đủ ở V0.9. Không tặng nhà hoặc sửa trạng thái planned để cấp giường giả.
 
-Clock vẫn x1=180 giây/ngày, x2=90, x4=45; 30 ngày/mùa, 120 ngày/năm. Ẩn/đóng/offline tạm dừng và cố lưu, không bù thời gian offline. Chờ Đã lưu trước khi rời; OS kill có thể làm mất phần sau bản tạm cuối. Camera thuộc phiên, không đồng bộ cloud.
+Từ ngày 10 có cảnh báo thiếu nhà theo CFG053. Chưa áp đói/khát/bệnh/sinh tử/nghề nghiệp hoặc xóa dân vì giảm giới hạn. Giới hạn chỉnh được vẫn theo Frozen, 20–100.000; V0.5 chỉ mô phỏng 20 người, không phải benchmark 100.000 dân. Đường quy hoạch chưa tạo tốc độ logistics/cầu. Cư dân có thể đứng chung ô, chưa có crowd collision.
+
+Ẩn trang/khóa màn hình/offline: pause và cố lưu/bản tạm, không chạy nền liên tục hoặc bù thời gian offline. Tắt đột ngột có thể mất phần sau bản tạm cuối; chờ Đã lưu trước khi rời. Camera thuộc phiên, không đồng bộ cloud.
 
 ## Cấu hình
 
-Hướng dẫn Auth/email/callback/GitHub/Vercel/CDN đầy đủ: [docs/CONFIGURATION.md](docs/CONFIGURATION.md). Quick deploy: [DEPLOY-VERCEL.md](DEPLOY-VERCEL.md). Save/lease nền tảng: [docs/SIMULATION-AND-SAVE.md](docs/SIMULATION-AND-SAVE.md).
+Xem [DEPLOY-VERCEL.md](DEPLOY-VERCEL.md), [docs/CONFIGURATION.md](docs/CONFIGURATION.md), [docs/POPULATION-AND-PATHFINDING.md](docs/POPULATION-AND-PATHFINDING.md). Kiến trúc nền/save/plan giữ trong docs.
 
-| Biến Vercel | Giá trị |
+| Biến môi trường Vercel | Giá trị |
 | --- | --- |
 | NEXT_PUBLIC_SUPABASE_URL | Project URL hiện có |
 | NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY | Publishable hoặc legacy anon key cùng project |
 | NEXT_PUBLIC_ASSET_BASE_URL | Để trống dùng Vercel CDN; optional HTTPS origin CDN riêng |
 
-Không cần bucket, service-role key, DB password, cron hay server tick riêng. Không expose schema private. Thay public env cần redeploy. Auth Site URL và callback/confirm phải đúng domain HTTPS. Không dùng static export; app cần SSR/Server Actions/Route Handler. ZIP không có secret thật.
+Không cần service-role key, DB password, bucket mới, server tick hoặc cron. Không expose schema private. Cấu hình Email Auth, Site URL và callback/confirm đúng domain HTTPS; thay public env phải redeploy. App cần SSR/Server Actions/API, không static export. ZIP không có secret thật.
 
 ## Local/CI tùy chọn
 
@@ -50,7 +54,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Mở http://localhost:3000. Boss deploy thẳng Vercel bỏ qua local. Build pipeline giữ Node verifier và catalog xuất sẵn; không gọi importer Excel ở production.
+Mở http://localhost:3000. Boss deploy trực tiếp Vercel có thể bỏ qua local.
 
 ```bash
 npm run typecheck
@@ -62,21 +66,16 @@ npm run build
 npm start
 ```
 
-`planning:qa` tạo ảnh Canvas composite; `test:ui` dùng Playwright khi môi trường có Chromium đầy đủ. Kết quả/phạm vi trong RELEASE-CHECKS.md và docs/VERIFICATION.md; fixtures không thay Supabase/GPU/mobile thật.
+`population:qa` tạo composite Canvas thật, không phải browser screenshot. `test:ui` cần môi trường có Chromium đầy đủ. Kết quả và giới hạn thật nằm ở RELEASE-CHECKS.md và docs/VERIFICATION.md; fixtures không thay Supabase/GPU/Safari/Android thật. Build vẫn dùng Node verifier + catalog xuất sẵn, không gọi importer Excel.
 
-## Source, bảo trì và nâng cấp
+## Source và dữ liệu
 
-Giữ stack/lockfile V0.3: Next.js 16.4.6, React 19.3.1, TypeScript 6.0.3, PixiJS 8.23.0, Supabase JS 2.119.0/SSR 0.12.7.
+Giữ stack V0.4: Next.js 16.4.6, React 19.3.1, TypeScript 6.0.3, PixiJS 8.23.0, Supabase JS 2.119.0/SSR 0.12.7. Thêm src/game/population (schema/navigation/housing/stamps), src/components/population (giao diện), scripts/population.ts (adapter Frozen) và migration 004. Giữ map/camera/render nền, toàn bộ asset, workbook/catalog/summary và migration 001–003 nguyên byte.
 
-- src/game/planning, src/components/planning: catalog/model/validation/stamp overlay/editor.
-- src/game/simulation, src/components/simulation, src/app/api/simulation: schema 3, Worker/lưu/lease và validation.
-- src/game/map, src/game/renderer, public/assets: seed/camera/render/atlas kế thừa.
-- data/source và data/generated: Frozen + catalog/summary/asset manifest + planning adapter.
-- infra/supabase: 001/002 nguyên byte, 003 mới, queries kiểm cấu hình.
-- scripts/planning.ts xuất adapter từ Frozen cùng technical policy; data:check kiểm tái lập. Không chạy lại importer để deploy, không sửa frozen.json để bỏ kiểm tra.
+State mới schema 4/we-sim-2; RNG clock tương thích we-sim-1, map vẫn we-map-1, planning-v1 không đổi. Không sửa workbook/frozen.json hoặc footprint dưới cùng version cho save đã phát hành. data:check kiểm Frozen/SQL/assets/planning/population adapter. Payload cap 1MiB, route mỗi cư dân tối đa 512 cạnh, cache target tối đa 8/navigation context. Theo dõi byte payload trong UI và quota thật; không coi số byte ứng dụng là hóa đơn Supabase.
 
-Không thay we-map-1/we-sim-1 hoặc planning-v1 dưới cùng version cho save đã phát hành. Giới hạn hiện tại 256 nền, 128 tuyến/8.192 ô tuyến, payload tối đa 256KiB. UI số byte là payload ứng dụng, không phải số liệu billing Supabase. Theo dõi quota thật và backup project khi có dữ liệu quan trọng.
+## Rollback và bản kế tiếp
 
-Sau khi lưu planning schema 3, app V0.3 không đọc được save mới. Nếu cần rollback, giữ database/backup và dùng code V0.4 tương thích; không drop schema/tables hoặc reset 001. Xem CITY-PLANNING.md trước thao tác dữ liệu.
+Sau khi lưu schema 4, V0.4 không đọc được save mới. Giữ DB/backup và dùng V0.5 hoặc hotfix tương thích; không drop tables/reset 001 để quay lại. Chỉ restore lịch sử cũ bằng chức năng có xác nhận, không tự merge JSON bản tạm khác revision. Backup toàn project khi có dữ liệu quan trọng; lịch sử ngắn không thay thế backup.
 
-Bàn giao `World-Evolution-V0.4.0-Construction-and-City-Planning.zip` và `World-Evolution-V0.4.0-Migrations.txt` (chỉ SQL 003). GitHub/Supabase/Vercel thật chưa kết nối trong lần bàn giao source. Tiếp theo **V0.5.0 — Population Housing & Pathfinding**: nhà ở, nhu cầu cơ bản, 20 agents và đường đi. Gửi source ZIP mới nhất để nâng cấp tiếp.
+Bàn giao `World-Evolution-V0.5.0-Population-Housing-and-Pathfinding.zip` + `World-Evolution-V0.5.0-Migrations.txt` (chỉ SQL 004). Chưa push GitHub hoặc deploy vào tài khoản thật của Boss trong lần bàn giao source. Tiếp theo **V0.6.0 — Survival & Food**: hái/săn/nước, phần ăn, kho và hư hỏng theo lô. Gửi ZIP mới nhất để nâng cấp tiếp.

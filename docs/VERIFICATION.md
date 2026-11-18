@@ -1,21 +1,34 @@
-# Xác minh V0.4.0 — Construction & City Planning
+# Xác minh V0.5.0 — Population Housing & Pathfinding
 
-- Typecheck app/tools/tests, lint, unit/SQL/Worker/session, data:check, HTTP và production build. Kết quả cuối trong RELEASE-CHECKS.md.
-- 166 dòng adapter đối chiếu ID/tên/công dụng/era/technology/BOM với Frozen, footprint tách riêng.
-- Preview/rotation, bounds/water/slope/waterfront/quarry, khóa tech/era, occupancy nền/tuyến, L-route contiguous, intersection và giới hạn.
-- Migration 003 trên database V0.3 giữ raw head/history byte; decode schema 2 giữ tick/RNG, planning mới full save/delta clock/restore; SQL cấm overlap và direct table access.
-- Worker/session thật kiểm plan command, giữ state qua save, kế thừa lost-ACK retry/fencing/offline/local recovery; API HTTP kiểm lưu/tải nền, reject công trình khóa và planning delta.
-- Canvas thật kiểm ghost xanh/đỏ khác pixel, culling khi pan và cleanup; composite đã xem có bốn nền và một tuyến. Đây không phải browser screenshot.
-- Giữ regression account/world/RLS/revision/Canonical/map/camera/proxy/release verifier.
+Kết quả cuối trong RELEASE-CHECKS.md. Nền nâng cấp là ZIP V0.4.0 Boss đính kèm.
 
-Chromium đã bị môi trường chặn socket ở phiên kiểm nền trước; V0.4 không coi UI/Playwright/WebGL GPU/Safari/Android đã đạt. Không xác minh Supabase/Vercel thật của Boss. Các fixtures chỉ local, không nhập vào production.
+## Kiểm tự động
 
-## Checklist nghiệm thu deployment
+- Typecheck app/tools/tests, ESLint, production Next/Turbopack build.
+- 59 unit/integration tests/subtests: regression Frozen/world/auth/SQL/proxy/release/map/camera/Canvas/planning và population mới.
+- Adapter CFG003/053/059 cùng 8 home capacities khớp Frozen; không đổi workbook/canonical/planning adapter/atlas.
+- Spawn 20 ID cung cấp từ save ở đủ 7 khí hậu: deterministic, distinct, passable. IDs khác baseline/trùng bị chặn.
+- Reverse BFS/cache nhóm/cùng đích, tránh water/mountain/slope/footprint, no-path, LRU bounded; route cardinal/cap512.
+- Fixed movement progress, rest/resume, đổi đích và replan giữa cạnh không teleport; chặn nền che người/cạnh đang đi.
+- Housing projected/actual, completed-only capacity/allocation/reachability, không cấp giường từ planned, cảnh báo từ ngày10, không xóa dân khi thay cap.
+- Schema 2/3 nâng đọc 4 giữ tick/RNG/custom IDs/quy hoạch; lưu partial edge/reload và x1/x2/x4 nhất quán.
+- SQL 004 giữ raw legacy head/history; IDs/progress/status/path/free-bed/downgrade/fencing bị kiểm; vẫn không có direct client table grants.
+- Worker/session thật qua node worker bridge + PGlite: giao lệnh/di chuyển/save, lost ACK/retry/lease/offline/local recovery kế thừa.
+- Next HTTP + Supabase SDK fixture: auth/world lifecycle, sim/planning, full citizens save/load giữa cạnh, no-free-bed reject, CSRF/auth/input.
+- Native Canvas pixels/picking/culling/cleanup và bật animation chỉ khi có người đi trong viewport. Đã xem composite 20 người và bốn nền lều; đây không phải browser screenshot.
 
-1. Chạy 003 một lần sau 001/002, giữ data/env. Mở world cũ, đối chiếu tick/seed/map/20 dân.
-2. Mở danh mục, tìm/lọc era, xem tech/BOM và khóa. Thử Bãi quan sát/Lều ở; ghost + footprint phải khớp tọa độ khi xác nhận/xoay.
-3. Chạm/drag/pinch không tự tạo nền. Mobile cần thử dọc/ngang/mở rộng, Hủy trái/Xác nhận phải; không tràn ngang.
-4. Thử nước/mép map/dốc/kho bờ sông/nền đã chiếm/tuyến bị chặn và xem lý do. Đặt tuyến hai điểm, đổi bend, chọn/hủy nền và tuyến có xác nhận.
-5. Lưu ngay/Đã lưu → reload/thiết bị khác giữ đúng layout/hướng; lease cũ không ghi đè. Restore mốc trước quy hoạch phải theo xác nhận và tạo revision mới.
-6. Mất mạng/localStorage bị chặn/khác revision giữ quy tắc recovery; không reset DB để sửa lỗi.
-7. Đo RAM/GPU/FPS/texture/egress thật với nhiều nền/tuyến; không có cam kết 60fps hoặc Free không giới hạn.
+## Giới hạn xác minh
+
+Môi trường đã chặn Chromium socket ở các bản nền; không coi các Playwright specs đã đạt ở V0.5. Có specs mới/điều chỉnh cho population/planning để chạy ở môi trường có browser đầy đủ. Chưa xác minh GPU/WebGL thực, Safari/iPhone/Android, OS kill/suspend hoặc Supabase/Vercel thật của Boss. Native Canvas/Worker bridge và Auth/PostgREST fixture không thay các kiểm tra đó. Chưa push/deploy vào tài khoản Boss.
+
+## Checklist sau deploy
+
+1. V0.4 đã chạy 001–003: chỉ chạy 004 một lần, giữ DB/env/repo. Project mới chạy 001→002→003→004.
+2. Mở world cũ: đúng tick/seed/map/planning/20 IDs, pause; lưu schema4 rồi reload không tạo lại vị trí.
+3. Dân cư → chọn người/list/sprite → chọn điểm đến → xác nhận → Chạy. Kiểm không teleport; pause, Lưu ngay giữa cạnh rồi reload còn đúng progress/destination.
+4. Chọn nhóm20 cùng đích, Nghỉ/Tiếp tục một người/nhóm; x1/x2/x4 và pause toàn world độc lập. Kiểm no-path/water/mountain/slope và tuyến quá dài.
+5. Đặt nền lên người/cạnh đang đi phải từ chối; che tuyến phía sau phải replan/blocked; hủy nền mở lại tuyến, người đang nghỉ không tự chạy.
+6. Chỗ ngủ actual0 khi chỉ planned, projected theo capacityFrozen, homeIdnull; Đi tới lối vào dùng route thật. Đến ngày10 thiếu nhà chỉ cảnh báo, không giết dân. Đổi population limit không xóa người.
+7. Hai thiết bị lease/takeover, offline/bản tạm/revisionconflict, historyrestore giữa đường và token hết hạn không ghi đè.
+8. Mobile dọc/ngang/mở rộng: pan/pinch không gửi move, Hủy trái/Xác nhận phải, target panel không bị che; khóa màn hình quay lại paused, không bù offline.
+9. Đo GPU/RAM/FPS/texture/save size/egress trên thiết bị/dịch vụ thật, kiểm người ngoài viewport không vẽ và terrain không redraw từng bước chân. Chưa có cam kết 60fps hoặc Free không giới hạn.

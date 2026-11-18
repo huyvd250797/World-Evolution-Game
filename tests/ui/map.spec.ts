@@ -4,6 +4,7 @@ test('World map: real Worker/atlas, camera, minimap, selection, resize and retai
  await page.getByRole('button',{name:'Tạo thế giới',exact:true}).click();await page.getByLabel('Tên thế giới',{exact:true}).fill('Camera QA');await page.getByLabel('Seed bản đồ',{exact:true}).fill('BOSS-2026');await page.getByRole('dialog').getByRole('button',{name:'Tạo thế giới',exact:true}).click();
  const explorer=page.getByRole('region',{name:'Bản đồ thế giới 2.5D'});await expect(explorer).toHaveAttribute('aria-busy','false',{timeout:30000});await expect(explorer.getByRole('alert')).toHaveCount(0);
  const canvas=page.locator('.world-map-canvas');await expect(canvas).toBeVisible();await expect(explorer).toHaveAttribute('data-generator','we-map-1');
+ await page.getByRole('button',{name:'Quy hoạch',exact:true}).click();
  const zoom=page.locator('.map-zoom'),initial=await zoom.innerText();await page.getByRole('button',{name:'Phóng to bản đồ',exact:true}).click();await expect(zoom).not.toHaveText(initial);
  await page.getByRole('button',{name:'Về điểm khởi đầu',exact:true}).click();const box=(await canvas.boundingBox())!;const center={x:box.x+box.width/2,y:box.y+box.height/2};
  await page.mouse.click(center.x,center.y);await expect(page.locator('.tile-inspector')).toBeVisible();await page.getByRole('button',{name:'Bỏ chọn ô',exact:true}).click();

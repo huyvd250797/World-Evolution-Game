@@ -1,22 +1,22 @@
-Xem thêm CITY-PLANNING.md cho schema 3, đặt nền, road corridor và giới hạn rollback.
+Xem POPULATION-AND-PATHFINDING.md cho schema 4, di chuyển/housing và rollback; CITY-PLANNING.md giữ mô tả nền quy hoạch.
 
-# Hướng dẫn cấu hình World Evolution V0.4.0
+# Hướng dẫn cấu hình World Evolution V0.5.0
 
-## Cập nhật từ V0.3.0 lên V0.4.0
+## Cập nhật từ V0.4.0 lên V0.5.0
 
 Không cần xóa repository, project Vercel hoặc database. Upload toàn bộ nội dung ZIP mới vào đúng gốc repo, ghi đè package.json, proxy.ts, src/proxy.ts và thêm src/lib/supabase/proxy.ts. Trong GitHub, kiểm tra proxy.ts ở gốc có import `@/lib/supabase/proxy`. Source mới có hai entry tương thích cùng nội dung; logic session chỉ đặt trong src/lib/supabase/proxy.ts.
 
-**Trước deploy V0.4.0:** chạy một lần `infra/supabase/migrations/202611180003_city_planning.sql` trong Supabase SQL Editor. File `World-Evolution-V0.4.0-Migrations.txt` chứa đúng migration mới này. Không chạy lại 001/002, không reset dữ liệu. Migration thêm engine saves/history/lease và cho phép day tăng; giữ cấu hình/seed/20 dân và bản đồ cũ.
+**Trước deploy V0.5.0:** chạy một lần `infra/supabase/migrations/202611190004_population_navigation.sql` trong Supabase SQL Editor. File `World-Evolution-V0.5.0-Migrations.txt` chứa đúng migration mới này. Không chạy lại 001/002/003, không reset dữ liệu. Migration nâng validator/RPC cho schema 4/we-sim-2, vị trí/đường đi của 20 cư dân; giữ cấu hình/seed/20 IDs và bản đồ cũ.
 
 Kiểm tra deployment đang dùng commit vừa push, Root Directory là thư mục chứa package.json. Khi deploy lại, bỏ chọn Use existing Build Cache. Giữ các Environment Variables và URL Supabase. Không chạy lại migration đã áp dụng.
 
 ## 0. Deploy trực tiếp trên Vercel
 
-Boss không phải cài Node/npm hoặc chạy localhost. Gói V0.4.0 chứa source ngay tại gốc ZIP; upload toàn bộ sau giải nén vào GitHub, chọn Root Directory chứa package.json. Nếu thay source từ gói cũ, giữ các biến môi trường và Supabase project hiện tại.
+Boss không phải cài Node/npm hoặc chạy localhost. Gói V0.5.0 chứa source ngay tại gốc ZIP; upload toàn bộ sau giải nén vào GitHub, chọn Root Directory chứa package.json. Nếu thay source từ gói cũ, giữ các biến môi trường và Supabase project hiện tại.
 
 Build production chỉ chạy `node verify-release.mjs && next build`, không chạy importer TypeScript. Vercel tự chạy Install/Build. Mục 1 và các lệnh local bên dưới là tùy chọn cho lập trình viên. Cấu hình Vercel chi tiết ở mục 8.
 
-Lên V0.4.0 cần migration 003 sau 001/002. Project mới hoàn toàn chạy 001 → 002 → 003; project V0.3.0 chỉ chạy 003.
+Lên V0.5.0 cần migration 004 sau 001/002/003. Project mới chạy 001 → 002 → 003 → 004; project V0.4.0 chỉ chạy 004.
 
 ## 1. Chuẩn bị source và môi trường
 
@@ -29,8 +29,8 @@ Lên V0.4.0 cần migration 003 sau 001/002. Project mới hoàn toàn chạy 00
 
 1. Mở https://supabase.com/dashboard, tạo project riêng cho game, chọn region phù hợp người chơi. Ghi lại mật khẩu database ở nơi quản lý mật khẩu của Boss; app không cần mật khẩu đó.
 2. Đợi project sẵn sàng. Mở **SQL Editor → New query**.
-3. Mở `infra/supabase/migrations/202611180001_foundation.sql` trong source. Copy toàn bộ, chạy **một lần**, sau đó chạy `202611180002_simulation_save.sql` và `202611180003_city_planning.sql` theo thứ tự.
-4. Migration 001 tạo bảng `public.worlds`, index, RLS và các RPC tạo/sửa/xóa; 002 thêm bảng private và RPC `simulation_rpc`, 003 nâng validator/RPC cho quy hoạch schema 3. Không có bucket Storage cần tạo ở bản này.
+3. Mở `infra/supabase/migrations/202611180001_foundation.sql` trong source. Copy toàn bộ, chạy **một lần**, sau đó chạy `202611180002_simulation_save.sql` , `202611180003_city_planning.sql` và `202611190004_population_navigation.sql` theo thứ tự.
+4. Migration 001 tạo bảng `public.worlds`, index, RLS và các RPC tạo/sửa/xóa; 002 thêm bảng private và RPC `simulation_rpc`, 003 nâng cho quy hoạch schema 3; 004 nâng validator/RPC cho 20 cư dân schema 4. Không có bucket Storage cần tạo ở bản này.
 5. Nếu gặp `relation worlds already exists`, dừng chạy lại. Kiểm tra project có phải môi trường mới hay đã áp dụng migration. Không xóa bảng dữ liệu để xử lý lỗi này.
 6. Trong API settings, giữ `public` được exposed; **không thêm schema `private` vào Exposed schemas**. Các function private chỉ được gọi qua public RPC có kiểm soát.
 7. Chạy `infra/supabase/verify_setup.sql` và `infra/supabase/verify_simulation.sql` để kiểm tra cấu trúc, RLS và các grant. File kiểm tra chỉ đọc metadata.
@@ -147,7 +147,7 @@ Repo mới (thay URL mẫu bằng repo của Boss):
 ```bash
 git init
 git add .
-git commit -m "World Evolution V0.4.0 Isometric World and Camera"
+git commit -m "World Evolution V0.5.0 Population Housing and Pathfinding"
 git branch -M main
 git remote add origin https://github.com/YOUR_ACCOUNT/world-evolution.git
 git push -u origin main
@@ -197,16 +197,16 @@ Nếu bản đồ báo lỗi tải, kiểm tra Network: worker JS, atlas JSON v�
 
 V0.4.0 có lịch sử giới hạn 25–32 mốc, snapshot mỗi 8 revision và khôi phục tạo revision mới. Đây là recovery trong app, không thay thế backup toàn project.
 
-Trước dữ liệu thật có giá trị, chọn và diễn tập một cách backup phù hợp project: export bảng `worlds` và thông tin chủ sở hữu cần phục hồi, hoặc dùng công cụ backup database của Supabase. Không coi config revision là backup: simulation revision và lịch sử riêng bắt đầu từ V0.4.0.
+Trước dữ liệu thật có giá trị, chọn và diễn tập một cách backup phù hợp project: export bảng `worlds` và thông tin chủ sở hữu cần phục hồi, hoặc dùng công cụ backup database của Supabase. Không coi config revision là backup: simulation revision và lịch sử riêng bắt đầu từ V0.3.0.
 
-Khởi tạo mới chạy 001 → 002 → 003 trước khi sử dụng V0.4.0. Nâng từ V0.3.0 chỉ chạy 003; giữ nguyên mọi dữ liệu. Bản sau phải có migration tăng dần, không sửa rồi chạy lại 001 trên dữ liệu đang dùng. Khi rollback app, xác minh schema tương thích; không xóa bảng/khôi phục database cũ mù quáng làm mất save mới.
+Khởi tạo mới chạy 001 → 002 → 003 → 004 trước khi sử dụng V0.5.0. Nâng từ V0.4.0 chỉ chạy 004; giữ nguyên mọi dữ liệu. Bản sau phải có migration tăng dần, không sửa rồi chạy lại 001 trên dữ liệu đang dùng. Khi rollback app, xác minh schema tương thích; không xóa bảng/khôi phục database cũ mù quáng làm mất save mới.
 
 ## 11. Xử lý lỗi thường gặp
 
 | Hiện tượng | Kiểm tra và xử lý |
 | --- | --- |
 | Chưa cấu hình kết nối | Kiểm tra `.env.local` hoặc Vercel Environment Variables; restart local/redeploy |
-| Không có bảng/function | Project mới chạy 001 → 002 → 003; nâng từ V0.3 chỉ chạy 003. Nếu vừa chạy, chờ schema cache cập nhật |
+| Không có bảng/function | Project mới chạy 001 → 002 → 003 → 004; nâng từ V0.4 chỉ chạy 004. Nếu vừa chạy, chờ schema cache cập nhật |
 | Invalid API key | Dùng publishable/anon của cùng project URL; không dùng secret key |
 | Email chưa xác nhận | Mở email xác nhận hoặc kiểm tra Email Templates và SMTP |
 | Callback hết hạn | Xin thư mới; dùng cùng trình duyệt cho PKCE hoặc cấu hình token_hash template |

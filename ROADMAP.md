@@ -8,8 +8,8 @@ Căn cứ: Development Plan V1.1 và Master Game Data V1.2 Canonical Frozen. 23 
 | V0.2.0 | Isometric World & Camera | Map 2.5D từ seed, chunk/culling/LOD, minimap, chọn ô, pan/pinch, WebGL/Canvas; kiểm logic và render Canvas. GPU, tải lạnh/ấm và thiết bị thật cần nghiệm thu deployment | Đã xây source |
 | V0.3.0 | Simulation & Save Engine | Worker deterministic, ngày/mùa, x1/x2/x4/pause, snapshot/delta/recovery, lease thiết bị, retention và thống kê payload; kiểm Worker/SQL/HTTP, cloud và thiết bị thật cần nghiệm thu | Đã xây source |
 | V0.4.0 | Construction & City Planning | Ghost preview, địa hình, footprint, xoay, đường; xác nhận bằng chạm; catalog Frozen, schema 3, lưu/khôi phục; stamp dùng chung, chunk/culling. Browser/mobile cần nghiệm thu deployment | Đã xây source |
-| V0.5.0 | Population Housing & Pathfinding | Nhà ở, nhu cầu cơ bản, 20 agents, đường đi, pop cap; cloud cross-device và benchmark dân cư | Tiếp theo |
-| V0.6.0 | Survival & Food | Hái/săn/nước, phần ăn, kho và hư hỏng theo lô; dữ liệu lô có vòng đời | Dự kiến |
+| V0.5.0 | Population Housing & Pathfinding | 20 IDs/agents, Worker pathfinding/progress/rest, housing forecast và completed-allocation model, cap/lease/save; kiểm logic/SQL/HTTP/Canvas, thiết bị thật cần nghiệm thu | Đã xây source |
+| V0.6.0 | Survival & Food | Hái/săn/nước, phần ăn, kho và hư hỏng theo lô; dữ liệu lô có vòng đời | Tiếp theo |
 | V0.7.0 | Workforce & Training | Nghề, tập sự, đào tạo và điều chuyển; controls chạm, batch cập nhật | Dự kiến |
 | V0.8.0 | Living Ecosystem | Cây/động vật, săn mồi, tái sinh và quần thể; tải asset theo sinh cảnh | Dự kiến |
 | V0.9.0 | Construction & Logistics | Thi công, vật tư và tuyến vận chuyển thật; không ghi DB từng bước chân | Dự kiến |

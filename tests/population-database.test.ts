@@ -1,0 +1,19 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {database,asUser,alice} from './database';
+import {initialSimulation,decodeHead,sha256,advance,control} from '../src/game/simulation/engine';
+import {Navigation,populationMap} from '../src/game/population/navigation';
+import {citizenCommand} from '../src/game/population/model';
+test('Migration 004 preserves v0.4 raw saves/custom IDs; validates paused mid-path restore, IDs, beds, paths and fences',async()=>{
+ const db=await database();for(const file of ['202611180002_simulation_save.sql','202611180003_city_planning.sql'])await db.exec(await readFile('infra/supabase/migrations/'+file,'utf8'));
+ const world=(await asUser<{id:string}>(db,alice,'select public.create_world($1,$2,$3,200,$4) id',['Residents','BOSS-2026','B01',crypto.randomUUID()])).rows[0].id,token=crypto.randomUUID();
+ const expected=Array.from({length:20},(_,n)=>`saved-citizen-${n+1}`);await db.query(`update public.worlds set initial_state=jsonb_set(initial_state,'{people}',$1::jsonb) where id=$2`,[JSON.stringify(expected.map(id=>({id,homeId:null,assignment:null}))),world]);
+ const rpc=async(action:string,revision=0,payload:string|null=null,target:number|null=null)=>(await asUser<{result:{head:{revision:number;payload:string;checksum:string;savedAt:string};owned:boolean;epoch:number}}>(db,alice,'select public.simulation_rpc($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) result',[world,token,action,1,revision,crypto.randomUUID(),'full',payload,payload?await sha256(payload):null,target])).rows[0].result;
+ const old=await rpc('open'),raw=old.head.payload;await db.exec(await readFile('infra/supabase/migrations/202611190004_population_navigation.sql','utf8'));assert.equal((await rpc('open')).head.payload,raw);
+ const identity={worldId:world,seed:'BOSS-2026',climateId:'B01',residentIds:expected};let s=await decodeHead(old.head,identity);assert.deepEqual(s.citizens.map(c=>c.id),expected);assert.deepEqual(s.citizens,initialSimulation(identity).citizens);
+ const nav=new Navigation(populationMap(s.seed,s.climateId),s.planning),c=s.citizens[0],target=[{x:c.x+1,y:c.y},{x:c.x-1,y:c.y},{x:c.x,y:c.y+1},{x:c.x,y:c.y-1}].find(q=>nav.adjacent(c,q))!;assert.ok(target);s={...s,citizens:citizenCommand(s.citizens,nav,{type:'move',ids:[c.id],target})};s=advance(control(s,{paused:false}),7500);assert.equal(s.citizens[0].progress,75);await rpc('save',0,JSON.stringify(s));const restored=await rpc('restore',1,null,1);const loaded=await decodeHead(restored.head,identity);assert.equal(loaded.paused,true);assert.equal(loaded.citizens[0].progress,75);assert.deepEqual(advance(control(loaded,{paused:false}),7500).citizens,advance(s,7500).citizens);
+ const badCases=[{...s,citizens:[...s.citizens.slice(1),s.citizens[1]]},{...s,citizens:s.citizens.map((c,i)=>i?c:{...c,homeId:crypto.randomUUID()})},{...s,citizens:s.citizens.map((c,i)=>i?c:{...c,progress:150})},{...s,citizens:s.citizens.map((c,i)=>i?c:{...c,path:[{x:200,y:200}]})}];for(const bad of badCases)await assert.rejects(rpc('save',2,JSON.stringify(bad)),/INVALID_CITIZENS|INVALID_PATH/);
+ const {citizens:removed,...legacy}=s;assert.equal(removed.length,20);await assert.rejects(rpc('save',2,JSON.stringify({...legacy,schemaVersion:3,engineVersion:'we-sim-1'})),/SAVE_SCHEMA_DOWNGRADE/);
+ await asUser(db,alice,'select public.simulation_rpc($1,$2,\'takeover\')',[world,crypto.randomUUID()]);await assert.rejects(rpc('save',2,JSON.stringify(s)),/LEASE_LOST/);await db.close();
+});

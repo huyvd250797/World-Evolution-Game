@@ -1,3 +1,5 @@
+> V0.5.0 mở rộng bằng schema 4/we-sim-2 và migration 004. Xem POPULATION-AND-PATHFINDING.md cho ID/di chuyển/housing/payload 1MiB; mô tả version cũ bên dưới là nền kế thừa.
+
 # Kiến trúc mở rộng V0.4.0
 
 Planning model/catalog/overlay/editor tách khỏi engine/map. Worker kiểm lệnh, API kiểm full snapshot và SQL kiểm structural/lease/occupancy. Schema 2 được decode nâng thành 3, thêm planning-v1; không sửa Frozen/map/RNG. Xem CITY-PLANNING.md. Các mục dưới mô tả nền kế thừa.

@@ -1,5 +1,7 @@
 'use client';
 import {useEffect,useRef,useState,useCallback} from 'react';
+import {PopulationEditor} from '@/components/population/population-editor';
+import type {Citizen,CitizenCommand} from '@/game/population/model';
 import {PlanningEditor} from '@/components/planning/planning-editor';
 import {emptyPlanning,type Planning,type PlanCommand} from '@/game/planning/model';
 import type {PlanningOverlay} from '@/game/planning/overlay';
@@ -11,11 +13,14 @@ import {MapController,type MapStatus} from '@/game/map/controller';
 import {RESOURCES,TERRAIN,TERRAIN_NAMES,TERRAIN_COLORS,GENERATOR_VERSION} from '@/game/map/world-map';
 import {climateById} from '@/game/data';
 import type {SceneOptions} from '@/game/map/scene';
-export function WorldMapView({worldId,seed,climateId,population,day,paused=true,clockLabel,planning,canPlan=false,onPlanCommand}:{worldId:string;seed:string;climateId:string;population:number;day:number;paused?:boolean;clockLabel?:string;planning?:Planning;canPlan?:boolean;onPlanCommand?:(command:PlanCommand)=>Promise<void>}){
+export function WorldMapView({worldId,seed,climateId,population,day,paused=true,clockLabel,planning,canPlan=false,onPlanCommand,citizens=[],populationLimit=200,speed=1,onCitizenCommand}:{worldId:string;seed:string;climateId:string;population:number;day:number;paused?:boolean;clockLabel?:string;planning?:Planning;canPlan?:boolean;onPlanCommand?:(command:PlanCommand)=>Promise<void>;citizens?:Citizen[];populationLimit?:number;speed?:number;onCitizenCommand?:(command:CitizenCommand)=>Promise<void>}){
+ const [mode,setMode]=useState<'population'|'planning'>('population'),[selectedCitizen,setSelectedCitizen]=useState<string|null>(null);const onFocus=useCallback((id:string)=>controller.current?.focusCitizen(id),[]);
  const [worldMap,setWorldMap]=useState<WorldMap|null>(null);const onOverlay=useCallback((o:PlanningOverlay)=>controller.current?.setPlanning(o),[]);
  const host=useRef<HTMLDivElement>(null),mini=useRef<HTMLCanvasElement>(null),controller=useRef<MapController|null>(null);
  const [status,setStatus]=useState<MapStatus|null>(null),[loading,setLoading]=useState(true),[error,setError]=useState(''),[retry,setRetry]=useState(0),[expanded,setExpanded]=useState(false),[help,setHelp]=useState(false);
  const [grid,setGrid]=useState(false),[resources,setResources]=useState(false),[quality,setQuality]=useState<'auto'|'low'>('auto');
+ useEffect(()=>{controller.current?.setPopulation({citizens,paused,speed,selectedId:mode==='population'?selectedCitizen:null});},[citizens,paused,speed,selectedCitizen,mode,worldMap]);
+ useEffect(()=>{if(mode==='population')controller.current?.setPlanning({planning:planning??emptyPlanning(),ghost:null});},[mode,planning,worldMap]);
  const optionsRef=useRef<SceneOptions>({quality:'auto',grid:false,resources:false});
  useEffect(()=>{optionsRef.current={quality,grid,resources};controller.current?.setOptions(optionsRef.current);},[quality,grid,resources]);
  useEffect(()=>{
@@ -33,7 +38,9 @@ export function WorldMapView({worldId,seed,climateId,population,day,paused=true,
  const restart=()=>{setError('');setLoading(true);setStatus(null);setRetry(r=>r+1);};
  return <section className={`map-explorer${expanded?' map-expanded':''}`} aria-label="Bản đồ thế giới 2.5D" aria-busy={loading} data-generator={GENERATOR_VERSION}>
  <div className="map-canvas-host" ref={host}/>
- {worldMap&&<PlanningEditor map={worldMap} status={status} planning={planning??emptyPlanning()} canEdit={canPlan} onCommand={onPlanCommand??(async()=>{throw new Error('Chưa kết nối engine.');})} onOverlay={onOverlay}/>}
+ <div className="world-tool-switch"><button aria-pressed={mode==='population'} onClick={()=>setMode('population')}>Dân cư & chỗ ở</button><button aria-pressed={mode==='planning'} onClick={()=>setMode('planning')}>Quy hoạch</button></div>
+ {worldMap&&mode==='population'&&<PopulationEditor map={worldMap} planning={planning??emptyPlanning()} citizens={citizens} day={day} populationLimit={populationLimit} paused={paused} status={status} canEdit={canPlan} onCommand={onCitizenCommand??(async()=>{throw new Error('Chưa kết nối engine.');})} onFocus={onFocus} onSelect={setSelectedCitizen}/>}
+ {worldMap&&mode==='planning'&&<PlanningEditor map={worldMap} status={status} planning={planning??emptyPlanning()} canEdit={canPlan} onCommand={onPlanCommand??(async()=>{throw new Error('Chưa kết nối engine.');})} onOverlay={onOverlay}/>}
  <div className="map-hud"><span className="map-era"><MapPinned size={15}/>E0 <i/>Ngày {day}{clockLabel?` · ${clockLabel}`:''}</span><span><Users size={14}/>{population} dân</span><span className="map-climate"><Mountain size={14}/>{climateById(climateId)?.name}</span><span className="map-paused"><Pause size={12}/>{paused?'Tạm dừng':'Đang chạy'}</span></div>
  <div className="map-top-actions"><button className="map-tool" title="Hướng dẫn điều khiển" aria-label="Hướng dẫn điều khiển" aria-expanded={help} onClick={()=>setHelp(!help)}><HelpCircle size={18}/></button><button className="map-tool" title={expanded?'Thu gọn bản đồ':'Mở rộng bản đồ'} aria-label={expanded?'Thu gọn bản đồ':'Mở rộng bản đồ'} onClick={()=>setExpanded(!expanded)}>{expanded?<Minimize2 size={18}/>:<Maximize2 size={18}/>}</button></div>
  <div className="map-controls" aria-label="Điều khiển camera"><button className="map-tool" aria-label="Phóng to bản đồ" disabled={loading||!!error} onClick={()=>controller.current?.zoom(1.3)}><Plus size={19}/></button><span className="map-zoom">{status?`${(status.camera.zoom*100).toFixed(status.camera.zoom<.1?1:0)}%`:'—'}</span><button className="map-tool" aria-label="Thu nhỏ bản đồ" disabled={loading||!!error} onClick={()=>controller.current?.zoom(1/1.3)}><Minus size={19}/></button><div className="map-control-rule"/><button className="map-tool" aria-label="Về điểm khởi đầu" title="Về điểm khởi đầu" disabled={loading||!!error} onClick={()=>controller.current?.home()}><House size={17}/></button><button className="map-tool" aria-label="Xem toàn bản đồ" title="Xem toàn bản đồ" disabled={loading||!!error} onClick={()=>controller.current?.fit()}><Expand size={17}/></button></div>
