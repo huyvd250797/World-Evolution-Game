@@ -1,6 +1,20 @@
 {
   "version": "0.1.0",
   "assets": {
+    "worldAtlas": {
+      "path": "/assets/world-e0-atlas-v1.json",
+      "kind": "spritesheet",
+      "gameplay": true,
+      "sizeBytes": 12891,
+      "sha256": "7ed244d6d5acbf4aa181b508d7cff8bf8e4e4d0bf987351e930946fdb68d09a7"
+    },
+    "worldAtlasImage": {
+      "path": "/assets/world-e0-atlas-v1.png",
+      "kind": "texture",
+      "gameplay": true,
+      "sizeBytes": 45917,
+      "sha256": "fac49cd7c2d7df60c8a59dcfdf38212c4b765c6d5909e8110fc280daa1bee7ee"
+    },
     "landscape": {
       "path": "/assets/landscape-v1.svg",
       "kind": "illustration",

@@ -1,7 +1,7 @@
 {
   "name": "world-evolution",
-  "version": "0.1.2",
-  "description": "World Evolution V0.1.2 Proxy Path Compatibility Fix",
+  "version": "0.2.0",
+  "description": "World Evolution V0.2.0 Isometric World & Camera",
   "scripts": {
     "dev": "next dev",
     "build": "node verify-release.mjs && next build",
@@ -16,7 +16,9 @@
     "check": "npm run data:check && npm run typecheck && npm run lint && npm test && npm run build",
     "assets:manifest": "node --import tsx scripts/assets.ts",
     "test:http": "node --import tsx tests/http-smoke.ts",
-    "verify:release": "node verify-release.mjs"
+    "verify:release": "node verify-release.mjs",
+    "assets:world": "node --import tsx scripts/world-art.ts && npm run assets:manifest",
+    "map:qa": "node --import tsx scripts/render-map-qa.ts"
   },
   "keywords": [],
   "author": "",
@@ -27,12 +29,14 @@
     "@supabase/supabase-js": "2.119.0",
     "lucide-react": "1.75.0",
     "next": "16.4.6",
+    "pixi.js": "8.23.0",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "zod": "4.6.7"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.16",
+    "@napi-rs/canvas": "1.1.1",
     "@playwright/test": "1.65.1",
     "@types/node": "26.6.6",
     "@types/react": "19.3.0",
@@ -41,6 +45,7 @@
     "eslint-config-next": "16.4.6",
     "fast-xml-parser": "5.12.1",
     "fflate": "0.8.3",
+    "sharp": "0.35.5",
     "tsx": "4.23.15",
     "typescript": "6.0.3"
   },

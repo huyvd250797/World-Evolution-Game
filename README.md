@@ -1,6 +1,20 @@
-# World Evolution V0.1.2 — Proxy Path Compatibility Fix
+# World Evolution V0.2.0 — Isometric World & Camera
 
-Nền tảng game web dùng chung PC, iPhone và Android. Bản này đăng ký/đăng nhập, quản lý thế giới và lưu trạng thái khởi tạo lên Supabase. Bản đồ 2.5D tương tác, simulation, xây dựng và dân đi lại thuộc các bản tiếp theo.
+Game web dùng chung PC, iPhone và Android. V0.2.0 thêm bản đồ isometric tương tác từ seed vào thế giới đã lưu; giữ đăng nhập, danh sách thế giới và cloud save nền tảng của V0.1.2. Mô phỏng thời gian, xây dựng và dân đi lại thuộc các bản tiếp theo.
+
+## Nâng cấp từ V0.1.2
+
+Upload đầy đủ nội dung ZIP vào repo đang dùng, ghi đè file trùng rồi deploy commit mới. Không xóa repo, database hoặc thế giới. Giữ nguyên biến môi trường và Supabase project. **Không cần chạy migration mới.**
+
+Bản đồ 256 × 256 ô dùng `we-map-1`, seed và khí hậu đã lưu. Cùng seed + cùng khí hậu luôn tạo cùng địa hình/tài nguyên trên PC/mobile. Camera và ô đang chọn chỉ tồn tại trong phiên, không đồng bộ giữa thiết bị. Generator được khóa bằng checksum test; thay thuật toán sau này phải có phiên bản mới và lộ trình tương thích save.
+
+- Rừng, sông chính liên tục và nhánh sông, bờ sông, đồi, núi, vùng tuyết theo khí hậu. Nguồn tự nhiên liên kết ID E0 của catalog Frozen.
+- Đồ họa 2.5D: atlas địa hình và cây/đá/núi riêng lớp, có cao độ.
+- PC: kéo chuột để di chuyển, cuộn để zoom, click chọn ô. Mobile: vuốt một ngón, chụm hai ngón; nút ±, về điểm đầu, xem toàn bản đồ và mở rộng.
+- Minimap hiển thị vùng nhìn, chạm/kéo để chuyển camera. Chọn ô xem tọa độ, địa hình, cao độ và nguồn tự nhiên.
+- Web Worker sinh map; chunk 16 × 16, culling và LOD khi zoom xa; PixiJS/WebGL với Canvas 2D dự phòng. Atlas chỉ tải khi mở thế giới, dùng chung texture và giải phóng khi rời màn.
+
+Xem [docs/MAP-AND-CAMERA.md](docs/MAP-AND-CAMERA.md) cho thiết kế và kiểm tra bản đồ.
 
 ## Sửa lỗi proxy khi cập nhật source
 
@@ -12,7 +26,7 @@ Không cần migration mới, không chạy lại SQL 001, giữ nguyên Supabas
 
 ## Deploy thẳng lên Vercel
 
-Không cần localhost hoặc chạy npm trên máy Boss. Giải nén ZIP mới, upload **toàn bộ nội dung** vào gốc repository GitHub. Gói V0.1.2 đặt `package.json`, `verify-release.mjs`, `src`, `data`, `public` ngay tại gốc ZIP.
+Không cần localhost hoặc chạy npm trên máy Boss. Giải nén ZIP mới, upload **toàn bộ nội dung** vào gốc repository GitHub. Gói V0.2.0 đặt `package.json`, `verify-release.mjs`, `src`, `data`, `public` ngay tại gốc ZIP.
 
 Trên Vercel: Framework Next.js; Root Directory `.` nếu package.json ở gốc repo; Node 24.x; Install `npm ci`; Build `npm run build`; Output mặc định. Các lệnh do Vercel tự chạy.
 
@@ -52,7 +66,7 @@ npm run dev
 - Responsive PC/mobile ngang/dọc, modal cuộn và footer hành động Hủy bên trái, Lưu/Xác nhận bên phải.
 - Manifest PWA cơ bản; không có service worker/offline gameplay hay chạy nền.
 
-Không có dữ liệu demo thay cho cloud trong production. Khi chưa cấu hình Supabase, màn đăng nhập báo rõ và khóa thao tác tài khoản. Hình SVG là minh họa phong cách, chưa phải map có thể chơi.
+Không có dữ liệu demo thay cho cloud trong production. Khi chưa cấu hình Supabase, màn đăng nhập báo rõ và khóa thao tác tài khoản. Bản đồ tương tác đã có; 20 cư dân vẫn là trạng thái khởi tạo, chưa có mô phỏng di chuyển/sản xuất.
 
 ## Các lệnh chính
 
@@ -77,19 +91,20 @@ Xem phạm vi kiểm chứng và các bước cần kiểm tra trên thiết b�
 
 ## Công nghệ và cấu trúc
 
-Phiên bản chính xác nằm trong `package.json` và `package-lock.json`: Next.js 16.4.6, React 19.3.1, TypeScript 6.0.3, Supabase JS 2.119.0 và Supabase SSR 0.12.7. Source không dùng font/ảnh bên thứ ba để chạy giao diện.
+Phiên bản chính xác nằm trong `package.json` và `package-lock.json`: Next.js 16.4.6, React 19.3.1, TypeScript 6.0.3, Supabase JS 2.119.0 và Supabase SSR 0.12.7, PixiJS 8.23.0. Source không dùng font/ảnh bên thứ ba để chạy giao diện.
 
 ```text
 src/app/                 Trang, Server Actions, callback
 src/components/          Giao diện và form dùng chung
 src/game/core/           Schema, khởi tạo state, logic độc lập UI
 src/game/data/           Adapter catalog Canonical
-src/game/renderer/       Asset manifest/URL, nền cho PixiJS V0.2.0
+src/game/renderer/       Asset manifest/URL
+src/game/map/            Generator, Worker, camera, PixiJS/Canvas, chunk/LOD
 src/lib/supabase/         Supabase SSR bằng khóa public và cookie
 proxy.ts                 Entry proxy tại gốc, dùng alias ổn định
 src/proxy.ts             Entry tương thích khi dùng cấu trúc src
 src/lib/supabase/proxy.ts Logic refresh/kiểm tra phiên dùng chung
-public/assets/           SVG tĩnh có phiên bản
+public/assets/           SVG, PNG atlas và spritesheet JSON có phiên bản
 scripts/                 Import OOXML, kiểm tra catalog, sinh SQL
 infra/supabase/          Migration và SQL kiểm tra cấu hình
  data/source/            Workbook Frozen và dấu vân tay gốc
@@ -98,7 +113,7 @@ infra/supabase/          Migration và SQL kiểm tra cấu hình
  docs/                   Cấu hình, kiến trúc, xác minh
 ```
 
-Các lớp đã tách để bổ sung PixiJS/Web Worker từ V0.2.0/V0.3.0; chưa cài renderer hoặc Worker chưa có chức năng vào bản nền tảng.
+PixiJS và Worker chỉ được tải khi mở màn bản đồ. Worker V0.2 chỉ sinh địa hình, không tiến tick hoặc ghi cloud mỗi frame.
 
 ## Master Data Frozen
 
@@ -116,8 +131,8 @@ Không chạy lại migration khởi tạo trên database đã sử dụng. Vi�
 
 ## Bàn giao và phiên bản tiếp theo
 
-Gói source: `World-Evolution-V0.1.2-Proxy-Path-Compatibility-Fix.zip`. Hướng dẫn cấu hình nằm trong ZIP. SQL gốc trong ZIP và bản TXT đi kèm có nội dung SQL giống nhau.
+Gói source: `World-Evolution-V0.2.0-Isometric-World-and-Camera.zip`. Hướng dẫn cấu hình nằm trong ZIP. SQL khởi tạo được giữ để tạo project mới; database V0.1.2 đang dùng không cần chạy lại SQL hoặc migration mới.
 
-V0.2.0 — **Isometric World & Camera**: bản đồ 2.5D từ seed, chunk, địa hình/sông/rừng/núi, camera pan/zoom, minimap, chuột và cảm ứng. Xem [ROADMAP.md](ROADMAP.md).
+V0.3.0 — **Simulation & Save Engine**: tick deterministic trong Worker, ngày/mùa, x1/x2/x4/tạm dừng, snapshot/delta/recovery và lease thiết bị. Xem [ROADMAP.md](ROADMAP.md).
 
 GitHub/Vercel/Supabase của chủ dự án chưa được kết nối trong lần bàn giao source này. Không có secret thật trong ZIP. Gửi lại ZIP bản mới nhất khi yêu cầu xây dựng tiếp để bảo toàn chức năng đã có.

@@ -1,0 +1,15 @@
+import {test,expect} from '@playwright/test';
+test('World map: real Worker/atlas, camera, minimap, selection, resize and retained cloud world',async({page})=>{
+ await page.setViewportSize({width:1365,height:900});await page.goto('/login');await page.getByLabel('Email',{exact:true}).fill('alice@example.test');await page.getByLabel('Mật khẩu',{exact:true}).fill('Password123!');await page.getByRole('button',{name:'Vào thế giới của bạn'}).click();
+ await page.getByRole('button',{name:'Tạo thế giới',exact:true}).click();await page.getByLabel('Tên thế giới',{exact:true}).fill('Camera QA');await page.getByLabel('Seed bản đồ',{exact:true}).fill('BOSS-2026');await page.getByRole('dialog').getByRole('button',{name:'Tạo thế giới',exact:true}).click();
+ const explorer=page.getByRole('region',{name:'Bản đồ thế giới 2.5D'});await expect(explorer).toHaveAttribute('aria-busy','false',{timeout:30000});await expect(explorer.getByRole('alert')).toHaveCount(0);
+ const canvas=page.locator('.world-map-canvas');await expect(canvas).toBeVisible();await expect(explorer).toHaveAttribute('data-generator','we-map-1');
+ const zoom=page.locator('.map-zoom'),initial=await zoom.innerText();await page.getByRole('button',{name:'Phóng to bản đồ',exact:true}).click();await expect(zoom).not.toHaveText(initial);
+ await page.getByRole('button',{name:'Về điểm khởi đầu',exact:true}).click();const box=(await canvas.boundingBox())!;const center={x:box.x+box.width/2,y:box.y+box.height/2};
+ await page.mouse.click(center.x,center.y);await expect(page.locator('.tile-inspector')).toBeVisible();await page.getByRole('button',{name:'Bỏ chọn ô',exact:true}).click();
+ await page.mouse.move(center.x,center.y);await page.mouse.down();await page.mouse.move(center.x+130,center.y+40,{steps:8});await page.mouse.up();await expect(page.locator('.tile-inspector')).toHaveCount(0);
+ await page.getByRole('button',{name:'Xem toàn bản đồ',exact:true}).click();await expect(zoom).not.toHaveText(initial);await page.locator('.map-mini-canvas').click({position:{x:40,y:40}});
+ await page.getByRole('button',{name:'Bật tắt lưới ô'}).click();await expect(page.getByRole('button',{name:'Bật tắt lưới ô'})).toHaveAttribute('aria-pressed','true');
+ await page.setViewportSize({width:390,height:844});await expect(canvas).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();await page.getByRole('button',{name:'Mở rộng bản đồ'}).click();await expect(explorer).toHaveClass(/map-expanded/);await page.getByRole('button',{name:'Thu gọn bản đồ'}).click();
+ await page.setViewportSize({width:844,height:390});await expect(canvas).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();await page.reload();await expect(explorer).toHaveAttribute('aria-busy','false',{timeout:30000});await expect(page.getByRole('heading',{name:'Camera QA',exact:true})).toBeVisible();await expect(page.getByText('20 cư dân đã có ID riêng.',{exact:false})).toBeVisible();
+});

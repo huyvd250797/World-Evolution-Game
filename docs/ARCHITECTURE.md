@@ -2,7 +2,7 @@
 
 Production build dùng catalog JSON có sẵn và verify-release.mjs chạy Node thuần. Importer Excel và SQL generation chỉ phục vụ bảo trì/CI. tsconfig.json chỉ kiểm ứng dụng; tsconfig.tools.json kiểm đầy đủ công cụ/test qua npm run typecheck. Các kiểm tra Frozen và quyền database vẫn giữ nguyên.
 
-# Kiến trúc V0.1.0
+# Kiến trúc V0.2.0
 
 ## Luồng tài khoản và dữ liệu
 
@@ -37,8 +37,12 @@ SVG minh họa tự tạo, không dựa vào file ảnh người dùng. Không c
 
 ## Phạm vi PWA và hiệu năng
 
-Responsive CSS, safe area và manifest cài đặt cơ bản; không có offline game, service worker cache private data, background simulation hoặc push. Renderer PixiJS, chunk/LOD và camera cảm ứng được xây ở V0.2.0; Web Worker/tick/recovery ở V0.3.0. Không tải thư viện renderer nặng trước khi dùng.
+Responsive CSS, safe area và manifest cài đặt cơ bản; không có offline game, service worker cache private data, background simulation hoặc push. Renderer PixiJS, chunk/LOD, camera cảm ứng và Worker sinh bản đồ có ở V0.2.0; tick/recovery ở V0.3.0. Không tải thư viện renderer nặng trước khi dùng.
 
 ## Giới hạn xác minh
 
 PGlite kiểm tra PostgreSQL SQL/RLS/privileges thực trong máy cục bộ. Fixture HTTP mô phỏng GoTrue/PostgREST để chạy qua chính Supabase SSR SDK và Next Server Actions. Không dùng fixture cho production. Chưa xác minh project Supabase, SMTP, token email thật hoặc deployment của chủ dự án; cần smoke test sau cấu hình.
+
+## Bản đồ V0.2.0
+
+Xem [MAP-AND-CAMERA.md](MAP-AND-CAMERA.md). Map suy ra từ seed/climate đã lưu, không thêm cột hoặc snapshot map vào PostgreSQL. `we-map-1` là thuật toán bất biến cho thế giới của V0.2.0; test khóa digest. Khi có generator mới cần lưu/định tuyến version để thế giới cũ không đổi địa hình. Camera thuộc phiên, không cập nhật revision cloud. Mọi quyền tài khoản và RPC giữ nguyên.

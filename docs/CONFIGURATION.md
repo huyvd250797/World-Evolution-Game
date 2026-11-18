@@ -1,6 +1,6 @@
-# Hướng dẫn cấu hình World Evolution V0.1.2
+# Hướng dẫn cấu hình World Evolution V0.2.0
 
-## Cập nhật từ V0.1.0 hoặc V0.1.1
+## Cập nhật từ V0.1.2 (và các bản nền tảng trước)
 
 Không cần xóa repository, project Vercel hoặc database. Upload toàn bộ nội dung ZIP mới vào đúng gốc repo, ghi đè package.json, proxy.ts, src/proxy.ts và thêm src/lib/supabase/proxy.ts. Trong GitHub, kiểm tra proxy.ts ở gốc có import `@/lib/supabase/proxy`. Source mới có hai entry tương thích cùng nội dung; logic session chỉ đặt trong src/lib/supabase/proxy.ts.
 
@@ -8,11 +8,11 @@ Kiểm tra deployment đang dùng commit vừa push, Root Directory là thư m�
 
 ## 0. Deploy trực tiếp trên Vercel
 
-Boss không phải cài Node/npm hoặc chạy localhost. Gói V0.1.1 chứa source ngay tại gốc ZIP; upload toàn bộ sau giải nén vào GitHub, chọn Root Directory chứa package.json. Nếu thay source từ gói cũ, giữ các biến môi trường và Supabase project hiện tại.
+Boss không phải cài Node/npm hoặc chạy localhost. Gói V0.2.0 chứa source ngay tại gốc ZIP; upload toàn bộ sau giải nén vào GitHub, chọn Root Directory chứa package.json. Nếu thay source từ gói cũ, giữ các biến môi trường và Supabase project hiện tại.
 
 Build production chỉ chạy `node verify-release.mjs && next build`, không chạy importer TypeScript. Vercel tự chạy Install/Build. Mục 1 và các lệnh local bên dưới là tùy chọn cho lập trình viên. Cấu hình Vercel chi tiết ở mục 8.
 
-Không cần chạy migration mới khi lên V0.1.1. Chỉ chạy migration 001 nếu project chưa từng được khởi tạo.
+Không cần chạy migration mới khi lên V0.2.0. Chỉ chạy migration 001 nếu project chưa từng được khởi tạo.
 
 ## 1. Chuẩn bị source và môi trường
 
@@ -25,7 +25,7 @@ Không cần chạy migration mới khi lên V0.1.1. Chỉ chạy migration 001 
 
 1. Mở https://supabase.com/dashboard, tạo project riêng cho game, chọn region phù hợp người chơi. Ghi lại mật khẩu database ở nơi quản lý mật khẩu của Boss; app không cần mật khẩu đó.
 2. Đợi project sẵn sàng. Mở **SQL Editor → New query**.
-3. Mở `infra/supabase/migrations/202611180001_foundation.sql` trong source hoặc bản TXT đi kèm. Copy toàn bộ, chạy **một lần**.
+3. Mở `infra/supabase/migrations/202611180001_foundation.sql` trong source . Copy toàn bộ, chạy **một lần**.
 4. Migration tạo bảng `public.worlds`, index, RLS và các RPC tạo/sửa/xóa. Không có bucket Storage cần tạo ở bản này.
 5. Nếu gặp `relation worlds already exists`, dừng chạy lại. Kiểm tra project có phải môi trường mới hay đã áp dụng migration. Không xóa bảng dữ liệu để xử lý lỗi này.
 6. Trong API settings, giữ `public` được exposed; **không thêm schema `private` vào Exposed schemas**. Các function private chỉ được gọi qua public RPC có kiểm soát.
@@ -143,7 +143,7 @@ Repo mới (thay URL mẫu bằng repo của Boss):
 ```bash
 git init
 git add .
-git commit -m "World Evolution V0.1.0 Cross-Platform Foundation"
+git commit -m "World Evolution V0.2.0 Isometric World and Camera"
 git branch -M main
 git remote add origin https://github.com/YOUR_ACCOUNT/world-evolution.git
 git push -u origin main
@@ -175,11 +175,19 @@ Không đổi runtime sang static export: app cần Server Actions/SSR. Không �
 
 ## 9. Đồ họa và CDN
 
-Bản này có SVG minh họa riêng trong `public/assets`, dùng URL phiên bản bất biến. Để trống asset base URL khi dùng Vercel CDN mặc định. Nếu chuyển CDN, upload nguyên cấu trúc `/assets/...` và cấu hình `NEXT_PUBLIC_ASSET_BASE_URL=https://cdn.example.com`, sau đó rebuild/redeploy.
+Bản này có SVG minh họa và atlas bản đồ E0 (PNG + spritesheet JSON) trong `public/assets`, dùng URL phiên bản bất biến. Để trống asset base URL khi dùng Vercel CDN mặc định. Nếu chuyển CDN, upload nguyên cấu trúc `/assets/...` và cấu hình `NEXT_PUBLIC_ASSET_BASE_URL=https://cdn.example.com`, sau đó rebuild/redeploy.
 
-Không upload ảnh vào PostgreSQL hoặc tạo bản sao theo từng world. Không sửa nội dung file dưới URL đã cache immutable; đổi tên phiên bản và cập nhật manifest. V0.1 chưa có offline cache/service worker; browser/CDN HTTP cache là lớp cache hiện tại.
+Nếu dùng CDN riêng, cho phép CORS GET/HEAD từ domain app cho PNG/JSON; upload cả hai file atlas, giữ cùng thư mục vì JSON tham chiếu PNG tương đối. Worker và JavaScript tiếp tục được phục vụ cùng origin app. Nếu không cần CDN riêng, giữ ASSET_BASE_URL trống.
+
+Không upload ảnh vào PostgreSQL hoặc tạo bản sao theo từng world. Không sửa nội dung file dưới URL đã cache immutable; đổi tên phiên bản và cập nhật manifest. V0.2 chưa có offline cache/service worker; browser/CDN HTTP cache là lớp cache hiện tại.
 
 Theo dõi database/egress ở Supabase và data transfer ở Vercel. Ngưỡng 60% dùng để kiểm tra, 80% để chuẩn bị phương án nâng cấp theo kế hoạch V1.1; đây là ngưỡng nội bộ, không phải quota của nhà cung cấp. Không có cam kết Free phục vụ không giới hạn.
+
+## Kiểm tra bản đồ sau deploy
+
+Mở một thế giới V0.1.2 đã có, chờ tải atlas; xác nhận 20 dân và cấu hình vẫn giữ. Trên PC kéo/cuộn, click ô, ±, Home, minimap và xem toàn bản đồ. Trên iPhone/Android thử vuốt một ngón, chụm hai ngón, xoay ngang/dọc; thao tác chụm không được bật thông tin ô. Mở cùng seed/khí hậu ở thiết bị khác phải có địa hình giống nhau. Kiểm tra chế độ Nhẹ khi máy yếu. Không có nút chạy mô phỏng trong V0.2.0.
+
+Nếu bản đồ báo lỗi tải, kiểm tra Network: worker JS, atlas JSON và PNG trả 200; nếu dùng CDN kiểm tra CORS và HTTPS. Nếu WebGL lỗi, ứng dụng tự thử Canvas 2D, thông báo trong Hướng dẫn điều khiển. Vẫn lỗi thì bấm Thử lại sau khi kiểm tra mạng.
 
 ## 10. Backup và nâng cấp
 

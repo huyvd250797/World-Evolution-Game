@@ -5,8 +5,8 @@ Căn cứ: Development Plan V1.1 và Master Game Data V1.2 Canonical Frozen. 23 
 | Phiên bản | Tên | Phạm vi và nghiệm thu | Trạng thái |
 | --- | --- | --- | --- |
 | V0.1.0 | Cross-Platform Foundation | Auth, worlds, 20 dân khởi tạo, catalog/ID/checksum, RLS, asset/CDN nền tảng, UI PC/mobile. Source/build/logic/SQL được kiểm; live cloud và thiết bị thật chờ cấu hình | Đã xây source |
-| V0.2.0 | Isometric World & Camera | Map 2.5D từ seed, rừng/sông/núi, chunk/culling, minimap, chuột và touch pan/pinch. Đo tải lạnh/ấm và texture memory | Tiếp theo |
-| V0.3.0 | Simulation & Save Engine | Worker deterministic, ngày/mùa, x1/x2/x4/pause, snapshot/delta/recovery, lease thiết bị, retention và đo egress | Dự kiến |
+| V0.2.0 | Isometric World & Camera | Map 2.5D từ seed, chunk/culling/LOD, minimap, chọn ô, pan/pinch, WebGL/Canvas; kiểm logic và render Canvas. GPU, tải lạnh/ấm và thiết bị thật cần nghiệm thu deployment | Đã xây source |
+| V0.3.0 | Simulation & Save Engine | Worker deterministic, ngày/mùa, x1/x2/x4/pause, snapshot/delta/recovery, lease thiết bị, retention và đo egress | Tiếp theo |
 | V0.4.0 | Construction & City Planning | Ghost preview, địa hình, footprint, xoay, đường; xác nhận bằng chạm; công trình không nhân bản asset | Dự kiến |
 | V0.5.0 | Population Housing & Pathfinding | Nhà ở, nhu cầu cơ bản, 20 agents, đường đi, pop cap; cloud cross-device và benchmark dân cư | Dự kiến |
 | V0.6.0 | Survival & Food | Hái/săn/nước, phần ăn, kho và hư hỏng theo lô; dữ liệu lô có vòng đời | Dự kiến |
@@ -34,7 +34,7 @@ Mỗi bản kế thừa chức năng trước, có typecheck/lint/tests/build v�
 
 V0.1.1 — Vercel Deployment Hotfix: sửa production build và gói source; giữ 23 mốc gameplay. Không cần migration mới.
 
-V0.1.2 — Proxy Path Compatibility Fix: sửa entry/import tương thích khi repo có proxy ở gốc hoặc src. Không thêm mốc gameplay; bản tiếp theo vẫn V0.2.0.
+V0.1.2 — Proxy Path Compatibility Fix: sửa entry/import tương thích khi repo có proxy ở gốc hoặc src. Không thêm mốc gameplay; đã kế thừa trong V0.2.0.
 
 ## Mốc điều kiện
 

@@ -1,0 +1,2 @@
+import {generateWorldMap} from './world-map';
+self.onmessage=(event:MessageEvent<{seed:string;climateId:string}>)=>{try{const map=generateWorldMap(event.data.seed,event.data.climateId);self.postMessage({map},{transfer:[map.terrain.buffer,map.elevation.buffer,map.resources.buffer,map.variation.buffer]});}catch(error){self.postMessage({error:error instanceof Error?error.message:'Không sinh được bản đồ.'});}};

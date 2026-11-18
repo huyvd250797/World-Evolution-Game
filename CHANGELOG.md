@@ -1,3 +1,13 @@
+# V0.2.0 — Isometric World & Camera — 18/11/2026
+
+- Generator `we-map-1`: 256 × 256 ô từ seed + khí hậu, rừng/sông/đồi/núi/tuyết và tài nguyên E0 gắn ID Canonical.
+- PixiJS WebGL, atlas tự tạo, phân lớp nền/đối tượng; Canvas 2D khi WebGL không khả dụng.
+- Chuột kéo/cuộn, touch pan/pinch, ±, Home, xem toàn bản đồ, mở rộng; drag/pinch không chọn nhầm ô.
+- Minimap vùng nhìn + điều hướng; chọn ô xem tọa độ, địa hình, cao độ và nguồn tự nhiên; lưới và marker tài nguyên tùy chọn.
+- Worker riêng sinh map, chunk 16 × 16, culling, LOD, texture dùng chung, cache chunk giới hạn và cleanup. Chỉ render khi camera/lựa chọn/kích thước thay đổi.
+- Giữ tài khoản, RPC/RLS, revision, seed/cấu hình, 20 dân và checksum Frozen. Không migration mới. Camera không ghi cloud; simulation vẫn tạm dừng.
+- Thêm kiểm thử deterministic/hash, khí hậu/tài nguyên, camera, picking, culling/LOD, gesture và render Canvas. Giữ sửa lỗi proxy/build Vercel trước đó.
+
 # Changelog
 
 ## V0.1.2 — Proxy Path Compatibility Fix — 18/11/2026
