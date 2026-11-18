@@ -1,10 +1,18 @@
-# World Evolution V0.1.1 — Vercel Deployment Hotfix
+# World Evolution V0.1.2 — Proxy Path Compatibility Fix
 
 Nền tảng game web dùng chung PC, iPhone và Android. Bản này đăng ký/đăng nhập, quản lý thế giới và lưu trạng thái khởi tạo lên Supabase. Bản đồ 2.5D tương tác, simulation, xây dựng và dân đi lại thuộc các bản tiếp theo.
 
+## Sửa lỗi proxy khi cập nhật source
+
+V0.1.2 đặt entry proxy an toàn ở cả `proxy.ts` và `src/proxy.ts`, cùng import qua alias `@/lib/supabase/proxy`. Logic session chỉ có một bản tại `src/lib/supabase/proxy.ts`. Hai entry giống nhau để cập nhật repo đang còn file proxy ở gốc từ source trước; Next chọn entry ở gốc nếu có.
+
+Upload đầy đủ source mới vào **đúng repo và branch Vercel đang dùng**, ghi đè file trùng; không cần xóa repo. Kiểm tra trên GitHub `proxy.ts` dòng import phải là `@/lib/supabase/proxy`, không còn `./lib/config`. Giữ Root Directory chứa package.json; deploy commit mới và bỏ dùng Build Cache khi thử lại.
+
+Không cần migration mới, không chạy lại SQL 001, giữ nguyên Supabase và biến môi trường. Master Data V1.2 và SQL khởi tạo được giữ nguyên byte.
+
 ## Deploy thẳng lên Vercel
 
-Không cần localhost hoặc chạy npm trên máy Boss. Giải nén ZIP mới, upload **toàn bộ nội dung** vào gốc repository GitHub. Gói V0.1.1 đặt `package.json`, `verify-release.mjs`, `src`, `data`, `public` ngay tại gốc ZIP.
+Không cần localhost hoặc chạy npm trên máy Boss. Giải nén ZIP mới, upload **toàn bộ nội dung** vào gốc repository GitHub. Gói V0.1.2 đặt `package.json`, `verify-release.mjs`, `src`, `data`, `public` ngay tại gốc ZIP.
 
 Trên Vercel: Framework Next.js; Root Directory `.` nếu package.json ở gốc repo; Node 24.x; Install `npm ci`; Build `npm run build`; Output mặc định. Các lệnh do Vercel tự chạy.
 
@@ -78,7 +86,9 @@ src/game/core/           Schema, khởi tạo state, logic độc lập UI
 src/game/data/           Adapter catalog Canonical
 src/game/renderer/       Asset manifest/URL, nền cho PixiJS V0.2.0
 src/lib/supabase/         Supabase SSR bằng khóa public và cookie
-src/proxy.ts             Refresh/kiểm tra phiên; action kiểm quyền độc lập
+proxy.ts                 Entry proxy tại gốc, dùng alias ổn định
+src/proxy.ts             Entry tương thích khi dùng cấu trúc src
+src/lib/supabase/proxy.ts Logic refresh/kiểm tra phiên dùng chung
 public/assets/           SVG tĩnh có phiên bản
 scripts/                 Import OOXML, kiểm tra catalog, sinh SQL
 infra/supabase/          Migration và SQL kiểm tra cấu hình
@@ -106,7 +116,7 @@ Không chạy lại migration khởi tạo trên database đã sử dụng. Vi�
 
 ## Bàn giao và phiên bản tiếp theo
 
-Gói source: `World-Evolution-V0.1.1-Vercel-Deployment-Hotfix.zip`. Hướng dẫn cấu hình nằm trong ZIP. SQL gốc trong ZIP và bản TXT đi kèm có nội dung SQL giống nhau.
+Gói source: `World-Evolution-V0.1.2-Proxy-Path-Compatibility-Fix.zip`. Hướng dẫn cấu hình nằm trong ZIP. SQL gốc trong ZIP và bản TXT đi kèm có nội dung SQL giống nhau.
 
 V0.2.0 — **Isometric World & Camera**: bản đồ 2.5D từ seed, chunk, địa hình/sông/rừng/núi, camera pan/zoom, minimap, chuột và cảm ứng. Xem [ROADMAP.md](ROADMAP.md).
 

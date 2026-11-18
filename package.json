@@ -1,7 +1,7 @@
 {
   "name": "world-evolution",
-  "version": "0.1.1",
-  "description": "World Evolution V0.1.1 Vercel Deployment Hotfix",
+  "version": "0.1.2",
+  "description": "World Evolution V0.1.2 Proxy Path Compatibility Fix",
   "scripts": {
     "dev": "next dev",
     "build": "node verify-release.mjs && next build",

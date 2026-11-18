@@ -1,4 +1,10 @@
-# Hướng dẫn cấu hình World Evolution V0.1.1
+# Hướng dẫn cấu hình World Evolution V0.1.2
+
+## Cập nhật từ V0.1.0 hoặc V0.1.1
+
+Không cần xóa repository, project Vercel hoặc database. Upload toàn bộ nội dung ZIP mới vào đúng gốc repo, ghi đè package.json, proxy.ts, src/proxy.ts và thêm src/lib/supabase/proxy.ts. Trong GitHub, kiểm tra proxy.ts ở gốc có import `@/lib/supabase/proxy`. Source mới có hai entry tương thích cùng nội dung; logic session chỉ đặt trong src/lib/supabase/proxy.ts.
+
+Kiểm tra deployment đang dùng commit vừa push, Root Directory là thư mục chứa package.json. Khi deploy lại, bỏ chọn Use existing Build Cache. Giữ các Environment Variables và URL Supabase. Không chạy lại migration đã áp dụng.
 
 ## 0. Deploy trực tiếp trên Vercel
 

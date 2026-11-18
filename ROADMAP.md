@@ -34,6 +34,8 @@ Mỗi bản kế thừa chức năng trước, có typecheck/lint/tests/build v�
 
 V0.1.1 — Vercel Deployment Hotfix: sửa production build và gói source; giữ 23 mốc gameplay. Không cần migration mới.
 
+V0.1.2 — Proxy Path Compatibility Fix: sửa entry/import tương thích khi repo có proxy ở gốc hoặc src. Không thêm mốc gameplay; bản tiếp theo vẫn V0.2.0.
+
 ## Mốc điều kiện
 
 - V0.5: camera, xây, nhà ở, dân đi và chuyển thiết bị.

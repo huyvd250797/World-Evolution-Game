@@ -1,5 +1,14 @@
 # Changelog
 
+## V0.1.2 — Proxy Path Compatibility Fix — 18/11/2026
+
+- Root proxy và src proxy dùng cùng entry alias, thay đường dẫn tương đối phụ thuộc vị trí.
+- Tách refreshSession vào src/lib/supabase/proxy.ts; giữ nguyên xác thực và quyền dữ liệu.
+- Typecheck bao gồm proxy ở gốc, thêm regression kiểm import ở cả hai vị trí và rà toàn bộ import nội bộ runtime.
+- Kiểm tra lại source sạch và tình huống cập nhật trên repo có proxy cũ ở gốc.
+- Không thay đổi Master Data/database, không cần migration mới.
+
+
 ## V0.1.1 — Vercel Deployment Hotfix — 18/11/2026
 
 - Build Vercel dùng catalog JSON đã xuất sẵn; loại bỏ phụ thuộc chạy scripts/catalog.ts trong production build.

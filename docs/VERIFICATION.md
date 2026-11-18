@@ -1,3 +1,7 @@
+# Xác minh V0.1.2 Proxy Path Compatibility Fix
+
+Đã tái hiện lỗi proxy cũ ở gốc repo không resolve ./lib/config; build cập nhật đè V0.1.2 trên trường hợp đó đã thành công. Build sạch, typecheck, lint, 21 tests/subtests, data:check và HTTP auth/world lifecycle đã đạt. Import runtime được kiểm tra bằng TypeScript module resolver, bao gồm proxy ở gốc. Không cần migration mới. Chưa truy cập deployment Vercel thực tế của Boss.
+
 # Xác minh V0.1.1 Vercel Deployment Hotfix
 
 Đã bổ sung kiểm thử verifier với source triển khai không có scripts/tests/workbook; kiểm catalog hỏng và file thiếu. 18 tests/subtests đã đạt; production build riêng đã đạt khi loại thư mục scripts, tests và workbook khỏi source thử triển khai. Full importer vẫn chạy ở CI. Kiểm tra typecheck, lint, tests, data:check và production build được chạy lại cho hotfix. Không có migration mới.

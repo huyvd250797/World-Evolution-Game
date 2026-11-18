@@ -10,7 +10,8 @@
     "tests/**/*.ts",
     "playwright.config.ts",
     "next-env.d.ts",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "proxy.ts"
   ],
   "exclude": [
     "node_modules"
