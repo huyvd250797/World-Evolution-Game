@@ -1,32 +1,21 @@
-# Xác minh V0.3.0 — Simulation & Save Engine
+# Xác minh V0.4.0 — Construction & City Planning
 
-## Đã kiểm bằng source và fixtures
+- Typecheck app/tools/tests, lint, unit/SQL/Worker/session, data:check, HTTP và production build. Kết quả cuối trong RELEASE-CHECKS.md.
+- 166 dòng adapter đối chiếu ID/tên/công dụng/era/technology/BOM với Frozen, footprint tách riêng.
+- Preview/rotation, bounds/water/slope/waterfront/quarry, khóa tech/era, occupancy nền/tuyến, L-route contiguous, intersection và giới hạn.
+- Migration 003 trên database V0.3 giữ raw head/history byte; decode schema 2 giữ tick/RNG, planning mới full save/delta clock/restore; SQL cấm overlap và direct table access.
+- Worker/session thật kiểm plan command, giữ state qua save, kế thừa lost-ACK retry/fencing/offline/local recovery; API HTTP kiểm lưu/tải nền, reject công trình khóa và planning delta.
+- Canvas thật kiểm ghost xanh/đỏ khác pixel, culling khi pan và cleanup; composite đã xem có bốn nền và một tuyến. Đây không phải browser screenshot.
+- Giữ regression account/world/RLS/revision/Canonical/map/camera/proxy/release verifier.
 
-- Typecheck app + công cụ/tests, ESLint, production Next/Turbopack build (có `/api/simulation` và Proxy).
-- Frozen workbook/catalog/summary, 38 sheet, 5.984 tham chiếu, SQL 001 và asset checksum giữ nguyên.
-- Regression map, camera/gesture/LOD, Canvas pixel render, world input/20 dân, auth/proxy/runtime import/release verifier.
-- Engine: CFG001/002/008/035 và season ranges khớp Frozen; x1/x2/x4 có cùng tick/RNG ở cùng thời điểm mô phỏng; pause không tiến active time, partial tick/RNG tiếp tục đúng sau deserialize; sai schema/identity/checksum bị từ chối.
-- Worker thật qua node worker_threads + Web Worker bridge: load/control/pause, x4, lease-expiry tự pause, snapshot/cursor giữ nguyên. Không dùng Worker giả để thay phần engine trong test này.
-- Coordinator thật + Worker thật + PGlite: server commit nhưng mất ACK rồi retry không nhân đôi; reconnect vẫn có bản tạm; offline/visibility pause; takeover fence writer cũ; khôi phục local cùng revision; corrupt cloud head sửa từ history; cloud vẫn lưu khi localStorage bị chặn.
-- SQL migration 001→002 trên PostgreSQL engine: owner/anonymous/privileges, full/delta checksum, request idempotency, conflicts, expiry/epoch/takeover/release, malicious payload, bounded retention và mọi chain còn giữ reconstruct được, không tái sinh revision 0, corrupt/restore và cascade delete.
-- HTTP qua Next Route Handler/Server Actions + Supabase SDK + Auth/PostgREST fixture: login/session/world lifecycle; open lease, save sang ngày 2, retry, history, restore, Origin/unauth/input checks.
+Chromium đã bị môi trường chặn socket ở phiên kiểm nền trước; V0.4 không coi UI/Playwright/WebGL GPU/Safari/Android đã đạt. Không xác minh Supabase/Vercel thật của Boss. Các fixtures chỉ local, không nhập vào production.
 
-Kết quả cuối ở RELEASE-CHECKS.md. PGlite là PostgreSQL local; Auth/PostgREST fixture không được import vào production. Không chứng minh project Supabase thật/SMTP/email của Boss.
+## Checklist nghiệm thu deployment
 
-## Trình duyệt và thiết bị
-
-Đã thử 5 Playwright specs bằng system Chromium; cả 5 bị chặn **trước khi vào trang** do môi trường không cho socket của Chromium (`Operation not permitted`). Không coi đây là 5 test app đạt hoặc lỗi nghiệp vụ app; không vượt sandbox để chạy tiếp. Specs được giữ cho môi trường có Chromium đầy đủ.
-
-Chưa xác minh WebGL GPU thật, Safari/iPhone/Android hoặc app bị OS kill/suspend thực. Worker bridge/native Canvas không thay được các kiểm tra này. Chưa push GitHub hoặc deploy/kết nối Supabase/Vercel thật của Boss trong lần bàn giao source.
-
-## Checklist sau deploy
-
-1. Database V0.2.0: chạy 002 một lần, không chạy lại 001/reset. Dùng verify_setup.sql và verify_simulation.sql; private schema không exposed, không có direct client table grant.
-2. Deploy source đầy đủ và giữ env. Đăng nhập, mở world cũ: seed/climate/config/20 dân/bản đồ giữ nguyên, engine nhận lease và bắt đầu tạm dừng ngày 1.
-3. PC: x1/x2/x4/pause, Lưu ngay/Đã lưu, reload thời gian/RNG giữ đúng; thao tác camera không reset khi clock cập nhật. Kiểm bản đồ/atlas/Worker không lỗi 404.
-4. Mobile dọc/ngang: pan/pinch/±, clock controls, lịch sử cuộn, modal Hủy trái/Xác nhận phải, không tràn ngang; khóa màn hình và quay lại phải pause, không bù offline.
-5. Hai tab/thiết bị cùng account: một writer, một viewer; Tiếp quản có xác nhận, writer cũ không ghi được; mở lại đúng cloud save.
-6. Mất mạng khi đang chạy/lưu: pause, thông báo lỗi và local recovery; Thử lưu lại khi có mạng. Khi lease hết hạn dùng Kết nối lại/đối chiếu; khác revision không tự ghi đè, có tải JSON.
-7. History: restore mốc cũ tạo full revision mới/paused; tìm bản hợp lệ gần nhất kiểm checksum/chain. Kiểm retention bằng nhiều lần lưu và đo payload/egress ở Dashboard thật.
-8. Test account khác không truy cập worlds/save. Đăng xuất/đăng nhập lại, hết token, browser storage bị chặn/đầy, đóng đột ngột. Chờ Đã lưu trước khi rời dữ liệu quan trọng.
-9. Đo tải lạnh/ấm, FPS/RAM/GPU/texture trên thiết bị thật; không có cam kết 60fps hoặc phục vụ không giới hạn trên Free trước số đo.
+1. Chạy 003 một lần sau 001/002, giữ data/env. Mở world cũ, đối chiếu tick/seed/map/20 dân.
+2. Mở danh mục, tìm/lọc era, xem tech/BOM và khóa. Thử Bãi quan sát/Lều ở; ghost + footprint phải khớp tọa độ khi xác nhận/xoay.
+3. Chạm/drag/pinch không tự tạo nền. Mobile cần thử dọc/ngang/mở rộng, Hủy trái/Xác nhận phải; không tràn ngang.
+4. Thử nước/mép map/dốc/kho bờ sông/nền đã chiếm/tuyến bị chặn và xem lý do. Đặt tuyến hai điểm, đổi bend, chọn/hủy nền và tuyến có xác nhận.
+5. Lưu ngay/Đã lưu → reload/thiết bị khác giữ đúng layout/hướng; lease cũ không ghi đè. Restore mốc trước quy hoạch phải theo xác nhận và tạo revision mới.
+6. Mất mạng/localStorage bị chặn/khác revision giữ quy tắc recovery; không reset DB để sửa lỗi.
+7. Đo RAM/GPU/FPS/texture/egress thật với nhiều nền/tuyến; không có cam kết 60fps hoặc Free không giới hạn.

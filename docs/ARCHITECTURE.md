@@ -1,3 +1,7 @@
+# Kiến trúc mở rộng V0.4.0
+
+Planning model/catalog/overlay/editor tách khỏi engine/map. Worker kiểm lệnh, API kiểm full snapshot và SQL kiểm structural/lease/occupancy. Schema 2 được decode nâng thành 3, thêm planning-v1; không sửa Frozen/map/RNG. Xem CITY-PLANNING.md. Các mục dưới mô tả nền kế thừa.
+
 # Thay đổi build V0.1.1
 
 Production build dùng catalog JSON có sẵn và verify-release.mjs chạy Node thuần. Importer Excel và SQL generation chỉ phục vụ bảo trì/CI. tsconfig.json chỉ kiểm ứng dụng; tsconfig.tools.json kiểm đầy đủ công cụ/test qua npm run typecheck. Các kiểm tra Frozen và quyền database vẫn giữ nguyên.

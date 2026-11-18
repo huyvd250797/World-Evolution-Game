@@ -1,3 +1,14 @@
+# V0.4.0 — Construction & City Planning — 18/11/2026
+
+- 166 công trình từ Frozen: ID/tên/era/công dụng/tech/BOM; tìm/lọc/hiện khóa. Footprint và placement policy tách planning-v1.
+- Ghost nền xanh/đỏ, chốt anchor, xoay footprint, bounds/nước/núi/slope/site/occupancy; xác nhận mới đặt, R/Enter/Escape.
+- Blueprint ID/tọa độ/hướng/createdTick/planned; chọn thông tin/hủy có xác nhận.
+- Tuyến hành lang dự kiến theo L-route, kiểm contiguous/slope/bounds/overlap; chưa tiêu hao vật liệu hoặc tạo công trình đường hoạt động.
+- Worker plan command, schema 3, nâng đọc schema 2 không đổi RNG/tick; quy hoạch full-save qua API validation, clock delta giữ nhỏ, history/local recovery/lease kế thừa.
+- Migration 003 mới, giữ 001/002/Frozen/map/atlas byte-for-byte; payload cap 256KiB, catalog private và SQL checks.
+- Canvas overlay dùng stamp chung, chunk index/depth sort/viewport culling, cleanup, không reset camera khi clock đổi.
+- Unit/SQL/Worker/session/HTTP/Canvas QA, hướng dẫn migration/deploy/rollback schema 3.
+
 # V0.3.0 — Simulation & Save Engine — 18/11/2026
 
 - Worker mô phỏng bước 100ms, x1/x2/x4/tạm dừng, 180 giây/ngày ở x1; lịch 30 ngày/mùa và 120 ngày/năm theo Frozen.

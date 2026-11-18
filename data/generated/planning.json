@@ -1,0 +1,4639 @@
+{
+  "version": 1,
+  "sourceCatalogSha256": "b375ca03e5123d07ddd9a317a3e75b607f91c680bd69e72198b97e980013a5ea",
+  "footprintSource": "Technical planning-v1, not Frozen workbook dimensions",
+  "buildings": [
+    {
+      "id": "B001",
+      "name": "Bãi hái lượm",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T001",
+      "technologyName": "Khởi nguyên",
+      "purpose": "Thu lượm thực phẩm tự nhiên",
+      "materials": [
+        {
+          "id": "R046",
+          "name": "Cành khô",
+          "quantity": 4,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 3,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B002",
+      "name": "Trại săn",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T001",
+      "technologyName": "Khởi nguyên",
+      "purpose": "Săn bắn theo vùng sinh cảnh; thời gian đi lại ảnh hưởng năng suất, thú ăn thịt tạo rủi ro, săn nhiều làm suy giảm quần thể.",
+      "materials": [
+        {
+          "id": "R046",
+          "name": "Cành khô",
+          "quantity": 10,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 4,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 3,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B003",
+      "name": "Bến đánh cá",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T001",
+      "technologyName": "Khởi nguyên",
+      "purpose": "Thu hoạch cá gần nước",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 10,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R102",
+          "name": "Dây buộc",
+          "quantity": 4,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 1,
+      "site": "waterfront"
+    },
+    {
+      "id": "B004",
+      "name": "Trại khai thác gỗ",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T001",
+      "technologyName": "Khởi nguyên",
+      "purpose": "Thu hoạch gỗ theo trữ lượng",
+      "materials": [
+        {
+          "id": "R046",
+          "name": "Cành khô",
+          "quantity": 6,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 4,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 3,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B005",
+      "name": "Bãi khai thác đá",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T001",
+      "technologyName": "Khởi nguyên",
+      "purpose": "Khai thác bề mặt",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 5,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "quarry"
+    },
+    {
+      "id": "B006",
+      "name": "Lều ở",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Dân sinh / xã hội",
+      "technologyId": "T001",
+      "technologyName": "Khởi nguyên",
+      "purpose": "Nhà ở do người chơi xây; có 5 chỗ ngủ, cần đường tới; không có nhà thì người dân nghỉ ngoài trời và tăng rủi ro bệnh.",
+      "materials": [
+        {
+          "id": "R046",
+          "name": "Cành khô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R047",
+          "name": "Lá cây",
+          "quantity": 10,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R102",
+          "name": "Dây buộc",
+          "quantity": 3,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 1,
+      "site": "land"
+    },
+    {
+      "id": "B007",
+      "name": "Bếp lửa",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Chế biến lương thực",
+      "technologyId": "T002",
+      "technologyName": "Giữ lửa",
+      "purpose": "Nấu thực phẩm; tiêu hao nhiên liệu",
+      "materials": [
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 8,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R167",
+          "name": "Củi",
+          "quantity": 3,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B008",
+      "name": "Bãi quan sát",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Nghiên cứu / giáo dục",
+      "technologyId": "T001",
+      "technologyName": "Khởi nguyên",
+      "purpose": "Tích lũy tri thức và nghiên cứu nền tảng",
+      "materials": [
+        {
+          "id": "R046",
+          "name": "Cành khô",
+          "quantity": 8,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 4,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 1,
+      "height": 1,
+      "site": "land"
+    },
+    {
+      "id": "B009",
+      "name": "Xưởng đá",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T003",
+      "technologyName": "Chế tác đá",
+      "purpose": "Đổi nguyên liệu thành công cụ; mở nghiên cứu công cụ mới",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 10,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B010",
+      "name": "Kho lương thực",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Kho / lưu trữ",
+      "technologyId": "T006",
+      "technologyName": "Bảo quản lương thực",
+      "purpose": "Dừng hư hỏng thực phẩm khi chứa hợp lệ",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 18,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R047",
+          "name": "Lá cây",
+          "quantity": 8,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 6,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "storage"
+    },
+    {
+      "id": "B011",
+      "name": "Kho vật liệu thô",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Kho / lưu trữ",
+      "technologyId": "T001",
+      "technologyName": "Khởi nguyên",
+      "purpose": "Chứa vật liệu không hỏng",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 3,
+      "height": 2,
+      "site": "storage"
+    },
+    {
+      "id": "B012",
+      "name": "Lều thảo dược",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Dân sinh / xã hội",
+      "technologyId": "T005",
+      "technologyName": "Thảo dược",
+      "purpose": "Chữa trị bệnh nhẹ và cải thiện sức khỏe",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 10,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R047",
+          "name": "Lá cây",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B013",
+      "name": "Bãi thi công",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T001",
+      "technologyName": "Khởi nguyên",
+      "purpose": "Điều phối xây dựng, sửa chữa",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 4,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 3,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B014",
+      "name": "Điểm vận chuyển",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Hạ tầng / logistics",
+      "technologyId": "T001",
+      "technologyName": "Khởi nguyên",
+      "purpose": "Điểm điều phối người/vật tư; nguồn và đích phải nối mạng đường, tính thời gian thực đến nơi; không dịch chuyển tức thì.",
+      "materials": [
+        {
+          "id": "R046",
+          "name": "Cành khô",
+          "quantity": 5,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 1,
+      "height": 1,
+      "site": "land"
+    },
+    {
+      "id": "B015",
+      "name": "Ruộng canh tác",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T007",
+      "technologyName": "Trồng trọt",
+      "purpose": "Năng suất ruộng theo mùa, đất, nước, nhân lực; trâu thuần + ách + cày + người điều khiển tăng hệ số năng suất.",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R064",
+          "name": "Đất màu",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B016",
+      "name": "Vườn cây ăn quả",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T007",
+      "technologyName": "Trồng trọt",
+      "purpose": "Thu hoạch dài hạn",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 10,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R177",
+          "name": "Hạt giống",
+          "quantity": 5,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B017",
+      "name": "Chuồng chăn nuôi",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T008",
+      "technologyName": "Thuần hóa vật nuôi",
+      "purpose": "Nuôi theo từng loài/cá thể với thức ăn, nước, chuồng và nhân sự; phân thải phải xử lý, gia súc có thể mắc bệnh.",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 18,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R108",
+          "name": "Dây thừng",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B018",
+      "name": "Giếng nước",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T009",
+      "technologyName": "Đào giếng",
+      "purpose": "Cấp nước sinh hoạt",
+      "materials": [
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 16,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 10,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B019",
+      "name": "Kênh tưới",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Hạ tầng / logistics",
+      "technologyId": "T010",
+      "technologyName": "Thủy lợi",
+      "purpose": "Tăng năng suất ruộng; cần nguồn nước",
+      "materials": [
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 20,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B020",
+      "name": "Cối xay",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Chế biến lương thực",
+      "technologyId": "T013",
+      "technologyName": "Xay xát",
+      "purpose": "Biến nông sản thô thành thực phẩm sơ chế",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 12,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R100",
+          "name": "Đá đẽo",
+          "quantity": 15,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B021",
+      "name": "Bếp tập thể",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Chế biến lương thực",
+      "technologyId": "T014",
+      "technologyName": "Nấu ăn tập thể",
+      "purpose": "Chế biến nguyên liệu thành phần ăn",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 18,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 14,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B022",
+      "name": "Lò bánh",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Chế biến lương thực",
+      "technologyId": "T015",
+      "technologyName": "Làm bánh",
+      "purpose": "Tạo bánh mì theo công thức",
+      "materials": [
+        {
+          "id": "R105",
+          "name": "Gạch đất",
+          "quantity": 18,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 10,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B023",
+      "name": "Nhà hun khói",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Chế biến lương thực",
+      "technologyId": "T016",
+      "technologyName": "Bảo quản thực phẩm",
+      "purpose": "Tạo thực phẩm chế biến",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 15,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B024",
+      "name": "Xưởng gốm",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T011",
+      "technologyName": "Gốm và chứa đựng",
+      "purpose": "Sản xuất bình chứa và đồ gốm",
+      "materials": [
+        {
+          "id": "R054",
+          "name": "Đất sét",
+          "quantity": 20,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 10,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B025",
+      "name": "Xưởng mộc",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T012",
+      "technologyName": "Chế tác gỗ",
+      "purpose": "Chế biến gỗ, cơ cấu vận chuyển",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 20,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B026",
+      "name": "Xưởng thuộc da",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T084",
+      "technologyName": "Thuộc da",
+      "purpose": "Vật liệu trang phục, dây đeo",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 14,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B027",
+      "name": "Xưởng dệt",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T085",
+      "technologyName": "Dệt sợi",
+      "purpose": "Sản xuất vải",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 16,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R108",
+          "name": "Dây thừng",
+          "quantity": 5,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B028",
+      "name": "Kho hạt giống",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Kho / lưu trữ",
+      "technologyId": "T006",
+      "technologyName": "Bảo quản lương thực",
+      "purpose": "Chứa giống để gieo trồng",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 12,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R106",
+          "name": "Gốm",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "storage"
+    },
+    {
+      "id": "B029",
+      "name": "Bãi than củi",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T017",
+      "technologyName": "Đốt than",
+      "purpose": "Nhiên liệu nhiệt cao",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B030",
+      "name": "Lò gốm",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T011",
+      "technologyName": "Gốm và chứa đựng",
+      "purpose": "Sản xuất gốm và ngói",
+      "materials": [
+        {
+          "id": "R105",
+          "name": "Gạch đất",
+          "quantity": 20,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 10,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B031",
+      "name": "Trạm khảo sát khoáng sản",
+      "era": "E2",
+      "eraName": "Đồ đồng",
+      "group": "Kho / lưu trữ",
+      "technologyId": "T018",
+      "technologyName": "Khảo sát khoáng sản",
+      "purpose": "Mở các ô trữ lượng mới trên bản đồ",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 15,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R100",
+          "name": "Đá đẽo",
+          "quantity": 10,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B032",
+      "name": "Mỏ đồng",
+      "era": "E2",
+      "eraName": "Đồ đồng",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T019",
+      "technologyName": "Khai thác đồng",
+      "purpose": "Khai thác khi có mỏ được tìm thấy",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 20,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R111",
+          "name": "Đá khối",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B033",
+      "name": "Mỏ thiếc",
+      "era": "E2",
+      "eraName": "Đồ đồng",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T020",
+      "technologyName": "Khai thác thiếc",
+      "purpose": "Khai thác thiếc theo địa hình",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 20,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R111",
+          "name": "Đá khối",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B034",
+      "name": "Lò thử quặng",
+      "era": "E2",
+      "eraName": "Đồ đồng",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T021",
+      "technologyName": "Thử quặng kim loại",
+      "purpose": "Cho phép nghiên cứu công nghệ luyện đồng",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 12,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R111",
+          "name": "Đá khối",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B035",
+      "name": "Lò luyện đồng",
+      "era": "E2",
+      "eraName": "Đồ đồng",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T022",
+      "technologyName": "Luyện đồng",
+      "purpose": "Luyện quặng thành kim loại",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 25,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R111",
+          "name": "Đá khối",
+          "quantity": 20,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B036",
+      "name": "Xưởng đúc đồng",
+      "era": "E2",
+      "eraName": "Đồ đồng",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T023",
+      "technologyName": "Đúc đồng",
+      "purpose": "Đúc công cụ; mở nghiên cứu dụng cụ đồng",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 18,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 14,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B037",
+      "name": "Lò gạch",
+      "era": "E2",
+      "eraName": "Đồ đồng",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T024",
+      "technologyName": "Nung gạch",
+      "purpose": "Vật liệu bền hơn gạch đất",
+      "materials": [
+        {
+          "id": "R054",
+          "name": "Đất sét",
+          "quantity": 24,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B038",
+      "name": "Kho khoáng sản",
+      "era": "E2",
+      "eraName": "Đồ đồng",
+      "group": "Kho / lưu trữ",
+      "technologyId": "T018",
+      "technologyName": "Khảo sát khoáng sản",
+      "purpose": "Lưu trữ quặng và thỏi kim loại",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 18,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "storage"
+    },
+    {
+      "id": "B039",
+      "name": "Xưởng đá xây dựng",
+      "era": "E2",
+      "eraName": "Đồ đồng",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T025",
+      "technologyName": "Kỹ thuật xây đá",
+      "purpose": "Gia công đá để xây dựng",
+      "materials": [
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 20,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B040",
+      "name": "Mỏ sắt",
+      "era": "E3",
+      "eraName": "Đồ sắt – Cổ đại",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T026",
+      "technologyName": "Khai thác sắt",
+      "purpose": "Khai thác mỏ sắt có trữ lượng",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 24,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R111",
+          "name": "Đá khối",
+          "quantity": 18,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B041",
+      "name": "Lò luyện sắt",
+      "era": "E3",
+      "eraName": "Đồ sắt – Cổ đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T027",
+      "technologyName": "Luyện sắt",
+      "purpose": "Luyện sắt thô",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 35,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R111",
+          "name": "Đá khối",
+          "quantity": 20,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B042",
+      "name": "Lò rèn",
+      "era": "E3",
+      "eraName": "Đồ sắt – Cổ đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T028",
+      "technologyName": "Rèn sắt",
+      "purpose": "Cải thiện công cụ và xây dựng",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 22,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B043",
+      "name": "Đường đá",
+      "era": "E3",
+      "eraName": "Đồ sắt – Cổ đại",
+      "group": "Hạ tầng / logistics",
+      "technologyId": "T029",
+      "technologyName": "Đường giao thông",
+      "purpose": "Đường đá nối theo từng tile, giúp giảm chi phí vận chuyển; cầu/đường bị ngập chặn tuyến, không tự dịch chuyển đồ.",
+      "materials": [
+        {
+          "id": "R111",
+          "name": "Đá khối",
+          "quantity": 20,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B044",
+      "name": "Cầu gỗ",
+      "era": "E3",
+      "eraName": "Đồ sắt – Cổ đại",
+      "group": "Hạ tầng / logistics",
+      "technologyId": "T029",
+      "technologyName": "Đường giao thông",
+      "purpose": "Nối hai vùng bị chia bởi sông",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 35,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R108",
+          "name": "Dây thừng",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B045",
+      "name": "Chợ giao thương",
+      "era": "E3",
+      "eraName": "Đồ sắt – Cổ đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T030",
+      "technologyName": "Thương mại",
+      "purpose": "Đổi tài nguyên với thị trường ngoài bản đồ",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 24,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R111",
+          "name": "Đá khối",
+          "quantity": 18,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B046",
+      "name": "Trạm canh",
+      "era": "E3",
+      "eraName": "Đồ sắt – Cổ đại",
+      "group": "Dân sinh / xã hội",
+      "technologyId": "T031",
+      "technologyName": "Tổ chức phòng vệ",
+      "purpose": "Giảm rủi ro sự kiện an ninh",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 25,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R111",
+          "name": "Đá khối",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B047",
+      "name": "Nhà hội đồng",
+      "era": "E3",
+      "eraName": "Đồ sắt – Cổ đại",
+      "group": "Dân sinh / xã hội",
+      "technologyId": "T032",
+      "technologyName": "Quản trị xã hội",
+      "purpose": "Quản lý chính sách, phân công theo nhóm",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 40,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 25,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B048",
+      "name": "Kho vật liệu",
+      "era": "E3",
+      "eraName": "Đồ sắt – Cổ đại",
+      "group": "Kho / lưu trữ",
+      "technologyId": "T034",
+      "technologyName": "Kho vật liệu",
+      "purpose": "Chứa gỗ gia công và vật liệu",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 25,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 18,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "storage"
+    },
+    {
+      "id": "B049",
+      "name": "Bãi khai thác đá vôi",
+      "era": "E3",
+      "eraName": "Đồ sắt – Cổ đại",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T033",
+      "technologyName": "Vữa và xây đá",
+      "purpose": "Nguồn đá vôi",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 18,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R140",
+          "name": "Công cụ sắt",
+          "quantity": 3,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B050",
+      "name": "Trường học",
+      "era": "E4",
+      "eraName": "Trung đại",
+      "group": "Nghiên cứu / giáo dục",
+      "technologyId": "T035",
+      "technologyName": "Giáo dục cơ bản",
+      "purpose": "Rút ngắn đào tạo nghề với đủ giáo viên",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 45,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 25,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B051",
+      "name": "Thư viện",
+      "era": "E4",
+      "eraName": "Trung đại",
+      "group": "Nghiên cứu / giáo dục",
+      "technologyId": "T036",
+      "technologyName": "Lưu trữ tri thức",
+      "purpose": "Giữ tri thức và cộng tốc độ nghiên cứu",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 40,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 20,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B052",
+      "name": "Học viện",
+      "era": "E4",
+      "eraName": "Trung đại",
+      "group": "Nghiên cứu / giáo dục",
+      "technologyId": "T037",
+      "technologyName": "Học thuật",
+      "purpose": "Cho phép nghiên cứu học thuật trung đại",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 70,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R111",
+          "name": "Đá khối",
+          "quantity": 45,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B053",
+      "name": "Xưởng giấy",
+      "era": "E4",
+      "eraName": "Trung đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T038",
+      "technologyName": "Làm giấy",
+      "purpose": "Sản xuất vật tư truyền tri thức",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 30,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R111",
+          "name": "Đá khối",
+          "quantity": 15,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B054",
+      "name": "Nhà in",
+      "era": "E4",
+      "eraName": "Trung đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T039",
+      "technologyName": "In ấn",
+      "purpose": "Lan tỏa tri thức, tăng đào tạo",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 35,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 25,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B055",
+      "name": "Lò thủy tinh",
+      "era": "E4",
+      "eraName": "Trung đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T040",
+      "technologyName": "Thủy tinh",
+      "purpose": "Tạo thủy tinh và bình dụng cụ",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 30,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R111",
+          "name": "Đá khối",
+          "quantity": 25,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B056",
+      "name": "Xưởng may",
+      "era": "E4",
+      "eraName": "Trung đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T041",
+      "technologyName": "Thủ công dệt may",
+      "purpose": "May trang phục chống thời tiết (T110, T111); cần thợ may và nguồn vải",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 25,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R114",
+          "name": "Vải dệt",
+          "quantity": 15,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B057",
+      "name": "Trạm y tế",
+      "era": "E4",
+      "eraName": "Trung đại",
+      "group": "Dân sinh / xã hội",
+      "technologyId": "T042",
+      "technologyName": "Y học cơ bản",
+      "purpose": "Giảm tử vong và thời gian bệnh",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 35,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 22,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B058",
+      "name": "Lò vôi",
+      "era": "E4",
+      "eraName": "Trung đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T033",
+      "technologyName": "Vữa và xây đá",
+      "purpose": "Sản xuất vữa xây dựng",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 22,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R111",
+          "name": "Đá khối",
+          "quantity": 18,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B059",
+      "name": "Nhà ở đá",
+      "era": "E4",
+      "eraName": "Trung đại",
+      "group": "Dân sinh / xã hội",
+      "technologyId": "T044",
+      "technologyName": "Nhà ở bền vững",
+      "purpose": "Nhà ở tối đa 12 người",
+      "materials": [
+        {
+          "id": "R111",
+          "name": "Đá khối",
+          "quantity": 45,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R110",
+          "name": "Vữa vôi",
+          "quantity": 15,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B060",
+      "name": "Trạm thủy lợi",
+      "era": "E4",
+      "eraName": "Trung đại",
+      "group": "Hạ tầng / logistics",
+      "technologyId": "T043",
+      "technologyName": "Thủy lợi nâng cao",
+      "purpose": "Tưới ruộng diện rộng",
+      "materials": [
+        {
+          "id": "R111",
+          "name": "Đá khối",
+          "quantity": 35,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 25,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B061",
+      "name": "Phòng thí nghiệm",
+      "era": "E5",
+      "eraName": "Cận đại",
+      "group": "Nghiên cứu / giáo dục",
+      "technologyId": "T045",
+      "technologyName": "Phương pháp khoa học",
+      "purpose": "Nghiên cứu khoa học thực nghiệm",
+      "materials": [
+        {
+          "id": "R112",
+          "name": "Thủy tinh",
+          "quantity": 25,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 45,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B062",
+      "name": "Phòng hóa học",
+      "era": "E5",
+      "eraName": "Cận đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T046",
+      "technologyName": "Hóa học cơ bản",
+      "purpose": "Mở nghiên cứu vật liệu hóa học",
+      "materials": [
+        {
+          "id": "R112",
+          "name": "Thủy tinh",
+          "quantity": 25,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 40,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B063",
+      "name": "Xưởng cơ khí",
+      "era": "E5",
+      "eraName": "Cận đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T047",
+      "technologyName": "Cơ khí chính xác",
+      "purpose": "Chế tạo công cụ máy; mở nghiên cứu cơ khí",
+      "materials": [
+        {
+          "id": "R090",
+          "name": "Sắt rèn",
+          "quantity": 30,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 28,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B064",
+      "name": "Trạm địa chất",
+      "era": "E5",
+      "eraName": "Cận đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T048",
+      "technologyName": "Địa chất học",
+      "purpose": "Khảo sát mỏ sâu",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 30,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R112",
+          "name": "Thủy tinh",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B065",
+      "name": "Xưởng dệt cải tiến",
+      "era": "E5",
+      "eraName": "Cận đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T049",
+      "technologyName": "Cơ giới dệt",
+      "purpose": "Tăng năng suất dệt so với thủ công",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 30,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R090",
+          "name": "Sắt rèn",
+          "quantity": 15,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B066",
+      "name": "Nhà máy vật liệu",
+      "era": "E5",
+      "eraName": "Cận đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T050",
+      "technologyName": "Vật liệu hóa học",
+      "purpose": "Vật liệu công nghiệp sơ khai",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 40,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R090",
+          "name": "Sắt rèn",
+          "quantity": 20,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B067",
+      "name": "Mỏ than",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T051",
+      "technologyName": "Khai thác than",
+      "purpose": "Khai thác than nhiên liệu",
+      "materials": [
+        {
+          "id": "R090",
+          "name": "Sắt rèn",
+          "quantity": 25,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 25,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B068",
+      "name": "Lò than cốc",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T052",
+      "technologyName": "Than cốc",
+      "purpose": "Tạo nhiên liệu luyện thép",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 50,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R090",
+          "name": "Sắt rèn",
+          "quantity": 20,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B069",
+      "name": "Nhà máy động cơ hơi nước",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T053",
+      "technologyName": "Máy hơi nước",
+      "purpose": "Tạo động cơ và công suất cơ khí",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 40,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 60,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B070",
+      "name": "Nhà máy thép",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T054",
+      "technologyName": "Sản xuất thép",
+      "purpose": "Vật liệu xây dựng và máy móc",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 70,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R089",
+          "name": "Sắt thỏi",
+          "quantity": 40,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B071",
+      "name": "Nhà máy cơ khí",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T055",
+      "technologyName": "Sản xuất cơ khí hàng loạt",
+      "purpose": "Máy hóa, tăng năng suất sản xuất",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 55,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 40,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B072",
+      "name": "Mỏ dầu",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T056",
+      "technologyName": "Khai thác dầu mỏ",
+      "purpose": "Khai thác trên ô có dầu",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 45,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 30,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B073",
+      "name": "Mỏ khí",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T056",
+      "technologyName": "Khai thác dầu mỏ",
+      "purpose": "Nguồn khí tự nhiên",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 50,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 35,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B074",
+      "name": "Nhà máy lọc dầu",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T057",
+      "technologyName": "Lọc dầu",
+      "purpose": "Nhiên liệu tinh chế",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 65,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 50,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B075",
+      "name": "Nhà máy xi măng",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T058",
+      "technologyName": "Xi măng",
+      "purpose": "Sản xuất xi măng",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 45,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 45,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B076",
+      "name": "Nhà máy bê tông",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T058",
+      "technologyName": "Xi măng",
+      "purpose": "Sản xuất bê tông hàng loạt",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 40,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 30,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B077",
+      "name": "Ga đường sắt",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Hạ tầng / logistics",
+      "technologyId": "T059",
+      "technologyName": "Vận tải đường sắt",
+      "purpose": "Vận chuyển khối lượng lớn; cần tuyến nối",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 60,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 40,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B078",
+      "name": "Nhà máy nước",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T060",
+      "technologyName": "Cấp nước sạch công nghiệp",
+      "purpose": "Cấp nước khối lượng lớn",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 40,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 50,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B079",
+      "name": "Bệnh viện",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Dân sinh / xã hội",
+      "technologyId": "T061",
+      "technologyName": "Y tế công nghiệp",
+      "purpose": "Điều trị/chăm sóc theo bệnh và thời gian hồi phục; phụ thuộc giường, bác sĩ, vật tư, nước sạch; chất thải y tế phải xử lý.",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 45,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 70,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B080",
+      "name": "Kho công nghiệp",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Kho / lưu trữ",
+      "technologyId": "T062",
+      "technologyName": "Kho quy mô lớn",
+      "purpose": "Sức chứa hàng hóa công nghiệp",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 55,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 45,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "storage"
+    },
+    {
+      "id": "B081",
+      "name": "Nhà máy nhiệt điện",
+      "era": "E7",
+      "eraName": "Điện khí hóa",
+      "group": "Năng lượng / điện",
+      "technologyId": "T063",
+      "technologyName": "Phát điện từ than",
+      "purpose": "Phát 120 đơn vị điện/ngày",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 100,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 80,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B082",
+      "name": "Nhà máy điện khí",
+      "era": "E7",
+      "eraName": "Điện khí hóa",
+      "group": "Năng lượng / điện",
+      "technologyId": "T064",
+      "technologyName": "Phát điện từ khí",
+      "purpose": "Phát 110 đơn vị điện/ngày",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 110,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 70,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B083",
+      "name": "Nhà máy điện dầu",
+      "era": "E7",
+      "eraName": "Điện khí hóa",
+      "group": "Năng lượng / điện",
+      "technologyId": "T065",
+      "technologyName": "Phát điện từ dầu",
+      "purpose": "Phát 90 đơn vị điện/ngày",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 95,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 65,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B084",
+      "name": "Thủy điện",
+      "era": "E7",
+      "eraName": "Điện khí hóa",
+      "group": "Năng lượng / điện",
+      "technologyId": "T066",
+      "technologyName": "Thủy điện",
+      "purpose": "Phát điện theo dòng chảy; phụ thuộc địa hình",
+      "materials": [
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 120,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 75,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B085",
+      "name": "Trạm biến áp",
+      "era": "E7",
+      "eraName": "Điện khí hóa",
+      "group": "Hạ tầng / logistics",
+      "technologyId": "T067",
+      "technologyName": "Phân phối điện",
+      "purpose": "Phân phối điện qua mạng lưới",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 40,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R096",
+          "name": "Dây đồng",
+          "quantity": 30,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B086",
+      "name": "Đường dây điện",
+      "era": "E7",
+      "eraName": "Điện khí hóa",
+      "group": "Hạ tầng / logistics",
+      "technologyId": "T067",
+      "technologyName": "Phân phối điện",
+      "purpose": "Kết nối nguồn, trạm và công trình",
+      "materials": [
+        {
+          "id": "R096",
+          "name": "Dây đồng",
+          "quantity": 30,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 20,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B087",
+      "name": "Nhà máy thiết bị điện",
+      "era": "E7",
+      "eraName": "Điện khí hóa",
+      "group": "Năng lượng / điện",
+      "technologyId": "T068",
+      "technologyName": "Thiết bị điện",
+      "purpose": "Chế tạo máy móc điện",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 55,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R096",
+          "name": "Dây đồng",
+          "quantity": 35,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B088",
+      "name": "Kho lạnh",
+      "era": "E7",
+      "eraName": "Điện khí hóa",
+      "group": "Kho / lưu trữ",
+      "technologyId": "T069",
+      "technologyName": "Bảo quản lạnh",
+      "purpose": "Sức chứa thực phẩm lạnh; mất điện giảm bảo quản",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 40,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 35,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "storage"
+    },
+    {
+      "id": "B089",
+      "name": "Nhà máy bơm nước",
+      "era": "E7",
+      "eraName": "Điện khí hóa",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T070",
+      "technologyName": "Bơm điện",
+      "purpose": "Cấp nước tự động",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 45,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 30,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B090",
+      "name": "Trạm xử lý nước thải",
+      "era": "E7",
+      "eraName": "Điện khí hóa",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T071",
+      "technologyName": "Xử lý nước thải",
+      "purpose": "Xử lý nước thải theo công suất, cần điện/nhân lực; nước đầu ra không mặc định uống được và có phụ phẩm.",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 45,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 55,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B091",
+      "name": "Nhà máy máy móc điện",
+      "era": "E7",
+      "eraName": "Điện khí hóa",
+      "group": "Năng lượng / điện",
+      "technologyId": "T072",
+      "technologyName": "Cơ giới điện",
+      "purpose": "Tăng năng suất thiết bị sử dụng điện",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 65,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R096",
+          "name": "Dây đồng",
+          "quantity": 35,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B092",
+      "name": "Nhà máy dây cáp",
+      "era": "E7",
+      "eraName": "Điện khí hóa",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T067",
+      "technologyName": "Phân phối điện",
+      "purpose": "Sản xuất dây dẫn",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 35,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 30,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B093",
+      "name": "Trang trại điện mặt trời",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Năng lượng / điện",
+      "technologyId": "T073",
+      "technologyName": "Quang điện",
+      "purpose": "Phát điện ban ngày theo thời tiết",
+      "materials": [
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 65,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 40,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R164",
+          "name": "Tấm pin mặt trời",
+          "quantity": 20,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B094",
+      "name": "Trang trại điện gió",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Năng lượng / điện",
+      "technologyId": "T074",
+      "technologyName": "Điện gió",
+      "purpose": "Phát điện theo sức gió",
+      "materials": [
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 80,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 75,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R165",
+          "name": "Tua-bin gió",
+          "quantity": 2,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B095",
+      "name": "Nhà máy pin",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T075",
+      "technologyName": "Pin và tích trữ điện",
+      "purpose": "Chế tạo pin lưu trữ năng lượng",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 55,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 45,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B096",
+      "name": "Trạm lưu trữ điện",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Kho / lưu trữ",
+      "technologyId": "T075",
+      "technologyName": "Pin và tích trữ điện",
+      "purpose": "Nạp xả tối đa 180 đơn vị điện",
+      "materials": [
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 45,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R163",
+          "name": "Bộ pin",
+          "quantity": 18,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B097",
+      "name": "Nhà máy điện tử",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Năng lượng / điện",
+      "technologyId": "T076",
+      "technologyName": "Điện tử",
+      "purpose": "Chế tạo linh kiện điện tử",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 65,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 65,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B098",
+      "name": "Nhà máy vi mạch",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T077",
+      "technologyName": "Bán dẫn",
+      "purpose": "Chế tạo vi mạch",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 120,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 120,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B099",
+      "name": "Nhà máy máy tính",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T078",
+      "technologyName": "Máy tính & số hóa",
+      "purpose": "Sản xuất máy tính",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 65,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 70,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B100",
+      "name": "Trung tâm dữ liệu",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T078",
+      "technologyName": "Máy tính & số hóa",
+      "purpose": "Tối ưu phân bổ và dự báo xã hội",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 90,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 100,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B101",
+      "name": "Nhà máy robot",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T079",
+      "technologyName": "Robot công nghiệp",
+      "purpose": "Robot hỗ trợ làm việc nhưng cần bảo trì",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 100,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 110,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B102",
+      "name": "Trung tâm logistics",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Hạ tầng / logistics",
+      "technologyId": "T080",
+      "technologyName": "Logistics số",
+      "purpose": "Rút ngắn thời gian vận chuyển, giảm ùn tắc",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 60,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 80,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B103",
+      "name": "Viện khoa học hiện đại",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Kho / lưu trữ",
+      "technologyId": "T081",
+      "technologyName": "Nghiên cứu hiện đại",
+      "purpose": "Nghiên cứu vật liệu mới; cần điện liên tục",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 110,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 120,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B104",
+      "name": "Nhà máy tái chế",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T082",
+      "technologyName": "Tái chế",
+      "purpose": "Tái chế thu hồi một phần vật tư, có công suất và phế thải phụ; không xử lý tự động tất cả rác nguy hại.",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 65,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 70,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B105",
+      "name": "Nhà máy vật liệu tiên tiến",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T083",
+      "technologyName": "Vật liệu mới",
+      "purpose": "Chế tạo vật liệu thế hệ mới",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 95,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 90,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B106",
+      "name": "Nhà máy tấm pin mặt trời",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Năng lượng / điện",
+      "technologyId": "T073",
+      "technologyName": "Quang điện",
+      "purpose": "Tự chủ vật liệu điện mặt trời",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 80,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 65,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B107",
+      "name": "Nhà máy tua-bin gió",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Năng lượng / điện",
+      "technologyId": "T074",
+      "technologyName": "Điện gió",
+      "purpose": "Tự chủ thiết bị phong điện",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 85,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 65,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B108",
+      "name": "Nhà máy thực phẩm đóng hộp",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Chế biến lương thực",
+      "technologyId": "T086",
+      "technologyName": "Bảo quản thực phẩm công nghiệp",
+      "purpose": "Tạo khẩu phần chế biến từ nông sản",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 30,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 35,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B109",
+      "name": "Mỏ bô-xít",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T048",
+      "technologyName": "Địa chất học",
+      "purpose": "Khai thác quặng nhôm",
+      "materials": [
+        {
+          "id": "R090",
+          "name": "Sắt rèn",
+          "quantity": 24,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 20,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B110",
+      "name": "Nhà máy nhôm",
+      "era": "E7",
+      "eraName": "Điện khí hóa",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T087",
+      "technologyName": "Luyện nhôm",
+      "purpose": "Sản xuất nhôm bằng công nghệ điện",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 55,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 45,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B111",
+      "name": "Nhà máy xử lý khí",
+      "era": "E7",
+      "eraName": "Điện khí hóa",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T088",
+      "technologyName": "Xử lý khí đốt",
+      "purpose": "Biến khí thô thành khí nhiên liệu",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 45,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 45,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B112",
+      "name": "Mỏ silic",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T089",
+      "technologyName": "Khai thác khoáng sản hiếm",
+      "purpose": "Khai thác nguồn khoáng silic",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 40,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 30,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B113",
+      "name": "Mỏ lithium",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Khai thác / nông nghiệp",
+      "technologyId": "T089",
+      "technologyName": "Khai thác khoáng sản hiếm",
+      "purpose": "Khai thác lithium",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 50,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 35,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B114",
+      "name": "Mỏ khoáng sản hiếm",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Kho / lưu trữ",
+      "technologyId": "T089",
+      "technologyName": "Khai thác khoáng sản hiếm",
+      "purpose": "Khai thác tài nguyên đặc biệt",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 60,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 40,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B115",
+      "name": "Nhà máy tinh luyện khoáng sản",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Kho / lưu trữ",
+      "technologyId": "T090",
+      "technologyName": "Tinh luyện khoáng sản",
+      "purpose": "Tinh luyện vật liệu công nghệ cao",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 65,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 60,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B116",
+      "name": "Nhà máy nhựa kỹ thuật",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T091",
+      "technologyName": "Nhựa hiện đại",
+      "purpose": "Sản xuất nhựa từ dầu mỏ",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 65,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 55,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B117",
+      "name": "Bãi lấy nước",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Khai thác / nước",
+      "technologyId": "T093",
+      "technologyName": "Kỹ thuật lấy nước",
+      "purpose": "Điểm lấy nước từ sông/hồ; phụ thuộc trữ lượng và độ sạch",
+      "materials": [
+        {
+          "id": "R046",
+          "name": "Cành khô",
+          "quantity": 5,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 3,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 1,
+      "height": 1,
+      "site": "waterfront"
+    },
+    {
+      "id": "B118",
+      "name": "Hố chứa nước",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Kho / nước",
+      "technologyId": "T094",
+      "technologyName": "Dự trữ nước sơ khai",
+      "purpose": "Chứa nước thô tối đa 120; bốc hơi trong nắng, nguy cơ nhiễm bẩn khi ngập",
+      "materials": [
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 16,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R054",
+          "name": "Đất sét",
+          "quantity": 8,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 6,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B119",
+      "name": "Rãnh thoát nước",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Hạ tầng / chống ngập",
+      "technologyId": "T095",
+      "technologyName": "Thoát nước sơ khai",
+      "purpose": "Giảm ngập cho cụm công trình có kết nối; cần độ dốc thoát",
+      "materials": [
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 15,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 6,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B120",
+      "name": "Bờ chắn lũ tạm",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Hạ tầng / chống ngập",
+      "technologyId": "T096",
+      "technologyName": "Chống lũ sơ khai",
+      "purpose": "Cản nước lũ mức thấp; có độ bền và có thể bị vỡ",
+      "materials": [
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 24,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 18,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R054",
+          "name": "Đất sét",
+          "quantity": 10,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B121",
+      "name": "Trạm quan sát mùa",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Nghiên cứu / sinh thái",
+      "technologyId": "T092",
+      "technologyName": "Quan sát mùa",
+      "purpose": "Theo dõi mưa, mùa, động vật; tăng thời gian cảnh báo",
+      "materials": [
+        {
+          "id": "R046",
+          "name": "Cành khô",
+          "quantity": 14,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 6,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B122",
+      "name": "Giá phơi thực phẩm",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Chế biến / bảo quản",
+      "technologyId": "T097",
+      "technologyName": "Phơi sấy sơ khai",
+      "purpose": "Chuyển thực phẩm tươi thành thực phẩm khô; mưa làm giảm công suất",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R102",
+          "name": "Dây buộc",
+          "quantity": 6,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R047",
+          "name": "Lá cây",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B123",
+      "name": "Bãi học nghề sơ khai",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Đào tạo",
+      "technologyId": "T104",
+      "technologyName": "Học nghề có hướng dẫn",
+      "purpose": "Có tối đa 2 chỗ đào tạo; người hướng dẫn tiêu tốn thời gian",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B124",
+      "name": "Khu thử gieo hạt",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Nghiên cứu / thử nghiệm",
+      "technologyId": "T101",
+      "technologyName": "Thử gieo hạt",
+      "purpose": "Thử nghiệm gieo theo mùa; không tạo sản lượng nông nghiệp quy mô lớn",
+      "materials": [
+        {
+          "id": "R046",
+          "name": "Cành khô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 6,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B125",
+      "name": "Lều che mưa",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Dân sinh / chống mưa",
+      "technologyId": "T103",
+      "technologyName": "Chỗ trú mưa",
+      "purpose": "Chống mưa/giảm rét cho 5 người; cần sửa chữa sau bão",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R047",
+          "name": "Lá cây",
+          "quantity": 20,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B126",
+      "name": "Bãi củi có mái",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Kho / nhiên liệu",
+      "technologyId": "T103",
+      "technologyName": "Chỗ trú mưa",
+      "purpose": "Giữ củi khô, hạn chế cháy lan nhưng có nguy cơ cháy",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 10,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R047",
+          "name": "Lá cây",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B127",
+      "name": "Bãi sơ chế da",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Chế tạo / sinh tồn",
+      "technologyId": "T105",
+      "technologyName": "Sơ chế da thú",
+      "purpose": "Sơ chế da, giữ lớp lông; cần nguyên liệu săn bắt",
+      "materials": [
+        {
+          "id": "R046",
+          "name": "Cành khô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 7,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R047",
+          "name": "Lá cây",
+          "quantity": 10,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B128",
+      "name": "Lều khâu trang phục",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Chế tạo / sinh tồn",
+      "technologyId": "T106",
+      "technologyName": "Khâu trang phục thô sơ",
+      "purpose": "Chỉ sản xuất khi đủ thợ và vật liệu; đồ cần trang bị từng người",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 14,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R047",
+          "name": "Lá cây",
+          "quantity": 20,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R102",
+          "name": "Dây buộc",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B129",
+      "name": "Bãi hong khô trang phục",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Sinh tồn / bảo dưỡng",
+      "technologyId": "T108",
+      "technologyName": "Chống thấm và hong khô",
+      "purpose": "Giảm độ ướt; chỉ hoạt động khi có củi/điều kiện phơi phù hợp",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 10,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R047",
+          "name": "Lá cây",
+          "quantity": 14,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 5,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B130",
+      "name": "Lều giữ ấm",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Nhà ở / nhiệt",
+      "technologyId": "T107",
+      "technologyName": "Lều chắn gió giữ nhiệt",
+      "purpose": "Giảm lạnh khi ngủ cho người ở trong lều; lửa cần thông gió và nhiên liệu",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 26,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R186",
+          "name": "Da sơ chế",
+          "quantity": 6,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R047",
+          "name": "Lá cây",
+          "quantity": 20,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R102",
+          "name": "Dây buộc",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B131",
+      "name": "Nhà sưởi tập thể",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Dân sinh / nhiệt",
+      "technologyId": "T107",
+      "technologyName": "Lều chắn gió giữ nhiệt",
+      "purpose": "Sưởi ấm khu vực gần, phục hồi sau lạnh; không bảo vệ người săn xa",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 28,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 18,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R186",
+          "name": "Da sơ chế",
+          "quantity": 4,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B132",
+      "name": "Xưởng may thủ công",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Sản xuất / trang phục",
+      "technologyId": "T109",
+      "technologyName": "May vải và len",
+      "purpose": "May trang phục nhiều lớp; cần nguyên liệu từ chăn nuôi/dệt/thuộc da",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 20,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R108",
+          "name": "Dây thừng",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B133",
+      "name": "Xưởng may cơ giới",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Sản xuất / trang phục",
+      "technologyId": "T112",
+      "technologyName": "May mặc công nghiệp",
+      "purpose": "Sản lượng cao hơn xưởng thủ công; hao nhiên liệu/thiết bị",
+      "materials": [
+        {
+          "id": "R090",
+          "name": "Sắt rèn",
+          "quantity": 25,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 35,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R150",
+          "name": "Máy móc cơ khí",
+          "quantity": 3,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B134",
+      "name": "Nhà máy sợi cách nhiệt",
+      "era": "E7",
+      "eraName": "Điện khí hóa",
+      "group": "Sản xuất / trang phục",
+      "technologyId": "T113",
+      "technologyName": "Sợi tổng hợp cách nhiệt",
+      "purpose": "Sản xuất đồ giữ nhiệt; mất điện sẽ dừng",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 35,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 30,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R155",
+          "name": "Thiết bị điện",
+          "quantity": 5,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B135",
+      "name": "Nhà máy đồ bảo hộ hiện đại",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Sản xuất / trang phục",
+      "technologyId": "T114",
+      "technologyName": "Đồ bảo hộ khí hậu cực đoan",
+      "purpose": "Trang bị chống khí hậu khắc nghiệt có hao mòn; không thay thế nơi trú ẩn",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 40,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 40,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R160",
+          "name": "Máy tính",
+          "quantity": 3,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B136",
+      "name": "Lều nghỉ dưỡng",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Y tế / dân sinh",
+      "technologyId": "T115",
+      "technologyName": "Chăm sóc người bệnh sơ khai",
+      "purpose": "Chỗ nghỉ cho người ốm; dinh dưỡng, nước sạch, giữ ấm; không tự chữa nhiễm trùng nặng",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R047",
+          "name": "Lá cây",
+          "quantity": 20,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R058",
+          "name": "Da thú",
+          "quantity": 3,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B137",
+      "name": "Khu vệ sinh đơn sơ",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Vệ sinh / môi trường",
+      "technologyId": "T116",
+      "technologyName": "Vệ sinh trại nguyên thủy",
+      "purpose": "Đặt xa nguồn nước và khu bếp; có phạm vi phục vụ",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 10,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 10,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R102",
+          "name": "Dây buộc",
+          "quantity": 3,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B138",
+      "name": "Bãi thu gom rác",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Môi trường / chất thải",
+      "technologyId": "T116",
+      "technologyName": "Vệ sinh trại nguyên thủy",
+      "purpose": "Chỉ gom rác vào bãi; nếu đầy/không xử lý, ô nhiễm vẫn tăng",
+      "materials": [
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 9,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R046",
+          "name": "Cành khô",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B139",
+      "name": "Đường mòn",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Hạ tầng / giao thông",
+      "technologyId": "T117",
+      "technologyName": "Định hướng và đường mòn",
+      "purpose": "Xây từng đoạn ô bản đồ, giảm chi phí di chuyển; mưa lũ có thể chặn",
+      "materials": [
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 3,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R046",
+          "name": "Cành khô",
+          "quantity": 2,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B140",
+      "name": "Chòi nghỉ dọc đường",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Hạ tầng / giao thông",
+      "technologyId": "T117",
+      "technologyName": "Định hướng và đường mòn",
+      "purpose": "Nghỉ và trú thời tiết; không dịch chuyển tức thời",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 9,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R047",
+          "name": "Lá cây",
+          "quantity": 15,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B141",
+      "name": "Nhà sàn sơ khai",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Nhà ở",
+      "technologyId": "T119",
+      "technologyName": "Nhà tránh lũ",
+      "purpose": "Chỉ chịu được mức ngập thấp và cần sửa chữa",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 25,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R102",
+          "name": "Dây buộc",
+          "quantity": 8,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R047",
+          "name": "Lá cây",
+          "quantity": 22,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B142",
+      "name": "Khu quan sát thú",
+      "era": "E0",
+      "eraName": "Đồ đá sơ khai",
+      "group": "Khảo sát / nghiên cứu",
+      "technologyId": "T118",
+      "technologyName": "Dò dấu và tập tính thú",
+      "purpose": "Hiển thị lãnh thổ và mức độ dữ của loài theo vùng",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 14,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 6,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B143",
+      "name": "Trại thuần dưỡng",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Chăn nuôi / đào tạo",
+      "technologyId": "T120",
+      "technologyName": "Thuần dưỡng động vật có hệ thống",
+      "purpose": "Mỗi cá thể có tiến độ thuần dưỡng; không xuất hiện ngay",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 22,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R108",
+          "name": "Dây thừng",
+          "quantity": 8,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B144",
+      "name": "Chuồng trâu kéo",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Chăn nuôi / sức kéo",
+      "technologyId": "T121",
+      "technologyName": "Thuần hóa trâu làm sức kéo",
+      "purpose": "Trâu phải được thuần dưỡng, có tuổi và đủ sức khỏe",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 26,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R108",
+          "name": "Dây thừng",
+          "quantity": 10,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B145",
+      "name": "Chuồng ngựa",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Chăn nuôi / vận tải",
+      "technologyId": "T122",
+      "technologyName": "Thuần hóa ngựa và cưỡi",
+      "purpose": "Số ngựa dùng được tính theo cá thể có trạng thái sẵn sàng",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 26,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R108",
+          "name": "Dây thừng",
+          "quantity": 10,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B146",
+      "name": "Xưởng yên cương",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Sản xuất / chế tạo",
+      "technologyId": "T122",
+      "technologyName": "Thuần hóa ngựa và cưỡi",
+      "purpose": "Cần sản xuất đủ bộ dụng cụ mới có thể sử dụng vận tải ngựa",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 16,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R058",
+          "name": "Da thú",
+          "quantity": 8,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R108",
+          "name": "Dây thừng",
+          "quantity": 6,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B147",
+      "name": "Trạm xe kéo",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Hạ tầng / logistics",
+      "technologyId": "T124",
+      "technologyName": "Vận tải bằng xe kéo",
+      "purpose": "Có tuyến thật; tải trọng, chi phí nghỉ và giao nhận",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 22,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R108",
+          "name": "Dây thừng",
+          "quantity": 7,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B148",
+      "name": "Kho cỏ khô",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Kho / lưu trữ",
+      "technologyId": "T120",
+      "technologyName": "Thuần dưỡng động vật có hệ thống",
+      "purpose": "Thức ăn dự trữ cho mùa đông và mùa hạn",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 14,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R047",
+          "name": "Lá cây",
+          "quantity": 14,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "storage"
+    },
+    {
+      "id": "B149",
+      "name": "Bãi ủ phân",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Môi trường / nông nghiệp",
+      "technologyId": "T125",
+      "technologyName": "Ủ phân và cải tạo đất",
+      "purpose": "Ủ phân theo thời gian, nhiệt và độ ẩm; quản lý mùi và nước rỉ",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 13,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B150",
+      "name": "Nhà gỗ",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Nhà ở",
+      "technologyId": "T126",
+      "technologyName": "Nhà gỗ và mật độ cư trú",
+      "purpose": "Có chỗ ngủ và diện tích; cần thông gió và bảo trì",
+      "materials": [
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 34,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R107",
+          "name": "Ngói",
+          "quantity": 8,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R108",
+          "name": "Dây thừng",
+          "quantity": 8,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B151",
+      "name": "Trạm chăm sóc gia súc",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Chăn nuôi / sức khỏe",
+      "technologyId": "T139",
+      "technologyName": "Sức khỏe thú nuôi",
+      "purpose": "Tăng khả năng hồi phục gia súc; bệnh truyền nhiễm cần cách ly",
+      "materials": [
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 20,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 10,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B152",
+      "name": "Hố thoát nước thải",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Môi trường / nước",
+      "technologyId": "T127",
+      "technologyName": "Vệ sinh nước sinh hoạt",
+      "purpose": "Lọc lắng thô sơ; không biến nước thải thành nước uống",
+      "materials": [
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 22,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R054",
+          "name": "Đất sét",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B153",
+      "name": "Bãi xử lý rác",
+      "era": "E3",
+      "eraName": "Đồ sắt – Cổ đại",
+      "group": "Môi trường / chất thải",
+      "technologyId": "T130",
+      "technologyName": "Quản lý rác đô thị",
+      "purpose": "Cần vị trí xa dân cư, tránh gây ô nhiễm nước",
+      "materials": [
+        {
+          "id": "R100",
+          "name": "Đá đẽo",
+          "quantity": 20,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 15,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B154",
+      "name": "Đường đất đầm",
+      "era": "E1",
+      "eraName": "Đá mới – Nông nghiệp",
+      "group": "Hạ tầng / giao thông",
+      "technologyId": "T140",
+      "technologyName": "Hạ tầng đường đất",
+      "purpose": "Nâng cấp từng ô đường mòn, bùn giảm tốc trong mưa",
+      "materials": [
+        {
+          "id": "R052",
+          "name": "Đá thô",
+          "quantity": 6,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R045",
+          "name": "Gỗ thô",
+          "quantity": 3,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B155",
+      "name": "Khu cách ly bệnh",
+      "era": "E4",
+      "eraName": "Trung đại",
+      "group": "Y tế / dân sinh",
+      "technologyId": "T128",
+      "technologyName": "Trạm kiểm dịch cộng đồng",
+      "purpose": "Cách ly theo khả năng và thời gian; không chữa khỏi tức thời",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 35,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R110",
+          "name": "Vữa vôi",
+          "quantity": 12,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B156",
+      "name": "Cơ sở bào chế thảo mộc",
+      "era": "E4",
+      "eraName": "Trung đại",
+      "group": "Y tế / sản xuất",
+      "technologyId": "T129",
+      "technologyName": "Thuốc thảo mộc có kiểm nghiệm",
+      "purpose": "Các chế phẩm có giới hạn tác dụng; không thay thuốc hiện đại",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 20,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 15,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B157",
+      "name": "Nhà ở kiên cố",
+      "era": "E4",
+      "eraName": "Trung đại",
+      "group": "Nhà ở",
+      "technologyId": "T044",
+      "technologyName": "Nhà ở bền vững",
+      "purpose": "Giảm rủi ro ẩm mốc và sập nhưng vẫn cần thông gió",
+      "materials": [
+        {
+          "id": "R111",
+          "name": "Đá khối",
+          "quantity": 32,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R110",
+          "name": "Vữa vôi",
+          "quantity": 17,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R107",
+          "name": "Ngói",
+          "quantity": 15,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B158",
+      "name": "Trạm quan trắc ô nhiễm",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Môi trường / giám sát",
+      "technologyId": "T131",
+      "technologyName": "Giám sát khí thải",
+      "purpose": "Đo theo ô bản đồ; không tự giảm phát thải",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 20,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 25,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B159",
+      "name": "Nhà máy xử lý nước thải công nghiệp",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Môi trường / xử lý",
+      "technologyId": "T132",
+      "technologyName": "Xử lý chất thải công nghiệp",
+      "purpose": "Nước tái sử dụng không tự là nước uống; cần công suất và nhiên liệu",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 36,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 45,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B160",
+      "name": "Bãi rác kiểm soát",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Môi trường / chất thải",
+      "technologyId": "T132",
+      "technologyName": "Xử lý chất thải công nghiệp",
+      "purpose": "Có giới hạn sức chứa, rủi ro nước rỉ và phát thải",
+      "materials": [
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 38,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 20,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B161",
+      "name": "Trạm lọc bụi công nghiệp",
+      "era": "E7",
+      "eraName": "Điện khí hóa",
+      "group": "Môi trường / lọc khí",
+      "technologyId": "T133",
+      "technologyName": "Lọc không khí công nghiệp",
+      "purpose": "Giảm phát thải cục bộ theo công suất, không xóa toàn bộ ô nhiễm",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 30,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 24,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R120",
+          "name": "Dây điện",
+          "quantity": 10,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B162",
+      "name": "Trạm bảo dưỡng vận tải",
+      "era": "E5",
+      "eraName": "Cận đại",
+      "group": "Hạ tầng / logistics",
+      "technologyId": "T134",
+      "technologyName": "Cơ khí và bảo trì phương tiện",
+      "purpose": "Dừng bảo dưỡng khiến xe không thể nhận chuyến mới",
+      "materials": [
+        {
+          "id": "R090",
+          "name": "Sắt rèn",
+          "quantity": 18,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R103",
+          "name": "Gỗ xẻ",
+          "quantity": 20,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B163",
+      "name": "Nhà ở tập thể",
+      "era": "E6",
+      "eraName": "Công nghiệp",
+      "group": "Nhà ở",
+      "technologyId": "T135",
+      "technologyName": "Quy hoạch nhà ở công nhân",
+      "purpose": "Mật độ cao tăng nguy cơ lây nếu thiếu vệ sinh",
+      "materials": [
+        {
+          "id": "R109",
+          "name": "Gạch nung",
+          "quantity": 60,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 24,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B164",
+      "name": "Trung tâm điều phối vận tải",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Hạ tầng / logistics",
+      "technologyId": "T136",
+      "technologyName": "Quản trị logistics số",
+      "purpose": "Tối ưu tuyến; không di chuyển tức thời",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 40,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 40,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R160",
+          "name": "Máy tính",
+          "quantity": 3,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B165",
+      "name": "Khu xử lý chất thải nguy hại",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Môi trường / chất thải",
+      "technologyId": "T137",
+      "technologyName": "Xử lý rác nguy hại",
+      "purpose": "Tách chất thải nguy hại; có giới hạn công suất xử lý",
+      "materials": [
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 40,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 50,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    },
+    {
+      "id": "B166",
+      "name": "Nhà ở hiệu suất cao",
+      "era": "E8",
+      "eraName": "Hiện đại",
+      "group": "Nhà ở",
+      "technologyId": "T138",
+      "technologyName": "Nhà ở hiệu suất cao",
+      "purpose": "Cách nhiệt, quản lý nước, hiệu suất năng lượng tốt nhưng cần hạ tầng",
+      "materials": [
+        {
+          "id": "R117",
+          "name": "Bê tông",
+          "quantity": 80,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R093",
+          "name": "Thép",
+          "quantity": 40,
+          "unit": "đơn vị"
+        },
+        {
+          "id": "R119",
+          "name": "Kính xây dựng",
+          "quantity": 24,
+          "unit": "đơn vị"
+        }
+      ],
+      "width": 2,
+      "height": 2,
+      "site": "land"
+    }
+  ]
+}

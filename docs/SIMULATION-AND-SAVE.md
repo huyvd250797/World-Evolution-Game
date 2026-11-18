@@ -1,3 +1,5 @@
+> V0.4.0 kế thừa engine dưới đây, bổ sung planning schema 3, migration 003 và payload cap 256KiB. Chi tiết mở rộng ở CITY-PLANNING.md; các giới hạn 16KiB/schema 2 bên dưới mô tả nền V0.3.
+
 # Simulation & Save Engine V0.3.0
 
 ## Clock và tính nhất quán
