@@ -1,0 +1,10 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {createWorldSchema,initialState,snapshotSchema,populationLimitSchema} from '../src/game/core/world';
+import {assetUrl} from '../src/game/renderer/assets';
+const input={name:'  Bình Minh  ',seed:'WE-1234',climateId:'B01',populationLimit:200,requestId:'9e232894-d844-43af-8267-63d023874966'};
+test('World input normalizes names and validates Canonical limits',()=>{assert.equal(createWorldSchema.parse(input).name,'Bình Minh');for(const populationLimit of [19,100001,20.5,NaN])assert.equal(createWorldSchema.safeParse({...input,populationLimit}).success,false);for(const seed of ['','a b','dấu'])assert.equal(createWorldSchema.safeParse({...input,seed}).success,false);assert.equal(createWorldSchema.safeParse({...input,climateId:'FAKE'}).success,false);assert.equal(createWorldSchema.safeParse({...input,name:'ab\ncd'}).success,false);assert.ok(populationLimitSchema.safeParse(100000).success);});
+test('Initial snapshot has 20 unique people, no invented buildings and is deterministic',()=>{const state=initialState();assert.deepEqual(snapshotSchema.parse(state),state);assert.equal(new Set(state.people.map(p=>p.id)).size,20);assert.equal(state.buildings.length,0);assert.equal(state.paused,true);assert.deepEqual(initialState(),state);state.people[0].id='changed';assert.equal(initialState().people[0].id,'person-001');});
+test('Asset origin changes without changing stable IDs or saves',()=>{assert.equal(assetUrl('landscape','https://cdn.example.com/'),'https://cdn.example.com/assets/landscape-v1.svg');assert.equal(assetUrl('landscape',''),'/assets/landscape-v1.svg');assert.throws(()=>assetUrl('landscape','http://cdn.example.com'));});
+
+import {requestOrigin} from '../src/lib/request-origin';
+test('Callback preserves visited LAN host instead of normalized localhost',()=>{assert.equal(requestOrigin({url:'http://localhost:3000/auth/callback',headers:new Headers({host:'192.168.1.10:3000'})}),'http://192.168.1.10:3000');assert.equal(requestOrigin({url:'https://game.example/auth/callback',headers:new Headers({host:'game.example'})}),'https://game.example');});

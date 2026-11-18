@@ -1,0 +1,5 @@
+import { PGlite } from '@electric-sql/pglite';
+import { readFile } from 'node:fs/promises';
+export const alice='11111111-1111-4111-8111-111111111111',bob='22222222-2222-4222-8222-222222222222';
+export async function database(){const db=new PGlite();await db.exec(`create role anon;create role authenticated;create schema auth;create table auth.users(id uuid primary key);insert into auth.users values('${alice}'),('${bob}');create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;grant usage on schema auth to authenticated,anon;grant execute on function auth.uid() to authenticated,anon;`);await db.exec(await readFile('infra/supabase/migrations/202611180001_foundation.sql','utf8'));return db;}
+export async function asUser<T>(db:PGlite,uid:string|null,sql:string,params:unknown[]=[]){return db.transaction(async tx=>{await tx.exec(`set local role ${uid?'authenticated':'anon'}`);await tx.query("select set_config('request.jwt.claim.sub',$1,true)",[uid??'']);return tx.query<T>(sql,params);});}

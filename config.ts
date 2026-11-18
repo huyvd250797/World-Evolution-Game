@@ -1,0 +1,2 @@
+export function isConfigured(){const url=process.env.NEXT_PUBLIC_SUPABASE_URL,key=process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;return Boolean(url&&key&&!url.includes('YOUR_PROJECT')&&!key.includes('REPLACE_ME'));}
+export function supabaseEnv(){if(!isConfigured())throw new Error('Ứng dụng chưa được cấu hình Supabase. Xem README.md.');return {url:process.env.NEXT_PUBLIC_SUPABASE_URL!,key:process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!};}
