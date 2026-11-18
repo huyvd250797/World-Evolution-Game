@@ -1,18 +1,20 @@
-# Hướng dẫn cấu hình World Evolution V0.2.0
+# Hướng dẫn cấu hình World Evolution V0.3.0
 
-## Cập nhật từ V0.1.2 (và các bản nền tảng trước)
+## Cập nhật từ V0.2.0 lên V0.3.0
 
 Không cần xóa repository, project Vercel hoặc database. Upload toàn bộ nội dung ZIP mới vào đúng gốc repo, ghi đè package.json, proxy.ts, src/proxy.ts và thêm src/lib/supabase/proxy.ts. Trong GitHub, kiểm tra proxy.ts ở gốc có import `@/lib/supabase/proxy`. Source mới có hai entry tương thích cùng nội dung; logic session chỉ đặt trong src/lib/supabase/proxy.ts.
+
+**Trước deploy V0.3.0:** chạy một lần `infra/supabase/migrations/202611180002_simulation_save.sql` trong Supabase SQL Editor. File `World-Evolution-V0.3.0-Migrations.txt` chứa đúng migration mới này. Không chạy lại 001, không reset dữ liệu. Migration thêm engine saves/history/lease và cho phép day tăng; giữ cấu hình/seed/20 dân và bản đồ cũ.
 
 Kiểm tra deployment đang dùng commit vừa push, Root Directory là thư mục chứa package.json. Khi deploy lại, bỏ chọn Use existing Build Cache. Giữ các Environment Variables và URL Supabase. Không chạy lại migration đã áp dụng.
 
 ## 0. Deploy trực tiếp trên Vercel
 
-Boss không phải cài Node/npm hoặc chạy localhost. Gói V0.2.0 chứa source ngay tại gốc ZIP; upload toàn bộ sau giải nén vào GitHub, chọn Root Directory chứa package.json. Nếu thay source từ gói cũ, giữ các biến môi trường và Supabase project hiện tại.
+Boss không phải cài Node/npm hoặc chạy localhost. Gói V0.3.0 chứa source ngay tại gốc ZIP; upload toàn bộ sau giải nén vào GitHub, chọn Root Directory chứa package.json. Nếu thay source từ gói cũ, giữ các biến môi trường và Supabase project hiện tại.
 
 Build production chỉ chạy `node verify-release.mjs && next build`, không chạy importer TypeScript. Vercel tự chạy Install/Build. Mục 1 và các lệnh local bên dưới là tùy chọn cho lập trình viên. Cấu hình Vercel chi tiết ở mục 8.
 
-Không cần chạy migration mới khi lên V0.2.0. Chỉ chạy migration 001 nếu project chưa từng được khởi tạo.
+Lên V0.3.0 cần chạy migration 002 sau 001. Project mới hoàn toàn chạy 001 trước rồi 002; project V0.2.0 đã dùng chỉ chạy 002.
 
 ## 1. Chuẩn bị source và môi trường
 
@@ -25,11 +27,11 @@ Không cần chạy migration mới khi lên V0.2.0. Chỉ chạy migration 001 
 
 1. Mở https://supabase.com/dashboard, tạo project riêng cho game, chọn region phù hợp người chơi. Ghi lại mật khẩu database ở nơi quản lý mật khẩu của Boss; app không cần mật khẩu đó.
 2. Đợi project sẵn sàng. Mở **SQL Editor → New query**.
-3. Mở `infra/supabase/migrations/202611180001_foundation.sql` trong source . Copy toàn bộ, chạy **một lần**.
-4. Migration tạo bảng `public.worlds`, index, RLS và các RPC tạo/sửa/xóa. Không có bucket Storage cần tạo ở bản này.
+3. Mở `infra/supabase/migrations/202611180001_foundation.sql` trong source. Copy toàn bộ, chạy **một lần**, sau đó chạy `202611180002_simulation_save.sql`.
+4. Migration 001 tạo bảng `public.worlds`, index, RLS và các RPC tạo/sửa/xóa; 002 thêm bảng private và RPC `simulation_rpc`. Không có bucket Storage cần tạo ở bản này.
 5. Nếu gặp `relation worlds already exists`, dừng chạy lại. Kiểm tra project có phải môi trường mới hay đã áp dụng migration. Không xóa bảng dữ liệu để xử lý lỗi này.
 6. Trong API settings, giữ `public` được exposed; **không thêm schema `private` vào Exposed schemas**. Các function private chỉ được gọi qua public RPC có kiểm soát.
-7. Chạy `infra/supabase/verify_setup.sql` để kiểm tra cấu trúc, RLS và các grant. File kiểm tra chỉ đọc metadata.
+7. Chạy `infra/supabase/verify_setup.sql` và `infra/supabase/verify_simulation.sql` để kiểm tra cấu trúc, RLS và các grant. File kiểm tra chỉ đọc metadata.
 
 Migration không tạo user thử trong Supabase thật. `tests/database.ts` chỉ tạo auth giả lập trong PostgreSQL cục bộ dùng cho test.
 
@@ -143,7 +145,7 @@ Repo mới (thay URL mẫu bằng repo của Boss):
 ```bash
 git init
 git add .
-git commit -m "World Evolution V0.2.0 Isometric World and Camera"
+git commit -m "World Evolution V0.3.0 Isometric World and Camera"
 git branch -M main
 git remote add origin https://github.com/YOUR_ACCOUNT/world-evolution.git
 git push -u origin main
@@ -179,28 +181,30 @@ Bản này có SVG minh họa và atlas bản đồ E0 (PNG + spritesheet JSON) 
 
 Nếu dùng CDN riêng, cho phép CORS GET/HEAD từ domain app cho PNG/JSON; upload cả hai file atlas, giữ cùng thư mục vì JSON tham chiếu PNG tương đối. Worker và JavaScript tiếp tục được phục vụ cùng origin app. Nếu không cần CDN riêng, giữ ASSET_BASE_URL trống.
 
-Không upload ảnh vào PostgreSQL hoặc tạo bản sao theo từng world. Không sửa nội dung file dưới URL đã cache immutable; đổi tên phiên bản và cập nhật manifest. V0.2 chưa có offline cache/service worker; browser/CDN HTTP cache là lớp cache hiện tại.
+Không upload ảnh vào PostgreSQL hoặc tạo bản sao theo từng world. Không sửa nội dung file dưới URL đã cache immutable; đổi tên phiên bản và cập nhật manifest. V0.3 chưa có offline cache/service worker; browser/CDN HTTP cache là lớp cache hiện tại.
 
 Theo dõi database/egress ở Supabase và data transfer ở Vercel. Ngưỡng 60% dùng để kiểm tra, 80% để chuẩn bị phương án nâng cấp theo kế hoạch V1.1; đây là ngưỡng nội bộ, không phải quota của nhà cung cấp. Không có cam kết Free phục vụ không giới hạn.
 
 ## Kiểm tra bản đồ sau deploy
 
-Mở một thế giới V0.1.2 đã có, chờ tải atlas; xác nhận 20 dân và cấu hình vẫn giữ. Trên PC kéo/cuộn, click ô, ±, Home, minimap và xem toàn bản đồ. Trên iPhone/Android thử vuốt một ngón, chụm hai ngón, xoay ngang/dọc; thao tác chụm không được bật thông tin ô. Mở cùng seed/khí hậu ở thiết bị khác phải có địa hình giống nhau. Kiểm tra chế độ Nhẹ khi máy yếu. Không có nút chạy mô phỏng trong V0.2.0.
+Mở một thế giới V0.2.0 đã có, chờ tải atlas; xác nhận 20 dân và cấu hình vẫn giữ. Trên PC kéo/cuộn, click ô, ±, Home, minimap và xem toàn bản đồ. Trên iPhone/Android thử vuốt một ngón, chụm hai ngón, xoay ngang/dọc; thao tác chụm không được bật thông tin ô. Mở cùng seed/khí hậu ở thiết bị khác phải có địa hình giống nhau. Kiểm tra chế độ Nhẹ khi máy yếu. Sau khi panel Simulation tải xong, bấm Chạy, x4, Tạm dừng/Lưu ngay; đợi Đã lưu rồi reload. Mở thiết bị/tab khác, kiểm quyền xem và Tiếp quản. Ẩn trang phải tạm dừng; mất mạng giữ bản tạm, khác revision không tự ghi đè. Xem docs/SIMULATION-AND-SAVE.md.
 
 Nếu bản đồ báo lỗi tải, kiểm tra Network: worker JS, atlas JSON và PNG trả 200; nếu dùng CDN kiểm tra CORS và HTTPS. Nếu WebGL lỗi, ứng dụng tự thử Canvas 2D, thông báo trong Hướng dẫn điều khiển. Vẫn lỗi thì bấm Thử lại sau khi kiểm tra mạng.
 
 ## 10. Backup và nâng cấp
 
-Trước dữ liệu thật có giá trị, chọn và diễn tập một cách backup phù hợp project: export bảng `worlds` và thông tin chủ sở hữu cần phục hồi, hoặc dùng công cụ backup database của Supabase. Không coi revision là bản backup: bản nền tảng chỉ giữ trạng thái hiện tại, không có recovery history tự động.
+V0.3.0 có lịch sử giới hạn 25–32 mốc, snapshot mỗi 8 revision và khôi phục tạo revision mới. Đây là recovery trong app, không thay thế backup toàn project.
 
-Khởi tạo lần đầu chạy migration 001 trước khi sử dụng app. Bản sau phải có migration tăng dần, không sửa rồi chạy lại 001 trên dữ liệu đang dùng. Khi rollback app, xác minh schema tương thích; không xóa bảng/khôi phục database cũ mù quáng làm mất save mới.
+Trước dữ liệu thật có giá trị, chọn và diễn tập một cách backup phù hợp project: export bảng `worlds` và thông tin chủ sở hữu cần phục hồi, hoặc dùng công cụ backup database của Supabase. Không coi config revision là backup: simulation revision và lịch sử riêng bắt đầu từ V0.3.0.
+
+Khởi tạo mới chạy 001 rồi 002 trước khi sử dụng V0.3.0. Nâng từ V0.2.0 chỉ chạy 002; giữ nguyên mọi dữ liệu. Bản sau phải có migration tăng dần, không sửa rồi chạy lại 001 trên dữ liệu đang dùng. Khi rollback app, xác minh schema tương thích; không xóa bảng/khôi phục database cũ mù quáng làm mất save mới.
 
 ## 11. Xử lý lỗi thường gặp
 
 | Hiện tượng | Kiểm tra và xử lý |
 | --- | --- |
 | Chưa cấu hình kết nối | Kiểm tra `.env.local` hoặc Vercel Environment Variables; restart local/redeploy |
-| Không có bảng/function | Chạy migration 001 đúng project; nếu vừa chạy, chờ schema cache cập nhật rồi thử lại |
+| Không có bảng/function | Project mới chạy 001 rồi 002; nâng từ V0.2 chỉ chạy 002. Nếu vừa chạy, chờ schema cache cập nhật |
 | Invalid API key | Dùng publishable/anon của cùng project URL; không dùng secret key |
 | Email chưa xác nhận | Mở email xác nhận hoặc kiểm tra Email Templates và SMTP |
 | Callback hết hạn | Xin thư mới; dùng cùng trình duyệt cho PKCE hoặc cấu hình token_hash template |

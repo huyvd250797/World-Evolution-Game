@@ -6,8 +6,8 @@ Căn cứ: Development Plan V1.1 và Master Game Data V1.2 Canonical Frozen. 23 
 | --- | --- | --- | --- |
 | V0.1.0 | Cross-Platform Foundation | Auth, worlds, 20 dân khởi tạo, catalog/ID/checksum, RLS, asset/CDN nền tảng, UI PC/mobile. Source/build/logic/SQL được kiểm; live cloud và thiết bị thật chờ cấu hình | Đã xây source |
 | V0.2.0 | Isometric World & Camera | Map 2.5D từ seed, chunk/culling/LOD, minimap, chọn ô, pan/pinch, WebGL/Canvas; kiểm logic và render Canvas. GPU, tải lạnh/ấm và thiết bị thật cần nghiệm thu deployment | Đã xây source |
-| V0.3.0 | Simulation & Save Engine | Worker deterministic, ngày/mùa, x1/x2/x4/pause, snapshot/delta/recovery, lease thiết bị, retention và đo egress | Tiếp theo |
-| V0.4.0 | Construction & City Planning | Ghost preview, địa hình, footprint, xoay, đường; xác nhận bằng chạm; công trình không nhân bản asset | Dự kiến |
+| V0.3.0 | Simulation & Save Engine | Worker deterministic, ngày/mùa, x1/x2/x4/pause, snapshot/delta/recovery, lease thiết bị, retention và thống kê payload; kiểm Worker/SQL/HTTP, cloud và thiết bị thật cần nghiệm thu | Đã xây source |
+| V0.4.0 | Construction & City Planning | Ghost preview, địa hình, footprint, xoay, đường; xác nhận bằng chạm; công trình không nhân bản asset | Tiếp theo |
 | V0.5.0 | Population Housing & Pathfinding | Nhà ở, nhu cầu cơ bản, 20 agents, đường đi, pop cap; cloud cross-device và benchmark dân cư | Dự kiến |
 | V0.6.0 | Survival & Food | Hái/săn/nước, phần ăn, kho và hư hỏng theo lô; dữ liệu lô có vòng đời | Dự kiến |
 | V0.7.0 | Workforce & Training | Nghề, tập sự, đào tạo và điều chuyển; controls chạm, batch cập nhật | Dự kiến |
@@ -44,3 +44,7 @@ V0.1.2 — Proxy Path Compatibility Fix: sửa entry/import tương thích khi r
 - V2.0: QA dài hạn và tối ưu/cân bằng thực tế.
 
 V0.1 chưa cần lease simulation do không tiến tick; revision bảo vệ sửa cấu hình. V0.3 phải hoàn thiện lease trước khi chạy mô phỏng nhiều thiết bị.
+
+## V0.3.0 — Simulation & Save Engine
+
+Clock theo CFG001/002/008/035, Worker cố định bước, RNG/cursor; full head + lịch sử full/delta, SHA-256 và khôi phục tạo revision mới. Lease 75 giây, heartbeat 20 giây, epoch fencing. Bản tạm theo tài khoản/world/tab, đối chiếu revision trước phục hồi, không tự ghi đè khi xung đột. Migration 002 sau 001; giữ generator/map và trạng thái ban đầu. Chưa chạy dân/sinh tồn, không chạy bù offline.

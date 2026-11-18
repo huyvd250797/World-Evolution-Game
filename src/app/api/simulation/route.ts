@@ -1,0 +1,18 @@
+import {z} from 'zod';
+import {supabaseServer} from '@/lib/supabase/server';
+import {requestOrigin} from '@/lib/request-origin';
+export const dynamic='force-dynamic';
+const input=z.object({worldId:z.uuid(),token:z.uuid(),action:z.enum(['open','renew','takeover','release','save','history','read','restore']),epoch:z.number().int().min(0).optional(),revision:z.number().int().min(0).optional(),requestId:z.uuid().optional(),kind:z.enum(['full','delta']).optional(),payload:z.string().max(16384).optional(),checksum:z.string().regex(/^[a-f0-9]{64}$/).optional(),target:z.number().int().min(0).optional()}).strict();
+const messages:Record<string,string>={LEASE_LOST:'Thiết bị khác đã tiếp quản hoặc quyền điều khiển hết hạn. Tiến trình chưa đồng bộ được giữ trên thiết bị.',SAVE_CONFLICT:'Bản đám mây đã thay đổi. Không ghi đè; tải lại để đối chiếu tiến trình.',SAVE_CORRUPT:'Bản lưu không hợp lệ. Mở Lịch sử để chọn bản khôi phục.',CHECKSUM_MISMATCH:'Checksum dữ liệu lưu không khớp. Chưa ghi dữ liệu lên đám mây.',SAVE_REWIND:'Tiến trình cũ hơn bản đám mây. Chỉ có thể quay lại bằng chức năng Khôi phục.',INVALID_SAVE:'Cấu trúc hoặc phiên bản bản lưu không hợp lệ.',WORLD_NOT_FOUND:'Không tìm thấy thế giới trong tài khoản này.',SAVE_NOT_FOUND:'Bản lưu này không còn trong lịch sử.',REQUEST_MISMATCH:'Yêu cầu lưu trùng mã nhưng khác nội dung.'};
+export async function POST(request:Request){
+ const json=(value:unknown,status=200)=>Response.json(value,{status,headers:{'Cache-Control':'private, no-store'}});
+ if(request.headers.get('origin')!==requestOrigin(request))return json({code:'ORIGIN',error:'Nguồn yêu cầu không hợp lệ.'},403);
+ const db=await supabaseServer();const {data:{user},error:authError}=await db.auth.getUser();if(authError||!user)return json({code:'AUTH_REQUIRED',error:'Phiên đăng nhập đã hết hạn. Đăng nhập lại để tiếp tục.'},401);
+ let raw:string;try{raw=await request.text();if(raw.length>32768)throw new Error();}catch{return json({code:'INVALID_REQUEST',error:'Yêu cầu quá lớn hoặc không đọc được.'},400);}
+ let parsed:ReturnType<typeof input.safeParse>;try{parsed=input.safeParse(JSON.parse(raw));}catch{return json({code:'INVALID_REQUEST',error:'Yêu cầu không phải JSON hợp lệ.'},400);}
+ if(!parsed.success)return json({code:'INVALID_REQUEST',error:'Thiếu hoặc sai tham số lưu tiến trình.'},400);
+ const p=parsed.data;if((p.action==='save'&&(!p.requestId||!p.payload||!p.kind||!p.checksum))||(p.action==='restore'&&(!p.requestId||p.target===undefined)))return json({code:'INVALID_REQUEST',error:'Thiếu dữ liệu lưu/khôi phục.'},400);
+ const {data,error}=await db.rpc('simulation_rpc',{p_world:p.worldId,p_token:p.token,p_action:p.action,p_epoch:p.epoch??0,p_revision:p.revision??0,p_request:p.requestId??null,p_kind:p.kind??null,p_payload:p.payload??null,p_checksum:p.checksum??null,p_target:p.target??null});
+ if(error){const code=Object.keys(messages).find(k=>error.message.includes(k))??error.code;const missing=['42883','42P01','PGRST202','PGRST205'].includes(error.code);return json({code:missing?'MIGRATION_REQUIRED':code,error:missing?'Chưa có engine lưu tiến trình. Chạy migration 202611180002_simulation_save.sql trong Supabase SQL Editor trước khi dùng V0.3.0.':messages[code]??'Không lưu/tải được tiến trình. Kiểm tra kết nối Supabase rồi thử lại.'},code==='LEASE_LOST'||code==='SAVE_CONFLICT'?409:400);}
+ return json(data);
+}

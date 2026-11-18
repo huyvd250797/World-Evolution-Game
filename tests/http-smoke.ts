@@ -2,6 +2,7 @@ import {spawn} from 'node:child_process';
 import {readFile} from 'node:fs/promises';
 import {createServerClient} from '@supabase/ssr';
 import assert from 'node:assert/strict';
+import {decodeHead,control,advance,sha256} from '../src/game/simulation/engine';
 const env={...process.env,NEXT_PUBLIC_SUPABASE_URL:'http://127.0.0.1:54329',NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY:'fixture-public-key',NEXT_PUBLIC_ASSET_BASE_URL:''};
 const fixture=spawn(process.execPath,['--import','tsx','tests/fixture-server.ts'],{env,stdio:['ignore','pipe','pipe']});
 const app=spawn(process.execPath,['node_modules/next/dist/bin/next','dev','--hostname','127.0.0.1','--port','3000'],{env,stdio:['ignore','pipe','pipe']});
@@ -31,6 +32,14 @@ try{
  async function action(name:string,input:unknown){const r=await fetch(base+'/worlds',{method:'POST',headers:{cookie:cookie(),'Next-Action':ids[name]!,Origin:base,'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify([input])});const text=await r.text();assert.equal(r.status,200,text.slice(0,1200));return text;}
  const created=await action('createWorld',{name:'HTTP Smoke',seed:'HTTP-2026',climateId:'B01',populationLimit:200,requestId:crypto.randomUUID()});const id=created.match(/"worldId":"([a-f0-9-]+)"/)?.[1];assert.ok(id,created.slice(0,1500));
  const detail=await(await fetch(base+`/worlds/${id}`,{headers:{cookie:cookie()}})).text();assert.ok(detail.includes('HTTP Smoke'));assert.ok(detail.includes('person-020'));
+ const simToken=crypto.randomUUID();
+ async function sim(action:string,extra:Record<string,unknown>={}){const r=await fetch(base+'/api/simulation',{method:'POST',headers:{cookie:cookie(),Origin:base,'Content-Type':'application/json'},body:JSON.stringify({worldId:id,token:simToken,action,...extra})});return {status:r.status,data:await r.json()};}
+ const opened=await sim('open');assert.equal(opened.status,200);assert.equal(opened.data.owned,true);const identity={worldId:id,seed:'HTTP-2026',climateId:'B01'};let simState=control(await decodeHead(opened.data.head,identity),{paused:false});for(let n=0;n<3;n++)simState=advance(simState,60000);simState=control(simState,{paused:true});const payload=JSON.stringify(simState),saveRequest={epoch:opened.data.epoch,revision:0,requestId:crypto.randomUUID(),kind:'full',payload,checksum:await sha256(payload)};
+ const saved=await sim('save',saveRequest);assert.equal(saved.status,200);assert.equal((await decodeHead(saved.data.ack,identity)).tick,1800);const retry=await sim('save',saveRequest);assert.equal(retry.data.ack.revision,1);assert.equal(retry.data.saveCount,1);const history=await sim('history');assert.equal(history.data.history.length,2);const restored=await sim('restore',{epoch:opened.data.epoch,revision:1,requestId:crypto.randomUUID(),target:0});assert.equal(restored.status,200);assert.equal((await decodeHead(restored.data.ack,identity)).tick,0);
+ const csrf=await fetch(base+'/api/simulation',{method:'POST',headers:{cookie:cookie(),Origin:'https://evil.example','Content-Type':'application/json'},body:JSON.stringify({worldId:id,token:simToken,action:'open'})});assert.equal(csrf.status,403);
+ const anonApi=await fetch(base+'/api/simulation',{method:'POST',headers:{Origin:base,'Content-Type':'application/json'},body:JSON.stringify({worldId:id,token:simToken,action:'open'})});assert.equal(anonApi.status,401);
+ const malformed=await sim('save',{payload:'{}'});assert.equal(malformed.status,400);
+ console.log('PASS Simulation HTTP: owner auth, lease open, full save/day 2, lost-ACK retry, history, restore, CSRF and request validation.');
  const updated=await action('updateWorld',{id,name:'HTTP Renamed',populationLimit:300,revision:1});assert.ok(updated.includes('success'),updated.slice(0,1500));
  const stale=await action('updateWorld',{id,name:'Stale',populationLimit:300,revision:1});assert.ok(stale.includes('error'));
  const deleted=await action('deleteWorld',{id,confirmation:'HTTP Renamed',revision:2});assert.ok(deleted.includes('success'));

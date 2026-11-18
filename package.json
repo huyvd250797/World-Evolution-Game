@@ -1,7 +1,7 @@
 {
   "name": "world-evolution",
-  "version": "0.2.0",
-  "description": "World Evolution V0.2.0 Isometric World & Camera",
+  "version": "0.3.0",
+  "description": "World Evolution V0.3.0 Simulation & Save Engine",
   "scripts": {
     "dev": "next dev",
     "build": "node verify-release.mjs && next build",

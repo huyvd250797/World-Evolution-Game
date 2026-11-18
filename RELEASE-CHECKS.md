@@ -1,25 +1,28 @@
-# World Evolution V0.2.0 — Release checks
+# World Evolution V0.3.0 — Release checks
 
-Ngày kiểm tra: 18/11/2026. Nguồn nâng cấp: ZIP V0.1.2 Boss đính kèm.
+Ngày kiểm tra: 18/11/2026. Nguồn nâng cấp: ZIP V0.2.0 Boss đính kèm.
 
 | Kiểm tra | Kết quả |
 | --- | --- |
-| `npm run typecheck` (app + tools/tests) | Đạt |
-| `npm run lint` | Đạt |
-| `npm test` | 30 kiểm tra/subtest đạt, 0 lỗi |
-| `npm run data:check` | Đạt; 38 sheet, 5.984 tham chiếu, SQL/asset checksum khớp |
-| `npm run build` | Đạt; Next.js 16.4.6 Turbopack, production routes và Proxy |
-| `npm run test:http` | Đạt auth/session và vòng đời worlds qua fixture PostgreSQL/Next/SDK |
-| Bản đồ `we-map-1` | Golden SHA-256 khóa seed BOSS-2026 / B01; kiểm 7 khí hậu và camera/gesture/culling |
-| Renderer Canvas | Render thật qua native Canvas; kiểm pixel, LOD, resize và cleanup; xem ảnh near/far B01/B02/B06 |
-| Tính kế thừa | Workbook, catalog/summary, SQL 001, hai entry proxy và logic session giống byte với ZIP V0.1.2 |
-| Playwright / WebGL GPU / Safari & Android thật | Chưa xác minh; xem docs/VERIFICATION.md |
-| Supabase thật / GitHub / deploy Vercel thật | Chưa truy cập hoặc triển khai trong lần bàn giao source này |
+| Typecheck app + tools/tests | Đạt |
+| ESLint | Đạt |
+| Unit/integration | 47 tests/subtests đạt, 0 lỗi |
+| Engine golden vector | Xorshift32 + we-sim-1 seed BOSS-2026/cursor khóa bằng test |
+| Clock/calendar | CFG001/002/008/035, season ranges Frozen, x1/x2/x4/pause/partial tick/RNG resume đạt |
+| Worker thật | Chạy/pause/x4/snapshot và lease-expiry tự pause đạt qua node worker bridge |
+| Session + Worker + PostgreSQL | Lost ACK retry, reconnect/local recovery, offline/visibility pause, fencing, sửa corrupt head, storage denied đạt |
+| SQL 001→002 | Ownership/privileges, lease/epoch/expiry, idempotency/conflicts, full/delta/reconstruct/prune/restore/cascade đạt |
+| HTTP Next + Supabase SDK fixture | Auth/world lifecycle và simulation open/save sang ngày 2/retry/history/restore/CSRF/input validation đạt |
+| data:check | Đạt; 38 sheet, 5.984 tham chiếu, catalog/SQL baseline/asset checksums |
+| Production build | Đạt; Next.js 16.4.6 Turbopack, `/api/simulation`, các trang và Proxy |
+| Kế thừa byte | Workbook/catalog/summary/asset manifest/SQL 001, map generator/camera/controller/render, proxy và toàn bộ assets giống ZIP V0.2.0 |
+| Playwright | Đã thử 5 specs, Chromium bị chặn socket trước mở trang; chưa xác minh UI/browser qua suite này |
+| GPU/Safari/Android/Supabase/Vercel thật | Chưa xác minh trên dịch vụ/thiết bị của Boss |
 
-Không cần migration mới. Không reset database. Build dùng Node verifier và catalog xuất sẵn, không phụ thuộc chạy importer Excel trong production.
+Migration mới bắt buộc: `202611180002_simulation_save.sql` sau 001. File TXT riêng chứa đúng SQL 002; không chạy lại 001 và không reset database.
 
 Master Data SHA-256: `9583ccb1398a0e45dc1c4e415b9749f5a22c3f7b24dd403df92ecd675c42836c`.
 Catalog SHA-256: `b375ca03e5123d07ddd9a317a3e75b607f91c680bd69e72198b97e980013a5ea`.
-Map golden arrays SHA-256: `bb0888d7a11d99b75e67c63ea35705c79995906189f683aa8cfa54f943f9cb6d`.
+Generator bản đồ vẫn `we-map-1`, snapshot engine `we-sim-1` schema 2. Không thay Master Data Frozen.
 
-Gói ZIP chứa source ở gốc để upload vào repo Vercel hiện tại; không đóng gói node_modules/.next/cache/QA images hoặc secret. Cấu hình và checklist nghiệm thu trong README.md, docs/CONFIGURATION.md, docs/MAP-AND-CAMERA.md và docs/VERIFICATION.md.
+Gói source chứa code ở gốc ZIP, cấu hình/lockfile, migrations và tài liệu. Không chứa node_modules/.next/cache/log/trace/screenshot hoặc secret. Việc build lại gói giải nén dùng dependency cài sạch được kiểm tra trước bàn giao. Chi tiết phạm vi và checklist live trong docs/VERIFICATION.md.

@@ -1,3 +1,15 @@
+# V0.3.0 — Simulation & Save Engine — 18/11/2026
+
+- Worker mô phỏng bước 100ms, x1/x2/x4/tạm dừng, 180 giây/ngày ở x1; lịch 30 ngày/mùa và 120 ngày/năm theo Frozen.
+- `we-sim-1`, snapshot schema 2 giữ tick/sub-tick, RNG state/cursor, tốc độ, pause, command sequence và thời gian hoạt động; load luôn tạm dừng.
+- Full head cho mở nhanh; delta giữa các lần lưu, full anchor mỗi 8 revision, lịch sử 25–32 mốc. Checksum SHA-256 payload/chuỗi, đọc kiểm tra và tìm mốc hợp lệ gần nhất; khôi phục tạo full revision mới.
+- Lease server 75 giây, gia hạn 20 giây, epoch fencing, tiếp quản có xác nhận; retry request ID không nhân đôi revision.
+- Tự lưu 30 giây khi thay đổi, Lưu ngay, trạng thái/thời điểm lưu; bản tạm kiểm checksum theo account/world/tab, tối đa 8 bản/7 ngày, khôi phục khi cùng cloud revision, tải JSON khi xung đột.
+- Ẩn trang/mất mạng tạm dừng và cố lưu; Worker tự pause khi lease quá hạn, không mô phỏng offline hoặc chạy bù thời gian bị suspend.
+- Panel PC/mobile, lịch sử và số byte payload ghi/giữ/truyền trong phiên; đồ họa vẫn ở Vercel/CDN.
+- Migration 202611180002_simulation_save.sql, giữ 001/Canonical/atlas/generator nguyên byte. Nâng cấp không xóa bảng hoặc dữ liệu.
+- Kiểm SQL leases/history, Worker thật và phối hợp session qua PostgreSQL; giữ regression foundation/map/build.
+
 # V0.2.0 — Isometric World & Camera — 18/11/2026
 
 - Generator `we-map-1`: 256 × 256 ô từ seed + khí hậu, rừng/sông/đồi/núi/tuyết và tài nguyên E0 gắn ID Canonical.

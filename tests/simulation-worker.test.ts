@@ -1,0 +1,15 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {Worker} from 'node:worker_threads';
+import {pathToFileURL} from 'node:url';
+import {resolve} from 'node:path';
+import {initialSimulation,advance,type SimState} from '../src/game/simulation/engine';
+test('Real simulation Worker: fixed clock, control, pause, saved RNG resume and self-pausing at lease expiry',async()=>{
+ const worker=new Worker(`const {parentPort}=require('node:worker_threads');globalThis.self=globalThis;globalThis.postMessage=m=>parentPort.postMessage(m);parentPort.on('message',m=>self.onmessage?.({data:m}));import('tsx/esm/api').then(({tsImport})=>tsImport(${JSON.stringify(pathToFileURL(resolve('src/game/simulation/simulation.worker.ts')).href)},${JSON.stringify(pathToFileURL(resolve('tests/worker-bootstrap.mjs')).href)})).then(()=>parentPort.postMessage({type:'ready'}));`,{eval:true,execArgv:['--import','tsx']});
+ try{
+  await new Promise<void>((resolve,reject)=>{worker.on('message',m=>{if(m.type==='ready')resolve();});worker.on('error',reject);});let seq=0;
+  const call=(type:string,extra:Record<string,unknown>={})=>new Promise<SimState>((resolve,reject)=>{const id=++seq;const timer=setTimeout(()=>reject(new Error('Worker reply timeout')),5000);const listener=(m:{type:string;id:number;state:SimState;error?:string})=>{if(m.type==='reply'&&m.id===id){worker.off('message',listener);clearTimeout(timer);if(m.error)reject(new Error(m.error));else resolve(m.state);}};worker.on('message',listener);worker.postMessage({type,id,...extra});});
+  const initial=initialSimulation({worldId:'33333333-3333-4333-8333-333333333333',seed:'BOSS-2026',climateId:'B01'});await call('load',{state:initial});await assert.rejects(call('control',{command:{paused:false}}),/hết hạn/);await call('lease',{remainingMs:2000});await call('control',{command:{paused:false,speed:4}});await new Promise(r=>setTimeout(r,260));const paused=await call('control',{command:{paused:true}});assert.ok(paused.tick>=8);await new Promise(r=>setTimeout(r,140));const still=await call('snapshot');assert.deepEqual(still,paused);await call('load',{state:paused});assert.deepEqual(await call('snapshot'),paused);assert.equal(advance({...paused,paused:false},100).rngDraws,paused.rngDraws+4);
+  await call('lease',{remainingMs:50});await call('control',{command:{paused:false}});await new Promise(r=>setTimeout(r,160));assert.equal((await call('snapshot')).paused,true);
+ }finally{await worker.terminate();}
+});

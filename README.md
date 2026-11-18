@@ -1,138 +1,96 @@
-# World Evolution V0.2.0 — Isometric World & Camera
+# World Evolution V0.3.0 — Simulation & Save Engine
 
-Game web dùng chung PC, iPhone và Android. V0.2.0 thêm bản đồ isometric tương tác từ seed vào thế giới đã lưu; giữ đăng nhập, danh sách thế giới và cloud save nền tảng của V0.1.2. Mô phỏng thời gian, xây dựng và dân đi lại thuộc các bản tiếp theo.
+Game web PC/mobile: tài khoản, quản lý thế giới và bản đồ isometric từ seed; bản này thêm đồng hồ mô phỏng trong Web Worker, x1/x2/x4/tạm dừng, lưu tiến trình và khôi phục giữa thiết bị.
 
-## Nâng cấp từ V0.1.2
+## Cập nhật trực tiếp trên Vercel từ V0.2.0
 
-Upload đầy đủ nội dung ZIP vào repo đang dùng, ghi đè file trùng rồi deploy commit mới. Không xóa repo, database hoặc thế giới. Giữ nguyên biến môi trường và Supabase project. **Không cần chạy migration mới.**
+Boss không cần cài Node/npm hoặc chạy localhost. Không xóa repo, project Vercel, database hoặc thế giới.
 
-Bản đồ 256 × 256 ô dùng `we-map-1`, seed và khí hậu đã lưu. Cùng seed + cùng khí hậu luôn tạo cùng địa hình/tài nguyên trên PC/mobile. Camera và ô đang chọn chỉ tồn tại trong phiên, không đồng bộ giữa thiết bị. Generator được khóa bằng checksum test; thay thuật toán sau này phải có phiên bản mới và lộ trình tương thích save.
+1. Trong **Supabase → SQL Editor**, chạy một lần `infra/supabase/migrations/202611180002_simulation_save.sql`. File TXT migration gửi riêng có đúng SQL này để mở/copy trên điện thoại. **Không chạy lại 001.**
+2. Giải nén ZIP mới và upload toàn bộ nội dung vào **đúng repo/branch Vercel hiện tại**, ghi đè file trùng. Source nằm ngay gốc ZIP, cùng cấp `package.json`, `verify-release.mjs`, `src`, `data`, `public`, `infra`.
+3. Giữ nguyên các biến Supabase và asset URL. Vercel: Framework **Next.js**, Root Directory chứa `package.json`, Node **24.x**, Install **npm ci**, Build **npm run build**, Output mặc định. Các lệnh được Vercel chạy tự động.
+4. Deploy commit mới. Nếu đang xử lý cache từ bản trước, redeploy không dùng Build Cache.
+5. Mở thế giới cũ: giữ seed/khí hậu/cấu hình và 20 dân, bản đồ giống trước; thời gian bắt đầu ngày 1, tạm dừng. Bấm **Chạy**, chọn tốc độ, **Tạm dừng/Lưu ngay**, reload để kiểm tiến trình.
 
-- Rừng, sông chính liên tục và nhánh sông, bờ sông, đồi, núi, vùng tuyết theo khí hậu. Nguồn tự nhiên liên kết ID E0 của catalog Frozen.
-- Đồ họa 2.5D: atlas địa hình và cây/đá/núi riêng lớp, có cao độ.
-- PC: kéo chuột để di chuyển, cuộn để zoom, click chọn ô. Mobile: vuốt một ngón, chụm hai ngón; nút ±, về điểm đầu, xem toàn bản đồ và mở rộng.
-- Minimap hiển thị vùng nhìn, chạm/kéo để chuyển camera. Chọn ô xem tọa độ, địa hình, cao độ và nguồn tự nhiên.
-- Web Worker sinh map; chunk 16 × 16, culling và LOD khi zoom xa; PixiJS/WebGL với Canvas 2D dự phòng. Atlas chỉ tải khi mở thế giới, dùng chung texture và giải phóng khi rời màn.
+Migration 002 mở rộng ràng buộc ngày và thêm bảng private/RPC; không sửa `initial_state` của thế giới cũ. Master Data V1.2, SQL 001 và generator `we-map-1` giữ nguyên. Logic proxy tương thích ở gốc/src và build Node verifier từ V0.1.2 tiếp tục được giữ.
 
-Xem [docs/MAP-AND-CAMERA.md](docs/MAP-AND-CAMERA.md) cho thiết kế và kiểm tra bản đồ.
+## Chức năng V0.3.0
 
-## Sửa lỗi proxy khi cập nhật source
+| Phần | Hành vi |
+| --- | --- |
+| Clock | Fixed step 100ms, 1.800 tick/ngày, x1 = 180 giây thực/ngày, x2 = 90 giây, x4 = 45 giây |
+| Lịch | 30 ngày/mùa, 120 ngày/năm, S1–S4 theo Frozen; B02 hiện thêm nhãn mưa/khô theo vùng |
+| Determinism | `we-sim-1` lưu tick, phần tick, RNG state/cursor, command sequence và active time; không reroll khi mở lại |
+| Cloud save | Full head + lịch sử full/delta; tự lưu mỗi 30 giây khi thay đổi, Lưu ngay tạo full; full anchor bắt buộc mỗi 8 revision |
+| Trạng thái | Đã lưu / Đang lưu / Chưa đồng bộ / Lưu thất bại và thời điểm xác nhận gần nhất |
+| Khôi phục | Kiểm schema/version/identity/SHA-256/chuỗi delta; lịch sử khoảng 25–32 mốc, tìm mốc hợp lệ gần nhất, xác nhận khôi phục thành revision mới |
+| Single writer | Lease 75 giây, heartbeat 20 giây, epoch fencing; tiếp quản cần xác nhận; máy mất quyền không thể ghi |
+| Bản tạm | Trình duyệt giữ tiến trình theo account/world/tab, tối đa 8 bản/7 ngày. Chỉ khôi phục vào cloud cùng revision; khác revision cho tải JSON và chọn giữ cloud |
+| Tiết kiệm dữ liệu | Không ghi mỗi tick, prune lịch sử trong transaction, không cần cron; thống kê payload giữ/ghi/truyền trong phiên |
 
-V0.1.2 đặt entry proxy an toàn ở cả `proxy.ts` và `src/proxy.ts`, cùng import qua alias `@/lib/supabase/proxy`. Logic session chỉ có một bản tại `src/lib/supabase/proxy.ts`. Hai entry giống nhau để cập nhật repo đang còn file proxy ở gốc từ source trước; Next chọn entry ở gốc nếu có.
+V0.3.0 vận hành **đồng hồ và nền lưu tiến trình**. 20 dân chưa di chuyển/ăn uống, chưa khai thác/sản xuất/xây dựng, không tự tiến hóa thời đại. Nguồn tự nhiên trên bản đồ chưa biến thành kho tài nguyên. RNG cursor chạy theo tick làm nền cho hệ thống sau, chưa sinh sự kiện khí hậu/nghiên cứu. Chu kỳ mùa có ở đồng hồ; hiệu ứng và tác động thời tiết đầy đủ ở bản sau.
 
-Upload đầy đủ source mới vào **đúng repo và branch Vercel đang dùng**, ghi đè file trùng; không cần xóa repo. Kiểm tra trên GitHub `proxy.ts` dòng import phải là `@/lib/supabase/proxy`, không còn `./lib/config`. Giữ Root Directory chứa package.json; deploy commit mới và bỏ dùng Build Cache khi thử lại.
+Ẩn trang/khóa màn hình/mất mạng: game tạm dừng và cố lưu, giữ bản tạm gần nhất; **không chạy nền liên tục hoặc bù thời gian offline**. Trình duyệt có thể ngắt ngay nên lần cuối chưa chắc lên cloud. Bản tạm được ghi khoảng mỗi giây khi có thay đổi; tắt đột ngột có thể mất phần tiến trình sau bản tạm cuối. Nên chờ **Đã lưu** trước khi rời. Khi quay lại, game luôn tạm dừng, không tự chạy tiếp.
 
-Không cần migration mới, không chạy lại SQL 001, giữ nguyên Supabase và biến môi trường. Master Data V1.2 và SQL khởi tạo được giữ nguyên byte.
+Camera, minimap, pan/pinch, ±, chọn ô và chunk/LOD kế thừa V0.2.0. Đồng hồ cập nhật không tạo lại scene, nên giữ vị trí camera trong màn đang mở; camera không đồng bộ cloud. Atlas chỉ tải lúc mở map, tài nguyên tĩnh nằm Vercel/CDN, không đưa vào Supabase PostgreSQL/Storage.
 
-## Deploy thẳng lên Vercel
+## Cấu hình
 
-Không cần localhost hoặc chạy npm trên máy Boss. Giải nén ZIP mới, upload **toàn bộ nội dung** vào gốc repository GitHub. Gói V0.2.0 đặt `package.json`, `verify-release.mjs`, `src`, `data`, `public` ngay tại gốc ZIP.
+Hướng dẫn đầy đủ tài khoản, email/callback, GitHub, Vercel, CDN và xử lý lỗi: **[docs/CONFIGURATION.md](docs/CONFIGURATION.md)**. Thiết kế save/lease/offline và giới hạn: **[docs/SIMULATION-AND-SAVE.md](docs/SIMULATION-AND-SAVE.md)**.
 
-Trên Vercel: Framework Next.js; Root Directory `.` nếu package.json ở gốc repo; Node 24.x; Install `npm ci`; Build `npm run build`; Output mặc định. Các lệnh do Vercel tự chạy.
+| Biến môi trường Vercel | Giá trị |
+| --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` | Project URL Supabase hiện có |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Publishable key hoặc legacy anon key, cùng project |
+| `NEXT_PUBLIC_ASSET_BASE_URL` | Để trống dùng Vercel CDN; optional HTTPS origin CDN riêng |
 
-Thêm `NEXT_PUBLIC_SUPABASE_URL` và `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` trong Environment Variables, giữ cấu hình Supabase hiện có. Redeploy commit mới và tắt Use existing Build Cache khi thử lại lỗi cũ. **Không cần migration mới; không chạy lại SQL 001 đã áp dụng.**
+Không cần service-role key, database password, bucket hay máy chủ tick riêng. Không chứa secret thật trong ZIP. Biến public thay đổi cần rebuild/redeploy. App cần Next SSR/Server Actions/Route Handler; không dùng static export.
 
-Lỗi cũ `Cannot find module scripts/catalog.ts`: bản build trước gọi bộ import Excel ở mỗi deploy, trong khi file đó không có ở source Vercel nhận. V0.1.1 dùng catalog đã xuất sẵn và kiểm checksum bằng Node thuần tại `verify-release.mjs`. Bộ import Excel và tests vẫn đầy đủ trong ZIP để bảo trì/CI.
+**Project mới hoàn toàn:** chạy migration `001_foundation.sql` trước, rồi `002_simulation_save.sql`; các tên đầy đủ nằm trong `infra/supabase/migrations/`. Bật Email Auth, đặt Site URL và callback/confirm đúng domain HTTPS Vercel theo CONFIGURATION.md. Dùng `verify_setup.sql` và `verify_simulation.sql` để đọc kiểm tra cấu hình.
 
-## Chạy local tùy chọn
+## Local/CI tùy chọn cho lập trình viên
 
-1. Giải nén ZIP, mở thư mục `world-evolution` chứa `package.json` bằng VS Code.
-2. Cài Node.js **24 LTS** (hỗ trợ 22–24), npm 10 trở lên.
-3. Tạo project Supabase. Trong SQL Editor, chạy **một lần** toàn bộ `infra/supabase/migrations/202611180001_foundation.sql`.
-4. Copy `.env.example` thành `.env.local`. Điền URL và khóa publishable của project.
-5. Trong terminal tại thư mục `world-evolution`, chạy:
+Tại thư mục giải nén chứa `package.json`, dùng Node 24.x (hỗ trợ 22–24), npm ≥10:
 
 ```bash
 npm ci
+cp .env.example .env.local
+# Điền URL/key public; không commit .env.local
 npm run dev
 ```
 
-6. Mở `http://localhost:3000`. Đăng ký, xác nhận email, đăng nhập rồi tạo thế giới.
-
-**Hướng dẫn đầy đủ:** [docs/CONFIGURATION.md](docs/CONFIGURATION.md). Đọc phần Auth, callback và deploy trước khi đưa lên Vercel.
-
-## Chức năng đã xây dựng
-
-- Đăng ký bằng email/mật khẩu, xác nhận email, đăng nhập, duy trì phiên bằng cookie, đăng xuất phiên hiện tại.
-- Quên mật khẩu qua email và form nhập mật khẩu mới.
-- Danh sách thế giới riêng theo tài khoản; tìm tên/seed; tạo, đổi tên, mở, sửa giới hạn dân số và xóa có nhập lại tên.
-- Tạo thế giới với seed, khí hậu từ catalog, 20 dân ID riêng, ngày 1, E0, trạng thái tạm dừng; không phát công trình sẵn.
-- Giới hạn dân số mặc định 200, cho phép chọn 20–100.000 theo CFG047–049. Đây là cấu hình lưu, không phải cam kết hiệu năng ở 100.000 dân.
-- Cùng tài khoản có thể mở dữ liệu đã lưu từ PC/mobile. Cấu hình dùng revision để chặn ghi đè dữ liệu cũ.
-- Tạo thế giới có request ID chống nhân đôi khi retry cùng yêu cầu.
-- Import workbook Frozen V1.2 thành JSON; kiểm tra 38 sheet, ID, tham chiếu có cấu trúc, counts, cấu hình nền và SHA-256.
-- Trang Dữ liệu nền tảng hiển thị kết quả kiểm tra, 38 sheet và checksum.
-- Asset manifest, asset base URL, tài nguyên tĩnh có tên phiên bản và cache CDN; dữ liệu save tách khỏi đồ họa.
-- Responsive PC/mobile ngang/dọc, modal cuộn và footer hành động Hủy bên trái, Lưu/Xác nhận bên phải.
-- Manifest PWA cơ bản; không có service worker/offline gameplay hay chạy nền.
-
-Không có dữ liệu demo thay cho cloud trong production. Khi chưa cấu hình Supabase, màn đăng nhập báo rõ và khóa thao tác tài khoản. Bản đồ tương tác đã có; 20 cư dân vẫn là trạng thái khởi tạo, chưa có mô phỏng di chuyển/sản xuất.
-
-## Các lệnh chính
+Mở http://localhost:3000. Lần đầu tạo database/Auth theo hướng dẫn trên. Boss deploy trực tiếp Vercel có thể bỏ qua phần local này.
 
 ```bash
-npm run data:check  # đối chiếu workbook / JSON / SQL
 npm run typecheck
 npm run lint
-npm test           # logic và SQL PostgreSQL qua PGlite
-npm run test:http  # HTTP contract, auth giả lập, database PostgreSQL cục bộ
-npm run build
-npm start          # chạy bản production đã build
-```
-
-Kiểm thử trình duyệt tùy chọn:
-
-```bash
-npx playwright install chromium
-npm run test:ui
-```
-
-Xem phạm vi kiểm chứng và các bước cần kiểm tra trên thiết bị thật trong [docs/VERIFICATION.md](docs/VERIFICATION.md).
-
-## Công nghệ và cấu trúc
-
-Phiên bản chính xác nằm trong `package.json` và `package-lock.json`: Next.js 16.4.6, React 19.3.1, TypeScript 6.0.3, Supabase JS 2.119.0 và Supabase SSR 0.12.7, PixiJS 8.23.0. Source không dùng font/ảnh bên thứ ba để chạy giao diện.
-
-```text
-src/app/                 Trang, Server Actions, callback
-src/components/          Giao diện và form dùng chung
-src/game/core/           Schema, khởi tạo state, logic độc lập UI
-src/game/data/           Adapter catalog Canonical
-src/game/renderer/       Asset manifest/URL
-src/game/map/            Generator, Worker, camera, PixiJS/Canvas, chunk/LOD
-src/lib/supabase/         Supabase SSR bằng khóa public và cookie
-proxy.ts                 Entry proxy tại gốc, dùng alias ổn định
-src/proxy.ts             Entry tương thích khi dùng cấu trúc src
-src/lib/supabase/proxy.ts Logic refresh/kiểm tra phiên dùng chung
-public/assets/           SVG, PNG atlas và spritesheet JSON có phiên bản
-scripts/                 Import OOXML, kiểm tra catalog, sinh SQL
-infra/supabase/          Migration và SQL kiểm tra cấu hình
- data/source/            Workbook Frozen và dấu vân tay gốc
- data/generated/         Catalog JSON + summary
- tests/                  Unit, PostgreSQL, HTTP và Playwright
- docs/                   Cấu hình, kiến trúc, xác minh
-```
-
-PixiJS và Worker chỉ được tải khi mở màn bản đồ. Worker V0.2 chỉ sinh địa hình, không tiến tick hoặc ghi cloud mỗi frame.
-
-## Master Data Frozen
-
-File gốc được đóng gói nguyên byte tại `data/source/World-Evolution-Master-Data-v1.2-Canonical.xlsx`. Không mở rồi lưu lại workbook bằng công cụ khác chỉ để nhập dữ liệu.
-
-```bash
-npm run data:import
-npm run data:sql
+npm test
 npm run data:check
+npm run test:http
+npm run build
+npm start
 ```
 
-Importer đọc trực tiếp OOXML, hỗ trợ namespace prefix của file Canonical, không cần Excel/Python. Trả lỗi khi workbook khác `data/source/frozen.json`; không tự sửa baseline để vượt kiểm tra. Các tham chiếu mô tả tự do không được coi là công thức engine đã định lượng; xem [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+`npm test` kiểm logic/SQL, Worker thật và coordinator với PostgreSQL fixture; `test:http` chạy Next + Supabase SDK với Auth/PostgREST mô phỏng. Không thay cho smoke test Supabase thật. `npm run test:ui` dùng Playwright khi môi trường có Chromium. Phạm vi thực tế ở [RELEASE-CHECKS.md](RELEASE-CHECKS.md) và [docs/VERIFICATION.md](docs/VERIFICATION.md).
 
-Không chạy lại migration khởi tạo trên database đã sử dụng. Việc thay đổi dữ liệu gốc cần yêu cầu riêng và migration mới ở phiên bản sau.
+## Source và bảo trì
 
-## Bàn giao và phiên bản tiếp theo
+Next.js 16.4.6, React 19.3.1, TypeScript 6.0.3, PixiJS 8.23.0, Supabase JS 2.119.0 / SSR 0.12.7; giữ lockfile và stack của V0.2.0.
 
-Gói source: `World-Evolution-V0.2.0-Isometric-World-and-Camera.zip`. Hướng dẫn cấu hình nằm trong ZIP. SQL khởi tạo được giữ để tạo project mới; database V0.1.2 đang dùng không cần chạy lại SQL hoặc migration mới.
+- `src/game/simulation/`: engine/calendar, Worker/client, session, API adapter, bản tạm.
+- `src/components/simulation/`: điều khiển thời gian/lưu/history/recovery.
+- `src/app/api/simulation/`: endpoint owner-authenticated, kiểm Origin, cấu trúc đầu vào, gọi RPC.
+- `src/game/map/`, `src/game/renderer/`, `public/assets/`: generator/camera/render/atlas kế thừa.
+- `src/app/`, `src/lib/`, `src/components/`: auth, Server Actions và UI thế giới.
+- `infra/supabase/`: migration 001 + 002, query kiểm cấu hình.
+- `data/source/`, `data/generated/`: workbook Frozen nguyên byte và catalog/summary đã khóa checksum.
+- `scripts/`: importer Excel OOXML, SQL baseline, atlas/manifest; production build chỉ chạy Node verifier + Next.
+- `tests/`, `docs/`: kiểm thử và cấu hình/kiến trúc/triển khai.
 
-V0.3.0 — **Simulation & Save Engine**: tick deterministic trong Worker, ngày/mùa, x1/x2/x4/tạm dừng, snapshot/delta/recovery và lease thiết bị. Xem [ROADMAP.md](ROADMAP.md).
+Không sửa workbook hoặc frozen.json để làm kiểm tra pass. `npm run data:import`, `data:sql`, `assets:world` phục vụ bảo trì có chủ đích; không cần chạy khi deploy. Không đổi thuật toán dưới tên `we-map-1` hoặc `we-sim-1` cho save đã phát hành; nâng version và có đường nâng cấp riêng.
 
-GitHub/Vercel/Supabase của chủ dự án chưa được kết nối trong lần bàn giao source này. Không có secret thật trong ZIP. Gửi lại ZIP bản mới nhất khi yêu cầu xây dựng tiếp để bảo toàn chức năng đã có.
+## Rollback và tiếp tục
+
+Chạy 002 trước khi dùng V0.3.0. Nếu phải quay lại code V0.2.0, giữ bảng save mới và không hạ/drop schema; V0.2 không tiến clock, danh sách vẫn đọc ngày đã lưu. Không reset SQL 001. Backup database thực trước khi thay đổi thủ công dữ liệu thật; lịch sử ngắn trong app không thay thế backup toàn project.
+
+Gói source: `World-Evolution-V0.3.0-Simulation-and-Save-Engine.zip`. Migration nâng từ V0.2.0: `World-Evolution-V0.3.0-Migrations.txt`. Tiếp theo **V0.4.0 — Construction & City Planning**: đặt công trình, ghost preview, footprint, xoay và đường theo Master Data. Gửi ZIP mới nhất để nâng cấp tiếp. GitHub/Supabase/Vercel thật chưa được kết nối trong lần bàn giao source này.

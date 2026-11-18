@@ -2,17 +2,17 @@
 
 Production build dùng catalog JSON có sẵn và verify-release.mjs chạy Node thuần. Importer Excel và SQL generation chỉ phục vụ bảo trì/CI. tsconfig.json chỉ kiểm ứng dụng; tsconfig.tools.json kiểm đầy đủ công cụ/test qua npm run typecheck. Các kiểm tra Frozen và quyền database vẫn giữ nguyên.
 
-# Kiến trúc V0.2.0
+# Kiến trúc V0.3.0
 
 ## Luồng tài khoản và dữ liệu
 
 Browser → Server Action → Supabase SSR client (cookie, public key, validated user) → RPC → private implementation → PostgreSQL. Trang dữ liệu riêng kiểm tra user ở server; proxy refresh cookie. Không dùng service-role để vượt quyền.
 
-Bảng worlds bật RLS SELECT theo auth.uid. User có quyền SELECT dữ liệu của mình, không có INSERT/UPDATE/DELETE trực tiếp. Public RPC là security invoker; private function là security definer với search_path rỗng, kiểm tra auth.uid và owner trong thân hàm, chỉ authenticated được execute. Không expose private qua PostgREST. Không có function nhận arbitrary snapshot từ client ở phiên bản này.
+Bảng worlds bật RLS SELECT theo auth.uid. User có quyền SELECT dữ liệu của mình, không có INSERT/UPDATE/DELETE trực tiếp. Public RPC là security invoker; private function là security definer với search_path rỗng, kiểm tra auth.uid và owner trong thân hàm, chỉ authenticated được execute. Không expose private qua PostgREST. V0.3 thêm simulation RPC, kiểm owner/lease/epoch/revision/checksum/schema trước khi nhận state hoặc patch.
 
 Khởi tạo world là giao dịch database duy nhất: ID, owner, request ID, seed, khí hậu, population limit, phiên bản catalog và snapshot được ghi cùng lúc. Advisory transaction lock theo account + unique(owner, creation_request_id) ngăn retry tạo trùng. Form giữ request ID khi retry; mở một form mới được coi là yêu cầu mới.
 
-Đổi tên/giới hạn dùng optimistic concurrency: expected revision phải bằng revision hiện tại dưới row lock; thành công tăng revision, cập nhật server timestamp. Xóa cần đúng owner, revision và tên. Hai thiết bị chỉ quản lý metadata; lease quyền điều khiển simulation chưa có vì V0.1 không chạy simulation. Lease/tick/snapshot history thuộc V0.3.
+Đổi tên/giới hạn dùng optimistic concurrency: expected revision phải bằng revision hiện tại dưới row lock; thành công tăng revision, cập nhật server timestamp. Xóa cần đúng owner, revision và tên. Hai thiết bị chỉ quản lý metadata; lease quyền điều khiển simulation chưa có vì V0.1 không chạy simulation. Lease/tick/snapshot history đã có ở V0.3; xem SIMULATION-AND-SAVE.md.
 
 ## Lưu ban đầu
 
@@ -37,7 +37,7 @@ SVG minh họa tự tạo, không dựa vào file ảnh người dùng. Không c
 
 ## Phạm vi PWA và hiệu năng
 
-Responsive CSS, safe area và manifest cài đặt cơ bản; không có offline game, service worker cache private data, background simulation hoặc push. Renderer PixiJS, chunk/LOD, camera cảm ứng và Worker sinh bản đồ có ở V0.2.0; tick/recovery ở V0.3.0. Không tải thư viện renderer nặng trước khi dùng.
+Responsive CSS, safe area và manifest cài đặt cơ bản; không có offline game, service worker cache private data, background simulation hoặc push. Renderer PixiJS, chunk/LOD, camera cảm ứng và Worker sinh bản đồ có ở V0.2.0; tick/recovery có ở V0.3.0. Không tải thư viện renderer nặng trước khi dùng.
 
 ## Giới hạn xác minh
 
@@ -46,3 +46,7 @@ PGlite kiểm tra PostgreSQL SQL/RLS/privileges thực trong máy cục bộ. Fi
 ## Bản đồ V0.2.0
 
 Xem [MAP-AND-CAMERA.md](MAP-AND-CAMERA.md). Map suy ra từ seed/climate đã lưu, không thêm cột hoặc snapshot map vào PostgreSQL. `we-map-1` là thuật toán bất biến cho thế giới của V0.2.0; test khóa digest. Khi có generator mới cần lưu/định tuyến version để thế giới cũ không đổi địa hình. Camera thuộc phiên, không cập nhật revision cloud. Mọi quyền tài khoản và RPC giữ nguyên.
+
+## Simulation V0.3.0
+
+[SIMULATION-AND-SAVE.md](SIMULATION-AND-SAVE.md) mô tả clock/Worker, session controller, full/delta ledger, SHA-256, idempotency, lease fencing, local recovery và giới hạn. `initial_state` vẫn schema 1, immutable; engine mutable state là schema 2 trong bảng private riêng. Metadata revision và simulation revision độc lập.

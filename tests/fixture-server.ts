@@ -2,7 +2,7 @@
 // Never imported by production application. Not a replacement for hosted Supabase QA.
 import {createServer} from 'node:http';
 import {database,asUser,alice,bob} from './database';
-const db=await database();const tokens=new Map<string,string>();
+const db=await database(true);const tokens=new Map<string,string>();
 const users=[{id:alice,email:'alice@example.test',password:'Password123!'},{id:bob,email:'bob@example.test',password:'Password123!'}];
 function account(uid:string){const u=users.find(u=>u.id===uid)!;return {id:u.id,email:u.email,aud:'authenticated',role:'authenticated',email_confirmed_at:new Date().toISOString(),app_metadata:{provider:'email',providers:['email']},user_metadata:{},created_at:new Date().toISOString(),identities:[]};}
 function session(uid:string){const exp=Math.floor(Date.now()/1000)+3600;const jwt=[Buffer.from(JSON.stringify({alg:'HS256',typ:'JWT'})).toString('base64url'),Buffer.from(JSON.stringify({sub:uid,role:'authenticated',aud:'authenticated',exp,iat:exp-3600})).toString('base64url'),'fixture-signature'].join('.');tokens.set(jwt,uid);return {access_token:jwt,refresh_token:`refresh-${uid}`,token_type:'bearer',expires_in:3600,expires_at:exp,user:account(uid)};}
@@ -33,6 +33,7 @@ const server=createServer(async(req,res)=>{
   if(op==='create_world'){sql='select public.create_world($1,$2,$3,$4,$5) as result';params=[body.p_name,body.p_seed,body.p_climate_id,body.p_population_limit,body.p_request_id];}
   else if(op==='update_world'){sql='select public.update_world($1,$2,$3,$4) as result';params=[body.p_id,body.p_name,body.p_population_limit,body.p_expected_revision];}
   else if(op==='delete_world'){sql='select public.delete_world($1,$2,$3) as result';params=[body.p_id,body.p_confirmation,body.p_expected_revision];}
+  else if(op==='simulation_rpc'){sql='select public.simulation_rpc($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) as result';params=[body.p_world,body.p_token,body.p_action,body.p_epoch??0,body.p_revision??0,body.p_request??null,body.p_kind??null,body.p_payload??null,body.p_checksum??null,body.p_target??null];}
   else return send(404,{message:'RPC not found'});
   const r=await asUser<{result:unknown}>(db,uid,sql,params);return send(200,r.rows[0].result);
  }

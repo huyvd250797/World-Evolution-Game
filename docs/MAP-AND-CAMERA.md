@@ -43,4 +43,4 @@ Tệp được phục vụ từ Vercel/CDN; Supabase chỉ lưu auth/world metad
 - `npm run test:http`: kiểm luồng auth/world cũ qua Next/SDK/RPC trên fixture PostgreSQL, không thực thi client WebGL.
 - `npm run test:ui`: Playwright smoke test khi môi trường có Chromium. iPhone Safari/Android và GPU thật cần kiểm trực tiếp sau deploy.
 
-`we-map-1` và golden digest không được thay chỉ để test pass. Khi nâng generator cần version routing/migration rõ ràng để thế giới đã xây không đổi địa hình. V0.3 bổ sung version vào snapshot/save engine khi bắt đầu lưu thay đổi bản đồ. Không sửa migration 001 đã áp dụng.
+`we-map-1` và golden digest không được thay chỉ để test pass. Khi nâng generator cần version routing/migration rõ ràng để thế giới đã xây không đổi địa hình. V0.3 đã lưu mapVersion trong engine snapshot để cố định we-map-1. Khi bổ sung thay đổi địa hình/công trình cần lưu delta tương ứng ở các bản gameplay sau. Không sửa migration 001 đã áp dụng.
