@@ -1,0 +1,358 @@
+{
+  "version": "1.2",
+  "schemaVersion": 1,
+  "sourceSha256": "9583ccb1398a0e45dc1c4e415b9749f5a22c3f7b24dd403df92ecd675c42836c",
+  "catalogSha256": "b375ca03e5123d07ddd9a317a3e75b607f91c680bd69e72198b97e980013a5ea",
+  "checkedReferences": 5984,
+  "counts": {
+    "TONG QUAN": 31,
+    "HUONG DAN": 36,
+    "THOI DAI": 9,
+    "DIEU KIEN TIEN HOA": 110,
+    "CAU HINH GAME": 75,
+    "TAI NGUYEN": 230,
+    "BAO QUAN & KHO": 46,
+    "TRANG PHUC & GIU AM": 18,
+    "VAI TRO": 96,
+    "CONG TRINH": 166,
+    "DINH MUC XAY DUNG": 357,
+    "DINH BIEN NHAN SU": 179,
+    "VAN HANH CONG TRINH": 482,
+    "CONG NGHE": 140,
+    "LIEN KET NGHIEN CUU": 350,
+    "NGHIEN CUU CHI TIET": 139,
+    "CONG THUC": 102,
+    "NGUYEN LIEU CONG THUC": 215,
+    "CHUOI PHU THUOC": 47,
+    "MUA & KHI HAU": 4,
+    "VUNG KHI HAU": 7,
+    "HE SINH THAI": 52,
+    "NUOC & SINH HOAT": 15,
+    "THIEN TAI": 15,
+    "LANH GIA & PHOI NHIEM": 11,
+    "DIA HINH & XAY DUNG": 19,
+    "HOAT DONG E0": 58,
+    "VONG LAP 1 NGAY": 21,
+    "QUY TAC": 84,
+    "KIEM TRA DU LIEU": 42,
+    "BENH TAT & Y TE": 12,
+    "O NHIEM & XU LY": 14,
+    "THUAN HOA & SUC KEO": 8,
+    "GIAO THONG & HAU CAN": 11,
+    "NHA O & DAN SO": 8,
+    "SINH CANH & PHAN BO": 10,
+    "QUAN HE SINH THAI": 14,
+    "PHAT THAI CONG TRINH": 18
+  },
+  "defaults": {
+    "initialPopulation": 20,
+    "populationLimit": 200,
+    "minPopulationLimit": 20,
+    "maxPopulationLimit": 100000
+  },
+  "climates": [
+    {
+      "id": "B01",
+      "name": "Ôn đới",
+      "description": "Đủ 4 mùa"
+    },
+    {
+      "id": "B02",
+      "name": "Nhiệt đới gió mùa",
+      "description": "Mùa mưa/mùa khô là chính"
+    },
+    {
+      "id": "B03",
+      "name": "Bán khô hạn",
+      "description": "Mùa khô dài"
+    },
+    {
+      "id": "B04",
+      "name": "Cận nhiệt",
+      "description": "4 mùa nhẹ"
+    },
+    {
+      "id": "B05",
+      "name": "Hàn đới",
+      "description": "Mùa đông dài và rét sâu; xuân/hè ngắn"
+    },
+    {
+      "id": "B06",
+      "name": "Núi cao",
+      "description": "Nhiệt độ phụ thuộc cao độ; có thể lạnh quanh năm"
+    },
+    {
+      "id": "B07",
+      "name": "Cao nguyên khô lạnh",
+      "description": "Ngày nắng nhưng đêm lạnh mạnh; đông rất rét"
+    }
+  ],
+  "eras": [
+    {
+      "id": "E0",
+      "name": "Đồ đá sơ khai"
+    },
+    {
+      "id": "E1",
+      "name": "Đá mới – Nông nghiệp"
+    },
+    {
+      "id": "E2",
+      "name": "Đồ đồng"
+    },
+    {
+      "id": "E3",
+      "name": "Đồ sắt – Cổ đại"
+    },
+    {
+      "id": "E4",
+      "name": "Trung đại"
+    },
+    {
+      "id": "E5",
+      "name": "Cận đại"
+    },
+    {
+      "id": "E6",
+      "name": "Công nghiệp"
+    },
+    {
+      "id": "E7",
+      "name": "Điện khí hóa"
+    },
+    {
+      "id": "E8",
+      "name": "Hiện đại"
+    }
+  ],
+  "sheets": [
+    {
+      "name": "TONG QUAN",
+      "title": "WORLD EVOLUTION  |  MASTER GAME DATA",
+      "count": 31,
+      "description": "DESIGN BASELINE v1.2 • Master Data thống nhất • Sinh tồn, y tế, ô nhiễm, sinh thái, thuần dưỡng, giao thông, nhà ở • Mục tiêu ~240 giờ x4 đến E8"
+    },
+    {
+      "name": "HUONG DAN",
+      "title": "HƯỚNG DẪN • CẤU TRÚC MASTER DATA",
+      "count": 36,
+      "description": "Master Data Canonical: 38 bảng chức năng/quan hệ thống nhất; các sheet là danh mục chính thức, không phân tách dữ liệu theo lần bổ sung."
+    },
+    {
+      "name": "THOI DAI",
+      "title": "LỘ TRÌNH THỜI ĐẠI",
+      "count": 9,
+      "description": "Mục tiêu 240 giờ chơi ở x4 (8 giờ/ngày × 30 ngày) để MỞ KHÓA E8. Gate tối thiểu bằng 80% ngày mục tiêu, đồng thời phải hoàn thành nghiên cứu và năng lực vận hành; đây là mục tiêu cân bằng, không khóa 240 giờ thực."
+    },
+    {
+      "name": "DIEU KIEN TIEN HOA",
+      "title": "BỘ ĐIỀU KIỆN CHUYỂN THỜI ĐẠI",
+      "count": 110,
+      "description": "Chuyển thời đại = ĐỦ NGÀY TỐI THIỂU + các gate sinh tồn, nghề, sản xuất, công nghệ ĐÃ ỨNG DỤNG và ổn định (AND). Giờ mục tiêu 240h x4 KHÔNG phải bộ đếm khóa cứng."
+    },
+    {
+      "name": "CAU HINH GAME",
+      "title": "THÔNG SỐ GAME ENGINE",
+      "count": 75,
+      "description": "Thông số CHỐT là giả định nghiệp vụ; ĐỀ XUẤT phải được playtest trước khi khóa."
+    },
+    {
+      "name": "TAI NGUYEN",
+      "title": "DANH MỤC TÀI NGUYÊN",
+      "count": 230,
+      "description": "Mỗi tài nguyên có ID duy nhất; hạn ngoài trời theo từng loại và kho phù hợp để bảo quản."
+    },
+    {
+      "name": "BAO QUAN & KHO",
+      "title": "QUY TẮC HAO HỤT VÀ TỒN KHO",
+      "count": 46,
+      "description": "Lô hàng có ngày thu hoạch và trạng thái riêng; kho phù hợp tạm dừng đồng hồ phân hủy."
+    },
+    {
+      "name": "TRANG PHUC & GIU AM",
+      "title": "TRANG BỊ VÀ CHỐNG LẠNH",
+      "count": 18,
+      "description": "Một trang bị chỉ cấp cho một người; bảo vệ phụ thuộc slot, độ ướt, độ bền và nơi trú."
+    },
+    {
+      "name": "VAI TRO",
+      "title": "NGHỀ NGHIỆP VÀ ĐÀO TẠO",
+      "count": 96,
+      "description": "Chuyển nghề cần đào tạo N ngày; tập sự chỉ có hiệu suất 60–80%, không phân công tức thì."
+    },
+    {
+      "name": "CONG TRINH",
+      "title": "DANH MỤC CÔNG TRÌNH",
+      "count": 166,
+      "description": "Công trình do người chơi xây; phải có công nghệ, vật tư, nhân sự, đầu vào và kết nối."
+    },
+    {
+      "name": "DINH MUC XAY DUNG",
+      "title": "BOM VẬT LIỆU XÂY DỰNG",
+      "count": 357,
+      "description": "Bảng chuẩn hóa 1 công trình - N tài nguyên, phục vụ kiểm tra nguyên vật liệu thi công."
+    },
+    {
+      "name": "DINH BIEN NHAN SU",
+      "title": "NHÂN SỰ VẬN HÀNH CÔNG TRÌNH",
+      "count": 179,
+      "description": "Bảng chuẩn hóa số lượng nhân sự cần cho từng công trình, liên kết theo nghề."
+    },
+    {
+      "name": "VAN HANH CONG TRINH",
+      "title": "DÒNG VẬT TƯ VÀ DỊCH VỤ CÔNG TRÌNH",
+      "count": 482,
+      "description": "Đầu vào/ra mô tả; định lượng tiêu hao chỉ có giá trị khi được định nghĩa trong công thức."
+    },
+    {
+      "name": "CONG NGHE",
+      "title": "CÂY NGHIÊN CỨU",
+      "count": 140,
+      "description": "Khám phá công nghệ không phải là hoàn tất thời đại: quan sát → đột phá thực nghiệm → triển khai ứng dụng → làm chủ. Công trình do người chơi quyết định xây."
+    },
+    {
+      "name": "LIEN KET NGHIEN CUU",
+      "title": "ĐIỀU KIỆN CÔNG NGHỆ DẠNG QUAN HỆ",
+      "count": 350,
+      "description": "Bảng quan hệ công nghệ tiên quyết và công trình nghiên cứu; ID liên kết để engine truy vấn."
+    },
+    {
+      "name": "NGHIEN CUU CHI TIET",
+      "title": "ĐỊNH MỨC NGHIÊN CỨU",
+      "count": 139,
+      "description": "Công nghệ có 3 pha: quan sát → thực nghiệm (đột phá theo xác suất) → ứng dụng. Chỉ công nghệ đã áp dụng mới được tính vào điều kiện tiến hóa. Thời gian tối thiểu cho từng pha vẫn cần playtest."
+    },
+    {
+      "name": "CONG THUC",
+      "title": "ĐỊNH MỨC CHẾ BIẾN VÀ SẢN XUẤT",
+      "count": 102,
+      "description": "Phần ăn là kết quả sản xuất thực tế: ví dụ 1 gạo tạo 2 phần ăn tại bếp đủ điều kiện."
+    },
+    {
+      "name": "NGUYEN LIEU CONG THUC",
+      "title": "ĐỊNH MỨC ĐẦU VÀO THEO CÔNG THỨC",
+      "count": 215,
+      "description": "1 công thức - N nguyên liệu; số lượng giữ theo dữ liệu gốc. Điện là công suất, không lưu như vật tư."
+    },
+    {
+      "name": "CHUOI PHU THUOC",
+      "title": "CHUỖI HẬU CẦN - SẢN XUẤT",
+      "count": 47,
+      "description": "Công trình hỗ trợ nhau thông qua vật tư, nhân sự, môi trường và năng lượng."
+    },
+    {
+      "name": "MUA & KHI HAU",
+      "title": "CHU KỲ MÙA",
+      "count": 4,
+      "description": "Một năm gồm 120 ngày (mặc định), nhưng biểu hiện mùa và tác động khác theo vùng khí hậu."
+    },
+    {
+      "name": "VUNG KHI HAU",
+      "title": "BỘ SINH CẢNH KHÍ HẬU",
+      "count": 7,
+      "description": "Không ép trang phục mùa đông ở vùng nóng; khí hậu điều chỉnh xác suất thời tiết."
+    },
+    {
+      "name": "HE SINH THAI",
+      "title": "ĐỘNG THỰC VẬT VÀ NGUỒN KHAI THÁC",
+      "count": 52,
+      "description": "Loài tự nhiên có môi trường sống, sản lượng, chu kỳ tái sinh và nguy cơ cạn kiệt."
+    },
+    {
+      "name": "NUOC & SINH HOAT",
+      "title": "CHU TRÌNH NƯỚC",
+      "count": 15,
+      "description": "Nguồn nước có chất lượng, khả năng khai thác, hao hụt và thứ tự phân phối."
+    },
+    {
+      "name": "THIEN TAI",
+      "title": "BIẾN CỐ THIÊN NHIÊN",
+      "count": 15,
+      "description": "Biến cố chịu ảnh hưởng khí hậu và địa hình; có tín hiệu sớm và phương án ứng phó."
+    },
+    {
+      "name": "LANH GIA & PHOI NHIEM",
+      "title": "NHIỆT ĐỘ - NHIỄM LẠNH",
+      "count": 11,
+      "description": "Tính nhu cầu giữ ấm theo người; áo ướt, đêm ngoài trời và sưởi ảnh hưởng riêng."
+    },
+    {
+      "name": "DIA HINH & XAY DUNG",
+      "title": "ĐỊA HÌNH VÀ VỊ TRÍ",
+      "count": 19,
+      "description": "Công trình chịu tác động bởi độ cao, độ dốc, nguồn nước, quãng đường và vùng ngập."
+    },
+    {
+      "name": "HOAT DONG E0",
+      "title": "DANH SÁCH HOẠT ĐỘNG ĐỒ ĐÁ",
+      "count": 58,
+      "description": "Giai đoạn E0 có hoạt động săn, hái, chế tạo, đào tạo, sống qua nhiều mùa trước E1."
+    },
+    {
+      "name": "VONG LAP 1 NGAY",
+      "title": "THỨ TỰ XỬ LÝ 1 NGÀY",
+      "count": 21,
+      "description": "Một ngày mô phỏng gồm thời tiết, sinh thái, di chuyển thật, nhà ở, thú thuần hóa, ô nhiễm, bệnh và tiến hóa; mục tiêu ~240 giờ x4 đến E8."
+    },
+    {
+      "name": "QUY TAC",
+      "title": "QUY TẮC NGHIỆP VỤ",
+      "count": 84,
+      "description": "Quy tắc nền tảng xuyên thời đại, để cùng áp dụng một logic simulation."
+    },
+    {
+      "name": "KIEM TRA DU LIEU",
+      "title": "KIỂM TRA TÍNH TOÀN VẸN MASTER DATA",
+      "count": 42,
+      "description": "Đối soát Master Data thống nhất: danh mục, nghề, công trình, chuỗi sản xuất, bệnh tật, thú nuôi, ô nhiễm, vận tải và nhà ở."
+    },
+    {
+      "name": "BENH TAT & Y TE",
+      "title": "BỆNH TẬT VÀ CHĂM SÓC THEO THỜI ĐẠI",
+      "count": 12,
+      "description": "Mỗi bệnh/trạng thái có nguồn phát sinh, đường lây, thời gian tiến triển; E0 chỉ chăm sóc hỗ trợ, không có thuốc hiện đại."
+    },
+    {
+      "name": "O NHIEM & XU LY",
+      "title": "Ô NHIỄM, PHÁT THẢI VÀ KHẮC PHỤC",
+      "count": 14,
+      "description": "Ô nhiễm theo từng tile/sinh cảnh; nguồn phát sinh theo sản lượng, công nhân dọn rác & công trình xử lý phải đủ công suất."
+    },
+    {
+      "name": "THUAN HOA & SUC KEO",
+      "title": "THUẦN HÓA, CHĂN NUÔI VÀ SỨC KÉO",
+      "count": 8,
+      "description": "Động vật hoang ngoài bản đồ chỉ trở thành gia súc khi thuần dưỡng thành công; mỗi cá thể có sức khỏe, thức ăn, tuổi và lịch công việc."
+    },
+    {
+      "name": "GIAO THONG & HAU CAN",
+      "title": "DI CHUYỂN THEO BẢN ĐỒ, ĐƯỜNG ĐI VÀ VẬN TẢI",
+      "count": 11,
+      "description": "Mọi người, động vật, kiện hàng di chuyển theo tuyến có độ dài; công trình và địa hình tạo mạng đi thực tế, không dịch chuyển tức thì."
+    },
+    {
+      "name": "NHA O & DAN SO",
+      "title": "NHÀ Ở, SỨC CHỨA VÀ TÌNH TRẠNG CƯ TRÚ",
+      "count": 8,
+      "description": "Dân số tối đa do người chơi cấu hình độc lập với tổng số chỗ ở; mọi người phải được phân chỗ ngủ, người thiếu nhà chịu tác động."
+    },
+    {
+      "name": "SINH CANH & PHAN BO",
+      "title": "SINH CẢNH VÀ QUẦN THỂ THEO ĐỊA HÌNH",
+      "count": 10,
+      "description": "Map gồm ô sinh cảnh có động vật ăn cỏ / ăn thịt, nguồn nước, quần thể và vùng di cư; không sinh sản vô hạn."
+    },
+    {
+      "name": "QUAN HE SINH THAI",
+      "title": "CHUỖI THỨC ĂN VÀ TƯƠNG TÁC QUẦN THỂ",
+      "count": 14,
+      "description": "Quan hệ thú săn mồi - con mồi có ID hai chiều, hệ số xác suất tham khảo và vùng sinh cảnh; điều chỉnh khi sinh thái suy giảm."
+    },
+    {
+      "name": "PHAT THAI CONG TRINH",
+      "title": "NGUỒN PHÁT THẢI THEO CÔNG TRÌNH",
+      "count": 18,
+      "description": "Bảng quan hệ công trình/người dân → loại ô nhiễm; hệ số phát thải theo công suất; chỉ xử lý khi có nhân sự, vật tư và công suất."
+    }
+  ]
+}

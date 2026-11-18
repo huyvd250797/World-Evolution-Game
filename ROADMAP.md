@@ -30,6 +30,10 @@ Căn cứ: Development Plan V1.1 và Master Game Data V1.2 Canonical Frozen. 23 
 
 Mỗi bản kế thừa chức năng trước, có typecheck/lint/tests/build và smoke test thiết bị theo khả năng xác minh thực. Không coi nút/menu dữ liệu là gameplay đã hoàn tất. Không sửa Master Data khi chưa được yêu cầu.
 
+## Hotfix nền tảng
+
+V0.1.1 — Vercel Deployment Hotfix: sửa production build và gói source; giữ 23 mốc gameplay. Không cần migration mới.
+
 ## Mốc điều kiện
 
 - V0.5: camera, xây, nhà ở, dân đi và chuyển thiết bị.

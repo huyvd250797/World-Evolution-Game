@@ -1,0 +1,19 @@
+{
+  "version": "0.1.0",
+  "assets": {
+    "landscape": {
+      "path": "/assets/landscape-v1.svg",
+      "kind": "illustration",
+      "gameplay": false,
+      "sizeBytes": 3498,
+      "sha256": "8a9174f88e5fee48f2e833ece8873cc13a2c6cfadca7a607b06b8c0720bd31cc"
+    },
+    "icon": {
+      "path": "/assets/icon-v1.svg",
+      "kind": "icon",
+      "gameplay": false,
+      "sizeBytes": 357,
+      "sha256": "a3980602fd02a41315adae0124415d9e25cda8b2afb0a484db775d1117c33bb4"
+    }
+  }
+}

@@ -1,8 +1,18 @@
-# World Evolution V0.1.0 — Cross-Platform Foundation
+# World Evolution V0.1.1 — Vercel Deployment Hotfix
 
 Nền tảng game web dùng chung PC, iPhone và Android. Bản này đăng ký/đăng nhập, quản lý thế giới và lưu trạng thái khởi tạo lên Supabase. Bản đồ 2.5D tương tác, simulation, xây dựng và dân đi lại thuộc các bản tiếp theo.
 
-## Bắt đầu nhanh
+## Deploy thẳng lên Vercel
+
+Không cần localhost hoặc chạy npm trên máy Boss. Giải nén ZIP mới, upload **toàn bộ nội dung** vào gốc repository GitHub. Gói V0.1.1 đặt `package.json`, `verify-release.mjs`, `src`, `data`, `public` ngay tại gốc ZIP.
+
+Trên Vercel: Framework Next.js; Root Directory `.` nếu package.json ở gốc repo; Node 24.x; Install `npm ci`; Build `npm run build`; Output mặc định. Các lệnh do Vercel tự chạy.
+
+Thêm `NEXT_PUBLIC_SUPABASE_URL` và `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` trong Environment Variables, giữ cấu hình Supabase hiện có. Redeploy commit mới và tắt Use existing Build Cache khi thử lại lỗi cũ. **Không cần migration mới; không chạy lại SQL 001 đã áp dụng.**
+
+Lỗi cũ `Cannot find module scripts/catalog.ts`: bản build trước gọi bộ import Excel ở mỗi deploy, trong khi file đó không có ở source Vercel nhận. V0.1.1 dùng catalog đã xuất sẵn và kiểm checksum bằng Node thuần tại `verify-release.mjs`. Bộ import Excel và tests vẫn đầy đủ trong ZIP để bảo trì/CI.
+
+## Chạy local tùy chọn
 
 1. Giải nén ZIP, mở thư mục `world-evolution` chứa `package.json` bằng VS Code.
 2. Cài Node.js **24 LTS** (hỗ trợ 22–24), npm 10 trở lên.
@@ -96,7 +106,7 @@ Không chạy lại migration khởi tạo trên database đã sử dụng. Vi�
 
 ## Bàn giao và phiên bản tiếp theo
 
-Gói source: `World-Evolution-V0.1.0-Cross-Platform-Foundation.zip`. Hướng dẫn cấu hình nằm trong ZIP. SQL gốc trong ZIP và bản TXT đi kèm có nội dung SQL giống nhau.
+Gói source: `World-Evolution-V0.1.1-Vercel-Deployment-Hotfix.zip`. Hướng dẫn cấu hình nằm trong ZIP. SQL gốc trong ZIP và bản TXT đi kèm có nội dung SQL giống nhau.
 
 V0.2.0 — **Isometric World & Camera**: bản đồ 2.5D từ seed, chunk, địa hình/sông/rừng/núi, camera pan/zoom, minimap, chuột và cảm ứng. Xem [ROADMAP.md](ROADMAP.md).
 

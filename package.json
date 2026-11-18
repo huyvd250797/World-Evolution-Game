@@ -1,13 +1,13 @@
 {
   "name": "world-evolution",
-  "version": "0.1.0",
-  "description": "World Evolution V0.1.0 Cross-Platform Foundation",
+  "version": "0.1.1",
+  "description": "World Evolution V0.1.1 Vercel Deployment Hotfix",
   "scripts": {
     "dev": "next dev",
-    "build": "npm run data:check && next build",
+    "build": "node verify-release.mjs && next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "next typegen && tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit && tsc --noEmit -p tsconfig.tools.json",
     "data:import": "node --import tsx scripts/catalog.ts",
     "data:sql": "node --import tsx scripts/sql.ts",
     "data:check": "node --import tsx scripts/catalog.ts --check && node --import tsx scripts/sql.ts --check && node --import tsx scripts/assets.ts --check",
@@ -15,7 +15,8 @@
     "test:ui": "playwright test",
     "check": "npm run data:check && npm run typecheck && npm run lint && npm test && npm run build",
     "assets:manifest": "node --import tsx scripts/assets.ts",
-    "test:http": "node --import tsx tests/http-smoke.ts"
+    "test:http": "node --import tsx tests/http-smoke.ts",
+    "verify:release": "node verify-release.mjs"
   },
   "keywords": [],
   "author": "",
@@ -47,5 +48,9 @@
   "engines": {
     "node": ">=22.0.0 <25",
     "npm": ">=10"
+  },
+  "worldEvolution": {
+    "catalogSha256": "b375ca03e5123d07ddd9a317a3e75b607f91c680bd69e72198b97e980013a5ea",
+    "sourceSha256": "9583ccb1398a0e45dc1c4e415b9749f5a22c3f7b24dd403df92ecd675c42836c"
   }
 }

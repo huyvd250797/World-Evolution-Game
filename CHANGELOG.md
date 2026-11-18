@@ -1,5 +1,15 @@
 # Changelog
 
+## V0.1.1 — Vercel Deployment Hotfix — 18/11/2026
+
+- Build Vercel dùng catalog JSON đã xuất sẵn; loại bỏ phụ thuộc chạy scripts/catalog.ts trong production build.
+- Giữ kiểm SHA-256 Canonical và asset bằng verify-release.mjs ở gốc source.
+- Tách typecheck ứng dụng và công cụ; build không biên dịch các bài test/importer.
+- Thêm vercel.json, đóng ZIP ở gốc để upload GitHub dễ chọn đúng Root Directory.
+- Giữ đầy đủ script import, workbook Frozen, tests và kiểm dữ liệu trong CI.
+- Không thay database, không cần migration mới. Gameplay tiếp theo vẫn V0.2.0.
+
+
 ## V0.1.0 — Cross-Platform Foundation — 18/11/2026
 
 - Khởi tạo Next.js/TypeScript, App Router, game/core, game/data và renderer adapter.

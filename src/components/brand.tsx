@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export function Brand(){return <Link className="brand" href="/worlds"><svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="currentColor"/><path d="m9 25 11-7 11 7-11 7z" fill="#c3d991"/><path d="m14 20 6-12 6 12-6-3z" fill="#faf8ed"/></svg><span>World<span className="brand-second">Evolution</span></span></Link>}
