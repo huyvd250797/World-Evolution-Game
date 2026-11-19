@@ -65,13 +65,13 @@ export function laborCommand(original:Workforce,people:Citizen[],nav:Navigation,
  return {workforce:w,citizens};
 }
 /** Called once after movement each tick. Travel, rest, field practice and missing mentors earn no classroom time. */
-export function tickWorkforce(w:Workforce,citizens:Citizen[],tick:number,ctx=FOUNDATION_LABOR,jobs:Job[]=[],movingBefore:string[]=[]){const busy=new Set([...jobs.map(j=>j.citizenId),...movingBefore]);
+export function tickWorkforce(w:Workforce,citizens:Citizen[],tick:number,ctx=FOUNDATION_LABOR,jobs:Job[]=[],movingBefore:string[]=[],earn:(id:string)=>number=()=>1){const busy=new Set([...jobs.map(j=>j.citizenId),...movingBefore]);
  for(const p of w.workers){if(!p.training)continue;const t=p.training,r=roleById(p.roleId)!,place=ctx.sites.find(s=>s.id===t.siteId&&s.operational),spec=TRAINING.find(s=>s.buildingId===place?.buildingId);
   const teachers=place?mentors(w,citizens,place,busy):null;
   if(!place||!spec||spec.era!==r.era||roleLocks(r.id,ctx).length||!ctx.technologies.includes(String(spec.technologyId))||!teachers?.includes(t.mentorId)){t.phase='blocked';continue;}
   if(p.assignment){t.phase='practice';continue;}const c=citizens.find(c=>c.id===p.citizenId)!;
   if(movingBefore.includes(p.citizenId)){t.phase='outbound';continue;}if(busy.has(p.citizenId)){t.phase='practice';continue;}if(c.status==='moving'){t.phase='outbound';continue;}if(!present(c,place)){t.phase='blocked';continue;}
-  t.phase='studying';t.progressTicks++;
+  t.phase='studying';t.progressTicks+=earn(p.citizenId);
   if(t.progressTicks>=Number(r.trainingDays)*TICKS_PER_DAY){p.training=null;p.qualified=true;p.laborRemainder=0;event(w,p,tick,'graduate');}
  }
 }

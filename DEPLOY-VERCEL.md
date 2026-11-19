@@ -1,17 +1,17 @@
-# Deploy World Evolution V0.9.0 — Construction & Logistics
+# Deploy World Evolution V0.11.0 — Health & Pollution
 
-Không cần chạy localhost/npm trên máy Boss.
+Không cần localhost/npm trên máy Boss.
 
-1. Sao lưu Supabase project đang dùng. Nếu đã chạy 001–007 của V0.8, mở SQL Editor và chạy đúng `infra/supabase/migrations/202611190008_construction_logistics.sql` **một lần**, trước deploy. TXT V0.9 là bản sao nguyên SQL 008. Project mới chạy 001 → 008 theo thứ tự; không chạy lại file đã áp dụng.
-2. Giải nén ZIP, upload toàn bộ nội dung vào gốc repo hiện tại (cùng cấp package.json), ghi đè file trùng. Không xóa repo/project/env/database. Giữ source ngoài phạm vi nếu repo có thay đổi riêng.
-3. Vercel project hiện tại → framework Next.js, Root Directory `.`, Node 24.x, Install `npm ci`, Build `npm run build`, Output mặc định. Giữ hai biến Supabase và asset base tùy chọn. Push branch đã nối để tự deploy; nếu cần Redeploy, dùng commit source mới nhất.
-4. Đảm bảo Supabase Auth Site URL và Redirect URLs `/auth/callback`, `/auth/confirm` đúng domain HTTPS. Chỉ expose schema public, không expose private.
-5. Đăng nhập → mở world cũ → so seed/tick/20 ID/nghề/đào tạo/lô/ecology. Lưu thủ công, reload; kiểm đổi thiết bị/lease/history. Bảng Thi công nằm dưới bản đồ.
-6. Đặt bãi ngoài trời ở tọa độ đi được; chọn lô đã thu và cư dân rảnh, giao vận chuyển có xác nhận; hàng chưa tới nguồn không bị trừ, chưa tới đích chưa nhập nơi nhận. Kiểm reload giữa chặng giữ tuổi/hạn và số lượng.
-7. Tạo công trường từ nền mở, xem BOM/khóa. Không tự thử cấp thợ/vật tư bằng sửa database sản xuất. Chuỗi khởi đầu còn chờ nghiên cứu/nguồn vật liệu; fixture đã kiểm không đồng nghĩa world đã được mở sẵn.
+1. Với project V0.10 đã chạy 001–009: sao lưu project, chạy một lần **infra/supabase/migrations/202611190010_health_pollution.sql** trong Supabase SQL Editor. TXT V0.11 gửi kèm là đúng nội dung SQL010. Project mới chạy 001 → 010 theo thứ tự; không chạy lại migration đã áp dụng.
+2. Giải nén ZIP, đưa tất cả file/thư mục vào gốc repo hiện tại, cùng cấp package.json. Ghi đè file trùng; giữ database/repo/Vercel/env. Không chỉ upload src hoặc bỏ data/generated/scripts/public/infra.
+3. Vercel: Next.js, Root Directory `.`, Node24.x, Install `npm ci`, Build `npm run build`, Output mặc định. Push branch đã kết nối; redeploy commit mới nhất. Không chọn static export/out.
+4. Giữ NEXT_PUBLIC_SUPABASE_URL và NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY; asset base để trống dùng Vercel/CDN. Auth Site URL và Redirect URLs callback/confirm theo domain HTTPS. Không expose schema private.
+5. Chạy infra/supabase/verify_health.sql: 12 bệnh, 14 ô nhiễm, 18 nguồn phát thải, schema validator hiện tại và private client read=false.
+6. Mở world cũ: đúng seed/tick/20 ID/cargo/hạn/nghề/khí hậu. Health bắt đầu tại tick cũ, không chạy bù quá khứ. Lưu schema10 rồi reload; kiểm nghỉ bệnh, hiệu suất, rác và lớp phủ/chú giải. Tắt lớp phủ không thay simulation.
+7. Kiểm cơ chế lease: thiết bị khác quan sát, tiếp quản rõ ràng; bản cũ không ghi đè sau tiếp quản. Thử offline/bản tạm/lịch sử theo docs/VERIFICATION.md.
 
-`infra/supabase/verify_construction.sql` chỉ đọc metadata; kỳ vọng catalog166, resources230 và grants private=false. Nếu báo thiếu function/metadata, kiểm đúng project và 008 sau 007, không reset DB.
+Cơ sở y tế/vệ sinh chưa mở khi chỉ có T001: app báo rõ thiếu điều kiện, không tự cấp nghề/vật tư. Không sửa DB sản xuất để giả fixture. Các bệnh/ô nhiễm công nghiệp cần tuyến sản xuất chưa có nên không tự xuất hiện. Chi tiết phạm vi/policy trong docs/HEALTH-POLLUTION.md.
 
-Lỗi thiếu scripts/catalog.ts hoặc ./lib/config: kiểm upload đủ source mới, Build Command đúng npm run build và Root Directory chứa package.json; giữ cả hai proxy.ts alias. Đổi biến NEXT_PUBLIC cần redeploy. Không đổi sang static export/out.
+Thiếu metadata/function: kiểm đúng project và SQL010 sau009; không reset database. Lỗi scripts/catalog.ts hoặc ./lib/config: kiểm upload đủ source, Root Directory, Build Command, giữ cả hai proxy entry alias. Đổi biến NEXT_PUBLIC phải redeploy.
 
-Sau lưu schema 8 dùng source V0.9/hotfix tương thích để ghi tiếp; V0.8 không đọc được construction mới. Lịch sử cũ vẫn khôi phục qua V0.9. Chưa deploy thật vào tài khoản Boss; kết quả tự động và phần cần nghiệm thu thiết bị thật trong RELEASE-CHECKS.md.
+Sau lưu schema10 cần V0.11/hotfix tương thích để ghi tiếp; dùng app hiện tại phục hồi lịch sử cũ. Chưa deploy vào tài khoản Boss; browser/mobile/GPU và quota thật cần nghiệm thu.

@@ -13,8 +13,8 @@ Căn cứ: Development Plan V1.1 và Master Game Data V1.2 Canonical Frozen. 23 
 | V0.7.0 | Workforce & Training | 96 nghề, 20 hồ sơ, điều kiện đào tạo/định biên, batch xác nhận, credit tập sự/Worker/save schema 6; cơ sở vận hành vẫn chờ thi công/nghiên cứu | Đã xây source; đào tạo gameplay chờ dependencies |
 | V0.8.0 | Living Ecosystem | Catalog 52 loài, nguồn hữu hạn/đúng mùa, cá thể/quần thể/food web, survey, runtime 9 flora/15 fauna, shared stamps/chunk/LOD; schema 7/SQL 007, save/recovery; săn giữ gate nghề/cơ sở | Đã xây source |
 | V0.9.0 | Construction & Logistics | BOM Frozen, công trường/buffer/haul vật lý, thợ J008, completed homes/capabilities, schema 8/008; không cấp miễn phí nghề/vật tư/tech; chuỗi khởi đầu còn phụ thuộc nghiên cứu/nguồn nguyên liệu | Đã xây source; gameplay xây từ số 0 chờ dependencies |
-| V0.10.0 | Seasons & Climate | Mùa theo vùng, thiên tai, lạnh/trang phục, thời tiết có mức chất lượng | Tiếp theo |
-| V0.11.0 | Health & Pollution | Bệnh, chăm sóc, rác và ô nhiễm theo vùng; đo tăng trưởng save | Dự kiến |
+| V0.10.0 | Seasons & Climate | Weather/RNG theo 7 khí hậu, nhiệt/ướt/trang phục, 7 hazard nền, demand/work/ecology/TTL, HUD/FX có chất lượng, schema 9/009; không tạo bệnh/phá hủy hoặc mở bootstrap | Đã xây source; cần nghiệm thu thiết bị/cloud |
+| V0.11.0 | Health & Pollution | Sức khỏe/bệnh cá nhân, nghỉ bệnh, care/recipes có điều kiện, rác/carry/mass, chất lượng nước, ô nhiễm theo ô/overlay, schema10/010. Cơ sở/nghề còn khóa bởi research/bootstrap; công nghiệp và bệnh E1–E8 chưa có nguồn thực tế | Đã xây source; cần nghiệm thu cloud/thiết bị |
 | V0.12.0 | Research & Discovery | 3 pha nghiên cứu, tiên quyết, RNG chống reroll, bằng chứng ứng dụng | Dự kiến |
 | V0.13.0 | Cross-Platform Gameplay UX | HUD/cảnh báo/nhật ký, E0 tuning, baseline tải/cache/save PC/mobile | Dự kiến |
 | V1.0.0 | Prehistoric Release | Chơi trọn E0 và mở E1, soak/save/recovery, đánh giá quota Free bằng tải thực | Dự kiến |

@@ -1,0 +1,579 @@
+{
+  "version": 1,
+  "seasons": [
+    {
+      "id": "S1",
+      "name": "Xuân",
+      "from": 1,
+      "to": 30,
+      "description": "Tái sinh thực vật, nhiều con non, mưa rào",
+      "weather": "Mưa vừa",
+      "biological": 0.75,
+      "water": 1.1,
+      "growth": 1.15
+    },
+    {
+      "id": "S2",
+      "name": "Hạ",
+      "from": 31,
+      "to": 60,
+      "description": "Nắng nóng, hạn hán, cháy rừng",
+      "weather": "Khô nóng",
+      "biological": 1.25,
+      "water": 1.45,
+      "growth": 0.8
+    },
+    {
+      "id": "S3",
+      "name": "Thu",
+      "from": 61,
+      "to": 90,
+      "description": "Mùa hạt và quả chín, tích trữ trước lạnh",
+      "weather": "Mưa bão",
+      "biological": 0.9,
+      "water": 1,
+      "growth": 1.2
+    },
+    {
+      "id": "S4",
+      "name": "Đông",
+      "from": 91,
+      "to": 120,
+      "description": "Rét ở biome lạnh; nhiệt độ, tuyết, mưa lạnh và gió tùy vùng",
+      "weather": "Rét đậm / tuyết ở vùng phù hợp",
+      "biological": 0.7,
+      "water": 1.05,
+      "growth": 0.55
+    }
+  ],
+  "regions": [
+    {
+      "id": "B01",
+      "name": "Ôn đới",
+      "seasons": "Đủ 4 mùa",
+      "rainfall": "Trung bình",
+      "snow": "Có tuyết mùa đông",
+      "description": "Thay đổi mạnh mùa, động vật di cư"
+    },
+    {
+      "id": "B02",
+      "name": "Nhiệt đới gió mùa",
+      "seasons": "Mùa mưa/mùa khô là chính",
+      "rainfall": "Mưa lớn",
+      "snow": "Không có tuyết ở bản đồ điển hình",
+      "description": "S1/S3 là mùa mưa, S2 khô nóng, S4 dịu hơn"
+    },
+    {
+      "id": "B03",
+      "name": "Bán khô hạn",
+      "seasons": "Mùa khô dài",
+      "rainfall": "Ít mưa",
+      "snow": "Thường không tuyết",
+      "description": "Nguồn nước hiếm; hạn hán thường xuyên"
+    },
+    {
+      "id": "B04",
+      "name": "Cận nhiệt",
+      "seasons": "4 mùa nhẹ",
+      "rainfall": "Vừa đến nhiều",
+      "snow": "Tuyết hiếm ở vùng thấp",
+      "description": "Mưa bão theo thời kỳ; sản lượng cây thay đổi"
+    },
+    {
+      "id": "B05",
+      "name": "Hàn đới",
+      "seasons": "Mùa đông dài và rét sâu; xuân/hè ngắn",
+      "rainfall": "Thấp; có tuyết",
+      "snow": "Có tuyết dày",
+      "description": "Trang phục giữ ấm và nơi trú bắt buộc để duy trì dân số; mùa ngắn khó kiếm ăn"
+    },
+    {
+      "id": "B06",
+      "name": "Núi cao",
+      "seasons": "Nhiệt độ phụ thuộc cao độ; có thể lạnh quanh năm",
+      "rainfall": "Biến động theo sườn núi",
+      "snow": "Có tuyết ở cao độ phù hợp",
+      "description": "Gió mạnh; cần trang phục ấm cả khi mùa hạ; đường đi dễ bị chặn"
+    },
+    {
+      "id": "B07",
+      "name": "Cao nguyên khô lạnh",
+      "seasons": "Ngày nắng nhưng đêm lạnh mạnh; đông rất rét",
+      "rainfall": "Ít mưa",
+      "snow": "Tuyết hiếm hoặc theo cao độ",
+      "description": "Cần nước như vùng khô và quần áo/chăn giữ ấm ban đêm"
+    }
+  ],
+  "hazards": [
+    {
+      "id": "H01",
+      "name": "Hạn hán",
+      "condition": "Khô hạn tích lũy >= 18 ngày, lượng mưa thấp",
+      "warning": "Dòng sông giảm, đất nứt, cây héo",
+      "effect": "Nguồn nước -20 đến -70%, quả giảm",
+      "response": "Hố chứa nước, phân công lấy nước, tìm suối",
+      "resilience": "Nước dự trữ ≥ 10 ngày; vẫn đủ uống",
+      "area": "Ô bản đồ khô/mùa hạ",
+      "rule": "Khí hậu bán khô hạn ảnh hưởng cao"
+    },
+    {
+      "id": "H02",
+      "name": "Lũ sông",
+      "condition": "Lượng mưa nhiều ngày + nước thượng nguồn",
+      "warning": "Sông dâng qua từng mốc, đất thấp ẩm",
+      "effect": "Kho/người/đường trên vùng ngập bị ảnh hưởng",
+      "response": "Rãnh thoát nước, bờ chắn lũ, di dời kho",
+      "resilience": "Nhà/kho quan trọng không còn nằm trên ô ngập",
+      "area": "Vùng trũng cạnh sông",
+      "rule": "Không bắt buộc gặp mới qua thời đại"
+    },
+    {
+      "id": "H03",
+      "name": "Mưa liên tục",
+      "condition": "Mưa >= 5 ngày; tỉ lệ tùy khí hậu",
+      "warning": "Mây, đường lầy, vật liệu ướt",
+      "effect": "Hư hỏng thực phẩm ngoài trời nhanh, đi chậm",
+      "response": "Giá phơi có mái, lều che, kho",
+      "resilience": "Lương thực vẫn có nguồn cung",
+      "area": "Rừng ẩm, vùng ven sông",
+      "rule": "Không bắt buộc xuất hiện tất cả các năm"
+    },
+    {
+      "id": "H04",
+      "name": "Cháy rừng",
+      "condition": "Nóng + khô + gió + nguồn lửa",
+      "warning": "Khói, vệt cháy, động vật bỏ chạy",
+      "effect": "Mất cây gỗ, nguy cơ cháy kho/lều",
+      "response": "Phòng cháy, cất củi, khoảng cách công trình",
+      "resilience": "Không mất sạch khu định cư",
+      "area": "Rừng khô",
+      "rule": "Cảnh báo trước khi cháy lan"
+    },
+    {
+      "id": "H05",
+      "name": "Rét đậm",
+      "condition": "Nhiệt độ dưới ngưỡng sinh tồn liên tiếp",
+      "warning": "Băng giá, nước chậm, người tụ lửa",
+      "effect": "Tăng tiêu thụ củi, giảm thân nhiệt khi thiếu áo/mũ/giày; áo ướt làm rủi ro cao",
+      "response": "Trang bị áo da/lông theo người; chăn, lều giữ ấm, nhà sưởi, hong áo ướt",
+      "resilience": ">=80% người được bảo vệ theo biome; nơi ngủ và nhiên liệu đủ",
+      "area": "Ôn đới/đồi núi",
+      "rule": "Không áp dụng tuyết cho vùng nhiệt đới thấp"
+    },
+    {
+      "id": "H06",
+      "name": "Nắng nóng cực đoan",
+      "condition": "Nhiệt tăng kéo dài",
+      "warning": "Cây héo, người hoạt động chậm",
+      "effect": "Tăng tiêu thụ nước +1/người, giảm hiệu suất",
+      "response": "Nguồn nước, phân ca, trú mát",
+      "resilience": "Nước sinh hoạt vẫn bảo đảm",
+      "area": "Các vùng nóng",
+      "rule": "Tần suất biến cố phụ thuộc khí hậu"
+    },
+    {
+      "id": "H07",
+      "name": "Dịch bệnh nguồn nước",
+      "condition": "Dùng nước bẩn quá mức nhiều ngày",
+      "warning": "Sức khỏe nhóm người xuống thấp",
+      "effect": "Giảm nhân lực, tăng cần người chữa bệnh",
+      "response": "Làm sạch nước, thảo dược, cách ly hợp lý",
+      "resilience": "Kiểm soát tỷ lệ mắc và phục hồi",
+      "area": "Mọi vùng",
+      "rule": "Có xác suất; không tự phát chắc chắn"
+    },
+    {
+      "id": "H08",
+      "name": "Dịch bệnh do thực phẩm",
+      "condition": "Ăn đồ hỏng / nấm không nhận biết",
+      "warning": "Nhiều ca đau bụng, nghỉ làm",
+      "effect": "Hao hụt sức khỏe/nhân lực",
+      "response": "Kho, kiểm tra hạn, nhận biết thực phẩm",
+      "resilience": "Không có người chết hàng loạt vì 1 quyết định nhỏ",
+      "area": "Mọi vùng",
+      "rule": "Dùng cảnh báo chất lượng thức ăn"
+    },
+    {
+      "id": "H09",
+      "name": "Động vật nguy hiểm",
+      "condition": "Săn thú lớn, gần khu cư trú thú",
+      "warning": "Vết chân, âm thanh, dân cảnh báo",
+      "effect": "Thợ săn bị thương hoặc rút lui",
+      "response": "Đào tạo, bẫy, hạn mức và công cụ",
+      "resilience": "Không ép đánh thú nguy hiểm mới lên E1",
+      "area": "Rừng già, đồng cỏ",
+      "rule": "Rủi ro theo species"
+    },
+    {
+      "id": "H10",
+      "name": "Suy giảm hệ sinh thái",
+      "condition": "Săn/hái vượt tốc độ tái sinh",
+      "warning": "Quần thể giảm dần trên map",
+      "effect": "Sản lượng nguồn ngoài tự nhiên giảm",
+      "response": "Giảm quota, chuyển vùng, dự trữ",
+      "resilience": "Quần thể khai thác được > mức phục hồi tối thiểu",
+      "area": "Mọi vùng",
+      "rule": "Không để nguồn sống là điểm sinh vô hạn"
+    },
+    {
+      "id": "H11",
+      "name": "Bão gió",
+      "condition": "Gió mạnh + mưa lớn",
+      "warning": "Cây nghiêng, lều rung, mưa xiên",
+      "effect": "Hỏng mái, đổ cây, cản vận chuyển",
+      "response": "Sửa mái, chọn nền tốt, cảnh báo",
+      "resilience": "Công trình thiết yếu được duy trì",
+      "area": "Ven biển/vùng gió mạnh",
+      "rule": "Sát thương tối đa có giới hạn theo cân bằng"
+    },
+    {
+      "id": "H12",
+      "name": "Sạt lở",
+      "condition": "Nền dốc + mưa lớn + mất cây",
+      "warning": "Đất đá dịch chuyển",
+      "effect": "Chặn đường và hỏng mỏ/kho trên dốc",
+      "response": "Tránh vùng rủi ro, trồng cây, gia cố",
+      "resilience": "Có tuyến vận chuyển thay thế",
+      "area": "Đồi núi",
+      "rule": "Đánh dấu risk từ địa hình trước xây"
+    },
+    {
+      "id": "H13",
+      "name": "Bão tuyết",
+      "condition": "Biến động nhiệt <= -10°C + tuyết + gió mạnh ở vùng có tuyết",
+      "warning": "Gió mạnh, mây nặng, nhiệt giảm, tuyết dày lên",
+      "effect": "Giảm di chuyển, tăng mất nhiệt, gián đoạn thu gom nước/gỗ",
+      "response": "Áo da/lông; lều giữ ấm; nhà sưởi; dự trữ củi và nước",
+      "resilience": ">=80% dân được bảo vệ khi lạnh; đường cung cấp thiết yếu còn hoạt động",
+      "area": "Hàn đới, núi cao, ôn đới có tuyết",
+      "rule": "Không áp dụng vùng nhiệt đới thấp; phát sinh báo trước"
+    },
+    {
+      "id": "H14",
+      "name": "Sương giá và đóng băng",
+      "condition": "Nhiệt <=0°C kéo dài; hồ nông/đất ẩm đóng băng",
+      "warning": "Sương bám, lớp băng mặt nước, rau héo",
+      "effect": "Nguồn nước mặt giảm; cây trồng yếu; người không có giày rét chân",
+      "response": "Đun chảy băng; giày ủng; công trình giữ ấm, tích nước trước rét",
+      "resilience": "Nguồn uống >= tối thiểu; người ra ngoài có giày phù hợp",
+      "area": "Ôn đới lạnh, hàn đới, núi cao",
+      "rule": "Có thể xảy ra không cần bão tuyết; nước đóng băng không đồng nghĩa mất vĩnh viễn"
+    },
+    {
+      "id": "H15",
+      "name": "Mưa lạnh kéo dài",
+      "condition": "Mưa + nhiệt 0–10°C + độ ẩm lớn nhiều ngày",
+      "warning": "Quần áo ướt, nền lầy, củi ẩm",
+      "effect": "Giảm hiệu quả áo len/áo da ướt, tăng nguy cơ hạ thân nhiệt",
+      "response": "Áo choàng chống mưa, bãi hong khô, chỗ ngủ có mái, củi khô",
+      "resilience": "Tỷ lệ trang phục khô và nhà ở kín mưa >= mức an toàn",
+      "area": "Ôn đới, cận nhiệt vùng cao, núi cao",
+      "rule": "Rủi ro đến từ ướt và gió, ngay cả khi nhiệt chưa xuống âm"
+    }
+  ],
+  "thermal": [
+    {
+      "id": "TC01",
+      "name": "Nóng",
+      "min": 20,
+      "max": 99,
+      "warmth": 0,
+      "rule": "Tăng nước nếu mặc áo quá dày"
+    },
+    {
+      "id": "TC02",
+      "name": "Mát",
+      "min": 15,
+      "max": 19,
+      "warmth": 1,
+      "rule": "Không ép người chơi chế áo len"
+    },
+    {
+      "id": "TC03",
+      "name": "Lạnh",
+      "min": 5,
+      "max": 14,
+      "warmth": 3,
+      "rule": "Cảnh báo nếu dân ngủ ngoài trời"
+    },
+    {
+      "id": "TC04",
+      "name": "Rét nhẹ",
+      "min": 0,
+      "max": 4,
+      "warmth": 6,
+      "rule": "Tăng nhiên liệu; giảm làm đêm"
+    },
+    {
+      "id": "TC05",
+      "name": "Rét sâu",
+      "min": -9,
+      "max": -1,
+      "warmth": 10,
+      "rule": "Theo dõi độ ướt, mệt mỏi, lộ trình săn"
+    },
+    {
+      "id": "TC06",
+      "name": "Rét cực đoan",
+      "min": -50,
+      "max": -10,
+      "warmth": 15,
+      "rule": "Có thể tạm dừng săn xa để tránh thương tích"
+    },
+    {
+      "id": "TC07",
+      "name": "Gió lạnh",
+      "min": null,
+      "max": null,
+      "warmth": 2,
+      "rule": "+2 điểm khi gió mạnh trong trời lạnh"
+    },
+    {
+      "id": "TC08",
+      "name": "Quần áo ướt",
+      "min": null,
+      "max": null,
+      "warmth": 3,
+      "rule": "+3 điểm lúc độ ướt cao; giảm hiệu quả áo"
+    },
+    {
+      "id": "TC09",
+      "name": "Đêm ngoài trời",
+      "min": null,
+      "max": null,
+      "warmth": 2,
+      "rule": "Dân ngủ ngoài trời chịu rét nhiều hơn"
+    },
+    {
+      "id": "TC10",
+      "name": "Lều giữ ấm",
+      "min": null,
+      "max": null,
+      "warmth": -4,
+      "rule": "Không áp buff khi người ở ngoài lều"
+    },
+    {
+      "id": "TC11",
+      "name": "Nhà sưởi có củi",
+      "min": null,
+      "max": null,
+      "warmth": -5,
+      "rule": "Mất củi thì không còn tác dụng sưởi"
+    }
+  ],
+  "gear": [
+    {
+      "id": "R188",
+      "name": "Áo choàng da thú",
+      "era": "E0",
+      "slot": "Thân ngoài",
+      "warmth": 4,
+      "waterproof": 0.2,
+      "durability": 120,
+      "rule": "Khô >=50%; dùng khi đi săn/lấy nước"
+    },
+    {
+      "id": "R189",
+      "name": "Mũ lông thú",
+      "era": "E0",
+      "slot": "Đầu",
+      "warmth": 2,
+      "waterproof": 0.15,
+      "durability": 110,
+      "rule": "Đầu giữ ấm; cần trang bị riêng"
+    },
+    {
+      "id": "R190",
+      "name": "Giày quấn da",
+      "era": "E0",
+      "slot": "Chân",
+      "warmth": 2,
+      "waterproof": 0.2,
+      "durability": 90,
+      "rule": "Giảm lạnh chân khi di chuyển xa"
+    },
+    {
+      "id": "R191",
+      "name": "Găng tay da",
+      "era": "E0",
+      "slot": "Tay",
+      "warmth": 1,
+      "waterproof": 0.1,
+      "durability": 80,
+      "rule": "Giảm lạnh khi lao động ngoài trời"
+    },
+    {
+      "id": "R192",
+      "name": "Chăn da thú",
+      "era": "E0",
+      "slot": "Ngủ",
+      "warmth": 4,
+      "waterproof": 0.1,
+      "durability": 130,
+      "rule": "Chỉ có tác dụng trong lúc ngủ"
+    },
+    {
+      "id": "R193",
+      "name": "Áo choàng chống mưa",
+      "era": "E0",
+      "slot": "Thân ngoài",
+      "warmth": 1,
+      "waterproof": 0.8,
+      "durability": 110,
+      "rule": "Bảo vệ mưa, giảm tích lũy ướt; không chống rét sâu"
+    },
+    {
+      "id": "R195",
+      "name": "Tấm lót ngủ cỏ khô",
+      "era": "E0",
+      "slot": "Ngủ",
+      "warmth": 2,
+      "waterproof": 0,
+      "durability": 75,
+      "rule": "Lót ngủ giảm mất nhiệt từ nền đất"
+    },
+    {
+      "id": "R196",
+      "name": "Áo da thuộc",
+      "era": "E1",
+      "slot": "Thân ngoài",
+      "warmth": 5,
+      "waterproof": 0.5,
+      "durability": 180,
+      "rule": "Áo bền, ấm hơn da sơ chế"
+    },
+    {
+      "id": "R197",
+      "name": "Áo len",
+      "era": "E1",
+      "slot": "Thân trong",
+      "warmth": 5,
+      "waterproof": 0.15,
+      "durability": 160,
+      "rule": "Độ ấm cao khi khô, bị ảnh hưởng nếu ướt"
+    },
+    {
+      "id": "R198",
+      "name": "Chăn len",
+      "era": "E1",
+      "slot": "Ngủ",
+      "warmth": 5,
+      "waterproof": 0.1,
+      "durability": 170,
+      "rule": "Chỉ dùng khi ngủ; không thay cho áo đi làm"
+    },
+    {
+      "id": "R199",
+      "name": "Ủng da",
+      "era": "E1",
+      "slot": "Chân",
+      "warmth": 3,
+      "waterproof": 0.7,
+      "durability": 170,
+      "rule": "Bảo vệ chân và hạn chế ngấm nước"
+    },
+    {
+      "id": "R200",
+      "name": "Áo khoác vải dày",
+      "era": "E4",
+      "slot": "Thân ngoài",
+      "warmth": 6,
+      "waterproof": 0.35,
+      "durability": 190,
+      "rule": "Trang phục dày thời Trung đại"
+    },
+    {
+      "id": "R201",
+      "name": "Áo bông lót",
+      "era": "E5",
+      "slot": "Thân ngoài",
+      "warmth": 7,
+      "waterproof": 0.35,
+      "durability": 190,
+      "rule": "Cách nhiệt nhiều lớp, không nên mặc trong khí hậu nóng"
+    },
+    {
+      "id": "R202",
+      "name": "Áo khoác công nghiệp",
+      "era": "E6",
+      "slot": "Thân ngoài",
+      "warmth": 8,
+      "waterproof": 0.5,
+      "durability": 230,
+      "rule": "Độ bền cao, sản xuất quy mô công nghiệp"
+    },
+    {
+      "id": "R203",
+      "name": "Găng bảo hộ chống lạnh",
+      "era": "E6",
+      "slot": "Tay",
+      "warmth": 2,
+      "waterproof": 0.65,
+      "durability": 210,
+      "rule": "Bảo vệ tay công nhân và thợ mỏ"
+    },
+    {
+      "id": "R205",
+      "name": "Áo giữ nhiệt",
+      "era": "E7",
+      "slot": "Thân trong",
+      "warmth": 6,
+      "waterproof": 0.65,
+      "durability": 220,
+      "rule": "Có thể kết hợp áo ngoài; yêu cầu slot riêng"
+    },
+    {
+      "id": "R206",
+      "name": "Ủng chống lạnh",
+      "era": "E7",
+      "slot": "Chân",
+      "warmth": 4,
+      "waterproof": 0.75,
+      "durability": 230,
+      "rule": "Đồ giữ ấm chân vùng lạnh sâu"
+    },
+    {
+      "id": "R207",
+      "name": "Bộ bảo hộ khí hậu cực đoan",
+      "era": "E8",
+      "slot": "Bộ toàn thân",
+      "warmth": 14,
+      "waterproof": 0.9,
+      "durability": 280,
+      "rule": "Chiếm thân/đầu/tay/chân; không xếp chồng bộ toàn thân"
+    }
+  ],
+  "settings": {
+    "warmThreshold": 15,
+    "coldThreshold": 5,
+    "freezeThreshold": 0,
+    "extremeThreshold": -10,
+    "protectedRatio": 0.8,
+    "minDurability": 0.25,
+    "wearPerDay": 1,
+    "wetPerDay": 0.2,
+    "dryPerDay": 0.35,
+    "woolWetLoss": 0.55,
+    "coldFoodExtra": 0.2,
+    "deficitWarning": 4,
+    "hotWaterExtra": 1,
+    "warningDays": 2
+  },
+  "fuel": [
+    {
+      "buildingId": "B129",
+      "resource": "R167",
+      "perDay": 1
+    },
+    {
+      "buildingId": "B130",
+      "resource": "R167",
+      "perDay": 2
+    },
+    {
+      "buildingId": "B131",
+      "resource": "R167",
+      "perDay": 3
+    }
+  ]
+}

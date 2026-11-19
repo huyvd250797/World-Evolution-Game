@@ -1,3 +1,24 @@
+# V0.11.0 — Health & Pollution
+
+- Nâng đúng ZIP V0.10.0 Boss đính kèm; giữ Frozen, migrations001–009, assets và proxy.
+- Health riêng từng ID, exposure/disease timeline/RNG, local contact, nghỉ bệnh và credits lao động/đi/học.
+- Care B136, F085/F086/F094 theo cơ sở/nghề/tech/nguyên liệu thật; transactions ở completion, không chữa tức thời.
+- Rác vật lý, reservations/pathfinding/collection/carry/deposit/mass; B138 không tiêu hủy.
+- Water provenance theo nguồn/lô và haul splits; boiling giữ hóa chất, chặn cấp nước không đạt.
+- Sparse pollution channels/local emissions/decay/spread; Canvas culling/cache và bảng sức khỏe có xác nhận.
+- Schema10/we-sim-8, SQL010 đọc legacy2–9, metadata/validators, đầy đủ save/lease/history/offline.
+- Chưa tự mở research/bootstrap hoặc công nghiệp/điện/bệnh E1–E8/tử vong. Policy và giới hạn: docs/HEALTH-POLLUTION.md.
+
+# V0.10.0 — Seasons & Climate (19/11/2026)
+
+- Adapter Frozen 4 mùa/7 vùng/15 biến cố/11 TC/18 trang phục/CFG/củi; không đổi workbook/catalog/adapters hoặc migrations cũ.
+- Weather RNG riêng, nhiệt theo vùng/mùa/cao độ/ngày-đêm; forecast/active/recovery 7 biến cố nền, không ép tuyết vùng nhiệt đới.
+- Movement/work credits theo thời tiết và phơi nhiễm; biological/growth/water liên kết nguồn, mùa thu hoạch, regen tối thiểu, forage/sinh sản. Nhu cầu và cấp thực tế tách biệt; mưa liên tục già lô nhanh, không reset tuổi.
+- Trang phục cá thể tách từ lô thật, slot/body suit, wetness/durability, tháo-mặc không phục hồi. Trú phải đến nơi hoàn thành/còn chỗ, sưởi/hong cần staff/tech/củi tại site.
+- Climate panel/HUD, cảnh báo cá nhân/sự kiện, Canvas mưa/tuyết nhẹ/bình thường/tắt, giữ gesture/chunk/culling; tùy chọn đồ họa không thay đổi mô phỏng.
+- Schema 9/we-sim-7 + SQL 009; nâng đọc 2–8 không chạy bù khí hậu cũ, giữ ID/RNG/cargo/ecology/construction; lease/autosave/history/offline kế thừa.
+- Chưa có bệnh/tử vong, cháy lan/phá hủy, lũ ô/sạt lở, thu nước mưa/đun băng hoặc sửa đồ chưa có định mức. Giữ các dependency khởi đầu V0.9, không tự cấp điều kiện.
+
 # V0.9.0 — Construction & Logistics (19/11/2026)
 
 - Adapter BOM/nơi chứa/sức chứa Frozen, 166 công trình, MOV001 mang 3 đơn vị/chuyến. Không sửa workbook/catalog hoặc migrations 001–007.

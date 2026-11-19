@@ -1,10 +1,10 @@
 import {gridToWorld,worldToScreen,type Camera,type Viewport,type Point} from '../map/camera';
 import type {WorldMap} from '../map/world-map';
 import {citizenPosition,type Citizen} from './model';
-export interface PopulationFrame{citizens:Citizen[];paused:boolean;speed:number;selectedId:string|null;receivedAt:number}
+export interface PopulationFrame{movementFactors?:Record<string,number>;citizens:Citizen[];paused:boolean;speed:number;selectedId:string|null;receivedAt:number}
 export function renderPosition(c:Citizen,map:WorldMap,extraTicks=0,flat=false){const position=citizenPosition(c,extraTicks),e0=map.elevation[c.y*map.size+c.x],q=c.path[0],e1=q?map.elevation[q.y*map.size+q.x]:e0;return gridToWorld(position.x,position.y,flat?0:e0+(e1-e0)*position.t);}
 export function extraTicks(frame:PopulationFrame){return frame.paused?0:Math.min(350,Math.max(0,performance.now()-frame.receivedAt))/100*frame.speed;}
-export function hitCitizen(frame:PopulationFrame|undefined,map:WorldMap,camera:Camera,v:Viewport,point:Point,flat=false){if(!frame)return null;const extra=extraTicks(frame);let best:{id:string;distance:number;depth:number}|null=null;for(const c of frame.citizens){const p=worldToScreen(renderPosition(c,map,extra,flat),camera,v);const distance=Math.hypot(point.x-p.x,point.y-(p.y-12*camera.zoom));if(distance<=Math.max(12,18*camera.zoom)&&(!best||distance<best.distance||distance===best.distance&&c.x+c.y>best.depth))best={id:c.id,distance,depth:c.x+c.y};}return best?.id??null;}
+export function hitCitizen(frame:PopulationFrame|undefined,map:WorldMap,camera:Camera,v:Viewport,point:Point,flat=false){if(!frame)return null;const extra=extraTicks(frame);let best:{id:string;distance:number;depth:number}|null=null;for(const c of frame.citizens){const p=worldToScreen(renderPosition(c,map,extra*(frame.movementFactors?.[c.id]??100)/100,flat),camera,v);const distance=Math.hypot(point.x-p.x,point.y-(p.y-12*camera.zoom));if(distance<=Math.max(12,18*camera.zoom)&&(!best||distance<best.distance||distance===best.distance&&c.x+c.y>best.depth))best={id:c.id,distance,depth:c.x+c.y};}return best?.id??null;}
 /** Four shared palette x four walking frames; no texture per citizen or per step. */
 export class CitizenStamps{
  private cache=new Map<string,HTMLCanvasElement>();

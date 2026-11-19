@@ -1,22 +1,29 @@
-# Xác minh V0.9.0 — Construction & Logistics
+# Xác minh V0.11.0 — Health & Pollution
 
-Kết quả: ../RELEASE-CHECKS.md. Source nền đúng ZIP V0.8.0 Boss gửi. Frozen workbook/catalog, adapters cũ, assets, map generator, proxies và SQL 001–007 giữ nguyên byte; không nâng dependencies.
+Kết quả: ../RELEASE-CHECKS.md. Source bắt đầu từ đúng ZIP V0.10.0 Boss đính kèm. Dependencies giữ pinned; Frozen workbook/catalog/adapters trước, migrations001–009, assets/map generator/proxies giữ nguyên byte.
 
-## Tự động
+## Kiểm tự động
 
-Typecheck app/tools/tests, lint không warning, data:check và release checksum. 96 tests/subtests gồm Auth/world/map/render/planning/population/survival/workforce/ecology/save/Worker/session và 12 construction/SQL/render tests. Kiểm exact BOM, cargo conservation/TTL/spoil, busy IDs, Frozen locks, material shortage, work-on-site, finite capacity, full build/homes, cancel/recovery, batching/speeds/reload. SQL 008 thực thi PGlite, giữ raw schema 7/history, lưu/khôi phục thật material cargo và completed home; từ chối ID/cargo/home/progress/capacity/delta không hợp lệ.
+Data adapters và checksum, Next/app/tools/tests typecheck, lint không warning, 128 tests/subtests đạt, HTTP smoke với real Next/Supabase SDK/PGlite fixtures và production build. Các kiểm health mới gồm dữ liệu Frozen, schema9→10, per-person disease timeline/rest, deterministic batching/speeds/RNG/reload, local transmission/no spontaneous respiratory source, work credits/cargo retention, spoiledfood→real refuse, gated collection/reservation/capacity/path/carry/delivery/mass, chemical provenance/boiling/unsafe water exclusion, malformed state rejection, completed B136 actual care/atomic rollback, F085 actual production/TTL/fuel emission, SQL010 save/history/restore/privacy, Canvas overlay pixels/culling/cache/off/release. Real Worker thêm command health/rest/lease refusal; HTTP thêm snapshot/rest/mass/delta branches.
 
-HTTP Next và Supabase SDK fixture: login/SSR/CRUD/CSRF/owner, save/restore/history/retry, schema 8 in-transit material payload, duplicate yard và construction delta. Production build, sau đó giải nén đúng ZIP vào thư mục mới, npm ci sạch và npm run build lại. Không yêu cầu Boss chạy local.
+Regression bao gồm auth/worlds/RLS/seed/map/camera/planning/citizens/pathfinding/survival/lots/workforce/training/ecology/construction/logistics/climate/save/lease/backup/lost ACK/history. Test sinh tồn chọn nguồn gần có đường để kiểm cargo trước thiếu ăn kéo dài, tránh nhầm mô hình sức khỏe mới với lỗi save.
 
-Renderer Native Canvas vẽ pixel thật của nền, worksite, nhà hoàn thành, marker bãi và culling; đã xem ảnh QA composite. Đây không phải ảnh UI/trình duyệt. Browser/mobile/desktop GPU và cloud thật chưa được nghiệm thu; các specs Playwright có sẵn để chạy trong môi trường Chromium đầy đủ.
+Sau kiểm source: tạo ZIP không chứa dependency/build output, giải nén sang thư mục QA mới, chạy npm ci thật và npm run build (không symlink node_modules). Kiểm ZIP CRC, version0.11.0, package ở gốc, alias proxy, file cần thiết, SQL010=TXT, toàn bộ dữ liệu bảo vệ so byte với ZIP nguồn. Đây là xác minh gói source; không phải deploy cloud.
 
-## Sau deploy
+## Đồ họa
 
-1. Chạy chỉ 008 sau 001–007; verify_construction.sql: 166 buildings/230 resources, private client reads=false. Giữ env/Auth callback/domain/project cũ.
-2. Mở thế giới cũ: seed/tick/20 IDs/nghề/đào tạo/ecology/cargo/lô/hạn không đổi sai. Lưu schema 8 rồi reload và chuyển thiết bị; readonly/lease/takeover như cũ.
-3. Dọc/ngang PC/mobile: bảng Thi công dưới map, không tràn ngang, table cuộn nội bộ, cancel trái/confirm phải; chọn nền xem BOM và trạng thái.
-4. Khởi đầu thiếu thợ/tech/vật tư phải báo đúng, không tăng tiến độ hoặc tạo free houses. Xem CONSTRUCTION-LOGISTICS.md về dependencies; không sửa save sản xuất để giả công nghệ/nhân sự.
-5. Lấy lô đã thu bằng hệ sinh thái, đặt bãi ở ô hợp lệ, giao người rảnh mang hàng. Trước pickup còn tại nguồn, sau pickup cargo, đến nơi mới nhập; giữ TTL khi reload giữa cạnh. Kho đầy/mất lối giữ cargo và báo lỗi; chọn lại điểm nhận để retry.
-6. Hủy chuyến chưa lấy hàng giải phóng giữ chỗ; chuyến đang mang phải giao/thu hồi. Hủy công trường không hoàn hàng vào depot; giữ buffer và thu hồi rồi mới xóa nền. Không có phá dỡ completed building ở bản này.
-7. Trong môi trường test có đủ điều kiện: vận chuyển đủ BOM, J008 tới entrance mới cộng work, pause giữ work, complete consume một lần; nhà cấp đúng giường; kho/bếp/training vẫn kiểm tech/staff/input/tool/mentor.
-8. Kiểm offline/local recovery/history và lost ACK trên thiết bị thật; đo payload/traffic/RAM/FPS thực tế. Không hứa quota Free hoặc 60fps trước khi đo.
+Native Canvas thực thi PollutionRenderer với map Canvas thật; xem ảnh composite, các ô màu khớp lưới isometric, đồ họa không thay RNG. Test đếm pixel/culling/cache/off và giải phóng backing store. Không dùng ảnh tạo bằng AI để thay kiểm renderer. Không gọi đây là browser screenshot hay bằng chứng pinch/mobile/GPU60fps.
+
+## Nghiệm thu sau deploy của Boss
+
+1. Chạy SQL010 một lần sau001–009, trước deploy. verify_health.sql cho12/14/18 và private reads=false. Giữ env/domain/Auth callbacks/repo/database.
+2. Mở thế giới cũ: seed/tick/20 IDs/nghề/đào tạo/khí hậu/ecology/công trường/cargo/hạn giữ đúng. Health bắt đầu tại tick đã lưu, không hồi tố thời gian ngoài app.
+3. Lưu thủ công, reload và so sức khỏe/bệnh/lịch/RNG/rác/provenance. Restore từ lịch sử cũ tạo revision mới, không xóa lịch sử gốc. Không dùng app V0.10 để ghi lại schema10.
+4. Kiểm bảng sức khỏe/lọc/chọn người/nghỉ, chọn ô/lớp phủ/chú giải; PC và mobile ngang/dọc, pan/pinch/zoom/chọn ô vẫn hoạt động. Tắt lớp phủ/thời tiết không đổi tiến trình.
+5. Cơ sở có đủ điều kiện mới giao việc. World mới chỉT001 không tự mở clinic/sanitation/training; không sửa DB sản xuất để giả fixture. Kiểm thông báo điều kiện thiếu thay vì kỳ vọng nút chữa tức thời.
+6. Khi tuyến mở khóa thực sự có ở phiên bản tiếp: kiểm đủ nhân lực/cơ sở/tech/vật tư tại buffer, tới nơi mới tăng công; thiếu vật tư không trừ một phần; cargo/giao rác/cancel/retry giữ khối lượng, B138 đầy báo rõ.
+7. Hai thiết bị: observer không ghi; takeover làm tab cũ mất lease. Mất mạng/ẩn app tạm dừng và giữ bản tạm; xung đột không ghi đè tự động. Theo dõi kích thước full save/lượng truyền thật ở Supabase.
+
+## Chưa xác minh hoặc chưa có tuyến vận hành
+
+Browser/Playwright spec compile nhưng chưa chạy trong môi trường này. Thiết bị thật/GPU/60fps/hosted Supabase/Vercel, billing/quota, chiến dịch240giờ chưa kiểm. Bệnh công nghiệp/vật nuôi/chất thải độc và cơ sở công nghệ cao chưa có nguồn/era/điện thật trong engineE0. Các thông số kỹ thuật ghi trong HEALTH-POLLUTION.md, không phải thay đổi Frozen.

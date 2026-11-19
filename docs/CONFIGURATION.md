@@ -1,18 +1,16 @@
-# Hướng dẫn cấu hình World Evolution V0.9.0
+# Hướng dẫn cấu hình World Evolution V0.11.0
 
-## Cập nhật từ V0.8.0
+## Cập nhật từ V0.10.0
 
-Chạy **infra/supabase/migrations/202611190008_construction_logistics.sql một lần** sau 001–007, trước deploy. TXT V0.9 gửi riêng có đúng SQL 008. Giữ database, repo và Environment Variables; không chạy lại migrations đã áp dụng.
-
-008 thêm validator schema 8/we-sim-6, metadata BOM/nơi chứa, kiểm công trường, vận chuyển và giường. Giữ raw head/history cũ. Sau khi đã lưu schema 8, cần dùng V0.9 hoặc hotfix tương thích để tiếp tục ghi; app cũ không đọc được construction mới. Chưa có nghiên cứu hoặc bootstrap tự cấp nghề/vật tư: xem **CONSTRUCTION-LOGISTICS.md**.
+Chạy **202611190010_health_pollution.sql** một lần sau 001–009, trước deploy. TXT V0.11 gửi riêng chứa đúng SQL010. Giữ database/repo/env; không chạy lại migration đã áp dụng. Schema10/we-sim-8 thêm health, không sửa raw head/history cũ. Sau lưu cần V0.11 hoặc hotfix tương thích để ghi tiếp. Xem DEPLOY-VERCEL.md và HEALTH-POLLUTION.md.
 
 ## 0. Deploy trực tiếp trên Vercel
 
-Boss không phải cài Node/npm hoặc chạy localhost. Gói V0.9.0 chứa source ngay tại gốc ZIP; upload toàn bộ sau giải nén vào GitHub, chọn Root Directory chứa package.json. Nếu thay source từ gói cũ, giữ các biến môi trường và Supabase project hiện tại.
+Boss không phải cài Node/npm hoặc chạy localhost. Gói V0.11.0 chứa source ngay tại gốc ZIP; upload toàn bộ sau giải nén vào GitHub, chọn Root Directory chứa package.json. Nếu thay source từ gói cũ, giữ các biến môi trường và Supabase project hiện tại.
 
 Build production chỉ chạy `node verify-release.mjs && next build`, không chạy importer TypeScript. Vercel tự chạy Install/Build. Mục 1 và các lệnh local bên dưới là tùy chọn cho lập trình viên. Cấu hình Vercel chi tiết ở mục 8.
 
-Lên V0.9.0 cần migration 008 sau 001–007. Project mới chạy 001 → 002 → 003 → 004 → 005 → 006 → 007 → 008; project V0.8.0 chỉ chạy 008.
+Lên V0.11.0 cần migration 010 sau 001–009. Project mới chạy 001 → 010 theo thứ tự; project V0.10.0 chỉ chạy 010.
 
 ## 1. Chuẩn bị source và môi trường
 
@@ -25,8 +23,8 @@ Lên V0.9.0 cần migration 008 sau 001–007. Project mới chạy 001 → 002 
 
 1. Mở https://supabase.com/dashboard, tạo project riêng cho game, chọn region phù hợp người chơi. Ghi lại mật khẩu database ở nơi quản lý mật khẩu của Boss; app không cần mật khẩu đó.
 2. Đợi project sẵn sàng. Mở **SQL Editor → New query**.
-3. Mở `infra/supabase/migrations/202611180001_foundation.sql` trong source. Copy toàn bộ, chạy **một lần**, sau đó chạy `202611180002_simulation_save.sql` , `202611180003_city_planning.sql`  , `202611190004_population_navigation.sql` , `202611190005_survival_food.sql` , `202611190006_workforce_training.sql` , `202611190007_living_ecosystem.sql` và `202611190008_construction_logistics.sql` theo thứ tự.
-4. Migration 001 tạo bảng `public.worlds`, index, RLS và các RPC tạo/sửa/xóa; 002 thêm bảng private và RPC `simulation_rpc`, 003 nâng cho quy hoạch schema 3; 004 nâng validator/RPC cho 20 cư dân schema 4; 005 nâng schema 5/we-sim-3 cho hoạt động/lô/cấp phát sinh tồn; 006 nâng schema 6/we-sim-4 cho nhân sự/đào tạo; 007 nâng schema 7/we-sim-5 cho hệ sinh thái; 008 nâng schema 8/we-sim-6 cho thi công/hậu cần. Không có bucket Storage cần tạo ở bản này.
+3. Mở `infra/supabase/migrations/202611180001_foundation.sql` trong source. Copy toàn bộ, chạy **một lần**, sau đó chạy `202611180002_simulation_save.sql` , `202611180003_city_planning.sql`  , `202611190004_population_navigation.sql` , `202611190005_survival_food.sql` , `202611190006_workforce_training.sql` , `202611190007_living_ecosystem.sql` , `202611190008_construction_logistics.sql`  , `202611190009_seasons_climate.sql` và `202611190010_health_pollution.sql` theo thứ tự.
+4. Migration 001 tạo bảng `public.worlds`, index, RLS và các RPC tạo/sửa/xóa; 002 thêm bảng private và RPC `simulation_rpc`, 003 nâng cho quy hoạch schema 3; 004 nâng validator/RPC cho 20 cư dân schema 4; 005 nâng schema 5/we-sim-3 cho hoạt động/lô/cấp phát sinh tồn; 006 nâng schema 6/we-sim-4 cho nhân sự/đào tạo; 007 nâng schema 7/we-sim-5 cho hệ sinh thái; 008 nâng schema 8/we-sim-6 cho thi công/hậu cần; 009 nâng schema 9/we-sim-7 cho khí hậu; 010 nâng schema10/we-sim-8 cho sức khỏe/ô nhiễm. Không có bucket Storage cần tạo ở bản này.
 5. Nếu gặp `relation worlds already exists`, dừng chạy lại. Kiểm tra project có phải môi trường mới hay đã áp dụng migration. Không xóa bảng dữ liệu để xử lý lỗi này.
 6. Trong API settings, giữ `public` được exposed; **không thêm schema `private` vào Exposed schemas**. Các function private chỉ được gọi qua public RPC có kiểm soát.
 7. Chạy `infra/supabase/verify_setup.sql` và `infra/supabase/verify_simulation.sql` để kiểm tra cấu trúc, RLS và các grant. File kiểm tra chỉ đọc metadata.
@@ -143,7 +141,7 @@ Repo mới (thay URL mẫu bằng repo của Boss):
 ```bash
 git init
 git add .
-git commit -m "World Evolution V0.9.0 Construction and Logistics"
+git commit -m "World Evolution V0.11.0 Seasons and Climate"
 git branch -M main
 git remote add origin https://github.com/YOUR_ACCOUNT/world-evolution.git
 git push -u origin main
