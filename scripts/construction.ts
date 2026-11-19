@@ -1,0 +1,6 @@
+import {readFile,writeFile} from 'node:fs/promises';
+const c=JSON.parse(await readFile('data/generated/catalog.json','utf8'));
+type Row=(string|number|null)[];
+const rows=(name:string):Row[]=>c.sheets.find((s:{name:string})=>s.name===name).rows;
+const result=JSON.stringify({version:1,buildings:rows('CONG TRINH').map(r=>({id:String(r[0]),name:String(r[1]),capacity:typeof r[13]==='number'?r[13]:null,group:String(r[4]),materials:rows('DINH MUC XAY DUNG').filter(b=>b[1]===r[0]).map(b=>({resource:String(b[3]),quantity:Number(b[5])}))})),resources:rows('TAI NGUYEN').map(r=>({id:String(r[0]),storage:String(r[7])})),kitchenInputs:[...new Set(rows('NGUYEN LIEU CONG THUC').filter(r=>['F001','F002','F003','F004','F005','F006','F060','F087'].includes(String(r[1]))).map(r=>String(r[4])))],carryCapacity:Number(rows('GIAO THONG & HAU CAN').find(r=>r[0]==='MOV001')![7])},null,2)+'\n';
+const path='data/generated/construction.json';if(process.argv.includes('--check')){if(await readFile(path,'utf8')!==result)throw new Error('Construction adapter differs from Frozen');console.log('Construction: exact BOM, 166 buildings, capacities, resource storage and MOV001 verified.');}else await writeFile(path,result);

@@ -1,0 +1,3693 @@
+{
+  "version": 1,
+  "buildings": [
+    {
+      "id": "B001",
+      "name": "Bãi hái lượm",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R046",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "id": "B002",
+      "name": "Trại săn",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R046",
+          "quantity": 10
+        },
+        {
+          "resource": "R052",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "id": "B003",
+      "name": "Bến đánh cá",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 10
+        },
+        {
+          "resource": "R102",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "id": "B004",
+      "name": "Trại khai thác gỗ",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R046",
+          "quantity": 6
+        },
+        {
+          "resource": "R052",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "id": "B005",
+      "name": "Bãi khai thác đá",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "id": "B006",
+      "name": "Lều ở",
+      "capacity": 5,
+      "group": "Dân sinh / xã hội",
+      "materials": [
+        {
+          "resource": "R046",
+          "quantity": 12
+        },
+        {
+          "resource": "R047",
+          "quantity": 10
+        },
+        {
+          "resource": "R102",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "B007",
+      "name": "Bếp lửa",
+      "capacity": null,
+      "group": "Chế biến lương thực",
+      "materials": [
+        {
+          "resource": "R052",
+          "quantity": 8
+        },
+        {
+          "resource": "R167",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "B008",
+      "name": "Bãi quan sát",
+      "capacity": null,
+      "group": "Nghiên cứu / giáo dục",
+      "materials": [
+        {
+          "resource": "R046",
+          "quantity": 8
+        },
+        {
+          "resource": "R052",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "id": "B009",
+      "name": "Xưởng đá",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 12
+        },
+        {
+          "resource": "R052",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "B010",
+      "name": "Kho lương thực",
+      "capacity": 150,
+      "group": "Kho / lưu trữ",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 18
+        },
+        {
+          "resource": "R047",
+          "quantity": 8
+        },
+        {
+          "resource": "R052",
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "id": "B011",
+      "name": "Kho vật liệu thô",
+      "capacity": 250,
+      "group": "Kho / lưu trữ",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 12
+        },
+        {
+          "resource": "R052",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B012",
+      "name": "Lều thảo dược",
+      "capacity": null,
+      "group": "Dân sinh / xã hội",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 10
+        },
+        {
+          "resource": "R047",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B013",
+      "name": "Bãi thi công",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "id": "B014",
+      "name": "Điểm vận chuyển",
+      "capacity": null,
+      "group": "Hạ tầng / logistics",
+      "materials": [
+        {
+          "resource": "R046",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "id": "B015",
+      "name": "Ruộng canh tác",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 12
+        },
+        {
+          "resource": "R064",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B016",
+      "name": "Vườn cây ăn quả",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 10
+        },
+        {
+          "resource": "R177",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "id": "B017",
+      "name": "Chuồng chăn nuôi",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 18
+        },
+        {
+          "resource": "R108",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B018",
+      "name": "Giếng nước",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R052",
+          "quantity": 16
+        },
+        {
+          "resource": "R045",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "B019",
+      "name": "Kênh tưới",
+      "capacity": null,
+      "group": "Hạ tầng / logistics",
+      "materials": [
+        {
+          "resource": "R052",
+          "quantity": 20
+        },
+        {
+          "resource": "R045",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B020",
+      "name": "Cối xay",
+      "capacity": null,
+      "group": "Chế biến lương thực",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 12
+        },
+        {
+          "resource": "R100",
+          "quantity": 15
+        }
+      ]
+    },
+    {
+      "id": "B021",
+      "name": "Bếp tập thể",
+      "capacity": null,
+      "group": "Chế biến lương thực",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 18
+        },
+        {
+          "resource": "R052",
+          "quantity": 14
+        }
+      ]
+    },
+    {
+      "id": "B022",
+      "name": "Lò bánh",
+      "capacity": null,
+      "group": "Chế biến lương thực",
+      "materials": [
+        {
+          "resource": "R105",
+          "quantity": 18
+        },
+        {
+          "resource": "R045",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "B023",
+      "name": "Nhà hun khói",
+      "capacity": null,
+      "group": "Chế biến lương thực",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 15
+        },
+        {
+          "resource": "R052",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B024",
+      "name": "Xưởng gốm",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R054",
+          "quantity": 20
+        },
+        {
+          "resource": "R045",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "B025",
+      "name": "Xưởng mộc",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 20
+        },
+        {
+          "resource": "R052",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B026",
+      "name": "Xưởng thuộc da",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 14
+        },
+        {
+          "resource": "R052",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B027",
+      "name": "Xưởng dệt",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 16
+        },
+        {
+          "resource": "R108",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "id": "B028",
+      "name": "Kho hạt giống",
+      "capacity": 100,
+      "group": "Kho / lưu trữ",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 12
+        },
+        {
+          "resource": "R106",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B029",
+      "name": "Bãi than củi",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 12
+        },
+        {
+          "resource": "R052",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B030",
+      "name": "Lò gốm",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R105",
+          "quantity": 20
+        },
+        {
+          "resource": "R103",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "B031",
+      "name": "Trạm khảo sát khoáng sản",
+      "capacity": null,
+      "group": "Kho / lưu trữ",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 15
+        },
+        {
+          "resource": "R100",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "B032",
+      "name": "Mỏ đồng",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 20
+        },
+        {
+          "resource": "R111",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B033",
+      "name": "Mỏ thiếc",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 20
+        },
+        {
+          "resource": "R111",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B034",
+      "name": "Lò thử quặng",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 12
+        },
+        {
+          "resource": "R111",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B035",
+      "name": "Lò luyện đồng",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 25
+        },
+        {
+          "resource": "R111",
+          "quantity": 20
+        }
+      ]
+    },
+    {
+      "id": "B036",
+      "name": "Xưởng đúc đồng",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 18
+        },
+        {
+          "resource": "R103",
+          "quantity": 14
+        }
+      ]
+    },
+    {
+      "id": "B037",
+      "name": "Lò gạch",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R054",
+          "quantity": 24
+        },
+        {
+          "resource": "R052",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B038",
+      "name": "Kho khoáng sản",
+      "capacity": 400,
+      "group": "Kho / lưu trữ",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 18
+        },
+        {
+          "resource": "R103",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B039",
+      "name": "Xưởng đá xây dựng",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R052",
+          "quantity": 20
+        },
+        {
+          "resource": "R103",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B040",
+      "name": "Mỏ sắt",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 24
+        },
+        {
+          "resource": "R111",
+          "quantity": 18
+        }
+      ]
+    },
+    {
+      "id": "B041",
+      "name": "Lò luyện sắt",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 35
+        },
+        {
+          "resource": "R111",
+          "quantity": 20
+        }
+      ]
+    },
+    {
+      "id": "B042",
+      "name": "Lò rèn",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 22
+        },
+        {
+          "resource": "R103",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B043",
+      "name": "Đường đá",
+      "capacity": null,
+      "group": "Hạ tầng / logistics",
+      "materials": [
+        {
+          "resource": "R111",
+          "quantity": 20
+        }
+      ]
+    },
+    {
+      "id": "B044",
+      "name": "Cầu gỗ",
+      "capacity": null,
+      "group": "Hạ tầng / logistics",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 35
+        },
+        {
+          "resource": "R108",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B045",
+      "name": "Chợ giao thương",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 24
+        },
+        {
+          "resource": "R111",
+          "quantity": 18
+        }
+      ]
+    },
+    {
+      "id": "B046",
+      "name": "Trạm canh",
+      "capacity": null,
+      "group": "Dân sinh / xã hội",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 25
+        },
+        {
+          "resource": "R111",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B047",
+      "name": "Nhà hội đồng",
+      "capacity": null,
+      "group": "Dân sinh / xã hội",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 40
+        },
+        {
+          "resource": "R103",
+          "quantity": 25
+        }
+      ]
+    },
+    {
+      "id": "B048",
+      "name": "Kho vật liệu",
+      "capacity": 400,
+      "group": "Kho / lưu trữ",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 25
+        },
+        {
+          "resource": "R103",
+          "quantity": 18
+        }
+      ]
+    },
+    {
+      "id": "B049",
+      "name": "Bãi khai thác đá vôi",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 18
+        },
+        {
+          "resource": "R140",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "B050",
+      "name": "Trường học",
+      "capacity": null,
+      "group": "Nghiên cứu / giáo dục",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 45
+        },
+        {
+          "resource": "R103",
+          "quantity": 25
+        }
+      ]
+    },
+    {
+      "id": "B051",
+      "name": "Thư viện",
+      "capacity": null,
+      "group": "Nghiên cứu / giáo dục",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 40
+        },
+        {
+          "resource": "R103",
+          "quantity": 20
+        }
+      ]
+    },
+    {
+      "id": "B052",
+      "name": "Học viện",
+      "capacity": null,
+      "group": "Nghiên cứu / giáo dục",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 70
+        },
+        {
+          "resource": "R111",
+          "quantity": 45
+        }
+      ]
+    },
+    {
+      "id": "B053",
+      "name": "Xưởng giấy",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 30
+        },
+        {
+          "resource": "R111",
+          "quantity": 15
+        }
+      ]
+    },
+    {
+      "id": "B054",
+      "name": "Nhà in",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 35
+        },
+        {
+          "resource": "R103",
+          "quantity": 25
+        }
+      ]
+    },
+    {
+      "id": "B055",
+      "name": "Lò thủy tinh",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 30
+        },
+        {
+          "resource": "R111",
+          "quantity": 25
+        }
+      ]
+    },
+    {
+      "id": "B056",
+      "name": "Xưởng may",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 25
+        },
+        {
+          "resource": "R114",
+          "quantity": 15
+        }
+      ]
+    },
+    {
+      "id": "B057",
+      "name": "Trạm y tế",
+      "capacity": null,
+      "group": "Dân sinh / xã hội",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 35
+        },
+        {
+          "resource": "R103",
+          "quantity": 22
+        }
+      ]
+    },
+    {
+      "id": "B058",
+      "name": "Lò vôi",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 22
+        },
+        {
+          "resource": "R111",
+          "quantity": 18
+        }
+      ]
+    },
+    {
+      "id": "B059",
+      "name": "Nhà ở đá",
+      "capacity": 12,
+      "group": "Dân sinh / xã hội",
+      "materials": [
+        {
+          "resource": "R111",
+          "quantity": 45
+        },
+        {
+          "resource": "R110",
+          "quantity": 15
+        }
+      ]
+    },
+    {
+      "id": "B060",
+      "name": "Trạm thủy lợi",
+      "capacity": null,
+      "group": "Hạ tầng / logistics",
+      "materials": [
+        {
+          "resource": "R111",
+          "quantity": 35
+        },
+        {
+          "resource": "R103",
+          "quantity": 25
+        }
+      ]
+    },
+    {
+      "id": "B061",
+      "name": "Phòng thí nghiệm",
+      "capacity": null,
+      "group": "Nghiên cứu / giáo dục",
+      "materials": [
+        {
+          "resource": "R112",
+          "quantity": 25
+        },
+        {
+          "resource": "R109",
+          "quantity": 45
+        }
+      ]
+    },
+    {
+      "id": "B062",
+      "name": "Phòng hóa học",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R112",
+          "quantity": 25
+        },
+        {
+          "resource": "R109",
+          "quantity": 40
+        }
+      ]
+    },
+    {
+      "id": "B063",
+      "name": "Xưởng cơ khí",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R090",
+          "quantity": 30
+        },
+        {
+          "resource": "R103",
+          "quantity": 28
+        }
+      ]
+    },
+    {
+      "id": "B064",
+      "name": "Trạm địa chất",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 30
+        },
+        {
+          "resource": "R112",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B065",
+      "name": "Xưởng dệt cải tiến",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 30
+        },
+        {
+          "resource": "R090",
+          "quantity": 15
+        }
+      ]
+    },
+    {
+      "id": "B066",
+      "name": "Nhà máy vật liệu",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 40
+        },
+        {
+          "resource": "R090",
+          "quantity": 20
+        }
+      ]
+    },
+    {
+      "id": "B067",
+      "name": "Mỏ than",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R090",
+          "quantity": 25
+        },
+        {
+          "resource": "R103",
+          "quantity": 25
+        }
+      ]
+    },
+    {
+      "id": "B068",
+      "name": "Lò than cốc",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 50
+        },
+        {
+          "resource": "R090",
+          "quantity": 20
+        }
+      ]
+    },
+    {
+      "id": "B069",
+      "name": "Nhà máy động cơ hơi nước",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 40
+        },
+        {
+          "resource": "R109",
+          "quantity": 60
+        }
+      ]
+    },
+    {
+      "id": "B070",
+      "name": "Nhà máy thép",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 70
+        },
+        {
+          "resource": "R089",
+          "quantity": 40
+        }
+      ]
+    },
+    {
+      "id": "B071",
+      "name": "Nhà máy cơ khí",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 55
+        },
+        {
+          "resource": "R109",
+          "quantity": 40
+        }
+      ]
+    },
+    {
+      "id": "B072",
+      "name": "Mỏ dầu",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 45
+        },
+        {
+          "resource": "R109",
+          "quantity": 30
+        }
+      ]
+    },
+    {
+      "id": "B073",
+      "name": "Mỏ khí",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 50
+        },
+        {
+          "resource": "R109",
+          "quantity": 35
+        }
+      ]
+    },
+    {
+      "id": "B074",
+      "name": "Nhà máy lọc dầu",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 65
+        },
+        {
+          "resource": "R109",
+          "quantity": 50
+        }
+      ]
+    },
+    {
+      "id": "B075",
+      "name": "Nhà máy xi măng",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 45
+        },
+        {
+          "resource": "R109",
+          "quantity": 45
+        }
+      ]
+    },
+    {
+      "id": "B076",
+      "name": "Nhà máy bê tông",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 40
+        },
+        {
+          "resource": "R109",
+          "quantity": 30
+        }
+      ]
+    },
+    {
+      "id": "B077",
+      "name": "Ga đường sắt",
+      "capacity": null,
+      "group": "Hạ tầng / logistics",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 60
+        },
+        {
+          "resource": "R109",
+          "quantity": 40
+        }
+      ]
+    },
+    {
+      "id": "B078",
+      "name": "Nhà máy nước",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 40
+        },
+        {
+          "resource": "R109",
+          "quantity": 50
+        }
+      ]
+    },
+    {
+      "id": "B079",
+      "name": "Bệnh viện",
+      "capacity": null,
+      "group": "Dân sinh / xã hội",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 45
+        },
+        {
+          "resource": "R109",
+          "quantity": 70
+        }
+      ]
+    },
+    {
+      "id": "B080",
+      "name": "Kho công nghiệp",
+      "capacity": 1200,
+      "group": "Kho / lưu trữ",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 55
+        },
+        {
+          "resource": "R109",
+          "quantity": 45
+        }
+      ]
+    },
+    {
+      "id": "B081",
+      "name": "Nhà máy nhiệt điện",
+      "capacity": 120,
+      "group": "Năng lượng / điện",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 100
+        },
+        {
+          "resource": "R117",
+          "quantity": 80
+        }
+      ]
+    },
+    {
+      "id": "B082",
+      "name": "Nhà máy điện khí",
+      "capacity": 110,
+      "group": "Năng lượng / điện",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 110
+        },
+        {
+          "resource": "R117",
+          "quantity": 70
+        }
+      ]
+    },
+    {
+      "id": "B083",
+      "name": "Nhà máy điện dầu",
+      "capacity": 90,
+      "group": "Năng lượng / điện",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 95
+        },
+        {
+          "resource": "R117",
+          "quantity": 65
+        }
+      ]
+    },
+    {
+      "id": "B084",
+      "name": "Thủy điện",
+      "capacity": 140,
+      "group": "Năng lượng / điện",
+      "materials": [
+        {
+          "resource": "R117",
+          "quantity": 120
+        },
+        {
+          "resource": "R093",
+          "quantity": 75
+        }
+      ]
+    },
+    {
+      "id": "B085",
+      "name": "Trạm biến áp",
+      "capacity": null,
+      "group": "Hạ tầng / logistics",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 40
+        },
+        {
+          "resource": "R096",
+          "quantity": 30
+        }
+      ]
+    },
+    {
+      "id": "B086",
+      "name": "Đường dây điện",
+      "capacity": null,
+      "group": "Hạ tầng / logistics",
+      "materials": [
+        {
+          "resource": "R096",
+          "quantity": 30
+        },
+        {
+          "resource": "R093",
+          "quantity": 20
+        }
+      ]
+    },
+    {
+      "id": "B087",
+      "name": "Nhà máy thiết bị điện",
+      "capacity": null,
+      "group": "Năng lượng / điện",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 55
+        },
+        {
+          "resource": "R096",
+          "quantity": 35
+        }
+      ]
+    },
+    {
+      "id": "B088",
+      "name": "Kho lạnh",
+      "capacity": 550,
+      "group": "Kho / lưu trữ",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 40
+        },
+        {
+          "resource": "R117",
+          "quantity": 35
+        }
+      ]
+    },
+    {
+      "id": "B089",
+      "name": "Nhà máy bơm nước",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 45
+        },
+        {
+          "resource": "R117",
+          "quantity": 30
+        }
+      ]
+    },
+    {
+      "id": "B090",
+      "name": "Trạm xử lý nước thải",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 45
+        },
+        {
+          "resource": "R117",
+          "quantity": 55
+        }
+      ]
+    },
+    {
+      "id": "B091",
+      "name": "Nhà máy máy móc điện",
+      "capacity": null,
+      "group": "Năng lượng / điện",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 65
+        },
+        {
+          "resource": "R096",
+          "quantity": 35
+        }
+      ]
+    },
+    {
+      "id": "B092",
+      "name": "Nhà máy dây cáp",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 35
+        },
+        {
+          "resource": "R117",
+          "quantity": 30
+        }
+      ]
+    },
+    {
+      "id": "B093",
+      "name": "Trang trại điện mặt trời",
+      "capacity": 95,
+      "group": "Năng lượng / điện",
+      "materials": [
+        {
+          "resource": "R117",
+          "quantity": 65
+        },
+        {
+          "resource": "R093",
+          "quantity": 40
+        },
+        {
+          "resource": "R164",
+          "quantity": 20
+        }
+      ]
+    },
+    {
+      "id": "B094",
+      "name": "Trang trại điện gió",
+      "capacity": 105,
+      "group": "Năng lượng / điện",
+      "materials": [
+        {
+          "resource": "R117",
+          "quantity": 80
+        },
+        {
+          "resource": "R093",
+          "quantity": 75
+        },
+        {
+          "resource": "R165",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "B095",
+      "name": "Nhà máy pin",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 55
+        },
+        {
+          "resource": "R117",
+          "quantity": 45
+        }
+      ]
+    },
+    {
+      "id": "B096",
+      "name": "Trạm lưu trữ điện",
+      "capacity": 180,
+      "group": "Kho / lưu trữ",
+      "materials": [
+        {
+          "resource": "R117",
+          "quantity": 45
+        },
+        {
+          "resource": "R163",
+          "quantity": 18
+        }
+      ]
+    },
+    {
+      "id": "B097",
+      "name": "Nhà máy điện tử",
+      "capacity": null,
+      "group": "Năng lượng / điện",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 65
+        },
+        {
+          "resource": "R117",
+          "quantity": 65
+        }
+      ]
+    },
+    {
+      "id": "B098",
+      "name": "Nhà máy vi mạch",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 120
+        },
+        {
+          "resource": "R117",
+          "quantity": 120
+        }
+      ]
+    },
+    {
+      "id": "B099",
+      "name": "Nhà máy máy tính",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 65
+        },
+        {
+          "resource": "R117",
+          "quantity": 70
+        }
+      ]
+    },
+    {
+      "id": "B100",
+      "name": "Trung tâm dữ liệu",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 90
+        },
+        {
+          "resource": "R117",
+          "quantity": 100
+        }
+      ]
+    },
+    {
+      "id": "B101",
+      "name": "Nhà máy robot",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 100
+        },
+        {
+          "resource": "R117",
+          "quantity": 110
+        }
+      ]
+    },
+    {
+      "id": "B102",
+      "name": "Trung tâm logistics",
+      "capacity": null,
+      "group": "Hạ tầng / logistics",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 60
+        },
+        {
+          "resource": "R117",
+          "quantity": 80
+        }
+      ]
+    },
+    {
+      "id": "B103",
+      "name": "Viện khoa học hiện đại",
+      "capacity": null,
+      "group": "Kho / lưu trữ",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 110
+        },
+        {
+          "resource": "R117",
+          "quantity": 120
+        }
+      ]
+    },
+    {
+      "id": "B104",
+      "name": "Nhà máy tái chế",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 65
+        },
+        {
+          "resource": "R117",
+          "quantity": 70
+        }
+      ]
+    },
+    {
+      "id": "B105",
+      "name": "Nhà máy vật liệu tiên tiến",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 95
+        },
+        {
+          "resource": "R117",
+          "quantity": 90
+        }
+      ]
+    },
+    {
+      "id": "B106",
+      "name": "Nhà máy tấm pin mặt trời",
+      "capacity": null,
+      "group": "Năng lượng / điện",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 80
+        },
+        {
+          "resource": "R117",
+          "quantity": 65
+        }
+      ]
+    },
+    {
+      "id": "B107",
+      "name": "Nhà máy tua-bin gió",
+      "capacity": null,
+      "group": "Năng lượng / điện",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 85
+        },
+        {
+          "resource": "R117",
+          "quantity": 65
+        }
+      ]
+    },
+    {
+      "id": "B108",
+      "name": "Nhà máy thực phẩm đóng hộp",
+      "capacity": null,
+      "group": "Chế biến lương thực",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 30
+        },
+        {
+          "resource": "R109",
+          "quantity": 35
+        }
+      ]
+    },
+    {
+      "id": "B109",
+      "name": "Mỏ bô-xít",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R090",
+          "quantity": 24
+        },
+        {
+          "resource": "R103",
+          "quantity": 20
+        }
+      ]
+    },
+    {
+      "id": "B110",
+      "name": "Nhà máy nhôm",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 55
+        },
+        {
+          "resource": "R117",
+          "quantity": 45
+        }
+      ]
+    },
+    {
+      "id": "B111",
+      "name": "Nhà máy xử lý khí",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 45
+        },
+        {
+          "resource": "R117",
+          "quantity": 45
+        }
+      ]
+    },
+    {
+      "id": "B112",
+      "name": "Mỏ silic",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 40
+        },
+        {
+          "resource": "R117",
+          "quantity": 30
+        }
+      ]
+    },
+    {
+      "id": "B113",
+      "name": "Mỏ lithium",
+      "capacity": null,
+      "group": "Khai thác / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 50
+        },
+        {
+          "resource": "R117",
+          "quantity": 35
+        }
+      ]
+    },
+    {
+      "id": "B114",
+      "name": "Mỏ khoáng sản hiếm",
+      "capacity": null,
+      "group": "Kho / lưu trữ",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 60
+        },
+        {
+          "resource": "R117",
+          "quantity": 40
+        }
+      ]
+    },
+    {
+      "id": "B115",
+      "name": "Nhà máy tinh luyện khoáng sản",
+      "capacity": null,
+      "group": "Kho / lưu trữ",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 65
+        },
+        {
+          "resource": "R117",
+          "quantity": 60
+        }
+      ]
+    },
+    {
+      "id": "B116",
+      "name": "Nhà máy nhựa kỹ thuật",
+      "capacity": null,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 65
+        },
+        {
+          "resource": "R117",
+          "quantity": 55
+        }
+      ]
+    },
+    {
+      "id": "B117",
+      "name": "Bãi lấy nước",
+      "capacity": null,
+      "group": "Khai thác / nước",
+      "materials": [
+        {
+          "resource": "R046",
+          "quantity": 5
+        },
+        {
+          "resource": "R052",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "B118",
+      "name": "Hố chứa nước",
+      "capacity": 120,
+      "group": "Kho / nước",
+      "materials": [
+        {
+          "resource": "R052",
+          "quantity": 16
+        },
+        {
+          "resource": "R054",
+          "quantity": 8
+        },
+        {
+          "resource": "R045",
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "id": "B119",
+      "name": "Rãnh thoát nước",
+      "capacity": null,
+      "group": "Hạ tầng / chống ngập",
+      "materials": [
+        {
+          "resource": "R052",
+          "quantity": 15
+        },
+        {
+          "resource": "R045",
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "id": "B120",
+      "name": "Bờ chắn lũ tạm",
+      "capacity": null,
+      "group": "Hạ tầng / chống ngập",
+      "materials": [
+        {
+          "resource": "R052",
+          "quantity": 24
+        },
+        {
+          "resource": "R045",
+          "quantity": 18
+        },
+        {
+          "resource": "R054",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "B121",
+      "name": "Trạm quan sát mùa",
+      "capacity": null,
+      "group": "Nghiên cứu / sinh thái",
+      "materials": [
+        {
+          "resource": "R046",
+          "quantity": 14
+        },
+        {
+          "resource": "R052",
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "id": "B122",
+      "name": "Giá phơi thực phẩm",
+      "capacity": null,
+      "group": "Chế biến / bảo quản",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 12
+        },
+        {
+          "resource": "R102",
+          "quantity": 6
+        },
+        {
+          "resource": "R047",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B123",
+      "name": "Bãi học nghề sơ khai",
+      "capacity": 2,
+      "group": "Đào tạo",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 12
+        },
+        {
+          "resource": "R052",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B124",
+      "name": "Khu thử gieo hạt",
+      "capacity": null,
+      "group": "Nghiên cứu / thử nghiệm",
+      "materials": [
+        {
+          "resource": "R046",
+          "quantity": 12
+        },
+        {
+          "resource": "R052",
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "id": "B125",
+      "name": "Lều che mưa",
+      "capacity": 5,
+      "group": "Dân sinh / chống mưa",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 12
+        },
+        {
+          "resource": "R047",
+          "quantity": 20
+        }
+      ]
+    },
+    {
+      "id": "B126",
+      "name": "Bãi củi có mái",
+      "capacity": 120,
+      "group": "Kho / nhiên liệu",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 10
+        },
+        {
+          "resource": "R047",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B127",
+      "name": "Bãi sơ chế da",
+      "capacity": 12,
+      "group": "Chế tạo / sinh tồn",
+      "materials": [
+        {
+          "resource": "R046",
+          "quantity": 12
+        },
+        {
+          "resource": "R052",
+          "quantity": 7
+        },
+        {
+          "resource": "R047",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "B128",
+      "name": "Lều khâu trang phục",
+      "capacity": 4,
+      "group": "Chế tạo / sinh tồn",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 14
+        },
+        {
+          "resource": "R047",
+          "quantity": 20
+        },
+        {
+          "resource": "R102",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B129",
+      "name": "Bãi hong khô trang phục",
+      "capacity": 8,
+      "group": "Sinh tồn / bảo dưỡng",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 10
+        },
+        {
+          "resource": "R047",
+          "quantity": 14
+        },
+        {
+          "resource": "R052",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "id": "B130",
+      "name": "Lều giữ ấm",
+      "capacity": 5,
+      "group": "Nhà ở / nhiệt",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 26
+        },
+        {
+          "resource": "R186",
+          "quantity": 6
+        },
+        {
+          "resource": "R047",
+          "quantity": 20
+        },
+        {
+          "resource": "R102",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B131",
+      "name": "Nhà sưởi tập thể",
+      "capacity": 10,
+      "group": "Dân sinh / nhiệt",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 28
+        },
+        {
+          "resource": "R052",
+          "quantity": 18
+        },
+        {
+          "resource": "R186",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "id": "B132",
+      "name": "Xưởng may thủ công",
+      "capacity": 6,
+      "group": "Sản xuất / trang phục",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 20
+        },
+        {
+          "resource": "R052",
+          "quantity": 12
+        },
+        {
+          "resource": "R108",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B133",
+      "name": "Xưởng may cơ giới",
+      "capacity": 18,
+      "group": "Sản xuất / trang phục",
+      "materials": [
+        {
+          "resource": "R090",
+          "quantity": 25
+        },
+        {
+          "resource": "R109",
+          "quantity": 35
+        },
+        {
+          "resource": "R150",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "B134",
+      "name": "Nhà máy sợi cách nhiệt",
+      "capacity": 12,
+      "group": "Sản xuất / trang phục",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 35
+        },
+        {
+          "resource": "R117",
+          "quantity": 30
+        },
+        {
+          "resource": "R155",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "id": "B135",
+      "name": "Nhà máy đồ bảo hộ hiện đại",
+      "capacity": 8,
+      "group": "Sản xuất / trang phục",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 40
+        },
+        {
+          "resource": "R117",
+          "quantity": 40
+        },
+        {
+          "resource": "R160",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "B136",
+      "name": "Lều nghỉ dưỡng",
+      "capacity": 4,
+      "group": "Y tế / dân sinh",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 12
+        },
+        {
+          "resource": "R047",
+          "quantity": 20
+        },
+        {
+          "resource": "R058",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "B137",
+      "name": "Khu vệ sinh đơn sơ",
+      "capacity": 20,
+      "group": "Vệ sinh / môi trường",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 10
+        },
+        {
+          "resource": "R052",
+          "quantity": 10
+        },
+        {
+          "resource": "R102",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "B138",
+      "name": "Bãi thu gom rác",
+      "capacity": 70,
+      "group": "Môi trường / chất thải",
+      "materials": [
+        {
+          "resource": "R052",
+          "quantity": 9
+        },
+        {
+          "resource": "R046",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B139",
+      "name": "Đường mòn",
+      "capacity": 1,
+      "group": "Hạ tầng / giao thông",
+      "materials": [
+        {
+          "resource": "R052",
+          "quantity": 3
+        },
+        {
+          "resource": "R046",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "B140",
+      "name": "Chòi nghỉ dọc đường",
+      "capacity": 3,
+      "group": "Hạ tầng / giao thông",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 9
+        },
+        {
+          "resource": "R047",
+          "quantity": 15
+        }
+      ]
+    },
+    {
+      "id": "B141",
+      "name": "Nhà sàn sơ khai",
+      "capacity": 6,
+      "group": "Nhà ở",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 25
+        },
+        {
+          "resource": "R102",
+          "quantity": 8
+        },
+        {
+          "resource": "R047",
+          "quantity": 22
+        }
+      ]
+    },
+    {
+      "id": "B142",
+      "name": "Khu quan sát thú",
+      "capacity": 1,
+      "group": "Khảo sát / nghiên cứu",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 14
+        },
+        {
+          "resource": "R052",
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "id": "B143",
+      "name": "Trại thuần dưỡng",
+      "capacity": 4,
+      "group": "Chăn nuôi / đào tạo",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 22
+        },
+        {
+          "resource": "R108",
+          "quantity": 8
+        },
+        {
+          "resource": "R052",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B144",
+      "name": "Chuồng trâu kéo",
+      "capacity": 5,
+      "group": "Chăn nuôi / sức kéo",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 26
+        },
+        {
+          "resource": "R108",
+          "quantity": 10
+        },
+        {
+          "resource": "R052",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B145",
+      "name": "Chuồng ngựa",
+      "capacity": 6,
+      "group": "Chăn nuôi / vận tải",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 26
+        },
+        {
+          "resource": "R108",
+          "quantity": 10
+        },
+        {
+          "resource": "R052",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B146",
+      "name": "Xưởng yên cương",
+      "capacity": 6,
+      "group": "Sản xuất / chế tạo",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 16
+        },
+        {
+          "resource": "R058",
+          "quantity": 8
+        },
+        {
+          "resource": "R108",
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "id": "B147",
+      "name": "Trạm xe kéo",
+      "capacity": 3,
+      "group": "Hạ tầng / logistics",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 22
+        },
+        {
+          "resource": "R108",
+          "quantity": 7
+        },
+        {
+          "resource": "R052",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B148",
+      "name": "Kho cỏ khô",
+      "capacity": 200,
+      "group": "Kho / lưu trữ",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 14
+        },
+        {
+          "resource": "R047",
+          "quantity": 14
+        }
+      ]
+    },
+    {
+      "id": "B149",
+      "name": "Bãi ủ phân",
+      "capacity": 120,
+      "group": "Môi trường / nông nghiệp",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 13
+        },
+        {
+          "resource": "R052",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B150",
+      "name": "Nhà gỗ",
+      "capacity": 8,
+      "group": "Nhà ở",
+      "materials": [
+        {
+          "resource": "R103",
+          "quantity": 34
+        },
+        {
+          "resource": "R107",
+          "quantity": 8
+        },
+        {
+          "resource": "R108",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "B151",
+      "name": "Trạm chăm sóc gia súc",
+      "capacity": 4,
+      "group": "Chăn nuôi / sức khỏe",
+      "materials": [
+        {
+          "resource": "R045",
+          "quantity": 20
+        },
+        {
+          "resource": "R052",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "B152",
+      "name": "Hố thoát nước thải",
+      "capacity": 70,
+      "group": "Môi trường / nước",
+      "materials": [
+        {
+          "resource": "R052",
+          "quantity": 22
+        },
+        {
+          "resource": "R054",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B153",
+      "name": "Bãi xử lý rác",
+      "capacity": 300,
+      "group": "Môi trường / chất thải",
+      "materials": [
+        {
+          "resource": "R100",
+          "quantity": 20
+        },
+        {
+          "resource": "R109",
+          "quantity": 15
+        }
+      ]
+    },
+    {
+      "id": "B154",
+      "name": "Đường đất đầm",
+      "capacity": 1,
+      "group": "Hạ tầng / giao thông",
+      "materials": [
+        {
+          "resource": "R052",
+          "quantity": 6
+        },
+        {
+          "resource": "R045",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "B155",
+      "name": "Khu cách ly bệnh",
+      "capacity": 8,
+      "group": "Y tế / dân sinh",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 35
+        },
+        {
+          "resource": "R110",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "B156",
+      "name": "Cơ sở bào chế thảo mộc",
+      "capacity": 6,
+      "group": "Y tế / sản xuất",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 20
+        },
+        {
+          "resource": "R103",
+          "quantity": 15
+        }
+      ]
+    },
+    {
+      "id": "B157",
+      "name": "Nhà ở kiên cố",
+      "capacity": 14,
+      "group": "Nhà ở",
+      "materials": [
+        {
+          "resource": "R111",
+          "quantity": 32
+        },
+        {
+          "resource": "R110",
+          "quantity": 17
+        },
+        {
+          "resource": "R107",
+          "quantity": 15
+        }
+      ]
+    },
+    {
+      "id": "B158",
+      "name": "Trạm quan trắc ô nhiễm",
+      "capacity": 120,
+      "group": "Môi trường / giám sát",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 20
+        },
+        {
+          "resource": "R109",
+          "quantity": 25
+        }
+      ]
+    },
+    {
+      "id": "B159",
+      "name": "Nhà máy xử lý nước thải công nghiệp",
+      "capacity": 80,
+      "group": "Môi trường / xử lý",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 36
+        },
+        {
+          "resource": "R117",
+          "quantity": 45
+        }
+      ]
+    },
+    {
+      "id": "B160",
+      "name": "Bãi rác kiểm soát",
+      "capacity": 1500,
+      "group": "Môi trường / chất thải",
+      "materials": [
+        {
+          "resource": "R117",
+          "quantity": 38
+        },
+        {
+          "resource": "R093",
+          "quantity": 20
+        }
+      ]
+    },
+    {
+      "id": "B161",
+      "name": "Trạm lọc bụi công nghiệp",
+      "capacity": 100,
+      "group": "Môi trường / lọc khí",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 30
+        },
+        {
+          "resource": "R117",
+          "quantity": 24
+        },
+        {
+          "resource": "R120",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "B162",
+      "name": "Trạm bảo dưỡng vận tải",
+      "capacity": 5,
+      "group": "Hạ tầng / logistics",
+      "materials": [
+        {
+          "resource": "R090",
+          "quantity": 18
+        },
+        {
+          "resource": "R103",
+          "quantity": 20
+        }
+      ]
+    },
+    {
+      "id": "B163",
+      "name": "Nhà ở tập thể",
+      "capacity": 35,
+      "group": "Nhà ở",
+      "materials": [
+        {
+          "resource": "R109",
+          "quantity": 60
+        },
+        {
+          "resource": "R093",
+          "quantity": 24
+        }
+      ]
+    },
+    {
+      "id": "B164",
+      "name": "Trung tâm điều phối vận tải",
+      "capacity": 100,
+      "group": "Hạ tầng / logistics",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 40
+        },
+        {
+          "resource": "R117",
+          "quantity": 40
+        },
+        {
+          "resource": "R160",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "B165",
+      "name": "Khu xử lý chất thải nguy hại",
+      "capacity": 120,
+      "group": "Môi trường / chất thải",
+      "materials": [
+        {
+          "resource": "R093",
+          "quantity": 40
+        },
+        {
+          "resource": "R117",
+          "quantity": 50
+        }
+      ]
+    },
+    {
+      "id": "B166",
+      "name": "Nhà ở hiệu suất cao",
+      "capacity": 45,
+      "group": "Nhà ở",
+      "materials": [
+        {
+          "resource": "R117",
+          "quantity": 80
+        },
+        {
+          "resource": "R093",
+          "quantity": 40
+        },
+        {
+          "resource": "R119",
+          "quantity": 24
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "R001",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R002",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R003",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R004",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R005",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R006",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R007",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R008",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R009",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R010",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R011",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R012",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R013",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R014",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R015",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R016",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R017",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R018",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R019",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R020",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R021",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R022",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R023",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R024",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R025",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R026",
+      "storage": "Kho vật liệu khô"
+    },
+    {
+      "id": "R027",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R028",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R029",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R030",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R031",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R032",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R033",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R034",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R035",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R036",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R037",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R038",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R039",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R040",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R041",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R042",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R043",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R044",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R045",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R046",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R047",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R048",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R049",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R050",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R051",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R052",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R053",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R054",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R055",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R056",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R057",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R058",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R059",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R060",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R061",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R062",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R063",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R064",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R065",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R066",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R067",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R068",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R069",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R070",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R071",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R072",
+      "storage": "Kho khoáng sản"
+    },
+    {
+      "id": "R073",
+      "storage": "Kho khoáng sản"
+    },
+    {
+      "id": "R074",
+      "storage": "Kho khoáng sản"
+    },
+    {
+      "id": "R075",
+      "storage": "Kho khoáng sản"
+    },
+    {
+      "id": "R076",
+      "storage": "Kho khoáng sản"
+    },
+    {
+      "id": "R077",
+      "storage": "Kho khoáng sản"
+    },
+    {
+      "id": "R078",
+      "storage": "Kho khoáng sản"
+    },
+    {
+      "id": "R079",
+      "storage": "Kho khoáng sản"
+    },
+    {
+      "id": "R080",
+      "storage": "Kho khoáng sản"
+    },
+    {
+      "id": "R081",
+      "storage": "Kho khoáng sản"
+    },
+    {
+      "id": "R082",
+      "storage": "Kho khoáng sản"
+    },
+    {
+      "id": "R083",
+      "storage": "Kho khoáng sản"
+    },
+    {
+      "id": "R084",
+      "storage": "Kho khoáng sản"
+    },
+    {
+      "id": "R085",
+      "storage": "Kho khoáng sản"
+    },
+    {
+      "id": "R086",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R087",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R088",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R089",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R090",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R091",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R092",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R093",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R094",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R095",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R096",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R097",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R098",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R099",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R100",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R101",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R102",
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R103",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R104",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R105",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R106",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R107",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R108",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R109",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R110",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R111",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R112",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R113",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R114",
+      "storage": "Kho vật liệu khô"
+    },
+    {
+      "id": "R115",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R116",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R117",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R118",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R119",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R120",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R121",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R122",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R123",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R124",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R125",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R126",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R127",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R128",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R129",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R130",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R131",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R132",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R133",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R134",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R135",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R136",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R137",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R138",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R139",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R140",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R141",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R142",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R143",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R144",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R145",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R146",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R147",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R148",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R149",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R150",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R151",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R152",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R153",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R154",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R155",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R156",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R157",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R158",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R159",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R160",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R161",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R162",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R163",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R164",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R165",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R166",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R167",
+      "storage": "Kho nhiên liệu"
+    },
+    {
+      "id": "R168",
+      "storage": "Kho nhiên liệu"
+    },
+    {
+      "id": "R169",
+      "storage": "Kho nhiên liệu"
+    },
+    {
+      "id": "R170",
+      "storage": "Kho nhiên liệu"
+    },
+    {
+      "id": "R171",
+      "storage": "Kho nhiên liệu"
+    },
+    {
+      "id": "R172",
+      "storage": "Kho nhiên liệu"
+    },
+    {
+      "id": "R173",
+      "storage": "Không lưu kho; phải nối lưới"
+    },
+    {
+      "id": "R174",
+      "storage": "Kho nhiên liệu"
+    },
+    {
+      "id": "R175",
+      "storage": "Kho nhiên liệu"
+    },
+    {
+      "id": "R176",
+      "storage": "Kho nhiên liệu / trạm pin"
+    },
+    {
+      "id": "R177",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R178",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R179",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R180",
+      "storage": "Bãi xử lý"
+    },
+    {
+      "id": "R181",
+      "storage": "Bãi xử lý"
+    },
+    {
+      "id": "R182",
+      "storage": "Bãi xử lý"
+    },
+    {
+      "id": "R183",
+      "storage": "Bãi xử lý"
+    },
+    {
+      "id": "R184",
+      "storage": "Bãi xử lý"
+    },
+    {
+      "id": "R185",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R186",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R187",
+      "storage": "Kho vật liệu khô"
+    },
+    {
+      "id": "R188",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R189",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R190",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R191",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R192",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R193",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R194",
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R195",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R196",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R197",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R198",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R199",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R200",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R201",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R202",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R203",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R204",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R205",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R206",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R207",
+      "storage": "Kho trang bị"
+    },
+    {
+      "id": "R208",
+      "storage": "Bãi thu gom rác"
+    },
+    {
+      "id": "R209",
+      "storage": "Hố thoát nước thải"
+    },
+    {
+      "id": "R210",
+      "storage": "Bãi thu gom rác"
+    },
+    {
+      "id": "R211",
+      "storage": "Lều thảo dược"
+    },
+    {
+      "id": "R212",
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R213",
+      "storage": "Hố chứa nước"
+    },
+    {
+      "id": "R214",
+      "storage": "Kho vật liệu thô"
+    },
+    {
+      "id": "R215",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R216",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R217",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R218",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R219",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R220",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R221",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R222",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R223",
+      "storage": "Kho công nghiệp"
+    },
+    {
+      "id": "R224",
+      "storage": "Kho công nghiệp"
+    },
+    {
+      "id": "R225",
+      "storage": "Kho công nghiệp"
+    },
+    {
+      "id": "R226",
+      "storage": "Kho công nghiệp"
+    },
+    {
+      "id": "R227",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R228",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R229",
+      "storage": "Kho vật liệu"
+    },
+    {
+      "id": "R230",
+      "storage": "Kho vật liệu"
+    }
+  ],
+  "kitchenInputs": [
+    "R001",
+    "R002",
+    "R003",
+    "R008",
+    "R167",
+    "R009",
+    "R062"
+  ],
+  "carryCapacity": 3
+}

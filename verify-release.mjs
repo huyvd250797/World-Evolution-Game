@@ -13,6 +13,7 @@ export async function verifyRelease(root=process.cwd()){
  if(catalog.sourceSha256!==pkg.worldEvolution.sourceSha256||summary.sourceSha256!==catalog.sourceSha256)throw new Error('Checksum nguồn Master Data không nhất quán.');
  for(const sheet of catalog.sheets)if(sheet.rows.length!==summary.counts[sheet.name])throw new Error(`Số dòng không khớp: ${sheet.name}`);
  const planning=await read('data/generated/planning.json');if(sha(planning)!==pkg.worldEvolution.planningSha256)throw new Error('Planning adapter checksum mismatch. Upload đầy đủ data/generated.');
+ const construction=await read('data/generated/construction.json');if(sha(construction)!==pkg.worldEvolution.constructionSha256)throw new Error('Construction adapter checksum mismatch.');
  const ecology=await read('data/generated/ecology.json');if(sha(ecology)!==pkg.worldEvolution.ecologySha256)throw new Error('Ecology adapter checksum mismatch. Upload đầy đủ data/generated.');
  const workforce=await read('data/generated/workforce.json');if(sha(workforce)!==pkg.worldEvolution.workforceSha256)throw new Error('Workforce adapter checksum mismatch. Upload đầy đủ data/generated.');
  const survival=await read('data/generated/survival.json');if(sha(survival)!==pkg.worldEvolution.survivalSha256)throw new Error('Survival adapter checksum mismatch. Upload đầy đủ data/generated.');

@@ -1,9 +1,10 @@
 'use client';
+import type {Construction} from '@/game/construction/model';
 import {EcologyEditor} from '@/components/ecology/ecology-editor';
 import type {Ecology,EcologyCommand} from '@/game/ecology/model';
 import {useEffect,useRef,useState,useCallback} from 'react';
 import {SurvivalEditor} from '@/components/survival/survival-editor';
-import type {Survival,SurvivalCommand} from '@/game/survival/model';
+import type {Capabilities,Survival,SurvivalCommand} from '@/game/survival/model';
 import {PopulationEditor} from '@/components/population/population-editor';
 import type {Citizen,CitizenCommand} from '@/game/population/model';
 import {PlanningEditor} from '@/components/planning/planning-editor';
@@ -17,17 +18,17 @@ import {MapController,type MapStatus} from '@/game/map/controller';
 import {RESOURCES,TERRAIN,TERRAIN_NAMES,TERRAIN_COLORS,GENERATOR_VERSION} from '@/game/map/world-map';
 import {climateById} from '@/game/data';
 import type {SceneOptions} from '@/game/map/scene';
-export function WorldMapView({worldId,seed,climateId,population,day,paused=true,clockLabel,planning,canPlan=false,onPlanCommand,citizens=[],populationLimit=200,speed=1,onCitizenCommand,survival,tick=0,onSurvivalCommand,ecology,onEcologyCommand}:{worldId:string;seed:string;climateId:string;population:number;day:number;paused?:boolean;clockLabel?:string;planning?:Planning;canPlan?:boolean;onPlanCommand?:(command:PlanCommand)=>Promise<void>;citizens?:Citizen[];populationLimit?:number;speed?:number;onCitizenCommand?:(command:CitizenCommand)=>Promise<void>;survival?:Survival;tick?:number;onSurvivalCommand?:(command:SurvivalCommand)=>Promise<void>;ecology?:Ecology;onEcologyCommand?:(command:EcologyCommand)=>Promise<void>}){
+export function WorldMapView({worldId,seed,climateId,population,day,paused=true,clockLabel,planning,canPlan=false,onPlanCommand,citizens=[],populationLimit=200,speed=1,onCitizenCommand,survival,tick=0,onSurvivalCommand,ecology,onEcologyCommand,construction,capabilities}:{capabilities?:Capabilities;construction?:Construction;worldId:string;seed:string;climateId:string;population:number;day:number;paused?:boolean;clockLabel?:string;planning?:Planning;canPlan?:boolean;onPlanCommand?:(command:PlanCommand)=>Promise<void>;citizens?:Citizen[];populationLimit?:number;speed?:number;onCitizenCommand?:(command:CitizenCommand)=>Promise<void>;survival?:Survival;tick?:number;onSurvivalCommand?:(command:SurvivalCommand)=>Promise<void>;ecology?:Ecology;onEcologyCommand?:(command:EcologyCommand)=>Promise<void>}){
  const [mode,setMode]=useState<'population'|'planning'|'survival'|'ecology'>('population'),[selectedCitizen,setSelectedCitizen]=useState<string|null>(null);const onFocus=useCallback((id:string)=>controller.current?.focusCitizen(id),[]);
  const [selectedEcology,setSelectedEcology]=useState<string|null>(null);
 
- const [worldMap,setWorldMap]=useState<WorldMap|null>(null);const onOverlay=useCallback((o:PlanningOverlay)=>controller.current?.setPlanning(o),[]);
+ const [worldMap,setWorldMap]=useState<WorldMap|null>(null);const onOverlay=useCallback((o:PlanningOverlay)=>controller.current?.setPlanning({...o,construction}),[construction]);
  useEffect(()=>{if(ecology)controller.current?.setEcosystem({state:ecology,seed,climateId,paused,speed,selectedId:selectedEcology});},[ecology,seed,climateId,paused,speed,selectedEcology,worldMap]);
  const host=useRef<HTMLDivElement>(null),mini=useRef<HTMLCanvasElement>(null),controller=useRef<MapController|null>(null);
  const [status,setStatus]=useState<MapStatus|null>(null),[loading,setLoading]=useState(true),[error,setError]=useState(''),[retry,setRetry]=useState(0),[expanded,setExpanded]=useState(false),[help,setHelp]=useState(false);
  const [grid,setGrid]=useState(false),[resources,setResources]=useState(false),[quality,setQuality]=useState<'auto'|'low'>('auto');
  useEffect(()=>{controller.current?.setPopulation({citizens,paused,speed,selectedId:mode==='population'?selectedCitizen:null});},[citizens,paused,speed,selectedCitizen,mode,worldMap]);
- useEffect(()=>{if(mode!=='planning')controller.current?.setPlanning({planning:planning??emptyPlanning(),ghost:null});},[mode,planning,worldMap]);
+ useEffect(()=>{if(mode!=='planning')controller.current?.setPlanning({planning:planning??emptyPlanning(),ghost:null,construction});},[mode,planning,worldMap,construction]);
  const optionsRef=useRef<SceneOptions>({quality:'auto',grid:false,resources:false});
  useEffect(()=>{optionsRef.current={quality,grid,resources};controller.current?.setOptions(optionsRef.current);},[quality,grid,resources]);
  useEffect(()=>{
@@ -47,8 +48,8 @@ export function WorldMapView({worldId,seed,climateId,population,day,paused=true,
  <div className="map-canvas-host" ref={host}/>
  <div className="world-tool-switch"><button aria-pressed={mode==='ecology'} onClick={()=>setMode('ecology')}>Hệ sinh thái</button><button aria-pressed={mode==='survival'} onClick={()=>setMode('survival')}>Sinh tồn & thức ăn</button><button aria-pressed={mode==='population'} onClick={()=>setMode('population')}>Dân cư & chỗ ở</button><button aria-pressed={mode==='planning'} onClick={()=>setMode('planning')}>Quy hoạch</button></div>
  {worldMap&&mode==='ecology'&&<EcologyEditor seed={seed} climateId={climateId} ecology={ecology} citizens={citizens} tick={tick} status={status} canEdit={canPlan} onCommand={onEcologyCommand??(async()=>{throw new Error('Chưa kết nối engine.');})} onSelect={setSelectedEcology}/>}
- {worldMap&&mode==='survival'&&<SurvivalEditor ecology={ecology} map={worldMap} planning={planning??emptyPlanning()} citizens={citizens} survival={survival} tick={tick} status={status} canEdit={canPlan} onCommand={onSurvivalCommand??(async()=>{throw new Error('Chưa kết nối engine.');})}/>}
- {worldMap&&mode==='population'&&<PopulationEditor map={worldMap} planning={planning??emptyPlanning()} citizens={citizens} day={day} populationLimit={populationLimit} paused={paused} status={status} canEdit={canPlan} onCommand={onCitizenCommand??(async()=>{throw new Error('Chưa kết nối engine.');})} onFocus={onFocus} onSelect={setSelectedCitizen}/>}
+ {worldMap&&mode==='survival'&&<SurvivalEditor capabilities={capabilities} ecology={ecology} map={worldMap} planning={planning??emptyPlanning()} citizens={citizens} survival={survival} tick={tick} status={status} canEdit={canPlan} onCommand={onSurvivalCommand??(async()=>{throw new Error('Chưa kết nối engine.');})}/>}
+ {worldMap&&mode==='population'&&<PopulationEditor completed={new Set(construction?.sites.filter(s=>s.status==='complete').map(s=>s.id))} map={worldMap} planning={planning??emptyPlanning()} citizens={citizens} day={day} populationLimit={populationLimit} paused={paused} status={status} canEdit={canPlan} onCommand={onCitizenCommand??(async()=>{throw new Error('Chưa kết nối engine.');})} onFocus={onFocus} onSelect={setSelectedCitizen}/>}
  {worldMap&&mode==='planning'&&<PlanningEditor map={worldMap} status={status} planning={planning??emptyPlanning()} canEdit={canPlan} onCommand={onPlanCommand??(async()=>{throw new Error('Chưa kết nối engine.');})} onOverlay={onOverlay}/>}
  <div className="map-hud"><span className="map-era"><MapPinned size={15}/>E0 <i/>Ngày {day}{clockLabel?` · ${clockLabel}`:''}</span><span><Users size={14}/>{population} dân</span><span className="map-climate"><Mountain size={14}/>{climateById(climateId)?.name}</span><span className="map-paused"><Pause size={12}/>{paused?'Tạm dừng':'Đang chạy'}</span></div>
  <div className="map-top-actions"><button className="map-tool" title="Hướng dẫn điều khiển" aria-label="Hướng dẫn điều khiển" aria-expanded={help} onClick={()=>setHelp(!help)}><HelpCircle size={18}/></button><button className="map-tool" title={expanded?'Thu gọn bản đồ':'Mở rộng bản đồ'} aria-label={expanded?'Thu gọn bản đồ':'Mở rộng bản đồ'} onClick={()=>setExpanded(!expanded)}>{expanded?<Minimize2 size={18}/>:<Maximize2 size={18}/>}</button></div>

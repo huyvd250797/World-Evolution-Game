@@ -1,3 +1,14 @@
+# V0.9.0 — Construction & Logistics (19/11/2026)
+
+- Adapter BOM/nơi chứa/sức chứa Frozen, 166 công trình, MOV001 mang 3 đơn vị/chuyến. Không sửa workbook/catalog hoặc migrations 001–007.
+- Công trường từ nền: entrance, chờ vật tư/thợ, work ticks tại chỗ, pause/resume/cancel, vật tư tiêu thụ một lần khi hoàn tất; thời gian kỹ thuật công khai riêng.
+- Chuyến vật lý với giữ chỗ, pickup mới tách lô, delivery mới nhập nơi chứa; giữ tuổi/TTL/spoil, không cấp phát hoặc chế biến hai lần; retry/reroute có cargo, thu hồi không hoàn tức thời.
+- Bãi ngoài trời hữu hạn, B010/B011/B118 storage và B007 buffer nguyên liệu; completed houses cấp giường, completed facilities đưa vào labor/survival contexts và nhân sự thực.
+- Bảng thi công/nhân công/vận chuyển/tồn kho, xác nhận, marker bãi và stamp 2.5D phân biệt nền/đang xây/hoàn thành, dùng chung/culling/depth.
+- Schema 8/we-sim-6 và migration 008; đọc schema 2–7, full construction snapshots, local backup/lease/retry/history kế thừa. SQL projection chỉ dùng validation, giữ payload/cargo thật.
+- **Chưa mở chuỗi gameplay xây từ số 0:** thiếu công nghệ/đào tạo J008 và tuyến sản xuất đủ vật liệu; không tự cấp hoặc sửa Frozen. Có thể vận chuyển lô đã thu và quản lý hàng chờ ngay. Xem docs/CONSTRUCTION-LOGISTICS.md.
+- Chưa có phá dỡ công trình hoàn thành, xe vận tải, đường nâng tốc hay artwork riêng 166 công trình. Cloud/browser/device thật chưa nghiệm thu.
+
 # V0.8.0 — Living Ecosystem (19/11/2026)
 
 - Thêm ecology adapter 52 loài, 10 sinh cảnh, 14 quan hệ thức ăn và sản phẩm theo Frozen; không chỉnh workbook/canonical.

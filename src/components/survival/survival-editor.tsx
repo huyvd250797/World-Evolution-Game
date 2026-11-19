@@ -3,19 +3,19 @@ import type {Ecology} from '@/game/ecology/model';
 import {useMemo,useState} from 'react';
 import {X} from 'lucide-react';
 import {Navigation} from '@/game/population/navigation';
-import {resourceName,survivalSummary,sourceInfo,type Survival,type SurvivalCommand,DAY} from '@/game/survival/model';
+import {resourceName,survivalSummary,sourceInfo,type Capabilities,type Survival,type SurvivalCommand,DAY} from '@/game/survival/model';
 import type {Citizen} from '@/game/population/model';
 import type {WorldMap} from '@/game/map/world-map';
 import type {Planning} from '@/game/planning/model';
 import type {MapStatus} from '@/game/map/controller';
 const phases={outbound:'Đi tới nguồn',working:'Đang làm',returning:'Mang hàng về',blocked:'Đang bị chặn'};
-export function SurvivalEditor({map,planning,citizens,survival,tick,status,canEdit,onCommand,ecology}:{map:WorldMap;planning:Planning;citizens:Citizen[];survival?:Survival;tick:number;status:MapStatus|null;canEdit:boolean;onCommand:(command:SurvivalCommand)=>Promise<void>;ecology?:Ecology}){
+export function SurvivalEditor({map,planning,citizens,survival,tick,status,canEdit,onCommand,ecology,capabilities}:{capabilities?:Capabilities;map:WorldMap;planning:Planning;citizens:Citizen[];survival?:Survival;tick:number;status:MapStatus|null;canEdit:boolean;onCommand:(command:SurvivalCommand)=>Promise<void>;ecology?:Ecology}){
  const [lotPage,setLotPage]=useState(0),[open,setOpen]=useState(true),[id,setId]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false),[pending,setPending]=useState<SurvivalCommand|null>(null),[recipe,setRecipe]=useState('F001');
  const nav=useMemo(()=>new Navigation(map,planning),[map,planning]);
  if(!survival)return <div className="population-ui"><p className="population-readonly">Đang tải dữ liệu sinh tồn…</p></div>;
  const lots=survival.lots.filter(l=>l.quantity>0),pageCount=Math.max(1,Math.ceil(lots.length/30)),page=Math.min(lotPage,pageCount-1);
  const selectedSource=status?.selected?ecology?.plants.find(p=>p.id===status.selected!.y*256+status.selected!.x):undefined;
- const summary=survivalSummary(survival,citizens.length,tick),selected=status?.selected,kind=selected?sourceInfo(nav,selected):null,citizenId=id||citizens[0]?.id;
+ const summary=survivalSummary(survival,citizens.length,tick,capabilities),selected=status?.selected,kind=selected?sourceInfo(nav,selected):null,citizenId=id||citizens[0]?.id;
  async function submit(){if(!pending||!canEdit||busy)return;setBusy(true);setError('');try{await onCommand(pending);setPending(null);}catch(e){setError(e instanceof Error?e.message:'Chưa giao được việc.');}finally{setBusy(false);}}
  return <div className="population-ui survival-ui"><div className="population-launch"><button className="button secondary" onClick={()=>setOpen(!open)}>Sinh tồn · thiếu {summary.foodMissing} ăn / {summary.waterMissing} nước</button></div>
  {open&&<div className="population-card survival-card"><header><strong>Sinh tồn · Ngày {survival.day}</strong><button className="icon-button" aria-label="Thu gọn sinh tồn" onClick={()=>setOpen(false)}><X size={15}/></button></header>
