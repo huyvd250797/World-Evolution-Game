@@ -1,4 +1,5 @@
 'use client';
+import type {Ecology} from '@/game/ecology/model';
 import {useMemo,useState} from 'react';
 import {X} from 'lucide-react';
 import {Navigation} from '@/game/population/navigation';
@@ -8,11 +9,12 @@ import type {WorldMap} from '@/game/map/world-map';
 import type {Planning} from '@/game/planning/model';
 import type {MapStatus} from '@/game/map/controller';
 const phases={outbound:'Đi tới nguồn',working:'Đang làm',returning:'Mang hàng về',blocked:'Đang bị chặn'};
-export function SurvivalEditor({map,planning,citizens,survival,tick,status,canEdit,onCommand}:{map:WorldMap;planning:Planning;citizens:Citizen[];survival?:Survival;tick:number;status:MapStatus|null;canEdit:boolean;onCommand:(command:SurvivalCommand)=>Promise<void>}){
+export function SurvivalEditor({map,planning,citizens,survival,tick,status,canEdit,onCommand,ecology}:{map:WorldMap;planning:Planning;citizens:Citizen[];survival?:Survival;tick:number;status:MapStatus|null;canEdit:boolean;onCommand:(command:SurvivalCommand)=>Promise<void>;ecology?:Ecology}){
  const [lotPage,setLotPage]=useState(0),[open,setOpen]=useState(true),[id,setId]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false),[pending,setPending]=useState<SurvivalCommand|null>(null),[recipe,setRecipe]=useState('F001');
  const nav=useMemo(()=>new Navigation(map,planning),[map,planning]);
  if(!survival)return <div className="population-ui"><p className="population-readonly">Đang tải dữ liệu sinh tồn…</p></div>;
  const lots=survival.lots.filter(l=>l.quantity>0),pageCount=Math.max(1,Math.ceil(lots.length/30)),page=Math.min(lotPage,pageCount-1);
+ const selectedSource=status?.selected?ecology?.plants.find(p=>p.id===status.selected!.y*256+status.selected!.x):undefined;
  const summary=survivalSummary(survival,citizens.length,tick),selected=status?.selected,kind=selected?sourceInfo(nav,selected):null,citizenId=id||citizens[0]?.id;
  async function submit(){if(!pending||!canEdit||busy)return;setBusy(true);setError('');try{await onCommand(pending);setPending(null);}catch(e){setError(e instanceof Error?e.message:'Chưa giao được việc.');}finally{setBusy(false);}}
  return <div className="population-ui survival-ui"><div className="population-launch"><button className="button secondary" onClick={()=>setOpen(!open)}>Sinh tồn · thiếu {summary.foodMissing} ăn / {summary.waterMissing} nước</button></div>
@@ -22,7 +24,7 @@ export function SurvivalEditor({map,planning,citizens,survival,tick,status,canEd
  {survival.previous&&<p>Ngày trước đã cấp: {survival.previous.food}/20 ăn · {survival.previous.water}/40 nước.</p>}
  <label>Cư dân<select aria-label="Cư dân nhận việc" value={citizenId} onChange={e=>{setId(e.target.value);setPending(null);}}>{citizens.map(c=><option key={c.id} value={c.id}>{c.id}{survival.jobs.some(j=>j.citizenId===c.id)?' · đang có việc':''}</option>)}</select></label>
  <p><b>Nguồn:</b> {selected?`(${selected.x}, ${selected.y}) · ${kind==='gather'?'Quả rừng':kind==='water'?'Nước thô':kind==='hunt'?'Vùng rừng, khảo sát săn':'Không có nguồn phù hợp'}`:'Chạm ô trên bản đồ để chọn nguồn.'}</p>
- {selected&&kind==='gather'&&<p className="field-help">Nguồn: {survival.sources.find(r=>r.key===`${selected.x},${selected.y}`)?.remaining??'Chưa thu'}{survival.sources.find(r=>r.key===`${selected.x},${selected.y}`)?.remaining===0?` · Tái sinh ngày ${Math.floor((survival.sources.find(r=>r.key===`${selected.x},${selected.y}`)?.readyTick??0)/DAY)+1}`:''} · Mỗi chuyến tối đa 3.</p>}
+ {selected&&kind==='gather'&&<p className="field-help">Nguồn: {selectedSource?.stock??survival.sources.find(r=>r.key===`${selected.x},${selected.y}`)?.remaining??'Chưa thu'} · Mỗi chuyến tối đa 3. {selectedSource?.stock===0?`Phục hồi sớm nhất ngày ${Math.floor(selectedSource.readyTick/DAY)+1}, còn cần đúng mùa.`:''}</p>}
  <button className="button secondary" disabled={!canEdit||busy||!selected||!kind} onClick={()=>{if(selected&&kind){setError('');setPending({type:'assign',citizenId,kind,source:{x:selected.x,y:selected.y}});}}}>Giao việc tại ô đã chọn</button>
  <label>Chế biến<select aria-label="Công thức sinh tồn" value={recipe} onChange={e=>setRecipe(e.target.value)}><option value="F001">F001 · 1 quả → 1 suất ăn</option><option value="F002">F002 · 1 củ → 1 suất ăn</option><option value="F003">F003 · Nấm đã nhận diện</option><option value="F004">F004 · Nướng thịt, cần bếp hoạt động</option><option value="F005">F005 · Nướng cá, cần bếp hoạt động</option><option value="F006">F006 · Nấu củ, cần bếp hoạt động</option><option value="F060">F060 · Làm sạch nước, cần T102</option><option value="F087">F087 · Đun nước uống, cần T102</option></select></label>
  <button className="button secondary" disabled={!canEdit||busy} onClick={()=>{setError('');setPending({type:'process',citizenId,recipeId:recipe});}}>Chuẩn bị chế biến</button>

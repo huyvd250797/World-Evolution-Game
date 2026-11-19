@@ -1,3 +1,12 @@
+# V0.8.0 — Living Ecosystem (19/11/2026)
+
+- Thêm ecology adapter 52 loài, 10 sinh cảnh, 14 quan hệ thức ăn và sản phẩm theo Frozen; không chỉnh workbook/canonical.
+- Runtime 9 flora/15 fauna theo terrain/seed, sources hữu hạn và phục hồi theo deadline/mùa, sinh khối vùng, movement cardinal, quần thể/births/decline và predation đúng liên kết.
+- Inspector/catalog/survey có xác nhận; unknown markers, hiển thị vùng/stock/food/TTL. Nguồn bản đồ cũ giữ thông tin đã biết.
+- Nối harvest/hunt với stock/ID động vật thật, đặt chỗ theo job, commit đúng một lần, cargo/lô/TTL giữ qua reload; săn vẫn cần nghề/công cụ/cơ sở, chưa mở săn nhóm/vật nuôi.
+- Shared species stamps lazy, chunk/culling, LOD xa, depth overlay với citizens/foundations; không lưu đồ họa trong Supabase.
+- Schema 7/we-sim-5 và SQL 007, nâng đọc 2–6 giữ dữ liệu/ID/RNG/cargo; cap 2 MiB, full ecology snapshots, lease/local recovery/history kế thừa. Tối ưu copy-on-write thực vật.
+
 # V0.7.0 — Workforce & Training (19/11/2026)
 
 - Thêm adapter 96 nghề, định biên công trình, thời gian/hiệu suất nghề, B123 hai chỗ và hướng dẫn J009 theo Frozen. Giữ J092 chưa khớp tên công nghệ ở trạng thái khóa có lý do.

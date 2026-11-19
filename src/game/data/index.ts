@@ -1,5 +1,5 @@
 import summary from '../../../data/generated/summary.json';
 export const master = summary;
-export const APP_VERSION='0.7.0';
-export const RELEASE_NAME='Workforce & Training';
+export const APP_VERSION='0.8.0';
+export const RELEASE_NAME='Living Ecosystem';
 export const climateById=(id:string)=>master.climates.find(c=>c.id===id);

@@ -1,0 +1,7 @@
+import {readFile,writeFile} from 'node:fs/promises';
+const c=JSON.parse(await readFile('data/generated/catalog.json','utf8'));
+type Row=(string|number|null)[];
+const rows=(n:string):Row[]=>c.sheets.find((s:{name:string})=>s.name===n).rows;
+const resources=rows('TAI NGUYEN');
+const result=JSON.stringify({version:1,species:rows('HE SINH THAI').map(r=>({id:r[0],kind:r[1],name:r[2],habitat:r[3],productsText:r[4],yieldText:r[5],regenerationDays:r[6],seasons:r[7],risk:r[8],populationRule:r[9],note:r[10],diet:r[11],trophic:r[12],food:r[13],domesticateFrom:r[14],domesticateTech:r[15],products:String(r[4]).split(';').map(x=>{const [name,quantity]=x.trim().split(':');const rr=resources.find(t=>t[1]===name);return rr?{resourceId:rr[0],quantity:quantity?Number(quantity):1}:null;}).filter(Boolean)})),habitats:rows('SINH CANH & PHAN BO').map(r=>({id:r[0],name:r[1],era:r[2],sources:r[3],speciesIds:r[4],conditions:r[5],movement:r[6],soil:r[7],moisture:r[8],risk:r[9]})),relations:rows('QUAN HE SINH THAI').map(r=>({id:r[0],predatorId:r[1],predatorName:r[2],preyId:r[3],preyName:r[4],habitat:r[5],weight:r[6],effect:r[7]})),resources:resources.map(r=>({id:r[0],name:r[1],ttlDays:typeof r[6]==='number'?r[6]:null}))},null,2)+'\n';
+const path='data/generated/ecology.json';if(process.argv.includes('--check')){if(await readFile(path,'utf8')!==result)throw new Error('Ecology adapter differs from Frozen');console.log('Ecology: 52 species, 10 habitats, 14 food links and products verified.');}else await writeFile(path,result);

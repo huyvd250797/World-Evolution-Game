@@ -1,35 +1,35 @@
-# World Evolution V0.7.0 — Workforce & Training
+# World Evolution V0.8.0 — Living Ecosystem
 
-Boss cập nhật trực tiếp GitHub → Vercel; không cần chạy localhost/npm trên máy. Hướng dẫn từng bước: **DEPLOY-VERCEL.md**, **docs/CONFIGURATION.md**.
+Boss cập nhật trực tiếp GitHub → Vercel, không cần localhost/npm trên máy. Xem **DEPLOY-VERCEL.md** và **docs/CONFIGURATION.md**.
 
-## Nâng từ V0.6.0
+## Nâng từ V0.7.0
 
-1. Trong Supabase SQL Editor chạy **một lần** `infra/supabase/migrations/202611190006_workforce_training.sql` sau 001–005 và trước deploy. TXT gửi riêng chứa đúng SQL 006. Không chạy lại migration cũ, không reset database.
-2. Giải nén ZIP rồi upload toàn bộ nội dung vào gốc repo đang liên kết Vercel, ghi đè file trùng. Giữ Environment Variables hiện tại. Không xóa repo/project.
-3. Vercel: Framework Next.js, Root Directory chứa package.json, Node 24.x, Install `npm ci`, Build `npm run build`, Output mặc định.
-4. Mở world cũ, kiểm đúng seed/tick/20 ID/quy hoạch/hàng đang mang/lô/hạn. Bảng **Nhân sự & đào tạo** nằm ngay dưới bản đồ; mở Lao động / Danh mục nghề / Định biên công trình.
+1. Supabase SQL Editor: chạy **một lần** `infra/supabase/migrations/202611190007_living_ecosystem.sql` sau 001–006, trước deploy. TXT V0.8 gửi riêng chứa đúng SQL 007. Không chạy lại migrations cũ, không reset database.
+2. Upload toàn bộ nội dung ZIP sau giải nén vào gốc repo/branch đang nối Vercel, ghi đè file trùng. Giữ Environment Variables. Không xóa repo/project.
+3. Vercel: Next.js, Root Directory chứa package.json, Node 24.x, Install npm ci, Build npm run build, Output mặc định.
+4. Mở world cũ kiểm seed/tick/20 ID/nghề/quy hoạch/cargo/lô/hạn. Chọn **Hệ sinh thái** trên bản đồ; thu gọn bảng để quan sát các đối tượng chuyển động. Bấm Chạy để mô phỏng.
 
-## Nội dung V0.7.0
+## Nội dung phiên bản
 
-- Danh mục đủ 96 nghề Frozen, thời đại/công nghệ/ngày học/hiệu suất tập sự/nơi làm/công dụng; tìm kiếm và phân trang.
-- Hồ sơ riêng đúng 20 ID; nghề và chứng nhận tách riêng, khóa học/progress/mentor, nơi làm, công việc/điểm đến, bộ lọc trạng thái và chọn nhiều người.
-- Đào tạo, đổi nghề, phân cơ sở, rút phân công, hủy hoặc tiếp tục khóa có xác nhận. Giao dịch nhóm thất bại toàn nhóm nếu có người không đạt điều kiện.
-- Engine kiểm cơ sở hoàn thành, công nghệ, người hướng dẫn có mặt và hai chỗ B123; chỉ thời gian thực học mới tăng tiến độ. Học lại nghề cũ vẫn đủ N ngày; không tốt nghiệp khi bấm hoặc reload.
-- Tập sự áp hệ số đúng nghề bằng credit 1/100 được lưu, chỉ trong bước sản xuất thực tế; giữ công cụ/nguyên liệu/cơ sở/stock của V0.6. Hái tự do không tự cấp chứng nhận nghề.
-- Schema 6/we-sim-4, SQL 006; nâng đọc 2–5, giữ byte save/history cũ, autosave/local recovery/history/lease. Full snapshot khi đổi workforce, không request Supabase từng tick.
+- Catalog Frozen đủ 52 loài/nguồn, 10 sinh cảnh và 14 quan hệ săn mồi có trọng số. Không chỉnh workbook/canonical.
+- Lớp sinh thái riêng từ seed, giữ nguyên địa hình we-map-1. Theo dõi quả, củ, hạt, nấm, thảo dược theo từng nguồn; trữ lượng hữu hạn, hạn phục hồi theo loài và đúng mùa.
+- Quần thể động vật có ID thật, vị trí/cạnh di chuyển, sinh sản có điều kiện, giới hạn vùng và suy giảm khi thiếu thức ăn. Thú săn mồi chỉ tiêu thụ các loài được liên kết, không tự coi mọi động vật là con mồi.
+- Nguồn bản đồ cũ giữ thông tin đã biết; nguồn mới/động vật chưa khảo sát có dấu ?. Đưa cư dân tới gần, khảo sát và xác nhận trước khi giao thu hoạch/săn.
+- Thu hoạch thật: giữ chỗ nguồn → cư dân đi/làm → trừ trữ lượng → tạo lô đang mang → mang về bãi. Reload không làm đầy nguồn, nhân con mồi, đổi RNG hay làm mới TTL.
+- Săn thật dùng ID con mồi đang tồn tại; hoàn tất mới giảm số con và tạo đúng sản phẩm. **Nghề/công cụ/trại hoạt động vẫn bắt buộc**; thế giới khởi đầu chưa tự mở săn. Săn cơ bản hỗ trợ thỏ/sóc/chim rừng, các loài lớn/nguy hiểm chưa mở săn nhóm.
+- Shared stamps theo loài, chunk/viewport culling, giảm chi tiết khi zoom xa, sắp chiều sâu cùng cư dân/nền công trình. Đồ họa không lưu trong Supabase.
+- Schema 7/we-sim-5, SQL 007; giữ toàn bộ nền V0.7, nâng đọc 2–6, autosave/backup/history/lease. Mô phỏng trong Worker, không gửi Supabase từng tick.
 
-**Phạm vi hiện tại:** bảng hồ sơ/catalog/định biên dùng ngay. Bắt đầu học và phân cơ sở vẫn bị khóa trong thế giới khởi đầu, vì mới có T001 và các nền planned, chưa có công trình hoàn thành hoặc hướng dẫn viên. Logic đủ điều kiện được kiểm bằng fixture; không cấp nghề/công nghệ/cơ sở miễn phí. Thi công thuộc V0.9, nghiên cứu V0.12. Xem **docs/WORKFORCE-AND-TRAINING.md** để biết luồng, dependencies và chính sách chi tiết.
+**Phạm vi dữ liệu:** đọc đủ catalog không có nghĩa mọi loài đã spawn. Runtime có 9 loại nguồn thực vật và 15 loài động vật hoang dã theo các ô/sinh cảnh mà we-map-1 biểu diễn được; mỗi seed có tập con phù hợp. Không tự sinh vật nuôi, sa mạc/đầm lầy chưa có địa hình tương ứng, bệnh động vật hoặc cơ chế thời tiết đầy đủ. Hệ số ngoài Frozen ghi rõ trong **docs/LIVING-ECOSYSTEM.md**.
 
-**Dữ liệu cần đối chiếu:** J092 có tên công nghệ không khớp CONG NGHE. Bản này giữ nguyên Frozen, hiển thị lý do khóa thay vì tự ánh xạ sang một công nghệ khác.
+## Cấu hình và kiểm tra
 
-## Cấu hình và kiến trúc
+Giữ các biến `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`; `NEXT_PUBLIC_ASSET_BASE_URL` tùy chọn CDN. Không dùng secret/service-role key ở client. Project mới chạy migrations **001 → 002 → 003 → 004 → 005 → 006 → 007**, Email Auth/redirect theo docs/CONFIGURATION.md.
 
-Stack giữ nguyên từ ZIP V0.6: Next.js 16.4.6, React 19.3.1, TypeScript 6.0.3, PixiJS 8.23.0, Supabase JS 2.119.0. Node 24.x. Không nâng dependencies ngoài phạm vi.
+Stack giữ nguyên: Next.js 16.4.6, React 19.3.1, TypeScript 6.0.3, PixiJS 8.23.0, Supabase JS 2.119.0, Node 24.x. Không nâng dependencies ngoài phạm vi.
 
-Giữ `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`; `NEXT_PUBLIC_ASSET_BASE_URL` tùy chọn CDN. Không dùng khóa đặc quyền trong public env. Đồ họa phục vụ từ Vercel/CDN, không đưa vào Supabase. Project mới chạy **001 → 002 → 003 → 004 → 005 → 006**, cấu hình Email Auth/redirect theo docs/CONFIGURATION.md.
+`src/game/ecology/`: seed/stock/animals/food web/commands/render stamps. `src/components/ecology/`: inspector và catalog PC/mobile. `scripts/ecology.ts`: adapter Frozen. `verify-release.mjs`: kiểm checksum khi build, không chạy importer Excel trên Vercel. Giữ proxy alias tránh lỗi import cũ.
 
-`src/game/workforce/model.ts`: nghề/đào tạo/phân công/định biên/hiệu suất. `simulation.worker.ts`: điều phối tick/lệnh. `src/components/workforce/`: bảng giao diện PC/mobile. `scripts/workforce.ts`: xuất adapter từ Frozen, `verify-release.mjs` kiểm checksum lúc production build. Proxy entries và build không phụ thuộc chạy importer Excel trên Vercel.
+Dành cho lập trình viên: tại thư mục package.json chạy `npm ci`, `npm run check`, `npm run test:http`; `npm run dev` và `npm run ecology:qa` là tùy chọn. Kết quả/giới hạn trong RELEASE-CHECKS.md và docs/VERIFICATION.md. Định mức và dependency nghề vẫn giữ như V0.7, kể cả J092 chưa khớp tên công nghệ.
 
-Dành cho lập trình viên: tại thư mục package.json chạy `npm ci`, `npm run check`, `npm run test:http`; `npm run dev` là tùy chọn, không cần cho Boss khi dùng Vercel. `.env.example` không chứa secret. README cấu hình đầy đủ/GitHub/error/recovery: docs/CONFIGURATION.md.
-
-Kiểm chứng và giới hạn: RELEASE-CHECKS.md, docs/VERIFICATION.md. Chưa push/deploy vào tài khoản thật của Boss. Bản tiếp theo **V0.8.0 — Living Ecosystem**: nguồn thực vật, động vật/quần thể, tái sinh, săn mồi và phân bố theo sinh cảnh. Gửi ZIP mới nhất để nâng cấp tiếp.
+Chưa push/deploy vào tài khoản thật của Boss. Tiếp theo **V0.9.0 — Construction & Logistics**: thi công bằng vật tư, người xây và tuyến vận chuyển thực tế. Gửi ZIP mới nhất để nâng cấp tiếp.

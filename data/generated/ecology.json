@@ -1,0 +1,2741 @@
+{
+  "version": 1,
+  "species": [
+    {
+      "id": "SP001",
+      "kind": "Cây",
+      "name": "Bụi quả mọng",
+      "habitat": "Rìa rừng",
+      "productsText": "Quả rừng",
+      "yieldText": "2–5",
+      "regenerationDays": 12,
+      "seasons": "Xuân/Thu",
+      "risk": "Thấp",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Khô hạn giảm số quả và tăng ngày tái sinh",
+      "diet": "Quang hợp / phân giải",
+      "trophic": "Nguồn sinh thái",
+      "food": "Ánh sáng / chất hữu cơ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R001",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP002",
+      "kind": "Cây",
+      "name": "Cây sung rừng",
+      "habitat": "Ven sông",
+      "productsText": "Quả rừng",
+      "yieldText": "6–12",
+      "regenerationDays": 25,
+      "seasons": "Hạ/Thu",
+      "risk": "Thấp",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Ngập lâu gây rụng quả, giảm sinh trưởng",
+      "diet": "Quang hợp / phân giải",
+      "trophic": "Nguồn sinh thái",
+      "food": "Ánh sáng / chất hữu cơ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R001",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP003",
+      "kind": "Cây",
+      "name": "Cây dâu rừng",
+      "habitat": "Rừng ẩm",
+      "productsText": "Quả rừng",
+      "yieldText": "3–7",
+      "regenerationDays": 14,
+      "seasons": "Xuân",
+      "risk": "Thấp",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Có thể thu được khi cây trưởng thành",
+      "diet": "Quang hợp / phân giải",
+      "trophic": "Nguồn sinh thái",
+      "food": "Ánh sáng / chất hữu cơ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R001",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP004",
+      "kind": "Cây",
+      "name": "Cây hạt dẻ",
+      "habitat": "Rừng ôn đới",
+      "productsText": "Hạt hoang",
+      "yieldText": "5–12",
+      "regenerationDays": 120,
+      "seasons": "Thu",
+      "risk": "Thấp",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Có chu kỳ mùa, không tái tạo hạt mỗi ngày",
+      "diet": "Quang hợp / phân giải",
+      "trophic": "Nguồn sinh thái",
+      "food": "Ánh sáng / chất hữu cơ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R004",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP005",
+      "kind": "Cây",
+      "name": "Cỏ hạt dại",
+      "habitat": "Đồng cỏ",
+      "productsText": "Hạt hoang",
+      "yieldText": "2–5",
+      "regenerationDays": 30,
+      "seasons": "Hạ/Thu",
+      "risk": "Thấp",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Là nguồn mẫu để thử gieo hạt",
+      "diet": "Quang hợp / phân giải",
+      "trophic": "Nguồn sinh thái",
+      "food": "Ánh sáng / chất hữu cơ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R004",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP006",
+      "kind": "Cây",
+      "name": "Củ mài rừng",
+      "habitat": "Rừng",
+      "productsText": "Củ rừng",
+      "yieldText": "1–3",
+      "regenerationDays": 35,
+      "seasons": "Xuân/Thu",
+      "risk": "Thấp",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Đào sâu nên tốn nhiều thời gian hái lượm",
+      "diet": "Quang hợp / phân giải",
+      "trophic": "Nguồn sinh thái",
+      "food": "Ánh sáng / chất hữu cơ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R002",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP007",
+      "kind": "Cây",
+      "name": "Rễ dong",
+      "habitat": "Đất ẩm",
+      "productsText": "Củ rừng",
+      "yieldText": "1–3",
+      "regenerationDays": 24,
+      "seasons": "Xuân/Thu",
+      "risk": "Thấp",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Nguồn củ chịu khô kém",
+      "diet": "Quang hợp / phân giải",
+      "trophic": "Nguồn sinh thái",
+      "food": "Ánh sáng / chất hữu cơ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R002",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP008",
+      "kind": "Cây",
+      "name": "Măng tre",
+      "habitat": "Bụi tre",
+      "productsText": "Rau dại",
+      "yieldText": "2–5",
+      "regenerationDays": 20,
+      "seasons": "Hạ",
+      "risk": "Thấp",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Phụ thuộc nhiệt độ và mưa",
+      "diet": "Quang hợp / phân giải",
+      "trophic": "Nguồn sinh thái",
+      "food": "Ánh sáng / chất hữu cơ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R005",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP009",
+      "kind": "Cây",
+      "name": "Rau dại ven suối",
+      "habitat": "Ven sông",
+      "productsText": "Rau dại",
+      "yieldText": "4–8",
+      "regenerationDays": 10,
+      "seasons": "Xuân",
+      "risk": "Thấp",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Lũ có thể cuốn trôi quần thể",
+      "diet": "Quang hợp / phân giải",
+      "trophic": "Nguồn sinh thái",
+      "food": "Ánh sáng / chất hữu cơ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R005",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP010",
+      "kind": "Nấm",
+      "name": "Nấm mối",
+      "habitat": "Rừng ẩm",
+      "productsText": "Nấm ăn",
+      "yieldText": "2–4",
+      "regenerationDays": 12,
+      "seasons": "Sau mưa",
+      "risk": "Cao",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Yêu cầu công nghệ nhận biết cây/nấm ăn được",
+      "diet": "Quang hợp / phân giải",
+      "trophic": "Nguồn sinh thái",
+      "food": "Ánh sáng / chất hữu cơ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R003",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP011",
+      "kind": "Nấm",
+      "name": "Nấm rừng ăn được",
+      "habitat": "Rừng ẩm",
+      "productsText": "Nấm ăn",
+      "yieldText": "2–5",
+      "regenerationDays": 14,
+      "seasons": "Xuân/Thu",
+      "risk": "Trung bình",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Nhầm lẫn có thể gây ngộ độc",
+      "diet": "Quang hợp / phân giải",
+      "trophic": "Nguồn sinh thái",
+      "food": "Ánh sáng / chất hữu cơ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R003",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP012",
+      "kind": "Cây",
+      "name": "Tổ ong rừng",
+      "habitat": "Rừng già",
+      "productsText": "Mật ong",
+      "yieldText": "2–6",
+      "regenerationDays": 40,
+      "seasons": "Xuân/Hạ",
+      "risk": "Trung bình",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Thu nhiều lần có thể làm tổ ong biến mất",
+      "diet": "Quang hợp / phân giải",
+      "trophic": "Nguồn sinh thái",
+      "food": "Ánh sáng / chất hữu cơ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R006",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP013",
+      "kind": "Động vật",
+      "name": "Tổ chim hoang",
+      "habitat": "Cây lớn",
+      "productsText": "Trứng chim",
+      "yieldText": "1–3",
+      "regenerationDays": 20,
+      "seasons": "Xuân",
+      "risk": "Thấp",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Lấy hết trứng giảm tỷ lệ sinh sản chim",
+      "diet": "Quang hợp / phân giải",
+      "trophic": "Nguồn sinh thái",
+      "food": "Ánh sáng / chất hữu cơ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R007",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP014",
+      "kind": "Cây",
+      "name": "Cây thuốc rừng",
+      "habitat": "Rừng sâu",
+      "productsText": "Thảo dược",
+      "yieldText": "1–3",
+      "regenerationDays": 40,
+      "seasons": "Xuân/Thu",
+      "risk": "Thấp",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Nguồn chữa bệnh, không phải thực phẩm",
+      "diet": "Quang hợp / phân giải",
+      "trophic": "Nguồn sinh thái",
+      "food": "Ánh sáng / chất hữu cơ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R061",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP015",
+      "kind": "Động vật",
+      "name": "Thỏ rừng",
+      "habitat": "Rừng/Đồng cỏ",
+      "productsText": "Thịt thú:1; Da thú:0.5",
+      "yieldText": "1–2",
+      "regenerationDays": 30,
+      "seasons": "Xuân/Hạ",
+      "risk": "Thấp",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Quần thể sinh sản nhanh, giảm nếu săn quá mức",
+      "diet": "Ăn cỏ",
+      "trophic": "Con mồi nhỏ",
+      "food": "Cỏ, chồi non",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 1
+        },
+        {
+          "resourceId": "R058",
+          "quantity": 0.5
+        }
+      ]
+    },
+    {
+      "id": "SP016",
+      "kind": "Động vật",
+      "name": "Sóc rừng",
+      "habitat": "Rừng",
+      "productsText": "Thịt thú:0.5",
+      "yieldText": "0.5–1",
+      "regenerationDays": 25,
+      "seasons": "Xuân/Thu",
+      "risk": "Thấp",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Quần thể nhỏ, khó phát hiện",
+      "diet": "Ăn tạp",
+      "trophic": "Con mồi nhỏ",
+      "food": "Hạt, quả, côn trùng",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 0.5
+        }
+      ]
+    },
+    {
+      "id": "SP017",
+      "kind": "Động vật",
+      "name": "Chim rừng",
+      "habitat": "Rừng",
+      "productsText": "Thịt thú:0.5; Trứng chim:0.5",
+      "yieldText": "0.5–1",
+      "regenerationDays": 24,
+      "seasons": "Xuân/Hạ",
+      "risk": "Thấp",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Sinh sản bị ảnh hưởng bởi lấy trứng",
+      "diet": "Ăn tạp",
+      "trophic": "Con mồi nhỏ",
+      "food": "Hạt, côn trùng",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 0.5
+        },
+        {
+          "resourceId": "R007",
+          "quantity": 0.5
+        }
+      ]
+    },
+    {
+      "id": "SP018",
+      "kind": "Động vật",
+      "name": "Hươu",
+      "habitat": "Rừng/Đồng cỏ",
+      "productsText": "Thịt thú:5; Da thú:2; Xương thú:2",
+      "yieldText": "4–6",
+      "regenerationDays": 85,
+      "seasons": "Xuân/Thu",
+      "risk": "Trung bình",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Di cư giữa các vùng, cần thợ săn có công cụ",
+      "diet": "Ăn cỏ",
+      "trophic": "Con mồi vừa",
+      "food": "Cỏ, lá non",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 5
+        },
+        {
+          "resourceId": "R058",
+          "quantity": 2
+        },
+        {
+          "resourceId": "R059",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "SP019",
+      "kind": "Động vật",
+      "name": "Nai",
+      "habitat": "Rừng rậm",
+      "productsText": "Thịt thú:6; Da thú:2",
+      "yieldText": "5–7",
+      "regenerationDays": 90,
+      "seasons": "Xuân/Thu",
+      "risk": "Trung bình",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Rất nhạy với tiếng ồn và săn quá mức",
+      "diet": "Ăn cỏ",
+      "trophic": "Con mồi vừa",
+      "food": "Cỏ, lá non",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 6
+        },
+        {
+          "resourceId": "R058",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "SP020",
+      "kind": "Động vật",
+      "name": "Lợn rừng",
+      "habitat": "Rừng/Đầm lầy",
+      "productsText": "Thịt thú:4; Da thú:1",
+      "yieldText": "3–5",
+      "regenerationDays": 60,
+      "seasons": "Hạ/Thu",
+      "risk": "Cao",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Có nguy cơ làm thợ săn bị thương",
+      "diet": "Ăn tạp",
+      "trophic": "Con mồi vừa",
+      "food": "Củ, rễ, động vật nhỏ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 4
+        },
+        {
+          "resourceId": "R058",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP021",
+      "kind": "Động vật",
+      "name": "Dê hoang",
+      "habitat": "Đồi đá",
+      "productsText": "Thịt thú:3; Da thú:1",
+      "yieldText": "2–4",
+      "regenerationDays": 55,
+      "seasons": "Xuân/Hạ",
+      "risk": "Trung bình",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Khó săn trên đồi, cần kỹ năng",
+      "diet": "Ăn cỏ",
+      "trophic": "Con mồi vừa",
+      "food": "Cỏ, cây bụi",
+      "domesticateFrom": "E1",
+      "domesticateTech": "T120",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 3
+        },
+        {
+          "resourceId": "R058",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP022",
+      "kind": "Động vật",
+      "name": "Bò rừng",
+      "habitat": "Thảo nguyên",
+      "productsText": "Thịt thú:12; Da thú:3; Xương thú:3",
+      "yieldText": "10–14",
+      "regenerationDays": 110,
+      "seasons": "Thu",
+      "risk": "Rất cao",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Săn nhóm, có nguy cơ tử vong nếu thiếu chuẩn bị",
+      "diet": "Ăn cỏ",
+      "trophic": "Con mồi lớn",
+      "food": "Cỏ thảo nguyên",
+      "domesticateFrom": "E1",
+      "domesticateTech": "T120",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 12
+        },
+        {
+          "resourceId": "R058",
+          "quantity": 3
+        },
+        {
+          "resourceId": "R059",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "SP023",
+      "kind": "Động vật",
+      "name": "Gấu rừng",
+      "habitat": "Rừng già",
+      "productsText": "Thịt thú:8; Da thú:2",
+      "yieldText": "7–10",
+      "regenerationDays": 160,
+      "seasons": "Thu",
+      "risk": "Rất cao",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Chỉ săn khi xã hội có đủ năng lực, không bắt buộc",
+      "diet": "Ăn tạp",
+      "trophic": "Thú săn mồi",
+      "food": "Thịt thú, cá, quả",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 8
+        },
+        {
+          "resourceId": "R058",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "SP024",
+      "kind": "Động vật",
+      "name": "Cá suối",
+      "habitat": "Suối nông",
+      "productsText": "Cá tươi:1",
+      "yieldText": "1–2",
+      "regenerationDays": 12,
+      "seasons": "Xuân/Hạ",
+      "risk": "Thấp",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Hạn hán làm giảm quần thể",
+      "diet": "Ăn tạp",
+      "trophic": "Con mồi nhỏ",
+      "food": "Tảo, côn trùng nhỏ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R009",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP025",
+      "kind": "Động vật",
+      "name": "Cá sông",
+      "habitat": "Sông chính",
+      "productsText": "Cá tươi:2",
+      "yieldText": "1–3",
+      "regenerationDays": 20,
+      "seasons": "Hạ/Thu",
+      "risk": "Trung bình",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Nước đục sau lũ giảm hiệu quả bắt cá",
+      "diet": "Ăn tạp",
+      "trophic": "Con mồi nhỏ",
+      "food": "Sinh vật thủy sinh",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R009",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "SP026",
+      "kind": "Động vật",
+      "name": "Chim nước",
+      "habitat": "Đầm lầy",
+      "productsText": "Thịt thú:1; Trứng chim:1",
+      "yieldText": "1–2",
+      "regenerationDays": 40,
+      "seasons": "Xuân",
+      "risk": "Trung bình",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Di cư, phụ thuộc mực nước",
+      "diet": "Ăn tạp",
+      "trophic": "Con mồi nhỏ",
+      "food": "Cá nhỏ, côn trùng",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 1
+        },
+        {
+          "resourceId": "R007",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP027",
+      "kind": "Động vật",
+      "name": "Bầy thú di cư",
+      "habitat": "Thảo nguyên",
+      "productsText": "Thịt thú:10; Da thú:2",
+      "yieldText": "8–12",
+      "regenerationDays": 120,
+      "seasons": "Thu",
+      "risk": "Cao",
+      "populationRule": "Không vô hạn; theo population/stock",
+      "note": "Chỉ xuất hiện theo mùa; cần kiểm soát quy mô săn",
+      "diet": "Ăn cỏ",
+      "trophic": "Con mồi lớn",
+      "food": "Cỏ, lá",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 10
+        },
+        {
+          "resourceId": "R058",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "SP028",
+      "kind": "Động vật",
+      "name": "Trâu nước",
+      "habitat": "Đầm lầy/Đồng cỏ ẩm",
+      "productsText": "Thịt thú:12; Da thú:3",
+      "yieldText": "8–12",
+      "regenerationDays": 150,
+      "seasons": "Mùa mưa",
+      "risk": "Trung bình",
+      "populationRule": "Quần thể theo bầy, có lãnh thổ",
+      "note": "Ăn cỏ; có thể thuần hóa lấy sức kéo",
+      "diet": "Ăn cỏ",
+      "trophic": "Con mồi lớn",
+      "food": "Cỏ, lau sậy",
+      "domesticateFrom": "E1",
+      "domesticateTech": "T121",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 12
+        },
+        {
+          "resourceId": "R058",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "SP029",
+      "kind": "Động vật",
+      "name": "Ngựa hoang",
+      "habitat": "Đồng cỏ/Thảo nguyên",
+      "productsText": "Thịt thú:8; Da thú:2",
+      "yieldText": "6–10",
+      "regenerationDays": 160,
+      "seasons": "Xuân/Hạ",
+      "risk": "Trung bình",
+      "populationRule": "Đàn di chuyển theo đồng cỏ",
+      "note": "Ăn cỏ; thuần hóa sau nghiên cứu",
+      "diet": "Ăn cỏ",
+      "trophic": "Con mồi lớn",
+      "food": "Cỏ, hạt thực vật",
+      "domesticateFrom": "E1",
+      "domesticateTech": "T122",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 8
+        },
+        {
+          "resourceId": "R058",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "SP030",
+      "kind": "Động vật",
+      "name": "Bò hoang",
+      "habitat": "Đồng cỏ/Thảo nguyên",
+      "productsText": "Thịt thú:10; Da thú:3",
+      "yieldText": "8–12",
+      "regenerationDays": 180,
+      "seasons": "Xuân/Hạ",
+      "risk": "Trung bình",
+      "populationRule": "Sinh sản theo sức chứa đồng cỏ",
+      "note": "Ăn cỏ; nguồn thịt/da",
+      "diet": "Ăn cỏ",
+      "trophic": "Con mồi lớn",
+      "food": "Cỏ",
+      "domesticateFrom": "E1",
+      "domesticateTech": "T120",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 10
+        },
+        {
+          "resourceId": "R058",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "SP031",
+      "kind": "Động vật",
+      "name": "Cừu hoang",
+      "habitat": "Thảo nguyên/Đồi thấp",
+      "productsText": "Thịt thú:3; Len:1",
+      "yieldText": "3–5",
+      "regenerationDays": 110,
+      "seasons": "Xuân",
+      "risk": "Thấp",
+      "populationRule": "Sống thành đàn",
+      "note": "Ăn cỏ; thuần dưỡng sản xuất len",
+      "diet": "Ăn cỏ",
+      "trophic": "Con mồi vừa",
+      "food": "Cỏ, bụi cây",
+      "domesticateFrom": "E1",
+      "domesticateTech": "T120",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 3
+        },
+        {
+          "resourceId": "R026",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP032",
+      "kind": "Động vật",
+      "name": "Chó sói",
+      "habitat": "Rừng sâu/Đồng cỏ",
+      "productsText": "Da thú:1",
+      "yieldText": "1–2",
+      "regenerationDays": 130,
+      "seasons": "Đông",
+      "risk": "Cao",
+      "populationRule": "Bầy ăn thịt cần con mồi",
+      "note": "Săn thỏ, nai; nguy cơ tấn công đàn gia súc",
+      "diet": "Ăn thịt",
+      "trophic": "Thú săn mồi",
+      "food": "Thỏ rừng, Nai, Hươu",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R058",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP033",
+      "kind": "Động vật",
+      "name": "Hổ",
+      "habitat": "Rừng rậm",
+      "productsText": "Da thú:2",
+      "yieldText": "1–2",
+      "regenerationDays": 250,
+      "seasons": "Quanh năm",
+      "risk": "Rất cao",
+      "populationRule": "Lãnh thổ rộng, sinh sản chậm",
+      "note": "Săn hươu, nai, lợn rừng; nguy cơ cho dân",
+      "diet": "Ăn thịt",
+      "trophic": "Thú săn mồi đầu bảng",
+      "food": "Hươu, Nai, Lợn rừng",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R058",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "SP034",
+      "kind": "Động vật",
+      "name": "Báo hoa mai",
+      "habitat": "Rừng/Đồi núi",
+      "productsText": "Da thú:1",
+      "yieldText": "1–2",
+      "regenerationDays": 220,
+      "seasons": "Quanh năm",
+      "risk": "Cao",
+      "populationRule": "Hoạt động đơn lẻ theo lãnh thổ",
+      "note": "Săn thú vừa, di chuyển linh hoạt",
+      "diet": "Ăn thịt",
+      "trophic": "Thú săn mồi",
+      "food": "Nai, Thỏ rừng",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R058",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP035",
+      "kind": "Động vật",
+      "name": "Cá sấu",
+      "habitat": "Đầm lầy/Sông",
+      "productsText": "Thịt thú:3; Da thú:2",
+      "yieldText": "3–5",
+      "regenerationDays": 230,
+      "seasons": "Mùa mưa",
+      "risk": "Rất cao",
+      "populationRule": "Phụ thuộc vùng nước và con mồi",
+      "note": "Ăn thịt; nguy cơ khi lấy nước",
+      "diet": "Ăn thịt",
+      "trophic": "Thú săn mồi",
+      "food": "Cá sông, Chim nước",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 3
+        },
+        {
+          "resourceId": "R058",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "SP036",
+      "kind": "Động vật",
+      "name": "Linh cẩu",
+      "habitat": "Thảo nguyên",
+      "productsText": "Da thú:1",
+      "yieldText": "1–2",
+      "regenerationDays": 160,
+      "seasons": "Quanh năm",
+      "risk": "Cao",
+      "populationRule": "Săn và ăn xác theo bầy",
+      "note": "Cạnh tranh nguồn thịt với thợ săn",
+      "diet": "Ăn thịt/tạp",
+      "trophic": "Thú săn mồi",
+      "food": "Nai, Thỏ rừng, Xác động vật",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R058",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP037",
+      "kind": "Động vật",
+      "name": "Cáo đỏ",
+      "habitat": "Rìa rừng/Đồng cỏ",
+      "productsText": "Da thú:1",
+      "yieldText": "1–2",
+      "regenerationDays": 100,
+      "seasons": "Thu/Đông",
+      "risk": "Trung bình",
+      "populationRule": "Bị ảnh hưởng bởi con mồi nhỏ",
+      "note": "Săn thỏ, chim và động vật nhỏ",
+      "diet": "Ăn tạp",
+      "trophic": "Thú săn mồi",
+      "food": "Thỏ rừng, Chim rừng",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R058",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP038",
+      "kind": "Động vật",
+      "name": "Đại bàng",
+      "habitat": "Núi/Rừng thưa",
+      "productsText": "Thịt thú:0.5",
+      "yieldText": "1–2",
+      "regenerationDays": 150,
+      "seasons": "Xuân",
+      "risk": "Trung bình",
+      "populationRule": "Tổ trên vách đá/cây cao",
+      "note": "Ăn thịt các loài nhỏ",
+      "diet": "Ăn thịt",
+      "trophic": "Thú săn mồi",
+      "food": "Thỏ rừng, Sóc rừng",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 0.5
+        }
+      ]
+    },
+    {
+      "id": "SP039",
+      "kind": "Động vật",
+      "name": "Hươu sao",
+      "habitat": "Rừng thưa",
+      "productsText": "Thịt thú:4; Da thú:1",
+      "yieldText": "3–6",
+      "regenerationDays": 120,
+      "seasons": "Xuân/Hạ",
+      "risk": "Thấp",
+      "populationRule": "Di chuyển theo mùa và thức ăn",
+      "note": "Ăn cỏ và lá; mồi của thú dữ",
+      "diet": "Ăn cỏ",
+      "trophic": "Con mồi vừa",
+      "food": "Cỏ, chồi non",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 4
+        },
+        {
+          "resourceId": "R058",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP040",
+      "kind": "Động vật",
+      "name": "Lạc đà hoang",
+      "habitat": "Sa mạc/Bán hoang mạc",
+      "productsText": "Thịt thú:9; Da thú:3",
+      "yieldText": "6–10",
+      "regenerationDays": 200,
+      "seasons": "Mùa khô",
+      "risk": "Trung bình",
+      "populationRule": "Di chuyển xa theo điểm nước",
+      "note": "Ăn cỏ, chịu hạn tốt; có thể thuần dưỡng",
+      "diet": "Ăn cỏ",
+      "trophic": "Con mồi lớn",
+      "food": "Cỏ khô, cây gai",
+      "domesticateFrom": "E2",
+      "domesticateTech": "T120",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 9
+        },
+        {
+          "resourceId": "R058",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "SP041",
+      "kind": "Động vật",
+      "name": "Lợn rừng con",
+      "habitat": "Rừng/Đầm lầy",
+      "productsText": "Thịt thú:1",
+      "yieldText": "1–2",
+      "regenerationDays": 65,
+      "seasons": "Xuân",
+      "risk": "Thấp",
+      "populationRule": "Con non cần đàn trưởng thành",
+      "note": "Ăn tạp; không nên săn quá mức",
+      "diet": "Ăn tạp",
+      "trophic": "Con mồi nhỏ",
+      "food": "Rễ cây, hạt, côn trùng",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP042",
+      "kind": "Động vật",
+      "name": "Gà rừng",
+      "habitat": "Rừng thưa/Rìa rừng",
+      "productsText": "Thịt thú:1; Trứng chim:1",
+      "yieldText": "1–2",
+      "regenerationDays": 65,
+      "seasons": "Xuân/Hạ",
+      "risk": "Thấp",
+      "populationRule": "Dễ ảnh hưởng bởi thú săn mồi",
+      "note": "Ăn hạt và côn trùng; có thể thuần dưỡng",
+      "diet": "Ăn tạp",
+      "trophic": "Con mồi nhỏ",
+      "food": "Hạt, côn trùng",
+      "domesticateFrom": "E1",
+      "domesticateTech": "T120",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 1
+        },
+        {
+          "resourceId": "R007",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP043",
+      "kind": "Động vật",
+      "name": "Lợn nhà nguyên thủy",
+      "habitat": "Làng chăn nuôi/Đồng cỏ",
+      "productsText": "Thịt gia súc:4",
+      "yieldText": "3–5",
+      "regenerationDays": 80,
+      "seasons": "Quanh năm",
+      "risk": "Thấp",
+      "populationRule": "Cần chuồng và thức ăn",
+      "note": "Ăn tạp; nhân giống có giới hạn",
+      "diet": "Ăn tạp",
+      "trophic": "Vật nuôi",
+      "food": "Thức ăn chăn nuôi",
+      "domesticateFrom": "E1",
+      "domesticateTech": "T008",
+      "products": [
+        {
+          "resourceId": "R024",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "id": "SP044",
+      "kind": "Động vật",
+      "name": "Dê nhà",
+      "habitat": "Đồi thấp/Làng chăn nuôi",
+      "productsText": "Sữa tươi:1; Len:0.2",
+      "yieldText": "1–2",
+      "regenerationDays": 80,
+      "seasons": "Quanh năm",
+      "risk": "Thấp",
+      "populationRule": "Cần thức ăn, nước, chăm sóc",
+      "note": "Ăn cỏ; cho sữa, lông",
+      "diet": "Ăn cỏ",
+      "trophic": "Vật nuôi",
+      "food": "Cỏ, lá",
+      "domesticateFrom": "E1",
+      "domesticateTech": "T008",
+      "products": [
+        {
+          "resourceId": "R022",
+          "quantity": 1
+        },
+        {
+          "resourceId": "R026",
+          "quantity": 0.2
+        }
+      ]
+    },
+    {
+      "id": "SP045",
+      "kind": "Động vật",
+      "name": "Gà nhà",
+      "habitat": "Làng chăn nuôi",
+      "productsText": "Trứng gia cầm:1",
+      "yieldText": "1",
+      "regenerationDays": 50,
+      "seasons": "Quanh năm",
+      "risk": "Thấp",
+      "populationRule": "Sinh sản theo đàn và chuồng",
+      "note": "Ăn tạp; trứng",
+      "diet": "Ăn tạp",
+      "trophic": "Vật nuôi",
+      "food": "Hạt, thức ăn",
+      "domesticateFrom": "E1",
+      "domesticateTech": "T008",
+      "products": [
+        {
+          "resourceId": "R023",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "SP046",
+      "kind": "Động vật",
+      "name": "Chó nhà",
+      "habitat": "Làng chăn nuôi",
+      "productsText": "Không thu hoạch để lấy thịt mặc định",
+      "yieldText": "0",
+      "regenerationDays": 90,
+      "seasons": "Quanh năm",
+      "risk": "Thấp",
+      "populationRule": "Đồng hành; cho ăn và chăm sóc",
+      "note": "Canh gác, hỗ trợ dò đường; không là thú cưỡi",
+      "diet": "Ăn tạp",
+      "trophic": "Vật nuôi",
+      "food": "Thức ăn chăn nuôi",
+      "domesticateFrom": "E1",
+      "domesticateTech": "T120",
+      "products": []
+    },
+    {
+      "id": "SP047",
+      "kind": "Động vật",
+      "name": "Lừa hoang",
+      "habitat": "Đồng cỏ khô/Bán sa mạc",
+      "productsText": "Thịt thú:5; Da thú:2",
+      "yieldText": "3–6",
+      "regenerationDays": 160,
+      "seasons": "Mùa khô",
+      "risk": "Trung bình",
+      "populationRule": "Đi theo đàn, cần nước",
+      "note": "Ăn cỏ, kéo hàng nhẹ; thuần dưỡng có điều kiện",
+      "diet": "Ăn cỏ",
+      "trophic": "Con mồi vừa",
+      "food": "Cỏ khô",
+      "domesticateFrom": "E1",
+      "domesticateTech": "T120",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 5
+        },
+        {
+          "resourceId": "R058",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "SP048",
+      "kind": "Động vật",
+      "name": "Voi rừng",
+      "habitat": "Rừng nhiệt đới/Đồng cỏ",
+      "productsText": "Không thu hoạch mặc định",
+      "yieldText": "0",
+      "regenerationDays": 340,
+      "seasons": "Mùa mưa",
+      "risk": "Rất cao",
+      "populationRule": "Đàn lớn; sức chứa môi trường thấp",
+      "note": "Ăn cỏ và lá, có thể phá cây trồng",
+      "diet": "Ăn cỏ",
+      "trophic": "Đại thú",
+      "food": "Lá cây, cỏ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": []
+    },
+    {
+      "id": "SP049",
+      "kind": "Động vật",
+      "name": "Rắn độc",
+      "habitat": "Rìa rừng/Đá tảng",
+      "productsText": "Không thu hoạch mặc định",
+      "yieldText": "0",
+      "regenerationDays": 120,
+      "seasons": "Mùa nóng",
+      "risk": "Cao",
+      "populationRule": "Ổ trứng theo mùa",
+      "note": "Ăn thịt nhỏ, gây nguy cơ cắn cho dân",
+      "diet": "Ăn thịt",
+      "trophic": "Thú săn mồi nhỏ",
+      "food": "Chuột, chim nhỏ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": []
+    },
+    {
+      "id": "SP050",
+      "kind": "Động vật",
+      "name": "Chuột đồng",
+      "habitat": "Đồng cỏ/Ruộng",
+      "productsText": "Không thu hoạch mặc định",
+      "yieldText": "0",
+      "regenerationDays": 38,
+      "seasons": "Quanh năm",
+      "risk": "Thấp",
+      "populationRule": "Tăng nhanh theo thức ăn",
+      "note": "Ăn tạp; phá kho lương, mang mầm bệnh",
+      "diet": "Ăn tạp",
+      "trophic": "Con mồi nhỏ",
+      "food": "Hạt, củ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": []
+    },
+    {
+      "id": "SP051",
+      "kind": "Động vật",
+      "name": "Ếch đồng",
+      "habitat": "Đầm lầy/Ruộng",
+      "productsText": "Thịt thú:0.4",
+      "yieldText": "1–2",
+      "regenerationDays": 40,
+      "seasons": "Mùa mưa",
+      "risk": "Thấp",
+      "populationRule": "Phụ thuộc chất lượng nước",
+      "note": "Ăn côn trùng; suy giảm khi ô nhiễm nước",
+      "diet": "Ăn thịt",
+      "trophic": "Con mồi nhỏ",
+      "food": "Côn trùng",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 0.4
+        }
+      ]
+    },
+    {
+      "id": "SP052",
+      "kind": "Động vật",
+      "name": "Linh dương",
+      "habitat": "Thảo nguyên",
+      "productsText": "Thịt thú:4; Da thú:1",
+      "yieldText": "4–6",
+      "regenerationDays": 130,
+      "seasons": "Mùa khô",
+      "risk": "Trung bình",
+      "populationRule": "Đàn di cư phụ thuộc cây cỏ",
+      "note": "Ăn cỏ, mồi của thú săn mồi",
+      "diet": "Ăn cỏ",
+      "trophic": "Con mồi vừa",
+      "food": "Cỏ",
+      "domesticateFrom": "—",
+      "domesticateTech": "—",
+      "products": [
+        {
+          "resourceId": "R008",
+          "quantity": 4
+        },
+        {
+          "resourceId": "R058",
+          "quantity": 1
+        }
+      ]
+    }
+  ],
+  "habitats": [
+    {
+      "id": "HAB01",
+      "name": "Rừng sâu",
+      "era": "E0",
+      "sources": "Gỗ, lá, quả, thú săn mồi",
+      "speciesIds": "SP014; SP019; SP023; SP033",
+      "conditions": "Rừng ẩm hoặc già",
+      "movement": 0.8,
+      "soil": 0.5,
+      "moisture": 0.7,
+      "risk": "Không thể trồng trọt đại trà nếu chưa khai phá; thú dữ"
+    },
+    {
+      "id": "HAB02",
+      "name": "Rìa rừng",
+      "era": "E0",
+      "sources": "Quả, củ, chim, thú nhỏ",
+      "speciesIds": "SP001; SP015; SP017; SP037",
+      "conditions": "Rìa rừng",
+      "movement": 0.95,
+      "soil": 0.65,
+      "moisture": 0.8,
+      "risk": "Vùng tiếp giáp, thích hợp trại săn và hái lượm"
+    },
+    {
+      "id": "HAB03",
+      "name": "Đồng cỏ",
+      "era": "E0",
+      "sources": "Cỏ, hạt, động vật ăn cỏ",
+      "speciesIds": "SP005; SP021; SP029; SP030; SP052",
+      "conditions": "Đồng cỏ/Thảo nguyên",
+      "movement": 1,
+      "soil": 0.85,
+      "moisture": 0.45,
+      "risk": "Bầy thú di cư theo mùa, có cơ hội thuần dưỡng"
+    },
+    {
+      "id": "HAB04",
+      "name": "Đầm lầy",
+      "era": "E0",
+      "sources": "Cá, chim nước, trâu hoang, cá sấu",
+      "speciesIds": "SP026; SP028; SP035; SP051",
+      "conditions": "Đầm lầy",
+      "movement": 0.4,
+      "soil": 0.6,
+      "moisture": 1,
+      "risk": "Ngập cao và rủi ro bệnh, lối đi khó"
+    },
+    {
+      "id": "HAB05",
+      "name": "Ven sông",
+      "era": "E0",
+      "sources": "Nước, cá và rau dại",
+      "speciesIds": "SP002; SP009; SP025",
+      "conditions": "Ven sông",
+      "movement": 0.85,
+      "soil": 0.8,
+      "moisture": 0.9,
+      "risk": "Tốc đi nhanh khi nước thấp, ngập khi mưa lớn"
+    },
+    {
+      "id": "HAB06",
+      "name": "Núi đá",
+      "era": "E0",
+      "sources": "Đá, dê, chim săn mồi",
+      "speciesIds": "SP021; SP038",
+      "conditions": "Đồi đá/Núi",
+      "movement": 0.3,
+      "soil": 0.15,
+      "moisture": 0.4,
+      "risk": "Mất thời gian đi, xây đường tốn nguyên liệu"
+    },
+    {
+      "id": "HAB07",
+      "name": "Sa mạc",
+      "era": "E0",
+      "sources": "Nước hiếm, bụi, lạc đà",
+      "speciesIds": "SP040; SP047",
+      "conditions": "Sa mạc/Bán hoang mạc",
+      "movement": 0.55,
+      "soil": 0.3,
+      "moisture": 0.07,
+      "risk": "Đi xa dễ mất nước, người và thú phải nghỉ"
+    },
+    {
+      "id": "HAB08",
+      "name": "Rừng ôn đới",
+      "era": "E0",
+      "sources": "Hạt dẻ, thú ăn cỏ, sói",
+      "speciesIds": "SP004; SP018; SP032",
+      "conditions": "Rừng ôn đới",
+      "movement": 0.85,
+      "soil": 0.6,
+      "moisture": 0.65,
+      "risk": "Rét mùa đông làm thay đổi nguồn thức ăn"
+    },
+    {
+      "id": "HAB09",
+      "name": "Ruộng và làng",
+      "era": "E1",
+      "sources": "Trồng trọt và vật nuôi",
+      "speciesIds": "SP043; SP044; SP045; SP046; SP050",
+      "conditions": "Làng chăn nuôi/Ruộng",
+      "movement": 1,
+      "soil": 1,
+      "moisture": 0.7,
+      "risk": "Thay thế sinh cảnh hoang dã có hậu quả sinh thái"
+    },
+    {
+      "id": "HAB10",
+      "name": "Khu công nghiệp",
+      "era": "E6",
+      "sources": "Công trình và chất thải",
+      "speciesIds": "—",
+      "conditions": "Đất đã xây",
+      "movement": 1,
+      "soil": 0,
+      "moisture": 0.15,
+      "risk": "Cần xử lý chất thải, tăng ô nhiễm nếu vận hành kém"
+    }
+  ],
+  "relations": [
+    {
+      "id": "PRED001",
+      "predatorId": "SP032",
+      "predatorName": "Chó sói",
+      "preyId": "SP015",
+      "preyName": "Thỏ rừng",
+      "habitat": "Đồng cỏ/Rừng",
+      "weight": 0.6,
+      "effect": "Quần thể con mồi giảm nếu săn quá nhiều"
+    },
+    {
+      "id": "PRED002",
+      "predatorId": "SP032",
+      "predatorName": "Chó sói",
+      "preyId": "SP019",
+      "preyName": "Nai",
+      "habitat": "Rừng",
+      "weight": 0.4,
+      "effect": "Đàn sói phụ thuộc nguồn mồi"
+    },
+    {
+      "id": "PRED003",
+      "predatorId": "SP033",
+      "predatorName": "Hổ",
+      "preyId": "SP018",
+      "preyName": "Hươu",
+      "habitat": "Rừng",
+      "weight": 0.65,
+      "effect": "Thú dữ xuất hiện theo sinh cảnh phù hợp"
+    },
+    {
+      "id": "PRED004",
+      "predatorId": "SP033",
+      "predatorName": "Hổ",
+      "preyId": "SP020",
+      "preyName": "Lợn rừng",
+      "habitat": "Rừng",
+      "weight": 0.35,
+      "effect": "Có nguy cơ tranh mồi với thợ săn"
+    },
+    {
+      "id": "PRED005",
+      "predatorId": "SP034",
+      "predatorName": "Báo hoa mai",
+      "preyId": "SP015",
+      "preyName": "Thỏ rừng",
+      "habitat": "Rìa rừng",
+      "weight": 0.6,
+      "effect": "Săn loài nhỏ khi thiếu mồi lớn"
+    },
+    {
+      "id": "PRED006",
+      "predatorId": "SP034",
+      "predatorName": "Báo hoa mai",
+      "preyId": "SP019",
+      "preyName": "Nai",
+      "habitat": "Rừng",
+      "weight": 0.4,
+      "effect": "Duy trì cân bằng bầy"
+    },
+    {
+      "id": "PRED007",
+      "predatorId": "SP035",
+      "predatorName": "Cá sấu",
+      "preyId": "SP025",
+      "preyName": "Cá sông",
+      "habitat": "Ven sông",
+      "weight": 0.5,
+      "effect": "Giảm cơ hội đánh cá an toàn"
+    },
+    {
+      "id": "PRED008",
+      "predatorId": "SP035",
+      "predatorName": "Cá sấu",
+      "preyId": "SP026",
+      "preyName": "Chim nước",
+      "habitat": "Đầm lầy",
+      "weight": 0.5,
+      "effect": "Nguy cơ công nhân lấy nước"
+    },
+    {
+      "id": "PRED009",
+      "predatorId": "SP036",
+      "predatorName": "Linh cẩu",
+      "preyId": "SP052",
+      "preyName": "Linh dương",
+      "habitat": "Thảo nguyên",
+      "weight": 0.7,
+      "effect": "Theo đàn thú và nguồn xác"
+    },
+    {
+      "id": "PRED010",
+      "predatorId": "SP037",
+      "predatorName": "Cáo đỏ",
+      "preyId": "SP015",
+      "preyName": "Thỏ rừng",
+      "habitat": "Rìa rừng",
+      "weight": 0.65,
+      "effect": "Khi thiếu thỏ có thể săn chim"
+    },
+    {
+      "id": "PRED011",
+      "predatorId": "SP037",
+      "predatorName": "Cáo đỏ",
+      "preyId": "SP017",
+      "preyName": "Chim rừng",
+      "habitat": "Rìa rừng",
+      "weight": 0.35,
+      "effect": "Phụ thuộc bầy chim"
+    },
+    {
+      "id": "PRED012",
+      "predatorId": "SP038",
+      "predatorName": "Đại bàng",
+      "preyId": "SP016",
+      "preyName": "Sóc rừng",
+      "habitat": "Đồi núi",
+      "weight": 0.5,
+      "effect": "Săn thú nhỏ"
+    },
+    {
+      "id": "PRED013",
+      "predatorId": "SP038",
+      "predatorName": "Đại bàng",
+      "preyId": "SP015",
+      "preyName": "Thỏ rừng",
+      "habitat": "Đồi núi",
+      "weight": 0.5,
+      "effect": "Săn trên đồng cỏ"
+    },
+    {
+      "id": "PRED014",
+      "predatorId": "SP049",
+      "predatorName": "Rắn độc",
+      "preyId": "SP050",
+      "preyName": "Chuột đồng",
+      "habitat": "Rìa rừng",
+      "weight": 0.8,
+      "effect": "Rắn đi theo nguồn chuột"
+    }
+  ],
+  "resources": [
+    {
+      "id": "R001",
+      "name": "Quả rừng",
+      "ttlDays": 7
+    },
+    {
+      "id": "R002",
+      "name": "Củ rừng",
+      "ttlDays": 12
+    },
+    {
+      "id": "R003",
+      "name": "Nấm ăn",
+      "ttlDays": 3
+    },
+    {
+      "id": "R004",
+      "name": "Hạt hoang",
+      "ttlDays": 35
+    },
+    {
+      "id": "R005",
+      "name": "Rau dại",
+      "ttlDays": 4
+    },
+    {
+      "id": "R006",
+      "name": "Mật ong",
+      "ttlDays": 80
+    },
+    {
+      "id": "R007",
+      "name": "Trứng chim",
+      "ttlDays": 7
+    },
+    {
+      "id": "R008",
+      "name": "Thịt thú",
+      "ttlDays": 2
+    },
+    {
+      "id": "R009",
+      "name": "Cá tươi",
+      "ttlDays": 1
+    },
+    {
+      "id": "R010",
+      "name": "Lúa",
+      "ttlDays": 30
+    },
+    {
+      "id": "R011",
+      "name": "Lúa mì",
+      "ttlDays": 30
+    },
+    {
+      "id": "R012",
+      "name": "Ngô",
+      "ttlDays": 22
+    },
+    {
+      "id": "R013",
+      "name": "Khoai",
+      "ttlDays": 12
+    },
+    {
+      "id": "R014",
+      "name": "Sắn",
+      "ttlDays": 16
+    },
+    {
+      "id": "R015",
+      "name": "Đậu",
+      "ttlDays": 28
+    },
+    {
+      "id": "R016",
+      "name": "Rau trồng",
+      "ttlDays": 5
+    },
+    {
+      "id": "R017",
+      "name": "Trái cây trồng",
+      "ttlDays": 6
+    },
+    {
+      "id": "R018",
+      "name": "Bông vải",
+      "ttlDays": 7
+    },
+    {
+      "id": "R019",
+      "name": "Gạo",
+      "ttlDays": 35
+    },
+    {
+      "id": "R020",
+      "name": "Bột mì",
+      "ttlDays": 22
+    },
+    {
+      "id": "R021",
+      "name": "Bột ngô",
+      "ttlDays": 18
+    },
+    {
+      "id": "R022",
+      "name": "Sữa tươi",
+      "ttlDays": 2
+    },
+    {
+      "id": "R023",
+      "name": "Trứng gia cầm",
+      "ttlDays": 7
+    },
+    {
+      "id": "R024",
+      "name": "Thịt gia súc",
+      "ttlDays": 2
+    },
+    {
+      "id": "R025",
+      "name": "Da chăn nuôi",
+      "ttlDays": 7
+    },
+    {
+      "id": "R026",
+      "name": "Len",
+      "ttlDays": null
+    },
+    {
+      "id": "R027",
+      "name": "Muối",
+      "ttlDays": null
+    },
+    {
+      "id": "R028",
+      "name": "Gia vị",
+      "ttlDays": 60
+    },
+    {
+      "id": "R029",
+      "name": "Dầu thực vật",
+      "ttlDays": 40
+    },
+    {
+      "id": "R030",
+      "name": "Suất ăn",
+      "ttlDays": 7
+    },
+    {
+      "id": "R031",
+      "name": "Thịt nướng",
+      "ttlDays": 5
+    },
+    {
+      "id": "R032",
+      "name": "Cá nướng",
+      "ttlDays": 3
+    },
+    {
+      "id": "R033",
+      "name": "Rau củ nấu",
+      "ttlDays": 3
+    },
+    {
+      "id": "R034",
+      "name": "Cơm",
+      "ttlDays": 3
+    },
+    {
+      "id": "R035",
+      "name": "Bánh mì",
+      "ttlDays": 7
+    },
+    {
+      "id": "R036",
+      "name": "Cháo",
+      "ttlDays": 2
+    },
+    {
+      "id": "R037",
+      "name": "Súp",
+      "ttlDays": 2
+    },
+    {
+      "id": "R038",
+      "name": "Thịt khô",
+      "ttlDays": 25
+    },
+    {
+      "id": "R039",
+      "name": "Cá khô",
+      "ttlDays": 20
+    },
+    {
+      "id": "R040",
+      "name": "Phô mai",
+      "ttlDays": 20
+    },
+    {
+      "id": "R041",
+      "name": "Bánh ngọt",
+      "ttlDays": 7
+    },
+    {
+      "id": "R042",
+      "name": "Suất ăn dinh dưỡng",
+      "ttlDays": 7
+    },
+    {
+      "id": "R043",
+      "name": "Đồ hộp",
+      "ttlDays": 70
+    },
+    {
+      "id": "R044",
+      "name": "Khẩu phần đóng gói",
+      "ttlDays": 55
+    },
+    {
+      "id": "R045",
+      "name": "Gỗ thô",
+      "ttlDays": null
+    },
+    {
+      "id": "R046",
+      "name": "Cành khô",
+      "ttlDays": null
+    },
+    {
+      "id": "R047",
+      "name": "Lá cây",
+      "ttlDays": null
+    },
+    {
+      "id": "R048",
+      "name": "Tre",
+      "ttlDays": null
+    },
+    {
+      "id": "R049",
+      "name": "Dây leo",
+      "ttlDays": null
+    },
+    {
+      "id": "R050",
+      "name": "Sợi thực vật",
+      "ttlDays": null
+    },
+    {
+      "id": "R051",
+      "name": "Nhựa cây",
+      "ttlDays": null
+    },
+    {
+      "id": "R052",
+      "name": "Đá thô",
+      "ttlDays": null
+    },
+    {
+      "id": "R053",
+      "name": "Đá lửa",
+      "ttlDays": null
+    },
+    {
+      "id": "R054",
+      "name": "Đất sét",
+      "ttlDays": null
+    },
+    {
+      "id": "R055",
+      "name": "Đất canh tác",
+      "ttlDays": null
+    },
+    {
+      "id": "R056",
+      "name": "Cát",
+      "ttlDays": null
+    },
+    {
+      "id": "R057",
+      "name": "Sỏi",
+      "ttlDays": null
+    },
+    {
+      "id": "R058",
+      "name": "Da thú",
+      "ttlDays": null
+    },
+    {
+      "id": "R059",
+      "name": "Xương thú",
+      "ttlDays": null
+    },
+    {
+      "id": "R060",
+      "name": "Gân thú",
+      "ttlDays": null
+    },
+    {
+      "id": "R061",
+      "name": "Thảo dược",
+      "ttlDays": null
+    },
+    {
+      "id": "R062",
+      "name": "Nước thô",
+      "ttlDays": null
+    },
+    {
+      "id": "R063",
+      "name": "Đá vôi",
+      "ttlDays": null
+    },
+    {
+      "id": "R064",
+      "name": "Đất màu",
+      "ttlDays": null
+    },
+    {
+      "id": "R065",
+      "name": "Phân hữu cơ",
+      "ttlDays": null
+    },
+    {
+      "id": "R066",
+      "name": "Gỗ cứng",
+      "ttlDays": null
+    },
+    {
+      "id": "R067",
+      "name": "Nước sạch",
+      "ttlDays": null
+    },
+    {
+      "id": "R068",
+      "name": "Lưu huỳnh",
+      "ttlDays": null
+    },
+    {
+      "id": "R069",
+      "name": "Diêm tiêu",
+      "ttlDays": null
+    },
+    {
+      "id": "R070",
+      "name": "Cao su tự nhiên",
+      "ttlDays": null
+    },
+    {
+      "id": "R071",
+      "name": "Cát thạch anh",
+      "ttlDays": null
+    },
+    {
+      "id": "R072",
+      "name": "Quặng đồng",
+      "ttlDays": null
+    },
+    {
+      "id": "R073",
+      "name": "Quặng thiếc",
+      "ttlDays": null
+    },
+    {
+      "id": "R074",
+      "name": "Quặng sắt",
+      "ttlDays": null
+    },
+    {
+      "id": "R075",
+      "name": "Quặng vàng",
+      "ttlDays": null
+    },
+    {
+      "id": "R076",
+      "name": "Quặng bạc",
+      "ttlDays": null
+    },
+    {
+      "id": "R077",
+      "name": "Than đá",
+      "ttlDays": null
+    },
+    {
+      "id": "R078",
+      "name": "Dầu thô",
+      "ttlDays": null
+    },
+    {
+      "id": "R079",
+      "name": "Khí tự nhiên",
+      "ttlDays": null
+    },
+    {
+      "id": "R080",
+      "name": "Quặng bô-xít",
+      "ttlDays": null
+    },
+    {
+      "id": "R081",
+      "name": "Quặng silic",
+      "ttlDays": null
+    },
+    {
+      "id": "R082",
+      "name": "Quặng lithium",
+      "ttlDays": null
+    },
+    {
+      "id": "R083",
+      "name": "Quặng titan",
+      "ttlDays": null
+    },
+    {
+      "id": "R084",
+      "name": "Quặng uranium",
+      "ttlDays": null
+    },
+    {
+      "id": "R085",
+      "name": "Đất hiếm",
+      "ttlDays": null
+    },
+    {
+      "id": "R086",
+      "name": "Đồng thỏi",
+      "ttlDays": null
+    },
+    {
+      "id": "R087",
+      "name": "Thiếc thỏi",
+      "ttlDays": null
+    },
+    {
+      "id": "R088",
+      "name": "Đồng thiếc",
+      "ttlDays": null
+    },
+    {
+      "id": "R089",
+      "name": "Sắt thỏi",
+      "ttlDays": null
+    },
+    {
+      "id": "R090",
+      "name": "Sắt rèn",
+      "ttlDays": null
+    },
+    {
+      "id": "R091",
+      "name": "Vàng tinh luyện",
+      "ttlDays": null
+    },
+    {
+      "id": "R092",
+      "name": "Bạc tinh luyện",
+      "ttlDays": null
+    },
+    {
+      "id": "R093",
+      "name": "Thép",
+      "ttlDays": null
+    },
+    {
+      "id": "R094",
+      "name": "Thép hình",
+      "ttlDays": null
+    },
+    {
+      "id": "R095",
+      "name": "Nhôm",
+      "ttlDays": null
+    },
+    {
+      "id": "R096",
+      "name": "Dây đồng",
+      "ttlDays": null
+    },
+    {
+      "id": "R097",
+      "name": "Hợp kim tiên tiến",
+      "ttlDays": null
+    },
+    {
+      "id": "R098",
+      "name": "Silic tinh khiết",
+      "ttlDays": null
+    },
+    {
+      "id": "R099",
+      "name": "Lithium tinh chế",
+      "ttlDays": null
+    },
+    {
+      "id": "R100",
+      "name": "Đá đẽo",
+      "ttlDays": null
+    },
+    {
+      "id": "R101",
+      "name": "Cọc gỗ",
+      "ttlDays": null
+    },
+    {
+      "id": "R102",
+      "name": "Dây buộc",
+      "ttlDays": null
+    },
+    {
+      "id": "R103",
+      "name": "Gỗ xẻ",
+      "ttlDays": null
+    },
+    {
+      "id": "R104",
+      "name": "Ván gỗ",
+      "ttlDays": null
+    },
+    {
+      "id": "R105",
+      "name": "Gạch đất",
+      "ttlDays": null
+    },
+    {
+      "id": "R106",
+      "name": "Gốm",
+      "ttlDays": null
+    },
+    {
+      "id": "R107",
+      "name": "Ngói",
+      "ttlDays": null
+    },
+    {
+      "id": "R108",
+      "name": "Dây thừng",
+      "ttlDays": null
+    },
+    {
+      "id": "R109",
+      "name": "Gạch nung",
+      "ttlDays": null
+    },
+    {
+      "id": "R110",
+      "name": "Vữa vôi",
+      "ttlDays": null
+    },
+    {
+      "id": "R111",
+      "name": "Đá khối",
+      "ttlDays": null
+    },
+    {
+      "id": "R112",
+      "name": "Thủy tinh",
+      "ttlDays": null
+    },
+    {
+      "id": "R113",
+      "name": "Giấy",
+      "ttlDays": null
+    },
+    {
+      "id": "R114",
+      "name": "Vải dệt",
+      "ttlDays": null
+    },
+    {
+      "id": "R115",
+      "name": "Da thuộc",
+      "ttlDays": null
+    },
+    {
+      "id": "R116",
+      "name": "Xi măng",
+      "ttlDays": null
+    },
+    {
+      "id": "R117",
+      "name": "Bê tông",
+      "ttlDays": null
+    },
+    {
+      "id": "R118",
+      "name": "Ống kim loại",
+      "ttlDays": null
+    },
+    {
+      "id": "R119",
+      "name": "Kính xây dựng",
+      "ttlDays": null
+    },
+    {
+      "id": "R120",
+      "name": "Dây điện",
+      "ttlDays": null
+    },
+    {
+      "id": "R121",
+      "name": "Ống nước",
+      "ttlDays": null
+    },
+    {
+      "id": "R122",
+      "name": "Vật liệu cách điện",
+      "ttlDays": null
+    },
+    {
+      "id": "R123",
+      "name": "Nhựa kỹ thuật",
+      "ttlDays": null
+    },
+    {
+      "id": "R124",
+      "name": "Vật liệu composite",
+      "ttlDays": null
+    },
+    {
+      "id": "R125",
+      "name": "Công cụ đá",
+      "ttlDays": null
+    },
+    {
+      "id": "R126",
+      "name": "Rìu đá",
+      "ttlDays": null
+    },
+    {
+      "id": "R127",
+      "name": "Dao đá",
+      "ttlDays": null
+    },
+    {
+      "id": "R128",
+      "name": "Bẫy săn",
+      "ttlDays": null
+    },
+    {
+      "id": "R129",
+      "name": "Cung tên",
+      "ttlDays": null
+    },
+    {
+      "id": "R130",
+      "name": "Lưới cá",
+      "ttlDays": null
+    },
+    {
+      "id": "R131",
+      "name": "Giỏ đựng",
+      "ttlDays": null
+    },
+    {
+      "id": "R132",
+      "name": "Đồ đựng đất",
+      "ttlDays": null
+    },
+    {
+      "id": "R133",
+      "name": "Cuốc gỗ",
+      "ttlDays": null
+    },
+    {
+      "id": "R134",
+      "name": "Liềm đá",
+      "ttlDays": null
+    },
+    {
+      "id": "R135",
+      "name": "Cối xay tay",
+      "ttlDays": null
+    },
+    {
+      "id": "R136",
+      "name": "Bánh xe gỗ",
+      "ttlDays": null
+    },
+    {
+      "id": "R137",
+      "name": "Công cụ nông nghiệp",
+      "ttlDays": null
+    },
+    {
+      "id": "R138",
+      "name": "Công cụ đồng",
+      "ttlDays": null
+    },
+    {
+      "id": "R139",
+      "name": "Khuôn đúc",
+      "ttlDays": null
+    },
+    {
+      "id": "R140",
+      "name": "Công cụ sắt",
+      "ttlDays": null
+    },
+    {
+      "id": "R141",
+      "name": "Cày sắt",
+      "ttlDays": null
+    },
+    {
+      "id": "R142",
+      "name": "Bộ dụng cụ xây dựng",
+      "ttlDays": null
+    },
+    {
+      "id": "R143",
+      "name": "Khung cửi",
+      "ttlDays": null
+    },
+    {
+      "id": "R144",
+      "name": "Thiết bị đo đơn giản",
+      "ttlDays": null
+    },
+    {
+      "id": "R145",
+      "name": "Máy in thủ công",
+      "ttlDays": null
+    },
+    {
+      "id": "R146",
+      "name": "Thiết bị thí nghiệm",
+      "ttlDays": null
+    },
+    {
+      "id": "R147",
+      "name": "Máy tiện cơ khí",
+      "ttlDays": null
+    },
+    {
+      "id": "R148",
+      "name": "Bơm cơ khí",
+      "ttlDays": null
+    },
+    {
+      "id": "R149",
+      "name": "Động cơ hơi nước",
+      "ttlDays": null
+    },
+    {
+      "id": "R150",
+      "name": "Máy móc cơ khí",
+      "ttlDays": null
+    },
+    {
+      "id": "R151",
+      "name": "Đầu máy vận tải",
+      "ttlDays": null
+    },
+    {
+      "id": "R152",
+      "name": "Máy phát điện",
+      "ttlDays": null
+    },
+    {
+      "id": "R153",
+      "name": "Động cơ điện",
+      "ttlDays": null
+    },
+    {
+      "id": "R154",
+      "name": "Máy biến áp",
+      "ttlDays": null
+    },
+    {
+      "id": "R155",
+      "name": "Thiết bị điện",
+      "ttlDays": null
+    },
+    {
+      "id": "R156",
+      "name": "Máy bơm điện",
+      "ttlDays": null
+    },
+    {
+      "id": "R157",
+      "name": "Thiết bị làm lạnh",
+      "ttlDays": null
+    },
+    {
+      "id": "R158",
+      "name": "Mạch điện tử",
+      "ttlDays": null
+    },
+    {
+      "id": "R159",
+      "name": "Vi mạch",
+      "ttlDays": null
+    },
+    {
+      "id": "R160",
+      "name": "Máy tính",
+      "ttlDays": null
+    },
+    {
+      "id": "R161",
+      "name": "Cảm biến",
+      "ttlDays": null
+    },
+    {
+      "id": "R162",
+      "name": "Robot công nghiệp",
+      "ttlDays": null
+    },
+    {
+      "id": "R163",
+      "name": "Bộ pin",
+      "ttlDays": null
+    },
+    {
+      "id": "R164",
+      "name": "Tấm pin mặt trời",
+      "ttlDays": null
+    },
+    {
+      "id": "R165",
+      "name": "Tua-bin gió",
+      "ttlDays": null
+    },
+    {
+      "id": "R166",
+      "name": "Thiết bị tự động hóa",
+      "ttlDays": null
+    },
+    {
+      "id": "R167",
+      "name": "Củi",
+      "ttlDays": null
+    },
+    {
+      "id": "R168",
+      "name": "Than củi",
+      "ttlDays": null
+    },
+    {
+      "id": "R169",
+      "name": "Than cốc",
+      "ttlDays": null
+    },
+    {
+      "id": "R170",
+      "name": "Xăng dầu",
+      "ttlDays": null
+    },
+    {
+      "id": "R171",
+      "name": "Dầu đốt",
+      "ttlDays": null
+    },
+    {
+      "id": "R172",
+      "name": "Khí đốt",
+      "ttlDays": null
+    },
+    {
+      "id": "R173",
+      "name": "Điện năng",
+      "ttlDays": null
+    },
+    {
+      "id": "R174",
+      "name": "Nhiên liệu sinh học",
+      "ttlDays": null
+    },
+    {
+      "id": "R175",
+      "name": "Hydro",
+      "ttlDays": null
+    },
+    {
+      "id": "R176",
+      "name": "Năng lượng pin",
+      "ttlDays": null
+    },
+    {
+      "id": "R177",
+      "name": "Hạt giống",
+      "ttlDays": null
+    },
+    {
+      "id": "R178",
+      "name": "Thức ăn chăn nuôi",
+      "ttlDays": null
+    },
+    {
+      "id": "R179",
+      "name": "Phân bón",
+      "ttlDays": null
+    },
+    {
+      "id": "R180",
+      "name": "Rác hữu cơ",
+      "ttlDays": null
+    },
+    {
+      "id": "R181",
+      "name": "Nước thải",
+      "ttlDays": null
+    },
+    {
+      "id": "R182",
+      "name": "Phế liệu kim loại",
+      "ttlDays": null
+    },
+    {
+      "id": "R183",
+      "name": "Rác công nghiệp",
+      "ttlDays": null
+    },
+    {
+      "id": "R184",
+      "name": "Rác điện tử",
+      "ttlDays": null
+    },
+    {
+      "id": "R185",
+      "name": "Lông thú",
+      "ttlDays": null
+    },
+    {
+      "id": "R186",
+      "name": "Da sơ chế",
+      "ttlDays": null
+    },
+    {
+      "id": "R187",
+      "name": "Bó cỏ khô",
+      "ttlDays": null
+    },
+    {
+      "id": "R188",
+      "name": "Áo choàng da thú",
+      "ttlDays": null
+    },
+    {
+      "id": "R189",
+      "name": "Mũ lông thú",
+      "ttlDays": null
+    },
+    {
+      "id": "R190",
+      "name": "Giày quấn da",
+      "ttlDays": null
+    },
+    {
+      "id": "R191",
+      "name": "Găng tay da",
+      "ttlDays": null
+    },
+    {
+      "id": "R192",
+      "name": "Chăn da thú",
+      "ttlDays": null
+    },
+    {
+      "id": "R193",
+      "name": "Áo choàng chống mưa",
+      "ttlDays": null
+    },
+    {
+      "id": "R194",
+      "name": "Bộ vá áo da",
+      "ttlDays": null
+    },
+    {
+      "id": "R195",
+      "name": "Tấm lót ngủ cỏ khô",
+      "ttlDays": null
+    },
+    {
+      "id": "R196",
+      "name": "Áo da thuộc",
+      "ttlDays": null
+    },
+    {
+      "id": "R197",
+      "name": "Áo len",
+      "ttlDays": null
+    },
+    {
+      "id": "R198",
+      "name": "Chăn len",
+      "ttlDays": null
+    },
+    {
+      "id": "R199",
+      "name": "Ủng da",
+      "ttlDays": null
+    },
+    {
+      "id": "R200",
+      "name": "Áo khoác vải dày",
+      "ttlDays": null
+    },
+    {
+      "id": "R201",
+      "name": "Áo bông lót",
+      "ttlDays": null
+    },
+    {
+      "id": "R202",
+      "name": "Áo khoác công nghiệp",
+      "ttlDays": null
+    },
+    {
+      "id": "R203",
+      "name": "Găng bảo hộ chống lạnh",
+      "ttlDays": null
+    },
+    {
+      "id": "R204",
+      "name": "Sợi cách nhiệt",
+      "ttlDays": null
+    },
+    {
+      "id": "R205",
+      "name": "Áo giữ nhiệt",
+      "ttlDays": null
+    },
+    {
+      "id": "R206",
+      "name": "Ủng chống lạnh",
+      "ttlDays": null
+    },
+    {
+      "id": "R207",
+      "name": "Bộ bảo hộ khí hậu cực đoan",
+      "ttlDays": null
+    },
+    {
+      "id": "R208",
+      "name": "Chất thải sinh hoạt",
+      "ttlDays": null
+    },
+    {
+      "id": "R209",
+      "name": "Nước sinh hoạt bẩn",
+      "ttlDays": null
+    },
+    {
+      "id": "R210",
+      "name": "Tro và bụi bếp",
+      "ttlDays": null
+    },
+    {
+      "id": "R211",
+      "name": "Băng bó thô sơ",
+      "ttlDays": null
+    },
+    {
+      "id": "R212",
+      "name": "Nước sắc thảo mộc",
+      "ttlDays": 3
+    },
+    {
+      "id": "R213",
+      "name": "Nước uống đun sôi",
+      "ttlDays": 2
+    },
+    {
+      "id": "R214",
+      "name": "Dụng cụ dọn vệ sinh",
+      "ttlDays": null
+    },
+    {
+      "id": "R215",
+      "name": "Băng vải sạch",
+      "ttlDays": null
+    },
+    {
+      "id": "R216",
+      "name": "Ách kéo trâu",
+      "ttlDays": null
+    },
+    {
+      "id": "R217",
+      "name": "Cày gỗ",
+      "ttlDays": null
+    },
+    {
+      "id": "R218",
+      "name": "Yên ngựa",
+      "ttlDays": null
+    },
+    {
+      "id": "R219",
+      "name": "Dây cương",
+      "ttlDays": null
+    },
+    {
+      "id": "R220",
+      "name": "Xe kéo gỗ",
+      "ttlDays": null
+    },
+    {
+      "id": "R221",
+      "name": "Vật liệu vệ sinh đơn sơ",
+      "ttlDays": null
+    },
+    {
+      "id": "R222",
+      "name": "Vật tư chăm sóc gia súc",
+      "ttlDays": null
+    },
+    {
+      "id": "R223",
+      "name": "Vật tư xử lý nước thải",
+      "ttlDays": null
+    },
+    {
+      "id": "R224",
+      "name": "Vật tư lọc khí",
+      "ttlDays": null
+    },
+    {
+      "id": "R225",
+      "name": "Chất thải y tế",
+      "ttlDays": null
+    },
+    {
+      "id": "R226",
+      "name": "Thuốc hỗ trợ y tế",
+      "ttlDays": 180
+    },
+    {
+      "id": "R227",
+      "name": "Chế phẩm chăm sóc thú nuôi",
+      "ttlDays": 90
+    },
+    {
+      "id": "R228",
+      "name": "Bộ lọc nước sơ khai",
+      "ttlDays": null
+    },
+    {
+      "id": "R229",
+      "name": "Phân chuồng ủ hoai",
+      "ttlDays": null
+    },
+    {
+      "id": "R230",
+      "name": "Phụ tùng phương tiện",
+      "ttlDays": null
+    }
+  ]
+}

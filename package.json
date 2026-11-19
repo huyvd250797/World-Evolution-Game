@@ -1,7 +1,7 @@
 {
   "name": "world-evolution",
-  "version": "0.7.0",
-  "description": "World Evolution V0.7.0 Workforce & Training",
+  "version": "0.8.0",
+  "description": "World Evolution V0.8.0 Living Ecosystem",
   "scripts": {
     "dev": "next dev",
     "build": "node verify-release.mjs && next build",
@@ -10,7 +10,7 @@
     "typecheck": "next typegen && tsc --noEmit && tsc --noEmit -p tsconfig.tools.json",
     "data:import": "node --import tsx scripts/catalog.ts",
     "data:sql": "node --import tsx scripts/sql.ts",
-    "data:check": "node --import tsx scripts/catalog.ts --check && node --import tsx scripts/sql.ts --check && node --import tsx scripts/assets.ts --check && node --import tsx scripts/planning.ts --check && node --import tsx scripts/population.ts --check && node --import tsx scripts/survival.ts --check && node --import tsx scripts/workforce.ts --check",
+    "data:check": "node --import tsx scripts/catalog.ts --check && node --import tsx scripts/sql.ts --check && node --import tsx scripts/assets.ts --check && node --import tsx scripts/planning.ts --check && node --import tsx scripts/population.ts --check && node --import tsx scripts/survival.ts --check && node --import tsx scripts/workforce.ts --check && node --import tsx scripts/ecology.ts --check",
     "test": "node --import tsx --test tests/*.test.ts",
     "test:ui": "playwright test",
     "check": "npm run data:check && npm run typecheck && npm run lint && npm test && npm run build",
@@ -20,7 +20,8 @@
     "assets:world": "node --import tsx scripts/world-art.ts && npm run assets:manifest",
     "map:qa": "node --import tsx scripts/render-map-qa.ts",
     "planning:qa": "node --import tsx scripts/render-planning-qa.ts",
-    "population:qa": "node --import tsx scripts/render-population-qa.ts"
+    "population:qa": "node --import tsx scripts/render-population-qa.ts",
+    "ecology:qa": "node --import tsx scripts/render-ecology-qa.ts"
   },
   "keywords": [],
   "author": "",
@@ -62,6 +63,7 @@
     "planningSha256": "3cc4e071e4d76f94bae70cd87c501f95ac4cbf884931584a0334aa4e2f9a01fa",
     "populationSha256": "69471430ae5ccdb77334de969247a184fa3340482f51f8f8cc284975917fc562",
     "survivalSha256": "f976e00c95fe7338ce0d2c2d92b322ef83d0ed637be0b2afde87ba74b066e414",
-    "workforceSha256": "f25ccec401c9815459eed00857991b156128ac4c4e1790884ad8b43ff958a46c"
+    "workforceSha256": "f25ccec401c9815459eed00857991b156128ac4c4e1790884ad8b43ff958a46c",
+    "ecologySha256": "481ac58d21c7e2a6d2f716d440e1a6faceee33cec54b85b8adb932e1a9e78ec6"
   }
 }

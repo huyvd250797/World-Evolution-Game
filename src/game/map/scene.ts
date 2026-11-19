@@ -1,6 +1,6 @@
 import type {Camera,Viewport} from './camera';
 import type {TileInfo,WorldMap} from './world-map';
-export interface SceneOptions{quality:'auto'|'low';grid:boolean;resources:boolean}
+export interface SceneOptions{quality:'auto'|'low';grid:boolean;resources:boolean;ecology?:boolean}
 export interface SceneStats{chunks:number;tiles:number;objects:number;stride:number}
 export interface MapScene{canvas:HTMLCanvasElement;kind:'WebGL'|'Canvas 2D';resize(width:number,height:number):void;draw(camera:Camera,viewport:Viewport,selected:TileInfo|null,options:SceneOptions):SceneStats;destroy():void}
 export async function createScene(map:WorldMap,width:number,height:number):Promise<MapScene>{

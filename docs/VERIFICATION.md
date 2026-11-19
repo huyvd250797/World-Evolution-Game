@@ -1,34 +1,35 @@
-# Xác minh V0.7.0 — Workforce & Training
+# Xác minh V0.8.0 — Living Ecosystem
 
-Kết quả cuối: ../RELEASE-CHECKS.md. Giữ bản nền V0.6, không chỉnh Frozen hoặc migration cũ.
+Kết quả cuối: ../RELEASE-CHECKS.md. Source nền V0.7.0, giữ dữ liệu Frozen và migrations cũ.
 
 ## Kiểm tự động
 
-- Typecheck app/tools/tests, ESLint, data:check, release checksum, production build và cài sạch/build lại từ ZIP.
-- 73 tests/subtests: toàn bộ regression Auth/world/proxy/map/Canvas/planning/population/survival/simulation và workforce mới.
-- Adapter đủ 96 nghề, giữ tên/era/ngày học/hiệu suất/công nghệ/nơi làm/công dụng; staffing theo Frozen, B123=2 chỗ + 1 J009. J092 chưa khớp technologyId được khóa rõ lý do.
-- Cơ sở hoàn thành, tech T104, mentor qualified/present/unoccupied, tuyến đi và capacity; batch có một người sai thì không thay đổi người nào.
-- Tiến độ không tăng khi đang đi/nghỉ/thiếu mentor/cơ sở tắt, tick vừa đến lớp không tính hai lần; đủ chính xác 5 ngày J001 mới tốt nghiệp; học lại cùng nghề reset đủ N ngày.
-- Phân công độc quyền, vị trí theo định biên, tập sự không thay hướng dẫn viên, effective staffing tính riêng hệ số. Thực hành ngoài lớp không cộng giờ lớp.
-- Survival hooks: credit 80/100 chỉ ở actual work tick, job đầu ra chưa xuất hiện khi chưa làm đủ, phần dư được serialize/parse rồi tiếp tục không tăng sai sản lượng.
-- Schema 5 thêm 20 hồ sơ rỗng giữ citizens/cargo/TTL; checksum reload giữ progress/credit và thiếu điều kiện thì chờ, không tốt nghiệp theo wall clock.
-- SQL 006 giữ raw schema 5/history, full workforce state save/restore, malformed progress/IDs/credit bị chặn; owner/downgrade/private-table grants và delta guard.
-- Worker source thật + session bridge: workforce command, missing-facility rejection/no-free-role, rút phân công/nghỉ, snapshot/save; giữ offline/retry/history/lease regression.
-- HTTP với Next SSR/actions và Supabase SDK fixture: schema 6, invalid worker ID và unsafe workforce delta bị chặn, Auth/CSRF/save/retry/restore/các luồng cũ đạt.
+- App/tools/tests typecheck, ESLint, data:check, release checksum, production build và clean-install/build từ source ZIP.
+- 84 tests/subtests gồm toàn bộ regression Auth/world/proxy/map/Canvas/planning/population/survival/workforce/save và ecology mới.
+- Canonical adapter 52 loài, 10 sinh cảnh, 14 cạnh food web, đúng products/range/regen/season/diet. Phân bố lặp lại ở 7 khí hậu, bounds và habitat passability, không spawn vật nuôi.
+- Legacy 6 giữ nguồn cạn/deadline, IDs/cargo/TTL/workforce; ecology mới khởi tạo theo tick lưu, không chạy bù offline.
+- Khảo sát ngoài tầm bị chặn, đặt chỗ không sinh hàng/trừ stock ngay, người khác không thu cùng nguồn; actual gather/carry/delivery và checksum reload không reset expiry hoặc nhân sản phẩm.
+- Regeneration đủ minimum và season; committed harvest không chạy lần hai. Chuyển timer batch/speed/pause giữ chính xác RNG/cạnh/vị trí.
+- Predators chỉ ăn linked prey gần/tiếp cận được, không tùy ý ăn loài khác; finite biomass khiến thiếu thức ăn suy giảm. Birth maturity/food/season, sức chứa vùng và total cap có kiểm.
+- Basic hunt đủ nghề/camp/tools fixture: một con sống/đặt chỗ, hoàn tất mới giảm con và có đúng sản phẩm; không tạo thịt từ rừng trống hoặc dùng một tool hai lần.
+- SQL 007 giữ raw schema 6/history, lưu actual in-transit ecology cargo, RNG/knowledge/reservation, restore và R061; rejects malformed plants/duplicate animals/delta/foreign owner/private reads.
+- Worker bridge thực + session: commands, snapshot, lease expiry/fences, lost ACK/retry, offline/local recovery. Test lease dùng cửa sổ đủ rộng cho payload lớn, vẫn kiểm expiry thực.
+- HTTP Next/Supabase SDK fixture: auth/SSR/actions, world lifecycle, save/history/restore, bad actor IDs và ecology delta; không coi fixture là Supabase cloud thật.
+- Native Canvas thực vẽ/pick fauna, source sprites và chunk/LOD; đã xem composite QA, không phải ảnh giả mô phỏng UI.
 
 ## Giới hạn
 
-Không xác nhận UI browser/Playwright đã đạt. tests/ui/workforce.spec.ts có sẵn nhưng cần môi trường Chromium hoạt động; các lần nền bị chặn socket. Chưa kiểm Safari/Android/iPhone/GPU và tài khoản dịch vụ thật của Boss. Source build/fixture không chứng minh deploy cloud hoặc tốc độ thiết bị thật.
+Chưa chạy Playwright/browser, Safari/iPhone/Android, GPU/60fps hoặc dịch vụ thật của Boss. tests/ui/ecology.spec.ts có sẵn; môi trường nền chặn socket Chromium. Không cam kết quota Free hoặc tốc độ thiết bị khi chưa đo thực tế.
 
-Nghiệm thu nhánh đào tạo đủ điều kiện hiện dùng LaborContext fixtures: game chưa có cơ sở hoàn thành/hướng dẫn viên/công nghệ T104. Không báo đã mở gameplay đào tạo trong world khởi đầu. Chưa có bootstrap nghề nghiên cứu hoặc đào tạo đời cao thiếu định mức; không tự thêm ngoại lệ vào Frozen.
+Catalog đầy đủ không đồng nghĩa mọi loài đã spawn: runtime 9 nguồn/15 fauna trên các habitat we-map-1 hỗ trợ. Sinh thái tự nhiên và thu hoạch dùng ngay; săn cư dân vẫn cần nghề/công cụ/trại hoàn thành, chưa tự cấp. Chưa có vật nuôi, săn nhóm/combat, bệnh, corpse hoặc thời tiết đầy đủ. Chính sách kỹ thuật riêng trong LIVING-ECOSYSTEM.md.
 
-## Checklist sau deploy
+## Nghiệm thu sau deploy
 
-1. Chạy 006 một lần sau 001–005, giữ repo/project/env/worlds; verify_workforce.sql phải có 96 roles và các private grants=false.
-2. Mở world cũ giữ đúng seed/tick/map/20 IDs/cargo/lô/hạn, world pause. Bảng nhân sự dưới bản đồ có 20 profile chưa cấp nghề.
-3. Lao động: lọc rảnh/đang học/làm/đi/nghỉ, chọn một hoặc nhiều người, xem cơ sở/điểm đến/job. Pan/pinch bản đồ vẫn như cũ.
-4. Đào tạo/đổi nghề: Confirm không khả dụng nếu thiếu cơ sở hoàn thành/tech/hướng dẫn; hiện rõ điều kiện, không tự hoàn thành nền. Hủy bên trái/Xác nhận bên phải.
-5. Danh mục 96 nghề: tìm kiếm, phân trang, chữ đủ trên PC/mobile; J001=5 ngày/80%, J092 giữ tên công nghệ gốc và lý do khóa.
-6. Định biên planned: số có mặt thực=0, thiếu đúng định mức. Không cho claim có người làm từ các nền quy hoạch.
-7. Manual save/reload/history/local recovery/hai thiết bị lease và takeover giữ đúng ID/profile/tiến độ, không nhân sản phẩm hoặc cấp nghề. Khóa màn hình không chạy bù offline.
-8. Kiểm layout dọc/ngang, đọc nguyên tên nghề/công nghệ/cơ sở, thao tác chọn nhóm và confirm, đo RAM/FPS/save/traffic trên deployment/thiết bị thật.
+1. Chỉ chạy 007 sau 001–006 trước deploy; giữ env/repo/database. verify_ecology.sql: species=52, private grants=false.
+2. Mở world cũ: seed/tick/20 IDs/camera/planning/nghề/tiến độ/cargo/lô/hạn còn nguyên. Lưu schema 7 trước chuyển thiết bị.
+3. Hệ sinh thái: zoom/pan/minimap, nguồn/động vật trong viewport, depth/LOD/culling, pause/x1/x2/x4; zoom xa không làm mất dân/con vật trong thống kê.
+4. Chọn nguồn, đọc stock/cap/deadline/mùa; nguồn đã biết/unknown khác nhau. Đưa người đến gần khảo sát; pan/pinch không gửi lệnh.
+5. Giao thu hoạch với xác nhận; chưa đến/chưa làm đủ thì hàng=0, sau đó carried rồi deposit/FEFO. Lưu giữa chặng và reload, kiểm source/cargo/expiry/reservation không đổi sai.
+6. Con mồi còn sống, săn tự nhiên giảm đúng loài, không có hàng người chơi từ natural kill. Săn cư dân thiếu điều kiện phải báo rõ; không tạo thịt khi chọn rừng trống.
+7. Thấy nguồn cạn/biomass thấp/cảnh báo suy giảm; đúng mùa/deadline mới phục hồi. Catalog 52 loài/food links đọc đầy đủ tên trên PC/mobile.
+8. Dọc/ngang/mở rộng: bảng cuộn/thu gọn, Hủy trái/Xác nhận phải, không tràn ngang. Kiểm lease/takeover, offline/local recovery/history trên hai máy; đo RAM/FPS/payload/traffic project thật.

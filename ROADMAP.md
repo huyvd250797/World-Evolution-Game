@@ -11,8 +11,8 @@ Căn cứ: Development Plan V1.1 và Master Game Data V1.2 Canonical Frozen. 23 
 | V0.5.0 | Population Housing & Pathfinding | 20 IDs/agents, Worker pathfinding/progress/rest, housing forecast và completed-allocation model, cap/lease/save; kiểm logic/SQL/HTTP/Canvas, thiết bị thật cần nghiệm thu | Đã xây source |
 | V0.6.0 | Survival & Food | Worker jobs, cargo/lô/TTL/FEFO/sổ cấp phát; hái quả hoạt động, săn/nước/nấu giữ gate công nghệ/công trình; schema 5, SQL 005 | Đã xây source; nhánh vận hành chờ dependencies |
 | V0.7.0 | Workforce & Training | 96 nghề, 20 hồ sơ, điều kiện đào tạo/định biên, batch xác nhận, credit tập sự/Worker/save schema 6; cơ sở vận hành vẫn chờ thi công/nghiên cứu | Đã xây source; đào tạo gameplay chờ dependencies |
-| V0.8.0 | Living Ecosystem | Cây/động vật, săn mồi, tái sinh và quần thể; tải asset theo sinh cảnh | Tiếp theo |
-| V0.9.0 | Construction & Logistics | Thi công, vật tư và tuyến vận chuyển thật; không ghi DB từng bước chân | Dự kiến |
+| V0.8.0 | Living Ecosystem | Catalog 52 loài, nguồn hữu hạn/đúng mùa, cá thể/quần thể/food web, survey, runtime 9 flora/15 fauna, shared stamps/chunk/LOD; schema 7/SQL 007, save/recovery; săn giữ gate nghề/cơ sở | Đã xây source |
+| V0.9.0 | Construction & Logistics | Thi công, vật tư và tuyến vận chuyển thật; không ghi DB từng bước chân | Tiếp theo |
 | V0.10.0 | Seasons & Climate | Mùa theo vùng, thiên tai, lạnh/trang phục, thời tiết có mức chất lượng | Dự kiến |
 | V0.11.0 | Health & Pollution | Bệnh, chăm sóc, rác và ô nhiễm theo vùng; đo tăng trưởng save | Dự kiến |
 | V0.12.0 | Research & Discovery | 3 pha nghiên cứu, tiên quyết, RNG chống reroll, bằng chứng ứng dụng | Dự kiến |
