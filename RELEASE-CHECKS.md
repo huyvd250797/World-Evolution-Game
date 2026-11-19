@@ -1,29 +1,23 @@
-# World Evolution V0.5.0 — Release checks
+# World Evolution V0.6.0 — Release checks
 
-Ngày kiểm tra: 19/11/2026. Nguồn: ZIP V0.4.0 Boss đính kèm.
+Ngày kiểm tra: 19/11/2026. Nền source: ZIP V0.5.0 Boss đính kèm (hai file đính kèm có cùng SHA-256).
 
 | Kiểm tra | Kết quả |
 | --- | --- |
 | Typecheck app + tools/tests | Đạt |
-| ESLint | Đạt, không warning |
-| Unit/integration | 59 tests/subtests đạt, 0 lỗi |
-| Population data | CFG003/053/059 và 8 home capacities khớp Frozen |
-| IDs/navigation/movement | 20 saved IDs, deterministic spawn 7 climates, BFS/cache/obstacle/no-path, progress/rest/resume/replan/x1/x2/x4 đạt |
-| Housing model | Projected/actual separation, completed-only capacity/allocation/reachability, no free beds đạt; game chưa có completed homes |
-| Migration 004 | Legacy raw bytes + schema upgrade/customIDs/partial path restore; malformed IDs/path/progress/free beds/downgrade/fencing reject đạt |
-| Worker/session thật | Move/save giữa cạnh + lost ACK, offline, local recovery, lease kế thừa đạt |
-| HTTP Next/SDK fixture | Auth/world/sim/planning/population save-load và security/input checks đạt |
-| Native Canvas | People/pick/culling/cleanup, visible animation flag; composite 20 người/bốn nền lều đã xem |
-| data:check | Đạt Frozen38sheets/5.984refs, SQL baseline/assets/planning/population adapter |
-| Production build | Đạt Next.js16.4.6 Turbopack, pages/Proxy/API |
-| Kế thừa byte | Workbook/catalog/summary/assets/planning adapter/001–003/map/camera/base render/proxy giữ nguyên |
-| Browser/mobile/GPU thật | Chưa xác minh; không báo Playwright đạt khi môi trường chặn Chromium |
-| Supabase/GitHub/Vercel thật | Chưa kết nối/push/deploy vào tài khoản Boss trong lần bàn giao source |
+| ESLint | Đạt |
+| Unit/integration | 66 tests/subtests đạt, 0 lỗi |
+| Frozen adapter | Nhu cầu, TTL từng loại, công thức/nguyên liệu, tải và SP001/SP015 khớp catalog |
+| Gameplay mới | Hái quả đi/làm/mang/giao; không nhận ngay, nguồn hữu hạn; FEFO và sổ ngày không cấp trùng |
+| Bảo quản | TTL cá/thịt/nấm/củ/hạt riêng, carried vẫn già; kho phù hợp dừng tuổi, ra kho tiếp tục tuổi cũ |
+| Điều kiện sản xuất | Nước/săn/nấu bị chặn nếu thiếu tech/cơ sở/công cụ; adapter đủ điều kiện được kiểm bằng fixture |
+| Save | Schema 2/3/4 nâng đọc 5; raw legacy head/history giữ nguyên; snapshot thật khi đang mang hàng qua SQL/đọc lại giữ lô/hạn |
+| Worker | Worker source thật qua bridge: lease, tick/pause, giao việc, không cho lệnh move khác chiếm người, reload job |
+| SQL 005 | PGlite chạy chuỗi migrations, owner/fence/restore/downgrade, malformed lot/ledger và survival delta bị chặn |
+| HTTP | Next SSR/actions/API + Auth/PostgREST fixture, Supabase SDK, save/retry/history/restore; schema 5 và allocation/delta validation đạt |
+| Production | Next/Turbopack build đạt; kiểm cài sạch/build lại từ ZIP bàn giao |
+| Bảo toàn nền | Workbook/catalog/planning/population/asset cũ, migrations 001–004, proxy entries và generator we-map-1 giữ nguyên byte |
 
-Gói ZIP được giải nén và build lại với dependency cài sạch trước bàn giao. Không chứa node_modules/.next/cache/log/QA screenshots hoặc secret thật.
+Playwright có spec survival mới nhưng **chưa chạy được browser trong môi trường này** (Chromium socket bị chặn ở môi trường nền). Chưa xác minh Safari/iPhone/Android, WebGL/GPU, Supabase/Vercel thật hoặc OS kill/suspend. Không coi fixture hoặc Canvas thay thế nghiệm thu thiết bị thật. Chưa push/deploy vào tài khoản Boss.
 
-**Nâng từ V0.4:** chạy `202611190004_population_navigation.sql` một lần, không chạy lại 001/002/003/reset database. TXT riêng khớp SQL004 byte-for-byte. Schema4/we-sim-2 không đọc được bằng clientV0.4, không drop schema để rollback.
-
-Master SHA-256 `9583ccb1398a0e45dc1c4e415b9749f5a22c3f7b24dd403df92ecd675c42836c`; catalog SHA-256 `b375ca03e5123d07ddd9a317a3e75b607f91c680bd69e72198b97e980013a5ea`. Không sửa MasterDataFrozen. Game không cấp giường từ nhà quy hoạch, không tự thêm tử vong khi chưa có survival.
-
-Chi tiết hành vi/giới hạn/housing/rollback: docs/POPULATION-AND-PATHFINDING.md. Checklistlive: docs/VERIFICATION.md. Hướng dẫn Vercel không cần localhost: DEPLOY-VERCEL.md và README.md.
+Gameplay hiện tại dùng được hái quả/cấp ăn/bãi ngoài trời. Săn, lấy nước, bếp, kho bảo quản còn bị khóa bởi dependencies thi công/đào tạo/nghiên cứu; không tự mở công nghệ hoặc biến blueprint thành công trình hoạt động. Chi tiết trong docs/SURVIVAL-AND-FOOD.md.

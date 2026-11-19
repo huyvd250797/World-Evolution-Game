@@ -1,3 +1,4 @@
+import type {SurvivalCommand} from '../survival/model';
 import {initialSimulation,decodeHead,delta,calendar,validateState,sha256,type Identity,type SimState,type SaveHead} from './engine';
 import type {CitizenCommand} from '../population/model';
 import type {PlanCommand} from '../planning/model';
@@ -44,6 +45,7 @@ export class SimulationSession{
    this.deadline=performance.now()+Math.max(0,r.remainingMs-3000);await this.worker.call('lease',{remainingMs:Math.max(0,this.deadline-performance.now())});
   }catch(e){await this.pauseForError(e);}finally{this.netBusy=false;this.emit();}
  }
+ async survival(command:SurvivalCommand){if(!this.view.owned||this.view.loading||this.view.busy||this.view.status==='error'||this.view.candidates.length||performance.now()>=this.deadline)throw new Error('Cần quyền điều khiển để giao việc.');this.view.state=await this.worker.call('survival',{command});await this.backup();this.emit();}
  async citizen(command:CitizenCommand){if(!this.view.owned||this.view.loading||this.view.busy||this.view.status==='error'||this.view.candidates.length||performance.now()>=this.deadline)throw new Error('Cần quyền điều khiển để giao điểm đến.');this.view.state=await this.worker.call('citizen',{command});await this.backup();this.emit();}
  async plan(command:PlanCommand){if(!this.view.owned||this.view.loading||this.view.busy||this.view.status==='error'||this.view.candidates.length||performance.now()>=this.deadline)throw new Error('Cần quyền điều khiển và kết nối hợp lệ để quy hoạch.');this.view.state=await this.worker.call('plan',{command});await this.backup();this.emit();}
  async command(command:{paused?:boolean;speed?:1|2|4}){if(!this.view.owned||this.view.loading||this.disposed)return;try{if(command.paused===false&&(document.hidden||performance.now()>=this.deadline||this.view.candidates.length||this.view.status==='error'))throw new Error('Đối chiếu bản lưu/kết nối lại trước khi chạy.');this.view.state=await this.worker.call('control',{command});if(command.paused===true){await this.backup();void this.save();}}catch(e){this.view.error=this.message(e);}this.emit();}
@@ -51,7 +53,7 @@ export class SimulationSession{
  private async doSave(manual:boolean,keepalive:boolean){
   if(this.disposed||this.netBusy||!this.view.owned||this.view.candidates.length||this.view.loading)return;this.netBusy=true;this.view.status='saving';this.emit();
   try{
-   if(!this.pending){const state=await this.worker.call('snapshot');this.view.state=state;if(!manual&&!this.dirty){this.view.status='saved';return;}const kind=manual||JSON.stringify(state.planning)!==JSON.stringify(this.baseline.planning)||JSON.stringify(state.citizens)!==JSON.stringify(this.baseline.citizens)||state.schemaVersion!==this.baseline.schemaVersion?'full':'delta',payload=JSON.stringify(kind==='full'?state:delta(this.baseline,state));this.pending={requestId:crypto.randomUUID(),epoch:this.epoch,revision:this.view.revision,kind,payload,checksum:await sha256(payload),state};}
+   if(!this.pending){const state=await this.worker.call('snapshot');this.view.state=state;if(!manual&&!this.dirty){this.view.status='saved';return;}const kind=manual||JSON.stringify(state.survival)!==JSON.stringify(this.baseline.survival)||JSON.stringify(state.planning)!==JSON.stringify(this.baseline.planning)||JSON.stringify(state.citizens)!==JSON.stringify(this.baseline.citizens)||state.schemaVersion!==this.baseline.schemaVersion?'full':'delta',payload=JSON.stringify(kind==='full'?state:delta(this.baseline,state));this.pending={requestId:crypto.randomUUID(),epoch:this.epoch,revision:this.view.revision,kind,payload,checksum:await sha256(payload),state};}
    await this.backup();const p=this.pending!;
    const r:SessionResponse=await this.api({action:'save',epoch:p.epoch,revision:p.revision,requestId:p.requestId,kind:p.kind,payload:p.payload,checksum:p.checksum},keepalive);
    if(this.disposed){void this.api({action:'release',epoch:this.epoch},true).catch(()=>{});return;}const ack=r.ack;if(!ack)throw new Error('Thiếu xác nhận lưu.');const saved=await decodeHead(ack,this.identity);this.backupVersion++;this.setHead(ack,saved,r);this.pending=null;

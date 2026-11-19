@@ -1,0 +1,585 @@
+{
+  "version": 1,
+  "foodPerPerson": 1,
+  "waterPerPerson": 2,
+  "rawWaterPerDay": 6,
+  "carryingCapacity": 3,
+  "resources": [
+    {
+      "id": "R001",
+      "name": "Quả rừng",
+      "unit": "đơn vị",
+      "ttlDays": 7,
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R002",
+      "name": "Củ rừng",
+      "unit": "đơn vị",
+      "ttlDays": 12,
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R003",
+      "name": "Nấm ăn",
+      "unit": "đơn vị",
+      "ttlDays": 3,
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R004",
+      "name": "Hạt hoang",
+      "unit": "đơn vị",
+      "ttlDays": 35,
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R005",
+      "name": "Rau dại",
+      "unit": "đơn vị",
+      "ttlDays": 4,
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R006",
+      "name": "Mật ong",
+      "unit": "đơn vị",
+      "ttlDays": 80,
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R007",
+      "name": "Trứng chim",
+      "unit": "đơn vị",
+      "ttlDays": 7,
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R008",
+      "name": "Thịt thú",
+      "unit": "đơn vị",
+      "ttlDays": 2,
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R009",
+      "name": "Cá tươi",
+      "unit": "đơn vị",
+      "ttlDays": 1,
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R030",
+      "name": "Suất ăn",
+      "unit": "suất",
+      "ttlDays": 7,
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R031",
+      "name": "Thịt nướng",
+      "unit": "suất",
+      "ttlDays": 5,
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R032",
+      "name": "Cá nướng",
+      "unit": "suất",
+      "ttlDays": 3,
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R033",
+      "name": "Rau củ nấu",
+      "unit": "suất",
+      "ttlDays": 3,
+      "storage": "Kho lương thực"
+    },
+    {
+      "id": "R058",
+      "name": "Da thú",
+      "unit": "đơn vị",
+      "ttlDays": null,
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R062",
+      "name": "Nước thô",
+      "unit": "đơn vị",
+      "ttlDays": null,
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R067",
+      "name": "Nước sạch",
+      "unit": "đơn vị",
+      "ttlDays": null,
+      "storage": "Bãi vật liệu"
+    },
+    {
+      "id": "R125",
+      "name": "Công cụ đá",
+      "unit": "cái",
+      "ttlDays": null,
+      "storage": "Kho công cụ"
+    },
+    {
+      "id": "R167",
+      "name": "Củi",
+      "unit": "đơn vị",
+      "ttlDays": null,
+      "storage": "Kho nhiên liệu"
+    },
+    {
+      "id": "R213",
+      "name": "Nước uống đun sôi",
+      "unit": "đơn vị",
+      "ttlDays": 2,
+      "storage": "Hố chứa nước"
+    }
+  ],
+  "preservation": [
+    [
+      "R001",
+      "Quả rừng",
+      "E0",
+      "Hàng tươi",
+      7,
+      "Kho lương thực phù hợp",
+      "Tạm dừng đồng hồ",
+      "FEFO (hạn gần nhất trước)",
+      "Có",
+      "Đồng hồ ngoài trời tiếp tục từ tuổi đã tích lũy, không reset sau chuyển kho"
+    ],
+    [
+      "R002",
+      "Củ rừng",
+      "E0",
+      "Nguyên liệu bảo quản được",
+      12,
+      "Kho lương thực phù hợp",
+      "Tạm dừng đồng hồ",
+      "FEFO (hạn gần nhất trước)",
+      "Có",
+      "Đồng hồ ngoài trời tiếp tục từ tuổi đã tích lũy, không reset sau chuyển kho"
+    ],
+    [
+      "R003",
+      "Nấm ăn",
+      "E0",
+      "Hàng tươi",
+      3,
+      "Kho lương thực phù hợp",
+      "Tạm dừng đồng hồ",
+      "FEFO (hạn gần nhất trước)",
+      "Cần công thức / kiểm tra",
+      "Đồng hồ ngoài trời tiếp tục từ tuổi đã tích lũy, không reset sau chuyển kho"
+    ],
+    [
+      "R004",
+      "Hạt hoang",
+      "E0",
+      "Nguyên liệu bảo quản được",
+      35,
+      "Kho lương thực phù hợp",
+      "Tạm dừng đồng hồ",
+      "FEFO (hạn gần nhất trước)",
+      "Có",
+      "Đồng hồ ngoài trời tiếp tục từ tuổi đã tích lũy, không reset sau chuyển kho"
+    ],
+    [
+      "R005",
+      "Rau dại",
+      "E0",
+      "Hàng tươi",
+      4,
+      "Kho lương thực phù hợp",
+      "Tạm dừng đồng hồ",
+      "FEFO (hạn gần nhất trước)",
+      "Có",
+      "Đồng hồ ngoài trời tiếp tục từ tuổi đã tích lũy, không reset sau chuyển kho"
+    ],
+    [
+      "R006",
+      "Mật ong",
+      "E0",
+      "Nguyên liệu bảo quản được",
+      80,
+      "Kho lương thực phù hợp",
+      "Tạm dừng đồng hồ",
+      "FEFO (hạn gần nhất trước)",
+      "Có",
+      "Đồng hồ ngoài trời tiếp tục từ tuổi đã tích lũy, không reset sau chuyển kho"
+    ],
+    [
+      "R007",
+      "Trứng chim",
+      "E0",
+      "Hàng tươi",
+      7,
+      "Kho lương thực phù hợp",
+      "Tạm dừng đồng hồ",
+      "FEFO (hạn gần nhất trước)",
+      "Có",
+      "Đồng hồ ngoài trời tiếp tục từ tuổi đã tích lũy, không reset sau chuyển kho"
+    ],
+    [
+      "R008",
+      "Thịt thú",
+      "E0",
+      "Hàng tươi",
+      2,
+      "Kho lương thực phù hợp",
+      "Tạm dừng đồng hồ",
+      "FEFO (hạn gần nhất trước)",
+      "Cần công thức / kiểm tra",
+      "Đồng hồ ngoài trời tiếp tục từ tuổi đã tích lũy, không reset sau chuyển kho"
+    ],
+    [
+      "R009",
+      "Cá tươi",
+      "E0",
+      "Hàng tươi",
+      1,
+      "Kho lương thực phù hợp",
+      "Tạm dừng đồng hồ",
+      "FEFO (hạn gần nhất trước)",
+      "Cần công thức / kiểm tra",
+      "Đồng hồ ngoài trời tiếp tục từ tuổi đã tích lũy, không reset sau chuyển kho"
+    ],
+    [
+      "R030",
+      "Suất ăn",
+      "E0",
+      "Thức ăn chế biến",
+      7,
+      "Kho lương thực phù hợp",
+      "Tạm dừng đồng hồ",
+      "FEFO (hạn gần nhất trước)",
+      "Có",
+      "Đồng hồ ngoài trời tiếp tục từ tuổi đã tích lũy, không reset sau chuyển kho"
+    ],
+    [
+      "R031",
+      "Thịt nướng",
+      "E0",
+      "Thức ăn chế biến",
+      5,
+      "Kho lương thực phù hợp",
+      "Tạm dừng đồng hồ",
+      "FEFO (hạn gần nhất trước)",
+      "Có",
+      "Đồng hồ ngoài trời tiếp tục từ tuổi đã tích lũy, không reset sau chuyển kho"
+    ],
+    [
+      "R032",
+      "Cá nướng",
+      "E0",
+      "Thức ăn chế biến",
+      3,
+      "Kho lương thực phù hợp",
+      "Tạm dừng đồng hồ",
+      "FEFO (hạn gần nhất trước)",
+      "Có",
+      "Đồng hồ ngoài trời tiếp tục từ tuổi đã tích lũy, không reset sau chuyển kho"
+    ],
+    [
+      "R033",
+      "Rau củ nấu",
+      "E0",
+      "Thức ăn chế biến",
+      3,
+      "Kho lương thực phù hợp",
+      "Tạm dừng đồng hồ",
+      "FEFO (hạn gần nhất trước)",
+      "Có",
+      "Đồng hồ ngoài trời tiếp tục từ tuổi đã tích lũy, không reset sau chuyển kho"
+    ],
+    [
+      "R213",
+      "Nước uống đun sôi",
+      "E0",
+      "Nước uống",
+      2,
+      "Hố chứa nước sạch phù hợp",
+      "Tạm dừng đồng hồ",
+      "FEFO",
+      "Không",
+      "Tách nước đun sôi khỏi nước bị nhiễm bẩn"
+    ]
+  ],
+  "recipes": [
+    [
+      "F001",
+      "E0",
+      "Đồ đá sơ khai",
+      "Ăn trực tiếp",
+      "Quả rừng:1",
+      "Suất ăn",
+      1,
+      1,
+      "Không cần công trình; thức ăn tươi"
+    ],
+    [
+      "F002",
+      "E0",
+      "Đồ đá sơ khai",
+      "Ăn trực tiếp",
+      "Củ rừng:1",
+      "Suất ăn",
+      1,
+      1,
+      "Không cần công trình; mặc định ăn được"
+    ],
+    [
+      "F003",
+      "E0",
+      "Đồ đá sơ khai",
+      "Ăn trực tiếp",
+      "Nấm ăn:1",
+      "Suất ăn",
+      1,
+      1,
+      "Chỉ nấm ăn đã xác định"
+    ],
+    [
+      "F004",
+      "E0",
+      "Đồ đá sơ khai",
+      "Bếp lửa",
+      "Thịt thú:1; Củi:1",
+      "Thịt nướng",
+      2,
+      2,
+      "Tiêu hao nhiên liệu"
+    ],
+    [
+      "F005",
+      "E0",
+      "Đồ đá sơ khai",
+      "Bếp lửa",
+      "Cá tươi:1; Củi:1",
+      "Cá nướng",
+      2,
+      2,
+      "Tiêu hao nhiên liệu"
+    ],
+    [
+      "F006",
+      "E0",
+      "Đồ đá sơ khai",
+      "Bếp lửa",
+      "Củ rừng:1; Củi:1",
+      "Rau củ nấu",
+      1,
+      1,
+      "Củ được nấu chín"
+    ],
+    [
+      "F060",
+      "E0",
+      "Đồ đá sơ khai",
+      "Bếp lửa",
+      "Nước thô:2; Củi:1",
+      "Nước sạch",
+      2,
+      0,
+      "Mở sau Làm sạch nước sơ khai; nước sôi giúp giảm rủi ro bệnh do nguồn nước"
+    ],
+    [
+      "F087",
+      "E0",
+      "Đồ đá sơ khai",
+      "Bếp lửa",
+      "Nước thô:2; Củi:1",
+      "Nước uống đun sôi",
+      2,
+      0,
+      "Đun sôi giúp giảm rủi ro nước nhiễm bẩn; không thay thế lọc hóa chất"
+    ]
+  ],
+  "ingredients": [
+    [
+      "FI0001",
+      "F001",
+      null,
+      "Ăn trực tiếp",
+      "R001",
+      "Quả rừng",
+      1,
+      "Vật tư tiêu hao",
+      "E0"
+    ],
+    [
+      "FI0002",
+      "F002",
+      null,
+      "Ăn trực tiếp",
+      "R002",
+      "Củ rừng",
+      1,
+      "Vật tư tiêu hao",
+      "E0"
+    ],
+    [
+      "FI0003",
+      "F003",
+      null,
+      "Ăn trực tiếp",
+      "R003",
+      "Nấm ăn",
+      1,
+      "Vật tư tiêu hao",
+      "E0"
+    ],
+    [
+      "FI0004",
+      "F004",
+      "B007",
+      "Bếp lửa",
+      "R008",
+      "Thịt thú",
+      1,
+      "Vật tư tiêu hao",
+      "E0"
+    ],
+    [
+      "FI0005",
+      "F004",
+      "B007",
+      "Bếp lửa",
+      "R167",
+      "Củi",
+      1,
+      "Vật tư tiêu hao",
+      "E0"
+    ],
+    [
+      "FI0006",
+      "F005",
+      "B007",
+      "Bếp lửa",
+      "R009",
+      "Cá tươi",
+      1,
+      "Vật tư tiêu hao",
+      "E0"
+    ],
+    [
+      "FI0007",
+      "F005",
+      "B007",
+      "Bếp lửa",
+      "R167",
+      "Củi",
+      1,
+      "Vật tư tiêu hao",
+      "E0"
+    ],
+    [
+      "FI0008",
+      "F006",
+      "B007",
+      "Bếp lửa",
+      "R002",
+      "Củ rừng",
+      1,
+      "Vật tư tiêu hao",
+      "E0"
+    ],
+    [
+      "FI0009",
+      "F006",
+      "B007",
+      "Bếp lửa",
+      "R167",
+      "Củi",
+      1,
+      "Vật tư tiêu hao",
+      "E0"
+    ],
+    [
+      "FI0120",
+      "F060",
+      "B007",
+      "Bếp lửa",
+      "R062",
+      "Nước thô",
+      2,
+      "Vật tư tiêu hao",
+      "E0"
+    ],
+    [
+      "FI0121",
+      "F060",
+      "B007",
+      "Bếp lửa",
+      "R167",
+      "Củi",
+      1,
+      "Vật tư tiêu hao",
+      "E0"
+    ],
+    [
+      "FI0185",
+      "F087",
+      "B007",
+      "Bếp lửa",
+      "R062",
+      "Nước thô",
+      2,
+      "Vật tư tiêu hao",
+      "E0"
+    ],
+    [
+      "FI0186",
+      "F087",
+      "B007",
+      "Bếp lửa",
+      "R167",
+      "Củi",
+      1,
+      "Vật tư tiêu hao",
+      "E0"
+    ]
+  ],
+  "species": [
+    [
+      "SP001",
+      "Cây",
+      "Bụi quả mọng",
+      "Rìa rừng",
+      "Quả rừng",
+      "2–5",
+      12,
+      "Xuân/Thu",
+      "Thấp",
+      "Không vô hạn; theo population/stock",
+      "Khô hạn giảm số quả và tăng ngày tái sinh",
+      "Quang hợp / phân giải",
+      "Nguồn sinh thái",
+      "Ánh sáng / chất hữu cơ",
+      "—",
+      "—"
+    ],
+    [
+      "SP015",
+      "Động vật",
+      "Thỏ rừng",
+      "Rừng/Đồng cỏ",
+      "Thịt thú:1; Da thú:0.5",
+      "1–2",
+      30,
+      "Xuân/Hạ",
+      "Thấp",
+      "Không vô hạn; theo population/stock",
+      "Quần thể sinh sản nhanh, giảm nếu săn quá mức",
+      "Ăn cỏ",
+      "Con mồi nhỏ",
+      "Cỏ, chồi non",
+      "—",
+      "—"
+    ]
+  ]
+}

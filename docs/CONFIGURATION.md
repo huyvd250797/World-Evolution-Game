@@ -1,26 +1,22 @@
-Xem POPULATION-AND-PATHFINDING.md cho schema 4, di chuyển/housing và rollback; CITY-PLANNING.md giữ mô tả nền quy hoạch.
+# Hướng dẫn cấu hình World Evolution V0.6.0
 
-# Hướng dẫn cấu hình World Evolution V0.5.0
+## Cập nhật từ V0.5.0
 
-## Cập nhật từ V0.4.0 lên V0.5.0
+Không xóa repo, project Vercel hoặc database. Chạy một lần **infra/supabase/migrations/202611190005_survival_food.sql** trong Supabase SQL Editor sau 001–004, trước deploy V0.6.0. TXT gửi riêng chứa đúng SQL 005. Không chạy lại các migration cũ.
 
-Không cần xóa repository, project Vercel hoặc database. Upload toàn bộ nội dung ZIP mới vào đúng gốc repo, ghi đè package.json, proxy.ts, src/proxy.ts và thêm src/lib/supabase/proxy.ts. Trong GitHub, kiểm tra proxy.ts ở gốc có import `@/lib/supabase/proxy`. Source mới có hai entry tương thích cùng nội dung; logic session chỉ đặt trong src/lib/supabase/proxy.ts.
-
-**Trước deploy V0.5.0:** chạy một lần `infra/supabase/migrations/202611190004_population_navigation.sql` trong Supabase SQL Editor. File `World-Evolution-V0.5.0-Migrations.txt` chứa đúng migration mới này. Không chạy lại 001/002/003, không reset dữ liệu. Migration nâng validator/RPC cho schema 4/we-sim-2, vị trí/đường đi của 20 cư dân; giữ cấu hình/seed/20 IDs và bản đồ cũ.
-
-Kiểm tra deployment đang dùng commit vừa push, Root Directory là thư mục chứa package.json. Khi deploy lại, bỏ chọn Use existing Build Cache. Giữ các Environment Variables và URL Supabase. Không chạy lại migration đã áp dụng.
+Upload toàn bộ nội dung ZIP vào đúng gốc repo chứa package.json, ghi đè file trùng và giữ biến môi trường. Version mới 0.6.0. Giữ hai proxy entry import alias @/lib/supabase/proxy; không dùng lại ./lib/config. Source bao gồm survival adapter, Worker, UI, SQL, scripts và kiểm tra release.
 
 ## 0. Deploy trực tiếp trên Vercel
 
-Boss không phải cài Node/npm hoặc chạy localhost. Gói V0.5.0 chứa source ngay tại gốc ZIP; upload toàn bộ sau giải nén vào GitHub, chọn Root Directory chứa package.json. Nếu thay source từ gói cũ, giữ các biến môi trường và Supabase project hiện tại.
+Boss không phải cài Node/npm hoặc chạy localhost. Gói V0.6.0 chứa source ngay tại gốc ZIP; upload toàn bộ sau giải nén vào GitHub, chọn Root Directory chứa package.json. Nếu thay source từ gói cũ, giữ các biến môi trường và Supabase project hiện tại.
 
 Build production chỉ chạy `node verify-release.mjs && next build`, không chạy importer TypeScript. Vercel tự chạy Install/Build. Mục 1 và các lệnh local bên dưới là tùy chọn cho lập trình viên. Cấu hình Vercel chi tiết ở mục 8.
 
-Lên V0.5.0 cần migration 004 sau 001/002/003. Project mới chạy 001 → 002 → 003 → 004; project V0.4.0 chỉ chạy 004.
+Lên V0.6.0 cần migration 005 sau 001–004. Project mới chạy 001 → 002 → 003 → 004 → 005; project V0.5.0 chỉ chạy 005.
 
 ## 1. Chuẩn bị source và môi trường
 
-- Giải nén ZIP. Thư mục gốc ứng dụng là `world-evolution`, nơi có `package.json`.
+- Giải nén ZIP. Nội dung source đặt ngay gốc ZIP, nơi có `package.json`.
 - Cài Node.js 24 LTS từ https://nodejs.org. Mở terminal mới, chạy `node -v` và `npm -v`.
 - Chọn Terminal → New Terminal trong VS Code tại thư mục ứng dụng. Không chạy npm từ thư mục ZIP bên ngoài.
 - Source dùng npm, giữ `package-lock.json`; cài bằng `npm ci` để tái lập phiên bản.
@@ -29,8 +25,8 @@ Lên V0.5.0 cần migration 004 sau 001/002/003. Project mới chạy 001 → 00
 
 1. Mở https://supabase.com/dashboard, tạo project riêng cho game, chọn region phù hợp người chơi. Ghi lại mật khẩu database ở nơi quản lý mật khẩu của Boss; app không cần mật khẩu đó.
 2. Đợi project sẵn sàng. Mở **SQL Editor → New query**.
-3. Mở `infra/supabase/migrations/202611180001_foundation.sql` trong source. Copy toàn bộ, chạy **một lần**, sau đó chạy `202611180002_simulation_save.sql` , `202611180003_city_planning.sql` và `202611190004_population_navigation.sql` theo thứ tự.
-4. Migration 001 tạo bảng `public.worlds`, index, RLS và các RPC tạo/sửa/xóa; 002 thêm bảng private và RPC `simulation_rpc`, 003 nâng cho quy hoạch schema 3; 004 nâng validator/RPC cho 20 cư dân schema 4. Không có bucket Storage cần tạo ở bản này.
+3. Mở `infra/supabase/migrations/202611180001_foundation.sql` trong source. Copy toàn bộ, chạy **một lần**, sau đó chạy `202611180002_simulation_save.sql` , `202611180003_city_planning.sql`  , `202611190004_population_navigation.sql` và `202611190005_survival_food.sql` theo thứ tự.
+4. Migration 001 tạo bảng `public.worlds`, index, RLS và các RPC tạo/sửa/xóa; 002 thêm bảng private và RPC `simulation_rpc`, 003 nâng cho quy hoạch schema 3; 004 nâng validator/RPC cho 20 cư dân schema 4; 005 nâng schema 5/we-sim-3 cho hoạt động/lô/cấp phát sinh tồn. Không có bucket Storage cần tạo ở bản này.
 5. Nếu gặp `relation worlds already exists`, dừng chạy lại. Kiểm tra project có phải môi trường mới hay đã áp dụng migration. Không xóa bảng dữ liệu để xử lý lỗi này.
 6. Trong API settings, giữ `public` được exposed; **không thêm schema `private` vào Exposed schemas**. Các function private chỉ được gọi qua public RPC có kiểm soát.
 7. Chạy `infra/supabase/verify_setup.sql` và `infra/supabase/verify_simulation.sql` để kiểm tra cấu trúc, RLS và các grant. File kiểm tra chỉ đọc metadata.

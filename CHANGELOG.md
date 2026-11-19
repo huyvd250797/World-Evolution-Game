@@ -1,3 +1,11 @@
+# V0.6.0 — Survival & Food (19/11/2026)
+
+- Thêm survival adapter từ Frozen: nhu cầu ăn/nước, TTL, công thức, nguyên liệu, tải bộ và nguồn cơ bản.
+- Worker jobs đi/làm/mang về, nguồn quả hữu hạn và tái sinh; tồn theo từng lô, FEFO, sổ cấp phát từng ID/ngày, cảnh báo thiếu/sắp hỏng.
+- Giao việc có xác nhận, xem tiến độ/lô trên PC/mobile. Bảo vệ depot, giữ hàng mang khi bị chặn, không cho lệnh di chuyển ngoài chiếm cư dân đang có việc.
+- Schema 5/we-sim-3, SQL 005; nâng đọc bản cũ, giữ checksum lịch sử, lưu đầy đủ cargo/tuổi/sổ ngày; giữ lease/autosave/local recovery.
+- Enforce công nghệ/công trình/nhân lực/công cụ thật cho săn/lấy nước/nấu; không mở miễn phí. Các nhánh này vẫn khóa ở thế giới khởi đầu; docs/SURVIVAL-AND-FOOD.md mô tả adapter và dependencies.
+
 # V0.5.0 — Population Housing & Pathfinding — 19/11/2026
 
 - Schema 4/we-sim-2 giữ 20 IDs từ initial_state; legacy 2/3 nâng đọc có vị trí deterministic, không đổi clock/RNG/quy hoạch.

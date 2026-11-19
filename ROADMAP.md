@@ -9,8 +9,8 @@ Căn cứ: Development Plan V1.1 và Master Game Data V1.2 Canonical Frozen. 23 
 | V0.3.0 | Simulation & Save Engine | Worker deterministic, ngày/mùa, x1/x2/x4/pause, snapshot/delta/recovery, lease thiết bị, retention và thống kê payload; kiểm Worker/SQL/HTTP, cloud và thiết bị thật cần nghiệm thu | Đã xây source |
 | V0.4.0 | Construction & City Planning | Ghost preview, địa hình, footprint, xoay, đường; xác nhận bằng chạm; catalog Frozen, schema 3, lưu/khôi phục; stamp dùng chung, chunk/culling. Browser/mobile cần nghiệm thu deployment | Đã xây source |
 | V0.5.0 | Population Housing & Pathfinding | 20 IDs/agents, Worker pathfinding/progress/rest, housing forecast và completed-allocation model, cap/lease/save; kiểm logic/SQL/HTTP/Canvas, thiết bị thật cần nghiệm thu | Đã xây source |
-| V0.6.0 | Survival & Food | Hái/săn/nước, phần ăn, kho và hư hỏng theo lô; dữ liệu lô có vòng đời | Tiếp theo |
-| V0.7.0 | Workforce & Training | Nghề, tập sự, đào tạo và điều chuyển; controls chạm, batch cập nhật | Dự kiến |
+| V0.6.0 | Survival & Food | Worker jobs, cargo/lô/TTL/FEFO/sổ cấp phát; hái quả hoạt động, săn/nước/nấu giữ gate công nghệ/công trình; schema 5, SQL 005 | Đã xây source; nhánh vận hành chờ dependencies |
+| V0.7.0 | Workforce & Training | Nghề, tập sự, đào tạo và điều chuyển; controls chạm, batch cập nhật | Tiếp theo |
 | V0.8.0 | Living Ecosystem | Cây/động vật, săn mồi, tái sinh và quần thể; tải asset theo sinh cảnh | Dự kiến |
 | V0.9.0 | Construction & Logistics | Thi công, vật tư và tuyến vận chuyển thật; không ghi DB từng bước chân | Dự kiến |
 | V0.10.0 | Seasons & Climate | Mùa theo vùng, thiên tai, lạnh/trang phục, thời tiết có mức chất lượng | Dự kiến |
