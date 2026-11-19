@@ -1,0 +1,7 @@
+import {readFile,writeFile} from 'node:fs/promises';
+const c=JSON.parse(await readFile('data/generated/catalog.json','utf8'));
+type Row=(string|number|null)[];
+const rows=(name:string):Row[]=>c.sheets.find((s:{name:string})=>s.name===name).rows;
+const techs=rows('CONG NGHE'),buildings=rows('CONG TRINH'),roles=rows('VAI TRO');
+const result=JSON.stringify({version:1,roles:roles.map(r=>{const tech=techs.find(t=>t[1]===r[6]);return {id:r[0],name:r[1],era:r[2],eraName:r[3],trainingDays:r[4],traineeEfficiency:r[5],technologyId:tech?.[0]??null,technologyName:r[6],workplace:r[7],purpose:r[8],requiredBy:r[9]};}),staffing:rows('DINH BIEN NHAN SU').map(r=>({id:r[0],buildingId:r[1],buildingName:r[2],roleId:r[3],roleName:r[4],required:r[5],era:r[6],note:r[7]})),training:buildings.filter(r=>r[0]==='B123').map(r=>({buildingId:r[0],name:r[1],technologyId:techs.find(t=>t[1]===r[5])![0],capacity:r[13],era:r[2],description:r[12],instructors:rows('DINH BIEN NHAN SU').filter(s=>s[1]===r[0]).map(s=>({roleId:s[3],required:s[5]}))})),retrainOnChange:rows('CAU HINH GAME').find(r=>r[0]==='CFG013')![2]},null,2)+'\n';
+const path='data/generated/workforce.json';if(process.argv.includes('--check')){if(await readFile(path,'utf8')!==result)throw new Error('Workforce adapter differs from Frozen');console.log('Workforce: 96 roles, technology links, staffing, B123 capacity/instructors verified.');}else await writeFile(path,result);

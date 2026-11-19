@@ -1,31 +1,34 @@
-# Xác minh V0.6.0 — Survival & Food
+# Xác minh V0.7.0 — Workforce & Training
 
-Kết quả cuối trong ../RELEASE-CHECKS.md. Nền V0.5.0 giữ nguyên dữ liệu Frozen, bản đồ, assets và migration cũ.
+Kết quả cuối: ../RELEASE-CHECKS.md. Giữ bản nền V0.6, không chỉnh Frozen hoặc migration cũ.
 
 ## Kiểm tự động
 
-- Typecheck app/tools/tests, ESLint, data:check, release verifier, production build. Gói bàn giao được giải nén vào thư mục sạch rồi npm ci/build lại.
-- 66 tests/subtests: regression Auth/world/proxy/release/map/Canvas/planning/population/simulation và survival mới.
-- Hái đi đúng số tick, có thời gian làm, chưa nhập hàng khi còn mang; source stock/cooldown không vô hạn; hủy có cargo bị chặn.
-- FEFO qua nhiều lô, nhu cầu vs đã cấp tách riêng, mỗi ID không được cấp quá định mức/ngày; raw water và thịt/cá sống không cấp ăn/uống.
-- TTL từng loại, ngày mới, spoilage, kho phù hợp dừng tuổi và ra kho tiếp tục; khoảng gián đoạn lưu/reload không làm mới hạn.
-- Fixtures đủ capability: lấy nước theo CFG018, chế biến đúng nguyên liệu và nhiên liệu, công cụ săn không dùng đồng thời; thiếu điều kiện bị từ chối. Đây là kiểm adapter cho tương lai, không phải công trình đã mở trong game.
-- Timer batching/x1/x2/x4/pause và checksum decode giữa hoạt động cho cùng state; legacy schema 4 giữ IDs/routes/RNG khi thêm survival.
-- SQL 005 giữ raw byte cũ, save/restore giữa đường và **khi mang lô thật**, giữ expiry; ledger quá mức, sai TTL, unsafe delta, downgrade/khác chủ bị từ chối.
-- Worker thật qua Node bridge; lease/command/pause và mới thêm giao survival job, chặn lệnh di chuyển khác chiếm người, load lại job.
-- Next HTTP + SDK fixture: Auth/SSR/actions, world lifecycle, planning/citizen/full survival snapshot, invalid allocation/survival delta, CSRF, idempotent retries và history restore.
+- Typecheck app/tools/tests, ESLint, data:check, release checksum, production build và cài sạch/build lại từ ZIP.
+- 73 tests/subtests: toàn bộ regression Auth/world/proxy/map/Canvas/planning/population/survival/simulation và workforce mới.
+- Adapter đủ 96 nghề, giữ tên/era/ngày học/hiệu suất/công nghệ/nơi làm/công dụng; staffing theo Frozen, B123=2 chỗ + 1 J009. J092 chưa khớp technologyId được khóa rõ lý do.
+- Cơ sở hoàn thành, tech T104, mentor qualified/present/unoccupied, tuyến đi và capacity; batch có một người sai thì không thay đổi người nào.
+- Tiến độ không tăng khi đang đi/nghỉ/thiếu mentor/cơ sở tắt, tick vừa đến lớp không tính hai lần; đủ chính xác 5 ngày J001 mới tốt nghiệp; học lại cùng nghề reset đủ N ngày.
+- Phân công độc quyền, vị trí theo định biên, tập sự không thay hướng dẫn viên, effective staffing tính riêng hệ số. Thực hành ngoài lớp không cộng giờ lớp.
+- Survival hooks: credit 80/100 chỉ ở actual work tick, job đầu ra chưa xuất hiện khi chưa làm đủ, phần dư được serialize/parse rồi tiếp tục không tăng sai sản lượng.
+- Schema 5 thêm 20 hồ sơ rỗng giữ citizens/cargo/TTL; checksum reload giữ progress/credit và thiếu điều kiện thì chờ, không tốt nghiệp theo wall clock.
+- SQL 006 giữ raw schema 5/history, full workforce state save/restore, malformed progress/IDs/credit bị chặn; owner/downgrade/private-table grants và delta guard.
+- Worker source thật + session bridge: workforce command, missing-facility rejection/no-free-role, rút phân công/nghỉ, snapshot/save; giữ offline/retry/history/lease regression.
+- HTTP với Next SSR/actions và Supabase SDK fixture: schema 6, invalid worker ID và unsafe workforce delta bị chặn, Auth/CSRF/save/retry/restore/các luồng cũ đạt.
 
 ## Giới hạn
 
-Playwright specs trong tests/ui (có survival mới) cần chạy ở máy/CI có Chromium đầy đủ. Môi trường nền chặn browser socket; chưa có kiểm UI thật cho bản này. Chưa kiểm Safari/iPhone/Android, GPU/WebGL/60fps, dịch vụ Supabase/Vercel thật hoặc bị OS đóng ứng dụng. Không cam kết quota Free/hiệu năng thiết bị nếu chưa đo thực tế.
+Không xác nhận UI browser/Playwright đã đạt. tests/ui/workforce.spec.ts có sẵn nhưng cần môi trường Chromium hoạt động; các lần nền bị chặn socket. Chưa kiểm Safari/Android/iPhone/GPU và tài khoản dịch vụ thật của Boss. Source build/fixture không chứng minh deploy cloud hoặc tốc độ thiết bị thật.
 
-## Nghiệm thu sau deploy
+Nghiệm thu nhánh đào tạo đủ điều kiện hiện dùng LaborContext fixtures: game chưa có cơ sở hoàn thành/hướng dẫn viên/công nghệ T104. Không báo đã mở gameplay đào tạo trong world khởi đầu. Chưa có bootstrap nghề nghiên cứu hoặc đào tạo đời cao thiếu định mức; không tự thêm ngoại lệ vào Frozen.
 
-1. Chạy 005 một lần sau 001–004; giữ repo/database/env. Project mới chạy đủ 001→005. Mở thế giới cũ kiểm tick/seed/quy hoạch/20 ID/vị trí.
-2. Sinh tồn & thức ăn: nhu cầu 20/40, chưa cấp nếu kho rỗng. Chọn ô quả và một ID đứng yên, Giao việc → Xác nhận; pan/pinch không tự gửi lệnh.
-3. Chạy x1/x2/x4/pause; tới nguồn trước, làm đủ mới có lô đang mang; nhập bãi và cấp phát sau giao. Lưu ngay giữa đường, lúc làm và khi mang hàng rồi reload, kiểm không thêm sản phẩm/đổi expiry.
-4. Khi người có job, lệnh đổi điểm đến bị từ chối; Nghỉ/Tiếp tục giữ progress; bị chặn dùng Thử giao lại. Không cho đặt nền lên depot/người/cạnh hiện tại.
-5. Thử săn/nước/nấu phải hiện điều kiện tech/cơ sở/công cụ chưa đạt, không auto unlock. Bếp planned vẫn bị khóa; nước thô không tính nước uống.
-6. UI cuộn xem lô, thiếu/sắp hỏng, dọn lô với xác nhận; xoay dọc/ngang không che nút Hủy/Xác nhận, thu gọn bảng để chọn ô bản đồ.
-7. Offline/khóa màn hình/recovery/lease takeover hai máy, restore history và pending retry vẫn giữ cơ chế cũ; đóng app không chạy bù.
-8. Đo save size/traffic/FPS/RAM thật sau deploy. Xem dependencies và chính sách kỹ thuật trong SURVIVAL-AND-FOOD.md.
+## Checklist sau deploy
+
+1. Chạy 006 một lần sau 001–005, giữ repo/project/env/worlds; verify_workforce.sql phải có 96 roles và các private grants=false.
+2. Mở world cũ giữ đúng seed/tick/map/20 IDs/cargo/lô/hạn, world pause. Bảng nhân sự dưới bản đồ có 20 profile chưa cấp nghề.
+3. Lao động: lọc rảnh/đang học/làm/đi/nghỉ, chọn một hoặc nhiều người, xem cơ sở/điểm đến/job. Pan/pinch bản đồ vẫn như cũ.
+4. Đào tạo/đổi nghề: Confirm không khả dụng nếu thiếu cơ sở hoàn thành/tech/hướng dẫn; hiện rõ điều kiện, không tự hoàn thành nền. Hủy bên trái/Xác nhận bên phải.
+5. Danh mục 96 nghề: tìm kiếm, phân trang, chữ đủ trên PC/mobile; J001=5 ngày/80%, J092 giữ tên công nghệ gốc và lý do khóa.
+6. Định biên planned: số có mặt thực=0, thiếu đúng định mức. Không cho claim có người làm từ các nền quy hoạch.
+7. Manual save/reload/history/local recovery/hai thiết bị lease và takeover giữ đúng ID/profile/tiến độ, không nhân sản phẩm hoặc cấp nghề. Khóa màn hình không chạy bù offline.
+8. Kiểm layout dọc/ngang, đọc nguyên tên nghề/công nghệ/cơ sở, thao tác chọn nhóm và confirm, đo RAM/FPS/save/traffic trên deployment/thiết bị thật.

@@ -1,18 +1,18 @@
-# Hướng dẫn cấu hình World Evolution V0.6.0
+# Hướng dẫn cấu hình World Evolution V0.7.0
 
-## Cập nhật từ V0.5.0
+## Cập nhật từ V0.6.0
 
-Không xóa repo, project Vercel hoặc database. Chạy một lần **infra/supabase/migrations/202611190005_survival_food.sql** trong Supabase SQL Editor sau 001–004, trước deploy V0.6.0. TXT gửi riêng chứa đúng SQL 005. Không chạy lại các migration cũ.
+Không xóa repo/project/database. Trước deploy V0.7.0, chạy **infra/supabase/migrations/202611190006_workforce_training.sql một lần**, sau 001–005. TXT V0.7 gửi riêng chứa đúng migration 006. Không chạy lại migration cũ. Giữ toàn bộ env, source mới upload ghi đè file trùng vào gốc repo chứa package.json.
 
-Upload toàn bộ nội dung ZIP vào đúng gốc repo chứa package.json, ghi đè file trùng và giữ biến môi trường. Version mới 0.6.0. Giữ hai proxy entry import alias @/lib/supabase/proxy; không dùng lại ./lib/config. Source bao gồm survival adapter, Worker, UI, SQL, scripts và kiểm tra release.
+006 nâng schema 6/we-sim-4 cho hồ sơ nghề, nơi học/làm, tiến độ và credit sản xuất; không sửa raw head/history, không cấp nghề/công nghệ/cơ sở miễn phí. Source có hai proxy entry cùng import alias @/lib/supabase/proxy; không dùng lại ./lib/config. Các điều kiện hoạt động xem WORKFORCE-AND-TRAINING.md.
 
 ## 0. Deploy trực tiếp trên Vercel
 
-Boss không phải cài Node/npm hoặc chạy localhost. Gói V0.6.0 chứa source ngay tại gốc ZIP; upload toàn bộ sau giải nén vào GitHub, chọn Root Directory chứa package.json. Nếu thay source từ gói cũ, giữ các biến môi trường và Supabase project hiện tại.
+Boss không phải cài Node/npm hoặc chạy localhost. Gói V0.7.0 chứa source ngay tại gốc ZIP; upload toàn bộ sau giải nén vào GitHub, chọn Root Directory chứa package.json. Nếu thay source từ gói cũ, giữ các biến môi trường và Supabase project hiện tại.
 
 Build production chỉ chạy `node verify-release.mjs && next build`, không chạy importer TypeScript. Vercel tự chạy Install/Build. Mục 1 và các lệnh local bên dưới là tùy chọn cho lập trình viên. Cấu hình Vercel chi tiết ở mục 8.
 
-Lên V0.6.0 cần migration 005 sau 001–004. Project mới chạy 001 → 002 → 003 → 004 → 005; project V0.5.0 chỉ chạy 005.
+Lên V0.7.0 cần migration 006 sau 001–005. Project mới chạy 001 → 002 → 003 → 004 → 005 → 006; project V0.6.0 chỉ chạy 006.
 
 ## 1. Chuẩn bị source và môi trường
 
@@ -25,8 +25,8 @@ Lên V0.6.0 cần migration 005 sau 001–004. Project mới chạy 001 → 002 
 
 1. Mở https://supabase.com/dashboard, tạo project riêng cho game, chọn region phù hợp người chơi. Ghi lại mật khẩu database ở nơi quản lý mật khẩu của Boss; app không cần mật khẩu đó.
 2. Đợi project sẵn sàng. Mở **SQL Editor → New query**.
-3. Mở `infra/supabase/migrations/202611180001_foundation.sql` trong source. Copy toàn bộ, chạy **một lần**, sau đó chạy `202611180002_simulation_save.sql` , `202611180003_city_planning.sql`  , `202611190004_population_navigation.sql` và `202611190005_survival_food.sql` theo thứ tự.
-4. Migration 001 tạo bảng `public.worlds`, index, RLS và các RPC tạo/sửa/xóa; 002 thêm bảng private và RPC `simulation_rpc`, 003 nâng cho quy hoạch schema 3; 004 nâng validator/RPC cho 20 cư dân schema 4; 005 nâng schema 5/we-sim-3 cho hoạt động/lô/cấp phát sinh tồn. Không có bucket Storage cần tạo ở bản này.
+3. Mở `infra/supabase/migrations/202611180001_foundation.sql` trong source. Copy toàn bộ, chạy **một lần**, sau đó chạy `202611180002_simulation_save.sql` , `202611180003_city_planning.sql`  , `202611190004_population_navigation.sql` , `202611190005_survival_food.sql` và `202611190006_workforce_training.sql` theo thứ tự.
+4. Migration 001 tạo bảng `public.worlds`, index, RLS và các RPC tạo/sửa/xóa; 002 thêm bảng private và RPC `simulation_rpc`, 003 nâng cho quy hoạch schema 3; 004 nâng validator/RPC cho 20 cư dân schema 4; 005 nâng schema 5/we-sim-3 cho hoạt động/lô/cấp phát sinh tồn; 006 nâng schema 6/we-sim-4 cho nhân sự/đào tạo. Không có bucket Storage cần tạo ở bản này.
 5. Nếu gặp `relation worlds already exists`, dừng chạy lại. Kiểm tra project có phải môi trường mới hay đã áp dụng migration. Không xóa bảng dữ liệu để xử lý lỗi này.
 6. Trong API settings, giữ `public` được exposed; **không thêm schema `private` vào Exposed schemas**. Các function private chỉ được gọi qua public RPC có kiểm soát.
 7. Chạy `infra/supabase/verify_setup.sql` và `infra/supabase/verify_simulation.sql` để kiểm tra cấu trúc, RLS và các grant. File kiểm tra chỉ đọc metadata.

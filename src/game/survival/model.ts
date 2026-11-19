@@ -35,7 +35,7 @@ export type SurvivalCommand={type:'assign';citizenId:string;kind:'gather'|'water
 function same(a:Cell,b:Cell){return a.x===b.x&&a.y===b.y;}
 function sourceRecord(s:Survival,p:Cell,tick:number,seed:string){const k=key(p);let r=s.sources.find(r=>r.key===k);if(!r){if(s.sources.length>=4096)throw new Error('Đã đạt giới hạn nguồn khảo sát.');r={key:k,remaining:2+hashSeed(seed+'|berries|'+k)%4,readyTick:0};s.sources.push(r);}if(r.remaining===0&&tick>=r.readyTick)r.remaining=2+hashSeed(seed+'|berries|'+k+'|'+r.readyTick)%4;return r;}
 export function sourceInfo(nav:Navigation,p:Cell){const i=nav.index(p);return nav.map.resources[i]===4?'gather':nav.map.terrain[i]===TERRAIN.water?'water':nav.map.terrain[i]===TERRAIN.forest?'hunt':null;}
-function requireFacility(cap:Capabilities,buildingId:string,tech:string,nav:Navigation,from:Cell){if(!cap.technologies.includes(tech))throw new Error(`Chưa mở công nghệ ${tech}; V0.6.0 không tự cấp công nghệ.`);const f=cap.facilities.find(f=>f.buildingId===buildingId&&f.staffed&&nav.route(from,f.entrance)!==null);if(!f)throw new Error(`Cần ${buildingId} đã hoàn thành, có nhân lực và lối đi. Nền quy hoạch chưa hoạt động.`);return f;}
+function requireFacility(cap:Capabilities,buildingId:string,tech:string,nav:Navigation,from:Cell){if(!cap.technologies.includes(tech))throw new Error(`Chưa mở công nghệ ${tech}; Ứng dụng không tự cấp công nghệ.`);const f=cap.facilities.find(f=>f.buildingId===buildingId&&f.staffed&&nav.route(from,f.entrance)!==null);if(!f)throw new Error(`Cần ${buildingId} đã hoàn thành, có nhân lực và lối đi. Nền quy hoạch chưa hoạt động.`);return f;}
 export function survivalCommand(original:Survival,citizens:Citizen[],nav:Navigation,tick:number,command:SurvivalCommand,seed:string,cap=FOUNDATION_CAPABILITIES):{survival:Survival;citizens:Citizen[]}{
  const s=structuredClone(original);if(command.type==='clean'){s.waste+=s.lots.filter(l=>l.spoiled&&l.location==='depot').reduce((n,l)=>n+l.quantity,0);s.lots=s.lots.filter(l=>l.location!=='depot'||!l.spoiled&&l.quantity>0);return {survival:s,citizens};}
  const c=citizens.find(c=>c.id===command.citizenId);if(!c)throw new Error('Không tìm thấy ID cư dân đã lưu.');const job=s.jobs.find(j=>j.citizenId===c.id);
@@ -61,13 +61,14 @@ export function survivalCommand(original:Survival,citizens:Citizen[],nav:Navigat
  if(nav.route(c,target)===null||nav.route(target,s.depot)===null)throw new Error('Không có đường đi hai chiều giữa cư dân, nguồn và bãi tập kết.');
  const created:Job={id:`job-${++s.sequence}`,citizenId:c.id,kind,source,target,phase:'outbound',workDone:0,workRequired,recipeId,output,cargo:[],reservedTool};s.jobs.push(created);return {survival:s,citizens:citizenCommand(citizens,nav,{type:'move',ids:[c.id],target})};
 }
+export interface SurvivalHooks{afterMovement?:(citizens:Citizen[],tick:number,jobs:Job[],previous:Citizen[])=>void;work?:(job:Job)=>number}
 /** One integer tick at a time: timer batching, speed and reload preserve event ordering. */
-export function advanceSurvival(state:Survival,people:Citizen[],nav:Navigation,startTick:number,steps:number,seed:string,cap=FOUNDATION_CAPABILITIES){
+export function advanceSurvival(state:Survival,people:Citizen[],nav:Navigation,startTick:number,steps:number,seed:string,cap=FOUNDATION_CAPABILITIES,hooks:SurvivalHooks={}){
  const s=structuredClone(state);let citizens=people;
  for(let n=1;n<=steps;n++){
   const tick=startTick+n,day=Math.floor(tick/DAY)+1;
   if(day!==s.day){s.previous={day:s.day,food:s.served.reduce((a,p)=>a+p.food,0),water:s.served.reduce((a,p)=>a+p.water,0)};s.day=day;s.served=s.served.map(p=>({...p,food:0,water:0}));s.lots=s.lots.filter(l=>l.quantity>0);}
-  citizens=advanceCitizens(citizens,1);s.lots=ageLots(s,tick,cap);
+  const previous=citizens;citizens=advanceCitizens(citizens,1);hooks.afterMovement?.(citizens,tick,s.jobs,previous);s.lots=ageLots(s,tick,cap);
   for(const job of [...s.jobs]){
    const c=citizens.find(c=>c.id===job.citizenId)!;
    if(c.status==='blocked'){job.phase='blocked';continue;}if(c.status==='resting'||c.status==='moving'||job.phase==='blocked')continue;
@@ -76,7 +77,7 @@ export function advanceSurvival(state:Survival,people:Citizen[],nav:Navigation,s
     if(!same(c,job.target)){job.phase='blocked';continue;}
     const required=job.kind==='water'?{building:'B117',tech:'T093'}:job.kind==='hunt'?{building:'B002',tech:'T001'}:job.kind==='process'&&!['F001','F002'].includes(job.recipeId??'')?{building:'B007',tech:'T002'}:null;
     if(required&&(!cap.technologies.includes(required.tech)||!cap.facilities.some(f=>f.buildingId===required.building&&f.staffed&&nav.route(c,f.entrance)!==null))||job.kind==='process'&&['F060','F087'].includes(job.recipeId??'')&&!cap.technologies.includes('T102')||job.kind==='hunt'&&!s.lots.some(l=>l.id===job.reservedTool&&l.resource==='R125'&&fresh(l)&&l.location==='depot')){job.phase='blocked';continue;}
-    job.workDone=Math.min(job.workRequired,job.workDone+1);
+    job.workDone=Math.min(job.workRequired,job.workDone+(hooks.work?.(job)??1));
     if(job.workDone<job.workRequired)continue;
     if(s.lots.length+job.output.length>1024){job.phase='blocked';continue;}
     if(job.kind==='gather'){const r=sourceRecord(s,job.source,tick,seed);if(r.remaining<job.output[0].quantity){job.phase='blocked';continue;}r.remaining-=job.output[0].quantity;if(!r.remaining)r.readyTick=tick+Number(data.species.find(r=>r[0]==='SP001')![6])*DAY;}

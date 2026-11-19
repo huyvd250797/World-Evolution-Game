@@ -1,3 +1,12 @@
+# V0.7.0 — Workforce & Training (19/11/2026)
+
+- Thêm adapter 96 nghề, định biên công trình, thời gian/hiệu suất nghề, B123 hai chỗ và hướng dẫn J009 theo Frozen. Giữ J092 chưa khớp tên công nghệ ở trạng thái khóa có lý do.
+- Bảng hồ sơ/lọc/chọn nhiều người, tìm nghề/phân trang, xem định biên và xác nhận trước học/đổi nghề/phân công/rút/hủy/tiếp tục. Giao dịch nhóm không áp dụng dở dang.
+- Worker tiến độ học tại lớp, không cộng khi đi/nghỉ/thực hành/thiếu mentor; đổi lại nghề cũ vẫn đào tạo đủ ngày. Chỉ tốt nghiệp sau đủ thời gian thực học.
+- Credit nguyên 1/100 cho hiệu suất tập sự trong bước sản xuất thật, lưu phần dư, không thay công thức/stock/nguyên liệu. Hái tự do cũ không tự cấp nghề.
+- Schema 6/we-sim-4 và migration 006; nâng đọc 2–5, giữ raw saves/history/RNG/IDs/cargo; full workforce snapshots, chặn delta, kế thừa lease/local recovery.
+- Gameplay khởi đầu chưa có cơ sở đào tạo hoàn thành/T104/hướng dẫn viên; vẫn khóa học/phân cơ sở, không cấp miễn phí dependencies. Xem docs/WORKFORCE-AND-TRAINING.md.
+
 # V0.6.0 — Survival & Food (19/11/2026)
 
 - Thêm survival adapter từ Frozen: nhu cầu ăn/nước, TTL, công thức, nguyên liệu, tải bộ và nguồn cơ bản.

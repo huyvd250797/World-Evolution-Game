@@ -1,16 +1,15 @@
-# Deploy World Evolution V0.6.0 — Survival & Food
+# Deploy World Evolution V0.7.0 — Workforce & Training
 
-Boss không cần localhost/npm trên máy. Vercel tự cài và build.
+Boss không cần cài Node/npm hoặc chạy localhost. Vercel tự thực hiện Install/Build.
 
-1. Project V0.5.0 đã có 001–004: chạy **202611190005_survival_food.sql một lần** trong Supabase SQL Editor, trước deploy. TXT V0.6.0 chứa đúng migration này. Không chạy lại 001–004. Project mới chạy 001 → 002 → 003 → 004 → 005.
-2. Giải nén ZIP, upload toàn bộ file/thư mục vào gốc repo/branch đang liên kết Vercel, ghi đè file trùng. Không xóa repo, project hoặc database. Kiểm package.json version 0.6.0, src/game/survival, src/components/survival, data/generated/survival.json, verify-release.mjs và migrations đủ.
-3. Giữ Supabase Environment Variables. Framework Next.js; Root Directory chứa package.json; Node 24.x; Install `npm ci`; Build `npm run build`; Output mặc định. Không static export, không thay Build bằng importer Excel.
-4. Deploy commit mới. Nếu cần xóa cache build cũ, Redeploy và bỏ Use existing Build Cache. Giữ hai proxy entry import alias `@/lib/supabase/proxy`; không dùng lại import tương đối `./lib/config`.
-5. Mở thế giới cũ: đúng seed/quy hoạch/20 ID/vị trí/tick, tạm dừng. Mở Sinh tồn & thức ăn. Chọn ô có Quả rừng (bật Tài nguyên nếu cần), chọn người đứng yên, Giao việc → Xác nhận → Chạy. Thu gọn bảng để quan sát di chuyển.
-6. Trước tới nguồn, tồn kho phải 0. Sau khi làm đủ thời gian, lô có nơi chứa Đang mang; tới bãi mới nhập. Lưu ngay ở giữa chuyến, chờ Đã lưu, reload, bấm Chạy và kiểm không nhân đôi sản phẩm/đổi hạn lô.
-7. Màn sinh tồn hiển thị nhu cầu 20 ăn/40 nước, đã cấp, thiếu, ngày dự trữ và hạn từng lô. Nước thô không phải nước uống. Lấy nước/săn/nấu phải báo rõ điều kiện chưa đạt trong thế giới chỉ có T001 và nền planned.
-8. Kiểm PC/mobile: chọn ô sau pan/pinch, xác nhận/hủy, dọc/ngang, cuộn bảng, x1/x2/x4/pause, khóa màn hình rồi quay lại, hai thiết bị và tiếp quản. Tất cả save chỉ có một thiết bị ghi tại một thời điểm.
+1. Project V0.6 đã áp dụng 001–005: chạy **202611190006_workforce_training.sql một lần** trong Supabase SQL Editor trước deploy. TXT V0.7 chứa đúng SQL này. Không chạy lại 001–005, không xóa dữ liệu. Project mới chạy đủ 001→006.
+2. Upload toàn bộ nội dung ZIP sau giải nén vào đúng gốc repo/branch đang nối Vercel; ghi đè file trùng. Kiểm package.json=0.7.0, data/generated/workforce.json, src/game/workforce, src/components/workforce, scripts và migrations đủ. Không xóa repo/project.
+3. Giữ Supabase env và asset URL. Framework Next.js, Root Directory chứa package.json, Node 24.x, Install npm ci, Build npm run build, Output mặc định. Không static export hoặc đổi build sang importer Excel. Nếu cần dọn cache cũ, Redeploy và bỏ Use existing Build Cache.
+4. Giữ proxy.ts và src/proxy.ts import alias @/lib/supabase/proxy. Không khôi phục ./lib/config (lỗi deploy cũ).
+5. Mở world cũ: seed/tick/camera/quy hoạch/20 ID/survival cargo/lô/hạn còn nguyên, game pause. Bảng Nhân sự & đào tạo dưới bản đồ có đủ 20 hồ sơ chưa tự cấp nghề. Danh mục có đủ 96 nghề, J001=5 ngày/80%, J092 hiện lý do chưa khớp công nghệ.
+6. Chọn một hoặc nhiều người → Đào tạo/đổi nghề → xem điều kiện trước Xác nhận. Chưa có cơ sở hoàn thành/hướng dẫn thì Confirm bị khóa kèm lý do. Không biến blueprint thành trường hoặc tự mở T104. Định biên blueprint có mặt 0, còn thiếu theo Frozen.
+7. Kiểm tiếp trên PC/mobile: lọc, chọn nhóm, tìm nghề/phân trang, Hủy trái/Xác nhận phải, dọc/ngang không tràn; save/reload và hai thiết bị/lease takeover vẫn đúng. Chức năng học đủ điều kiện cần nối cơ sở hoàn thành ở các phiên bản sau.
 
-Nếu báo thiếu schema/migration, kiểm đúng Supabase project và 005 đã chạy sau 004. Không reset dữ liệu. Dùng verify_survival.sql và các verify_*.sql read-only. Auth/CDN chi tiết: docs/CONFIGURATION.md.
+Nếu migration chưa có hoặc sai project, kiểm tra 006 sau 005; không reset DB. verify_workforce.sql và các verify_*.sql chỉ đọc metadata. Cấu hình Auth/CDN, GitHub, môi trường và lỗi phổ biến xem docs/CONFIGURATION.md.
 
-Khi đã lưu schema 5, không rollback app V0.5 để tiếp tục ghi. Giữ bản sao lưu và dùng hotfix tương thích schema 5; lịch sử schema cũ vẫn phục hồi được bằng V0.6.
+Sau ghi schema 6, không dùng V0.6 để tiếp tục ghi. Dùng V0.7/hotfix tương thích; restore lịch sử cũ vẫn qua V0.7. Chưa deploy thật vào tài khoản Boss trong lần bàn giao source này.
